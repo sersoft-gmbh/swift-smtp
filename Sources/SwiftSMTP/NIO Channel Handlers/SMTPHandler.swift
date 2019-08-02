@@ -100,8 +100,10 @@ final class SMTPHandler: ChannelInboundHandler {
             state = .quitSent
         case .quitSent:
             let promise = ctx.eventLoop.newPromise(of: Void.self)
-            promise.futureResult.whenSuccess(allDonePromise.succeed)
-            promise.futureResult.whenFailure(handleFailure)
+            promise.futureResult.thenIfErrorThrowing {
+                guard !self.shouldIgnore(error: $0) else { return }
+                throw $0
+            }.cascade(promise: allDonePromise)
             ctx.close(promise: promise)
             state = .idle(didSend: true)
         case .idle(didSend: true):
@@ -109,18 +111,17 @@ final class SMTPHandler: ChannelInboundHandler {
         }
     }
 
-    private func handleFailure(error: Error) {
+    private func shouldIgnore(error: Error) -> Bool {
         // It seems that if the remote closes the connection, we're left with unclean shutdowns... :/
-        if error as? OpenSSLError == .uncleanShutdown || error is LeftOverBytesError {
-            switch state {
-            case .quitSent, .idle(didSend: true): return
-            default: break
-            }
+        guard error as? OpenSSLError == .uncleanShutdown || error is LeftOverBytesError else { return false }
+        switch state {
+        case .quitSent, .idle(didSend: true): return true
+        default: return false
         }
-        allDonePromise.fail(error: error)
     }
 
     func errorCaught(ctx: ChannelHandlerContext, error: Error) {
-        handleFailure(error: error)
+        guard !shouldIgnore(error: error) else { return }
+        allDonePromise.fail(error: error)
     }
 }
