@@ -39,9 +39,11 @@ public final class Mailer {
         }
     }
 
-    public let maxConnections: Int
     public let group: EventLoopGroup
     public let configuration: Configuration
+    public let maxConnections: Int
+    public let connectionTimeOut: TimeAmount
+    public let logTransmissions: Bool
 
     private let connectionsSemaphore: DispatchSemaphore
     private let senderQueue = DispatchQueue(label: "SMTP Mailer Sender Queue")
@@ -52,12 +54,14 @@ public final class Mailer {
     private let bootstrapsLock = Lock()
     private var bootstraps = Dictionary<ScheduledEmail, ClientBootstrap>()
 
-    public init(maxConnections: Int = 2, group: EventLoopGroup, configuration: Configuration) {
+    public init(group: EventLoopGroup, configuration: Configuration, maxConnections: Int = 2, connectionTimeOut: TimeAmount = .seconds(60), logTransmissions: Bool = false) {
         assert(maxConnections > 0)
 
-        self.maxConnections = maxConnections
         self.group = group
         self.configuration = configuration
+        self.maxConnections = maxConnections
+        self.connectionTimeOut = connectionTimeOut
+        self.logTransmissions = logTransmissions
 
         connectionsSemaphore = DispatchSemaphore(value: maxConnections)
         bootstraps.reserveCapacity(maxConnections)
@@ -77,7 +81,8 @@ public final class Mailer {
     private func connectBootstrap(sending email: ScheduledEmail) {
         let bootstrap = ClientBootstrap(group: group)
             .channelOption(ChannelOptions.socket(SocketOptionLevel(SOL_SOCKET), SO_REUSEADDR), value: 1)
-            .channelInitializer { [configuration] in
+            .connectTimeout(connectionTimeOut)
+            .channelInitializer { [configuration, logTransmissions] in
                 do {
                     var handlers: [ChannelHandler] = [
                         LineBasedFrameDecoder(),
@@ -85,12 +90,15 @@ public final class Mailer {
                         SMTPRequestEncoder(),
                         SMTPHandler(configuration: configuration, email: email.email, allDonePromise: email.promise),
                     ]
+                    if logTransmissions {
+                        handlers.insert(LogDuplexHandler(), at: 0)
+                    }
                     switch try configuration.server.createEncryptionHandlers() {
                     case .none: break
                     case .atBeginning(let handler): handlers.insert(handler, at: 0)
-                    case .beforeSMTPHandler(let handler): handlers.insert(handler, at: handlers.index(handlers.endIndex, offsetBy: -2))
+                    case .beforeSMTPHandler(let handler): handlers.insert(handler, at: handlers.index(before: handlers.endIndex))
                     }
-                    return $0.pipeline.addHandlers(handlers, first: true)
+                    return $0.pipeline.addHandlers(handlers, first: false)
                 } catch {
                     return $0.eventLoop.newFailedFuture(error: error)
                 }

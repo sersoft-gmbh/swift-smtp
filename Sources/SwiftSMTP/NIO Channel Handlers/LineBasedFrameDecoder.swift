@@ -10,7 +10,7 @@ final class LineBasedFrameDecoder: ByteToMessageDecoder {
     private var lastScanOffset = 0
     private var handledLeftovers = false
 
-    init() { }
+    init() {}
 
     func decode(ctx: ChannelHandlerContext, buffer: inout ByteBuffer) throws -> DecodingState {
         if let frame = try findNextFrame(buffer: &buffer) {
@@ -22,7 +22,7 @@ final class LineBasedFrameDecoder: ByteToMessageDecoder {
     }
 
     private func findNextFrame(buffer: inout ByteBuffer) throws -> ByteBuffer? {
-        let view = buffer.readableBytesView.dropFirst(self.lastScanOffset)
+        let view = buffer.readableBytesView.dropFirst(lastScanOffset)
         // look for the delimiter
         if let delimiterIndex = view.firstIndex(of: 0x0A) { // '\n'
             let length = delimiterIndex - buffer.readerIndex

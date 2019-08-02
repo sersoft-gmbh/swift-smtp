@@ -23,9 +23,10 @@ public struct Email {
         }
     }
 
-    public init(sender: Contact, recipients: [Contact], cc: [Contact] = [], bcc: [Contact] = [], subject: String, body: Body, attachments: [Attachment] = []) {
+    public init(sender: Contact, replyTo: Contact? = nil, recipients: [Contact], cc: [Contact] = [], bcc: [Contact] = [], subject: String, body: Body, attachments: [Attachment] = []) {
         assert(!recipients.isEmpty, "Recipients must not be empty!")
         self.sender = sender
+        self.replyTo = replyTo
         self.recipients = recipients
         self.cc = cc
         self.bcc = bcc

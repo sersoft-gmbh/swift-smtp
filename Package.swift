@@ -29,6 +29,9 @@ let package = Package(
         .target(
             name: "SwiftSMTPVapor",
             dependencies: ["SwiftSMTP", "Service"]),
+        .target(
+            name: "SwiftSMTPCLI",
+            dependencies: ["SwiftSMTP", "NIO"]),
         .testTarget(
             name: "SwiftSMTPTests",
             dependencies: ["SwiftSMTP"]),

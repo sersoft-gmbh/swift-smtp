@@ -1,4 +1,5 @@
 import NIO
+import NIOOpenSSL
 
 fileprivate extension SMTPResponse {
     func verify<T>(failing promise: EventLoopPromise<T>) -> Bool {
@@ -18,8 +19,9 @@ final class SMTPHandler: ChannelInboundHandler {
     typealias OutboundOut = SMTPRequest
 
     private enum State {
-        case idle
-        case helloSent
+        case idle(didSend: Bool)
+        case helloSent(afterStartTLS: Bool)
+        case startTLSSent
         case authBegan
         case usernameSent
         case passwordSent
@@ -33,7 +35,7 @@ final class SMTPHandler: ChannelInboundHandler {
     private let configuration: Configuration
     private let email: Email
     private let allDonePromise: EventLoopPromise<Void>
-    private var state = State.idle
+    private var state = State.idle(didSend: false)
 
     init(configuration: Configuration, email: Email, allDonePromise: EventLoopPromise<Void>) {
         self.configuration = configuration
@@ -41,11 +43,11 @@ final class SMTPHandler: ChannelInboundHandler {
         self.allDonePromise = allDonePromise
     }
 
-    func channelRead(context: ChannelHandlerContext, data: NIOAny) {
+    func channelRead(ctx: ChannelHandlerContext, data: NIOAny) {
         guard unwrapInboundIn(data).verify(failing: allDonePromise) else { return }
 
         func send(command: SMTPRequest) {
-            context.writeAndFlush(wrapOutboundOut(command)).cascadeFailure(promise: allDonePromise)
+            ctx.writeAndFlush(wrapOutboundOut(command)).cascadeFailure(promise: allDonePromise)
         }
 
         func nextState(for iterator: inout IndexingIterator<[Email.Contact]>) -> State {
@@ -59,10 +61,21 @@ final class SMTPHandler: ChannelInboundHandler {
         }
 
         switch state {
-        case .idle:
+        case .idle(didSend: false):
             send(command: .sayHello(serverName: configuration.server.hostname))
-            state = .helloSent
-        case .helloSent:
+            state = .helloSent(afterStartTLS: false)
+        case .helloSent(afterStartTLS: false):
+            if case .startTLS(_) = configuration.server.encryption {
+                send(command: .startTLS)
+                state = .startTLSSent
+            } else {
+                send(command: .beginAuthentication)
+                state = .authBegan
+            }
+        case .startTLSSent:
+            send(command: .sayHello(serverName: configuration.server.hostname))
+            state = .helloSent(afterStartTLS: true)
+        case .helloSent(afterStartTLS: true):
             send(command: .beginAuthentication)
             state = .authBegan
         case .authBegan:
@@ -86,12 +99,28 @@ final class SMTPHandler: ChannelInboundHandler {
             send(command: .quit)
             state = .quitSent
         case .quitSent:
-            context.close(promise: allDonePromise)
-            state = .idle
+            let promise = ctx.eventLoop.newPromise(of: Void.self)
+            promise.futureResult.whenSuccess(allDonePromise.succeed)
+            promise.futureResult.whenFailure(handleFailure)
+            ctx.close(promise: promise)
+            state = .idle(didSend: true)
+        case .idle(didSend: true):
+            break
         }
     }
 
-    func errorCaught(ctx: ChannelHandlerContext, error: Error) {
+    private func handleFailure(error: Error) {
+        // It seems that if the remote closes the connection, we're left with unclean shutdowns... :/
+        if error as? OpenSSLError == .uncleanShutdown || error is LeftOverBytesError {
+            switch state {
+            case .quitSent, .idle(didSend: true): return
+            default: break
+            }
+        }
         allDonePromise.fail(error: error)
+    }
+
+    func errorCaught(ctx: ChannelHandlerContext, error: Error) {
+        handleFailure(error: error)
     }
 }
