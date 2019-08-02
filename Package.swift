@@ -10,6 +10,9 @@ let package = Package(
         .library(
             name: "SwiftSMTP",
             targets: ["SwiftSMTP"]),
+        .library(
+            name: "SwiftSMTPVapor",
+            targets: ["SwiftSMTPVapor"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
