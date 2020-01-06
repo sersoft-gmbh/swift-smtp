@@ -10,6 +10,7 @@ fileprivate extension Configuration.Server {
         case atBeginning(ChannelHandler)
         case beforeSMTPHandler(ChannelHandler)
     }
+    
     func createEncryptionHandlers() throws -> EncryptionHandler {
         switch encryption {
         case .plain: return .none
