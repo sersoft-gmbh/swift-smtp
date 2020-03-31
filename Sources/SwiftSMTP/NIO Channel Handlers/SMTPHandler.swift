@@ -1,5 +1,5 @@
 import NIO
-import NIOOpenSSL
+import NIOSSL
 
 fileprivate extension SMTPResponse {
     func verify<T>(failing promise: EventLoopPromise<T>) -> Bool {
@@ -7,7 +7,7 @@ fileprivate extension SMTPResponse {
             try validate()
             return true
         } catch {
-            promise.fail(error: error)
+            promise.fail(error)
             return false
         }
     }
@@ -47,7 +47,7 @@ final class SMTPHandler: ChannelInboundHandler {
         guard unwrapInboundIn(data).verify(failing: allDonePromise) else { return }
 
         func send(command: SMTPRequest) {
-            ctx.writeAndFlush(wrapOutboundOut(command)).cascadeFailure(promise: allDonePromise)
+            ctx.writeAndFlush(wrapOutboundOut(command)).cascadeFailure(to: allDonePromise)
         }
 
         func nextState(for iterator: inout IndexingIterator<[Email.Contact]>) -> State {
@@ -99,11 +99,11 @@ final class SMTPHandler: ChannelInboundHandler {
             send(command: .quit)
             state = .quitSent
         case .quitSent:
-            let promise = ctx.eventLoop.newPromise(of: Void.self)
-            promise.futureResult.thenIfErrorThrowing {
+            let promise = ctx.eventLoop.makePromise(of: Void.self) // would .makePromise() work here?
+            promise.futureResult.flatMapErrorThrowing {
                 guard !self.shouldIgnore(error: $0) else { return }
                 throw $0
-            }.cascade(promise: allDonePromise)
+            }.cascade(to: allDonePromise)
             ctx.close(promise: promise)
             state = .idle(didSend: true)
         case .idle(didSend: true):
@@ -113,7 +113,7 @@ final class SMTPHandler: ChannelInboundHandler {
 
     private func shouldIgnore(error: Error) -> Bool {
         // It seems that if the remote closes the connection, we're left with unclean shutdowns... :/
-        guard error as? OpenSSLError == .uncleanShutdown || error is LeftOverBytesError else { return false }
+        guard error as? NIOSSLError == .uncleanShutdown || error is LeftOverBytesError else { return false }
         switch state {
         case .quitSent, .idle(didSend: true): return true
         default: return false
@@ -122,6 +122,6 @@ final class SMTPHandler: ChannelInboundHandler {
 
     func errorCaught(ctx: ChannelHandlerContext, error: Error) {
         guard !shouldIgnore(error: error) else { return }
-        allDonePromise.fail(error: error)
+        allDonePromise.fail(error)
     }
 }

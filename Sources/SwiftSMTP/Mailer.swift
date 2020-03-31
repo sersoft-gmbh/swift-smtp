@@ -1,7 +1,7 @@
 import Dispatch
 import Foundation
 import NIO
-import NIOOpenSSL
+import NIOSSL
 import NIOConcurrencyHelpers
 
 fileprivate extension Configuration.Server {
@@ -15,8 +15,8 @@ fileprivate extension Configuration.Server {
         switch encryption {
         case .plain: return .none
         case .ssl:
-            let sslContext = try SSLContext(configuration: .forClient())
-            let sslHandler = try OpenSSLClientHandler(context: sslContext, serverHostname: hostname)
+            let sslContext = try NIOSSLContext(configuration: .forClient())
+            let sslHandler = try NIOSSLClientHandler(context: sslContext, serverHostname: hostname)
             return .atBeginning(sslHandler)
         case .startTLS(let mode):
             return .beforeSMTPHandler(StartTLSDuplexHandler(server: self, tlsMode: mode))
@@ -99,15 +99,15 @@ public final class Mailer {
                     case .atBeginning(let handler): handlers.insert(handler, at: 0)
                     case .beforeSMTPHandler(let handler): handlers.insert(handler, at: handlers.index(before: handlers.endIndex))
                     }
-                    return $0.pipeline.addHandlers(handlers, first: false)
+                    return $0.pipeline.addHandlers(handlers, position: .last)
                 } catch {
-                    return $0.eventLoop.newFailedFuture(error: error)
+                    return $0.eventLoop.makeFailedFuture(error)
                 }
         }
         bootstrapsLock.withLockVoid { bootstraps[email] = bootstrap }
         let connectionFuture = bootstrap.connect(host: configuration.server.hostname, port: configuration.server.port)
-        connectionFuture.cascadeFailure(promise: email.promise)
-        email.promise.futureResult.whenComplete { [weak self] in
+        connectionFuture.cascadeFailure(to: email.promise)
+        email.promise.futureResult.whenComplete { [weak self] _ in
             connectionFuture.whenSuccess { $0.close(mode: .all, promise: nil) }
             guard let self = self else { return }
             self.bootstrapsLock.withLockVoid { self.bootstraps.removeValue(forKey: email) }
@@ -125,7 +125,7 @@ public final class Mailer {
     }
 
     public func send(email: Email) -> EventLoopFuture<Void> {
-        let promise = group.next().newPromise(of: Void.self)
+        let promise = group.next().makePromise(of: Void.self) // could this be .makePromise()
         pushEmail(ScheduledEmail(email: email, promise: promise))
         scheduleMailDelivery()
         return promise.futureResult
