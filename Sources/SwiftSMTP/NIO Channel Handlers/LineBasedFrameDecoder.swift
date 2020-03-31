@@ -1,6 +1,6 @@
 import NIO
 
-final class LineBasedFrameDecoder: ByteToMessageDecoder {
+final class LineBasedFrameDecoder: ByteToMessageDecoder, ChannelHandler {
     typealias InboundIn = ByteBuffer
     typealias InboundOut = ByteBuffer
 
@@ -12,7 +12,7 @@ final class LineBasedFrameDecoder: ByteToMessageDecoder {
 
     init() {}
 
-    func decode(ctx: ChannelHandlerContext, buffer: inout ByteBuffer) throws -> DecodingState {
+    func decode(context ctx: ChannelHandlerContext, buffer: inout ByteBuffer) throws -> DecodingState {
         if let frame = try findNextFrame(buffer: &buffer) {
             ctx.fireChannelRead(wrapInboundOut(frame))
             return .continue
