@@ -1,6 +1,6 @@
 import NIO
 
-final class LineBasedFrameDecoder: ByteToMessageDecoder, ChannelHandler {
+final class LineBasedFrameDecoder: ByteToMessageDecoder, ChannelInboundHandler {
     typealias InboundIn = ByteBuffer
     typealias InboundOut = ByteBuffer
 
@@ -11,6 +11,14 @@ final class LineBasedFrameDecoder: ByteToMessageDecoder, ChannelHandler {
     private var handledLeftovers = false
 
     init() {}
+    
+    
+    // Both ByteToMessageDeocoder & ChannelInboundHandler define default implementation, causing ambiguity
+    // Redefining it here seems to be required to remove ambiguity for the compiler
+    @inlinable
+    func wrapInboundOut(_ value: InboundOut) -> NIOAny {
+        return NIOAny(value)
+    }
 
     func decode(context ctx: ChannelHandlerContext, buffer: inout ByteBuffer) throws -> DecodingState {
         if let frame = try findNextFrame(buffer: &buffer) {
