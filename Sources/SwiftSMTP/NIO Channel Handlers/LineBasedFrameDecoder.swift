@@ -47,15 +47,15 @@ final class LineBasedFrameDecoder: ByteToMessageDecoder, ChannelInboundHandler {
         return nil
     }
 
-    func handlerRemoved(ctx: ChannelHandlerContext) {
-        handleLeftOverBytes(ctx: ctx)
+    func handlerRemoved(context ctx: ChannelHandlerContext) {
+        handleLeftOverBytes(context: ctx)
     }
 
-    func channelInactive(ctx: ChannelHandlerContext) {
-        handleLeftOverBytes(ctx: ctx)
+    func channelInactive(context ctx: ChannelHandlerContext) {
+        handleLeftOverBytes(context: ctx)
     }
 
-    private func handleLeftOverBytes(ctx: ChannelHandlerContext) {
+    private func handleLeftOverBytes(context ctx: ChannelHandlerContext) {
         if let buffer = cumulationBuffer, buffer.readableBytes > 0 && !handledLeftovers {
             handledLeftovers = true
             ctx.fireErrorCaught(LeftOverBytesError(leftOverBytes: buffer))
