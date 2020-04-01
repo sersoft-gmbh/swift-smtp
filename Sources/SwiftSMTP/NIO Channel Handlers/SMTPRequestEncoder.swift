@@ -9,11 +9,7 @@ fileprivate extension DateFormatter {
     }()
 }
 
-final class SMTPRequestEncoder: MessageToByteEncoder, ChannelHandler {
-    func encode(data: SMTPRequest, out: inout ByteBuffer) throws {
-        assertionFailure()
-    }
-    
+final class SMTPRequestEncoder: MessageToByteEncoder, ChannelOutboundHandler {
     typealias OutboundIn = SMTPRequest
 
     private func createMultipartBoundary() -> String {
@@ -32,7 +28,7 @@ final class SMTPRequestEncoder: MessageToByteEncoder, ChannelHandler {
         }.joined(separator: "\r\n--\(boundary)\r\n")
     }
 
-    func encode(ctx: ChannelHandlerContext, data: SMTPRequest, out: inout ByteBuffer) throws {
+    func encode(data: SMTPRequest, out: inout ByteBuffer) throws {
         switch data {
         case .sayHello(serverName: let server):
             out.writeString("HELO \(server)")
