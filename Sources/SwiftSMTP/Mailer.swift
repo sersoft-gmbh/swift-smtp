@@ -125,7 +125,7 @@ public final class Mailer {
     }
 
     public func send(email: Email) -> EventLoopFuture<Void> {
-        let promise = group.next().makePromise(of: Void.self) // could this be .makePromise()
+        let promise = group.next().makePromise(of: Void.self)
         pushEmail(ScheduledEmail(email: email, promise: promise))
         scheduleMailDelivery()
         return promise.futureResult

@@ -99,7 +99,7 @@ final class SMTPHandler: ChannelInboundHandler {
             send(command: .quit)
             state = .quitSent
         case .quitSent:
-            let promise = ctx.eventLoop.makePromise(of: Void.self) // would .makePromise() work here?
+            let promise = ctx.eventLoop.makePromise(of: Void.self)
             promise.futureResult.flatMapErrorThrowing {
                 guard !self.shouldIgnore(error: $0) else { return }
                 throw $0
