@@ -43,7 +43,7 @@ final class SMTPHandler: ChannelInboundHandler {
         self.allDonePromise = allDonePromise
     }
 
-    func channelRead(ctx: ChannelHandlerContext, data: NIOAny) {
+    func channelRead(context ctx: ChannelHandlerContext, data: NIOAny) {
         guard unwrapInboundIn(data).verify(failing: allDonePromise) else { return }
 
         func send(command: SMTPRequest) {
@@ -120,7 +120,7 @@ final class SMTPHandler: ChannelInboundHandler {
         }
     }
 
-    func errorCaught(ctx: ChannelHandlerContext, error: Error) {
+    func errorCaught(context ctx: ChannelHandlerContext, error: Error) {
         guard !shouldIgnore(error: error) else { return }
         allDonePromise.fail(error)
     }

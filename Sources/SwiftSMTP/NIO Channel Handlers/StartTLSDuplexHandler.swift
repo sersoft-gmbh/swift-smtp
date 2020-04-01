@@ -23,7 +23,7 @@ internal final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChann
         self.tlsMode = tlsMode
     }
 
-    func channelRead(ctx: ChannelHandlerContext, data: NIOAny) {
+    func channelRead(context ctx: ChannelHandlerContext, data: NIOAny) {
         guard case .waitingForStartTLSResponse = state else {
             ctx.fireChannelRead(data)
             return
@@ -51,7 +51,7 @@ internal final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChann
         }
     }
 
-    func write(ctx: ChannelHandlerContext, data: NIOAny, promise: EventLoopPromise<Void>?) {
+    func write(context ctx: ChannelHandlerContext, data: NIOAny, promise: EventLoopPromise<Void>?) {
         if case .startTLS = unwrapOutboundIn(data) {
             state = .waitingForStartTLSResponse
         }

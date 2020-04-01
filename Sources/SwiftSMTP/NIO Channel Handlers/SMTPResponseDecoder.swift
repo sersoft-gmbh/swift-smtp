@@ -4,7 +4,7 @@ final class SMTPResponseDecoder: ChannelInboundHandler {
     typealias InboundIn = ByteBuffer
     typealias InboundOut = SMTPResponse
 
-    func channelRead(ctx: ChannelHandlerContext, data: NIOAny) {
+    func channelRead(context ctx: ChannelHandlerContext, data: NIOAny) {
         var response = unwrapInboundIn(data)
         guard let firstFourBytes = response.readString(length: 4), let code = Int(firstFourBytes.dropLast()) else {
             ctx.fireErrorCaught(MalformedSMTPMessageError())

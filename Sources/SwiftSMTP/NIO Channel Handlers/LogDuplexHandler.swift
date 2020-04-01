@@ -7,12 +7,12 @@ final class LogDuplexHandler: ChannelDuplexHandler {
     typealias OutboundIn = ByteBuffer
     typealias OutboundOut = ByteBuffer
 
-    func channelRead(ctx: ChannelHandlerContext, data: NIOAny) {
+    func channelRead(context ctx: ChannelHandlerContext, data: NIOAny) {
         print("☁️ \(String(decoding: unwrapInboundIn(data).readableBytesView, as: UTF8.self))")
         ctx.fireChannelRead(data)
     }
 
-    func write(ctx: ChannelHandlerContext, data: NIOAny, promise: EventLoopPromise<Void>?) {
+    func write(context ctx: ChannelHandlerContext, data: NIOAny, promise: EventLoopPromise<Void>?) {
         print("💻 \(String(decoding: unwrapOutboundIn(data).readableBytesView, as: UTF8.self))")
         ctx.write(data, promise: promise)
     }
