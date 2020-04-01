@@ -86,9 +86,9 @@ public final class Mailer {
             .channelInitializer { [configuration, logTransmissions] in
                 do {
                     var handlers: [ChannelHandler] = [
-                        LineBasedFrameDecoder(),
+                        ByteToMessageHandler(LineBasedFrameDecoder()),
                         SMTPResponseDecoder(),
-                        SMTPRequestEncoder(),
+                        MessageToByteHandler(SMTPRequestEncoder()),
                         SMTPHandler(configuration: configuration, email: email.email, allDonePromise: email.promise),
                     ]
                     if logTransmissions {
