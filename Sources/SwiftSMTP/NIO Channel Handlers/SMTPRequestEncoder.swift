@@ -49,12 +49,12 @@ final class SMTPRequestEncoder: MessageToByteEncoder {
         case .transferData(let email):
             let date = Date()
             out.write(string: "From: \(email.sender.asMIME)\r\n")
-            out.write(string: "To: \(email.recipients.map { $0.asMIME }.joined(separator: ", "))\r\n")
+            out.write(string: "To: \(email.recipients.lazy.map { $0.asMIME }.joined(separator: ", "))\r\n")
             if let replyTo = email.replyTo {
                 out.write(string: "Reply-to: \(replyTo.asMIME)\r\n")
             }
             if !email.cc.isEmpty {
-                out.write(string: "Cc: \(email.cc.map { $0.asMIME }.joined(separator: ", "))\r\n")
+                out.write(string: "Cc: \(email.cc.lazy.map { $0.asMIME }.joined(separator: ", "))\r\n")
             }
             out.write(string: "Date: \(DateFormatter.smtp.string(from: date))\r\n")
             out.write(string: "Message-ID: <\(date.timeIntervalSince1970)\(email.sender.emailAddress.drop { $0 != "@" })>\r\n")

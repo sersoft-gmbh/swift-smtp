@@ -1,4 +1,4 @@
-import Foundation
+import struct Foundation.Data
 
 public struct Email {
     public var sender: Contact
