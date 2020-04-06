@@ -1,7 +1,8 @@
 import Dispatch
 import Foundation
 import NIO
-import NIOOpenSSL
+import NIOExtras
+import NIOSSL
 import NIOConcurrencyHelpers
 
 fileprivate extension Configuration.Server {
@@ -15,8 +16,8 @@ fileprivate extension Configuration.Server {
         switch encryption {
         case .plain: return .none
         case .ssl:
-            let sslContext = try SSLContext(configuration: .forClient())
-            let sslHandler = try OpenSSLClientHandler(context: sslContext, serverHostname: hostname)
+            let sslContext = try NIOSSLContext(configuration: .forClient())
+            let sslHandler = try NIOSSLClientHandler(context: sslContext, serverHostname: hostname)
             return .atBeginning(sslHandler)
         case .startTLS(let mode):
             return .beforeSMTPHandler(StartTLSDuplexHandler(server: self, tlsMode: mode))
@@ -24,6 +25,7 @@ fileprivate extension Configuration.Server {
     }
 }
 
+/// A Mailer is responsible for opening server connections and dispatching emails.
 public final class Mailer {
     private struct ScheduledEmail: Hashable {
         private let uuid = UUID()
@@ -36,17 +38,22 @@ public final class Mailer {
         }
 
         static func ==(lhs: ScheduledEmail, rhs: ScheduledEmail) -> Bool {
-            return lhs.uuid == rhs.uuid
+            lhs.uuid == rhs.uuid
         }
     }
 
+    /// The event loop group this mailer uses.
     public let group: EventLoopGroup
+    /// The configuration used by this mailer.
     public let configuration: Configuration
-    public let maxConnections: Int
+    /// The maximum number of connections this mailer should open. `nil` if no limit is set.
+    public let maxConnections: Int?
+    /// The timeout to set for a connection.
     public let connectionTimeOut: TimeAmount
-    public let logTransmissions: Bool
+    /// The logger to use for logging all transmissions. If `nil` no messages will be logged.
+    public let transmissonLogger: SMTPLogger?
 
-    private let connectionsSemaphore: DispatchSemaphore
+    private let connectionsSemaphore: DispatchSemaphore?
     private let senderQueue = DispatchQueue(label: "SMTP Mailer Sender Queue")
 
     private let emailsLock = Lock()
@@ -55,17 +62,31 @@ public final class Mailer {
     private let bootstrapsLock = Lock()
     private var bootstraps = Dictionary<ScheduledEmail, ClientBootstrap>()
 
-    public init(group: EventLoopGroup, configuration: Configuration, maxConnections: Int = 2, connectionTimeOut: TimeAmount = .seconds(60), logTransmissions: Bool = false) {
-        assert(maxConnections > 0)
-
+    /// Creates a new mailer with the given parameters.
+    /// - Parameters:
+    ///   - group: The event loop group the new mailer should use.
+    ///   - configuration: The configuration to use for the new mailer.
+    ///   - maxConnections: The maximum number of connections this mailer should open. `nil` if no limit should be set. Defaults to 2.
+    ///   - connectionTimeOut: The timeout for connections of this mailer. Defaults to 60s.
+    ///   - transmissonLogger: The logger to use for logging all transmissions. If `nil` no messages will be logged.
+    public init(group: EventLoopGroup,
+                configuration: Configuration,
+                maxConnections: Int? = 2,
+                connectionTimeOut: TimeAmount = .seconds(60),
+                transmissonLogger: SMTPLogger? = nil) {
         self.group = group
         self.configuration = configuration
         self.maxConnections = maxConnections
         self.connectionTimeOut = connectionTimeOut
-        self.logTransmissions = logTransmissions
+        self.transmissonLogger = transmissonLogger
 
-        connectionsSemaphore = DispatchSemaphore(value: maxConnections)
-        bootstraps.reserveCapacity(maxConnections)
+        if let maxConnections = maxConnections {
+            assert(maxConnections > 0)
+            connectionsSemaphore = DispatchSemaphore(value: maxConnections)
+            bootstraps.reserveCapacity(maxConnections)
+        } else {
+            connectionsSemaphore = nil
+        }
     }
 
     private func pushEmail(_ email: ScheduledEmail) {
@@ -73,45 +94,42 @@ public final class Mailer {
     }
 
     private func popEmail() -> ScheduledEmail? {
-        return emailsLock.withLock {
-            guard !emailsStack.isEmpty else { return nil }
-            return emailsStack.removeFirst()
-        }
+        emailsLock.withLock { emailsStack.isEmpty ? nil : emailsStack.removeFirst() }
     }
 
     private func connectBootstrap(sending email: ScheduledEmail) {
         let bootstrap = ClientBootstrap(group: group)
             .channelOption(ChannelOptions.socket(SocketOptionLevel(SOL_SOCKET), SO_REUSEADDR), value: 1)
             .connectTimeout(connectionTimeOut)
-            .channelInitializer { [configuration, logTransmissions] in
+            .channelInitializer { [configuration, transmissonLogger] in
                 do {
                     var handlers: [ChannelHandler] = [
-                        LineBasedFrameDecoder(),
+                        ByteToMessageHandler(LineBasedFrameDecoder()),
                         SMTPResponseDecoder(),
-                        SMTPRequestEncoder(),
+                        MessageToByteHandler(SMTPRequestEncoder()),
                         SMTPHandler(configuration: configuration, email: email.email, allDonePromise: email.promise),
                     ]
-                    if logTransmissions {
-                        handlers.insert(LogDuplexHandler(), at: 0)
+                    if let logger = transmissonLogger {
+                        handlers.insert(LogDuplexHandler(logger: logger), at: handlers.startIndex)
                     }
                     switch try configuration.server.createEncryptionHandlers() {
                     case .none: break
-                    case .atBeginning(let handler): handlers.insert(handler, at: 0)
+                    case .atBeginning(let handler): handlers.insert(handler, at: handlers.startIndex)
                     case .beforeSMTPHandler(let handler): handlers.insert(handler, at: handlers.index(before: handlers.endIndex))
                     }
-                    return $0.pipeline.addHandlers(handlers, first: false)
+                    return $0.pipeline.addHandlers(handlers, position: .last)
                 } catch {
-                    return $0.eventLoop.newFailedFuture(error: error)
+                    return $0.eventLoop.makeFailedFuture(error)
                 }
         }
         bootstrapsLock.withLockVoid { bootstraps[email] = bootstrap }
         let connectionFuture = bootstrap.connect(host: configuration.server.hostname, port: configuration.server.port)
-        connectionFuture.cascadeFailure(promise: email.promise)
-        email.promise.futureResult.whenComplete { [weak self] in
+        connectionFuture.cascadeFailure(to: email.promise)
+        email.promise.futureResult.whenComplete { [weak self] _ in
             connectionFuture.whenSuccess { $0.close(mode: .all, promise: nil) }
             guard let self = self else { return }
             self.bootstrapsLock.withLockVoid { self.bootstraps.removeValue(forKey: email) }
-            self.connectionsSemaphore.signal()
+            self.connectionsSemaphore?.signal()
             self.scheduleMailDelivery()
         }
     }
@@ -119,13 +137,16 @@ public final class Mailer {
     private func scheduleMailDelivery() {
         guard let next = popEmail() else { return }
         senderQueue.async { [weak self] in
-            self?.connectionsSemaphore.wait()
+            self?.connectionsSemaphore?.wait()
             self?.connectBootstrap(sending: next)
         }
     }
 
+    /// Schedules an email for delivery. Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.
+    /// - Parameter email: The email to send.
+    /// - Returns: A future that will complete with the result of sending the email.
     public func send(email: Email) -> EventLoopFuture<Void> {
-        let promise = group.next().newPromise(of: Void.self)
+        let promise = group.next().makePromise(of: Void.self)
         pushEmail(ScheduledEmail(email: email, promise: promise))
         scheduleMailDelivery()
         return promise.futureResult

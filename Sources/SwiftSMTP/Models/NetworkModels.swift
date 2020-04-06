@@ -15,10 +15,10 @@ enum SMTPResponse {
     case ok(Int, String)
     case error(String)
 
+    @inline(__always)
     func validate() throws {
-        switch self {
-        case .ok(_, _): break
-        case .error(let message): throw ServerError(serverMessage: message)
+        if case .error(let message) = self {
+            throw ServerError(serverMessage: message)
         }
     }
 }

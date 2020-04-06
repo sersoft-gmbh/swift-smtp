@@ -9,11 +9,11 @@ fileprivate extension DateFormatter {
     }()
 }
 
-final class SMTPRequestEncoder: MessageToByteEncoder {
+struct SMTPRequestEncoder: MessageToByteEncoder {
     typealias OutboundIn = SMTPRequest
 
     private func createMultipartBoundary() -> String {
-        return String(UUID().uuidString.filter { $0.isHexDigit })
+        String(UUID().uuidString.filter(\.isHexDigit))
     }
 
     private func encode(attachments: [Email.Attachment], with boundary: String) -> String {
@@ -28,37 +28,37 @@ final class SMTPRequestEncoder: MessageToByteEncoder {
         }.joined(separator: "\r\n--\(boundary)\r\n")
     }
 
-    func encode(ctx: ChannelHandlerContext, data: SMTPRequest, out: inout ByteBuffer) throws {
+    func encode(data: SMTPRequest, out: inout ByteBuffer) throws {
         switch data {
         case .sayHello(serverName: let server):
-            out.write(string: "HELO \(server)")
+            out.writeString("HELO \(server)")
         case .startTLS:
-            out.write(string: "STARTTLS")
+            out.writeString("STARTTLS")
         case .beginAuthentication:
-            out.write(string: "AUTH LOGIN")
+            out.writeString("AUTH LOGIN")
         case .authUser(let user):
-            out.write(bytes: Data(user.utf8).base64EncodedData())
+            out.writeBytes(Data(user.utf8).base64EncodedData())
         case .authPassword(let password):
-            out.write(bytes: Data(password.utf8).base64EncodedData())
+            out.writeBytes(Data(password.utf8).base64EncodedData())
         case .mailFrom(let from):
-            out.write(string: "MAIL FROM:<\(from)>")
+            out.writeString("MAIL FROM:<\(from)>")
         case .recipient(let rcpt):
-            out.write(string: "RCPT TO:<\(rcpt)>")
+            out.writeString("RCPT TO:<\(rcpt)>")
         case .data:
-            out.write(string: "DATA")
+            out.writeString("DATA")
         case .transferData(let email):
             let date = Date()
-            out.write(string: "From: \(email.sender.asMIME)\r\n")
-            out.write(string: "To: \(email.recipients.lazy.map { $0.asMIME }.joined(separator: ", "))\r\n")
+            out.writeString("From: \(email.sender.asMIME)\r\n")
+            out.writeString("To: \(email.recipients.lazy.map(\.asMIME).joined(separator: ", "))\r\n")
             if let replyTo = email.replyTo {
-                out.write(string: "Reply-to: \(replyTo.asMIME)\r\n")
+                out.writeString("Reply-to: \(replyTo.asMIME)\r\n")
             }
             if !email.cc.isEmpty {
-                out.write(string: "Cc: \(email.cc.lazy.map { $0.asMIME }.joined(separator: ", "))\r\n")
+                out.writeString("Cc: \(email.cc.lazy.map(\.asMIME).joined(separator: ", "))\r\n")
             }
-            out.write(string: "Date: \(DateFormatter.smtp.string(from: date))\r\n")
-            out.write(string: "Message-ID: <\(date.timeIntervalSince1970)\(email.sender.emailAddress.drop { $0 != "@" })>\r\n")
-            out.write(string: "Subject: \(email.subject)\r\n")
+            out.writeString("Date: \(DateFormatter.smtp.string(from: date))\r\n")
+            out.writeString("Message-ID: <\(date.timeIntervalSince1970)\(email.sender.emailAddress.drop { $0 != "@" })>\r\n")
+            out.writeString("Subject: \(email.subject)\r\n")
 
             let contentType: String
             let bodyAndAttachments: String
@@ -122,13 +122,13 @@ final class SMTPRequestEncoder: MessageToByteEncoder {
                 --\(mainBoundary)--\r\n
                 """
             }
-            out.write(string: "Content-type: \(contentType)\r\n")
-            out.write(string: "MIME-Version: 1.0\r\n\r\n")
-            out.write(string: bodyAndAttachments)
-            out.write(string: "\r\n.")
+            out.writeString("Content-type: \(contentType)\r\n")
+            out.writeString("MIME-Version: 1.0\r\n\r\n")
+            out.writeString(bodyAndAttachments)
+            out.writeString("\r\n.")
         case .quit:
-            out.write(string: "QUIT")
+            out.writeString("QUIT")
         }
-        out.write(string: "\r\n")
+        out.writeString("\r\n")
     }
 }

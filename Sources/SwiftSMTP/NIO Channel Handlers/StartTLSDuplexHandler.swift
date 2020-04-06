@@ -1,7 +1,7 @@
 import NIO
-import NIOOpenSSL
+import NIOSSL
 
-internal final class StartTLSDuplexHandler: ChannelDuplexHandler {
+internal final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChannelHandler {
     typealias InboundIn = SMTPResponse
     typealias InboundOut = SMTPResponse
     typealias OutboundIn = SMTPRequest
@@ -23,38 +23,39 @@ internal final class StartTLSDuplexHandler: ChannelDuplexHandler {
         self.tlsMode = tlsMode
     }
 
-    func channelRead(ctx: ChannelHandlerContext, data: NIOAny) {
+    func channelRead(context: ChannelHandlerContext, data: NIOAny) {
         guard case .waitingForStartTLSResponse = state else {
-            ctx.fireChannelRead(data)
+            context.fireChannelRead(data)
             return
         }
+
         defer { state = .finished }
 
         do {
             try unwrapInboundIn(data).validate()
         } catch {
             switch tlsMode {
-            case .always: ctx.fireErrorCaught(error)
+            case .always: context.fireErrorCaught(error)
             case .ifAvailable:
-                ctx.fireChannelRead(wrapInboundOut(.ok(201, "STARTTLS is not supported")))
+                context.fireChannelRead(wrapInboundOut(.ok(201, "STARTTLS is not supported")))
             }
             return
         }
         do {
-            let sslContext = try SSLContext(configuration: .forClient())
-            let sslHandler = try OpenSSLClientHandler(context: sslContext, serverHostname: server.hostname)
-            _ = ctx.channel.pipeline.add(handler: sslHandler, first: true)
-            ctx.fireChannelRead(data)
-            _ = ctx.channel.pipeline.remove(handler: self)
+            let sslContext = try NIOSSLContext(configuration: .forClient())
+            let sslHandler = try NIOSSLClientHandler(context: sslContext, serverHostname: server.hostname)
+            _ = context.channel.pipeline.addHandler(sslHandler, position: .first)
+            context.fireChannelRead(data)
+            _ = context.channel.pipeline.removeHandler(self)
         } catch {
-            ctx.fireErrorCaught(error)
+            context.fireErrorCaught(error)
         }
     }
 
-    func write(ctx: ChannelHandlerContext, data: NIOAny, promise: EventLoopPromise<Void>?) {
+    func write(context: ChannelHandlerContext, data: NIOAny, promise: EventLoopPromise<Void>?) {
         if case .startTLS = unwrapOutboundIn(data) {
             state = .waitingForStartTLSResponse
         }
-        ctx.write(data, promise: promise)
+        context.write(data, promise: promise)
     }
 }

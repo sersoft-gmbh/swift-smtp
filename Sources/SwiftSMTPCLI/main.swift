@@ -3,7 +3,7 @@ import NIO
 import SwiftSMTP
 
 let config = Configuration(server: .init(hostname: "mail.server.com", port: 587, encryption: .startTLS(.ifAvailable)),
-                          credentials: .init(username: "user", password: "password"))
+                           credentials: .init(username: "user", password: "password"))
 
 let plainText = """
 Hi there,
@@ -42,7 +42,7 @@ let email = Email(sender: .init(name: "SwiftSMTP CLI", emailAddress: "swiftpm@se
                           data: Data("This is simple text file\nwith two lines".utf8))
                   ])
 let evg = MultiThreadedEventLoopGroup(numberOfThreads: ProcessInfo.processInfo.processorCount)
-let mailer = Mailer(group: evg, configuration: config, connectionTimeOut: .seconds(5), logTransmissions: true)
+let mailer = Mailer(group: evg, configuration: config, connectionTimeOut: .seconds(5), transmissonLogger: PrintSMTPLogger())
 
 do {
     print("Sending mail...")
