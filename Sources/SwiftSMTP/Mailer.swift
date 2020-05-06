@@ -48,10 +48,8 @@ public final class Mailer {
     public let configuration: Configuration
     /// The maximum number of connections this mailer should open. `nil` if no limit is set.
     public let maxConnections: Int?
-    /// The timeout to set for a connection.
-    public let connectionTimeOut: TimeAmount
     /// The logger to use for logging all transmissions. If `nil` no messages will be logged.
-    public let transmissonLogger: SMTPLogger?
+    public let transmissionLogger: SMTPLogger?
 
     private let connectionsSemaphore: DispatchSemaphore?
     private let senderQueue = DispatchQueue(label: "SMTP Mailer Sender Queue")
@@ -67,18 +65,15 @@ public final class Mailer {
     ///   - group: The event loop group the new mailer should use.
     ///   - configuration: The configuration to use for the new mailer.
     ///   - maxConnections: The maximum number of connections this mailer should open. `nil` if no limit should be set. Defaults to 2.
-    ///   - connectionTimeOut: The timeout for connections of this mailer. Defaults to 60s.
-    ///   - transmissonLogger: The logger to use for logging all transmissions. If `nil` no messages will be logged.
+    ///   - transmissionLogger: The logger to use for logging all transmissions. If `nil` no messages will be logged.
     public init(group: EventLoopGroup,
                 configuration: Configuration,
                 maxConnections: Int? = 2,
-                connectionTimeOut: TimeAmount = .seconds(60),
-                transmissonLogger: SMTPLogger? = nil) {
+                transmissionLogger: SMTPLogger? = nil) {
         self.group = group
         self.configuration = configuration
         self.maxConnections = maxConnections
-        self.connectionTimeOut = connectionTimeOut
-        self.transmissonLogger = transmissonLogger
+        self.transmissionLogger = transmissionLogger
 
         if let maxConnections = maxConnections {
             assert(maxConnections > 0)
@@ -100,8 +95,8 @@ public final class Mailer {
     private func connectBootstrap(sending email: ScheduledEmail) {
         let bootstrap = ClientBootstrap(group: group)
             .channelOption(ChannelOptions.socket(SocketOptionLevel(SOL_SOCKET), SO_REUSEADDR), value: 1)
-            .connectTimeout(connectionTimeOut)
-            .channelInitializer { [configuration, transmissonLogger] in
+            .connectTimeout(configuration.connectionTimeOut)
+            .channelInitializer { [configuration, transmissionLogger] in
                 do {
                     var handlers: [ChannelHandler] = [
                         ByteToMessageHandler(LineBasedFrameDecoder()),
@@ -109,7 +104,7 @@ public final class Mailer {
                         MessageToByteHandler(SMTPRequestEncoder()),
                         SMTPHandler(configuration: configuration, email: email.email, allDonePromise: email.promise),
                     ]
-                    if let logger = transmissonLogger {
+                    if let logger = transmissionLogger {
                         handlers.insert(LogDuplexHandler(logger: logger), at: handlers.startIndex)
                     }
                     switch try configuration.server.createEncryptionHandlers() {

@@ -1,4 +1,5 @@
 import struct Foundation.Data
+import struct NIO.ByteBuffer
 
 /// Represents an email.
 public struct Email {
@@ -114,6 +115,15 @@ extension Email {
             self.name = name
             self.contentType = contentType
             self.data = data
+        }
+
+        /// Creates a new email attachment with the given parameters.
+        /// - Parameters:
+        ///   - name: The (file) name of the attachment.
+        ///   - contentType: The content type of the attachment.
+        ///   - contents: The contents of the attachment.
+        public init(name: String, contentType: String, contents: ByteBuffer) {
+            self.init(name: name, contentType: contentType, data: Data(contents.readableBytesView))
         }
     }
 }

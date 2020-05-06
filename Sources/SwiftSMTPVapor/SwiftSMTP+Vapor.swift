@@ -1,26 +1,103 @@
-@_exported import SwiftSMTP
+import NIO
 import Vapor
+@_exported import SwiftSMTP
+
+/// Represents the source for the event loop group used by the Mailer.
+public enum SwiftSMTPEventLoopGroupSource {
+    case application
+    case custom(() -> EventLoopGroup)
+
+    public static func createNew(numberOfThreads: Int = max(System.coreCount / 2, 1)) -> SwiftSMTPEventLoopGroupSource {
+        .custom { MultiThreadedEventLoopGroup(numberOfThreads: numberOfThreads) }
+    }
+}
+
+@usableFromInline
+internal struct SwiftSMTPVaporConfig {
+    @usableFromInline
+    let eventLoopGroupSource: SwiftSMTPEventLoopGroupSource
+    @usableFromInline
+    let configuration: Configuration
+    @usableFromInline
+    let logTransmissions: Bool
+
+    @usableFromInline
+    func createNewMailer(with application: Application) -> Mailer {
+        let eventLoopGroup: EventLoopGroup
+        switch eventLoopGroupSource {
+        case .application: eventLoopGroup = application.eventLoopGroup
+        case .custom(let creator): eventLoopGroup = creator()
+        }
+        return Mailer(group: eventLoopGroup,
+                      configuration: configuration,
+                      transmissionLogger: logTransmissions ? Logger(label: "de.sersoft.swiftsmtp") : nil)
+    }
+
+    @usableFromInline
+    init(eventLoopGroupSource: SwiftSMTPEventLoopGroupSource, configuration: Configuration, logTransmissions: Bool) {
+        self.eventLoopGroupSource = eventLoopGroupSource
+        self.configuration = configuration
+        self.logTransmissions = logTransmissions
+    }
+}
 
 /// Initializes the SwiftSMTP configuration on the application on boot.
 public struct SMTPInitializer: LifecycleHandler {
+    @usableFromInline
+    let config: SwiftSMTPVaporConfig
+
+    /// The source for the event loop group for the Mailer.
+    @inlinable
+    public var eventLoopGroupSource: SwiftSMTPEventLoopGroupSource { config.eventLoopGroupSource }
+
     /// The configuration this initializer configures the application with.
-    public let configuration: Configuration
+    @inlinable
+    public var configuration: Configuration { config.configuration }
 
     /// Wether or not to log transissions.
-    public let logTransmissions: Bool
+    @inlinable
+    public var logTransmissions: Bool { config.logTransmissions }
 
     /// Creates a new initializer for a given configuration.
     /// - Parameter configuration: The configuration to use for the application's mailers.
+    /// - Parameter eventLoopGroupSource: The source for the event loop group.
     /// - Parameter logTransmission: Whether or not to log transmissions with a SwiftLogger. Defaults to `false`.
-    @inlinable
-    public init(configuration: Configuration, logTransmissions: Bool = false) {
-        self.configuration = configuration
-        self.logTransmissions = logTransmissions
+    public init(configuration: Configuration,
+                eventLoopGroupSource: SwiftSMTPEventLoopGroupSource = .application,
+                logTransmissions: Bool = false) {
+        self.config = .init(eventLoopGroupSource: eventLoopGroupSource,
+                            configuration: configuration,
+                            logTransmissions: logTransmissions)
     }
 
     @inlinable
     public func willBoot(_ application: Application) throws {
-        application.swiftSMTP.initialize(with: configuration)
+        application.swiftSMTP.initialize(with: config, registerShutdownHandler: false)
+    }
+
+    @inlinable
+    public func shutdown(_ application: Application) {
+        guard case .custom(_) = eventLoopGroupSource else { return }
+        SharedMailerGroupShutdownHandler.shutdownSharedMailerGroup(of: application)
+    }
+}
+
+@usableFromInline
+struct SharedMailerGroupShutdownHandler: LifecycleHandler {
+    @usableFromInline
+    static func shutdownSharedMailerGroup(of application: Application) {
+        guard let sharedMailer = application.storage[Application.SwiftSMTP.SharedMailerKeys.Storage.self] else { return }
+        do {
+            try sharedMailer.group.syncShutdownGracefully()
+        } catch {
+            application.logger.error("Failed to shutdown custom event loop group of shared mailer!")
+            application.logger.report(error: error)
+        }
+    }
+
+    @inlinable
+    func shutdown(_ application: Application) {
+        Self.shutdownSharedMailerGroup(of: application)
     }
 }
 
@@ -34,21 +111,10 @@ extension Logger: SMTPLogger {
 extension Application {
     /// Represents the application's SwiftSMTP configuration.
     public struct SwiftSMTP {
-        @usableFromInline
-        final class Storage {
-            enum Key: StorageKey { typealias Value = Storage }
-
-            @usableFromInline
-            let configuration: Configuration
-            @usableFromInline
-            let mailers: [ObjectIdentifier: Mailer]
-
-            init(elg: EventLoopGroup, configuration: Configuration, logger: SMTPLogger?) {
-                self.configuration = configuration
-                self.mailers = elg.makeIterator().reduce(into: [:]) {
-                    $0[ObjectIdentifier($1)] = Mailer(group: $1, configuration: configuration, transmissonLogger: logger)
-                }
-            }
+        enum ConfigKey: StorageKey { typealias Value = SwiftSMTPVaporConfig }
+        enum SharedMailerKeys {
+            enum Storage: StorageKey { typealias Value = Mailer }
+            enum Lock: LockKey {}
         }
 
         @usableFromInline
@@ -58,29 +124,55 @@ extension Application {
         init(application: Application) { self.application = application }
 
         @usableFromInline
-        var storage: Storage {
-            guard let storage = application.storage[Storage.Key.self] else {
-                fatalError("SwiftSMTP not initialized! Initialize with `application.swiftSMTP.initialize(with:)`.")
+        var config: SwiftSMTPVaporConfig {
+            guard let config = application.storage[ConfigKey.self] else {
+                fatalError("SwiftSMTP not initialized! Use `SMTPInitializer` or manually initialize with `application.swiftSMTP.initialize(...)`.")
             }
-            return storage
+            return config
         }
 
         /// The SwiftSMTP configuration this application uses.
         @inlinable
-        public var configuration: Configuration { storage.configuration }
+        public var configuration: Configuration { config.configuration }
+
+        /// The shared Mailer for this application.
+        public var mailer: Mailer {
+            application.locks.lock(for: SharedMailerKeys.Lock.self).withLock {
+                if let existing = application.storage[SharedMailerKeys.Storage.self] {
+                    return existing
+                }
+                let newMailer = config.createNewMailer(with: application)
+                application.storage[SharedMailerKeys.Storage.self] = newMailer
+                return newMailer
+            }
+        }
+
+        @usableFromInline
+        func initialize(with config: SwiftSMTPVaporConfig, registerShutdownHandler: Bool = true) {
+            application.storage[ConfigKey.self] = config
+            if registerShutdownHandler, case .custom(_) = config.eventLoopGroupSource {
+                application.lifecycle.use(SharedMailerGroupShutdownHandler())
+            }
+        }
 
         /// Initializes the SwiftSMTP setup of the application with the given configuration.
         /// - Parameter configuration: The configuration to use for the application's mailers.
-        /// - Parameter logTransmissions: Whether or not to log transmissions with a SwiftLogger. Defaults to `false`.
-        public func initialize(with configuration: Configuration, logTransmissions: Bool = false) {
-            application.storage[Storage.Key.self] = .init(elg: application.eventLoopGroup,
-                                                          configuration: configuration,
-                                                          logger: logTransmissions ? Logger(label: "de.sersoft.swiftsmtp") : nil)
+        /// - Parameter eventLoopGroupSource: The source for the event loop group to use. Defaults to `.application`.
+        /// - Parameter logTransmissions: Whether to log transmissions with a SwiftLogger. Defaults to `false`.
+        public func initialize(with configuration: Configuration,
+                               eventLoopGroupSource: SwiftSMTPEventLoopGroupSource = .application,
+                               logTransmissions: Bool = false) {
+            initialize(with: .init(eventLoopGroupSource: eventLoopGroupSource,
+                                   configuration: configuration,
+                                   logTransmissions: logTransmissions))
         }
 
+        /// Creates a new Mailer.
+        /// The caller is responsible for keeping the mailer alive until and cleaning up after all mails have been sent.
+        /// - Returns: A new Mailer instance.
         @inlinable
-        func mailer(for eventLoop: EventLoop) -> Mailer {
-            storage.mailers[ObjectIdentifier(eventLoop)]!
+        public func createNewMailer() -> Mailer {
+            config.createNewMailer(with: application)
         }
     }
 
@@ -90,28 +182,7 @@ extension Application {
 }
 
 extension Request {
-    /// Represents the requests's SwiftSMTP configuration.
-    public struct SwiftSMTP {
-        @usableFromInline
-        let request: Request
-
-        @inlinable
-        init(request: Request) { self.request = request }
-
-        /// Returns the configuration for this request.
-        @inlinable
-        public var configuration: Configuration {
-            request.application.swiftSMTP.configuration
-        }
-
-        /// Returns the mailer for this request.
-        @inlinable
-        public var mailer: Mailer {
-            request.application.swiftSMTP.mailer(for: request.eventLoop)
-        }
-    }
-
-    /// Returns the SwiftSMTP configuration for this request (based on the configuration of this request's application).
+    /// Returns the SwiftSMTP configuration for this request's application.
     @inlinable
-    public var swiftSMTP: SwiftSMTP { .init(request: self) }
+    public var swiftSMTP: Application.SwiftSMTP { application.swiftSMTP }
 }

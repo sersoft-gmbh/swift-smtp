@@ -1,17 +1,30 @@
+import struct NIO.TimeAmount
+
 /// Represents a configuration for sending emails.
 public struct Configuration: Hashable {
     /// The server to connect to.
     public var server: Server
+    /// The connection time out for connections to the server.
+    public var connectionTimeOut: TimeAmount
     /// The credentials to use for connecting. `nil` if no authentication should be used.
     public var credentials: Credentials?
 
     /// Creates a new configuration with the given parameters.
     /// - Parameters:
     ///   - server: The server to connect to.
+    ///   - connectionTimeOut: The time out to use for connections to the server.
     ///   - credentials: The credentials to use for connecting. `nil` if no authentication should be used.
-    public init(server: Server, credentials: Credentials? = nil) {
+    public init(server: Server, connectionTimeOut: TimeAmount = .seconds(60), credentials: Credentials? = nil) {
         self.server = server
+        self.connectionTimeOut = connectionTimeOut
         self.credentials = credentials
+    }
+
+    // TODO: Remove this once `TimeAmount` conforms to `Hashable`.
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(server)
+        hasher.combine(connectionTimeOut.nanoseconds)
+        hasher.combine(credentials)
     }
 }
 
