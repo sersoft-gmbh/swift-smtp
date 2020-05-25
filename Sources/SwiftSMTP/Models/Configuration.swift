@@ -41,11 +41,11 @@ extension Configuration {
         /// Creates a new server configuration with the given parameters.
         /// - Parameters:
         ///   - hostname: The hostname of the server. Can be a DNS name or an IP.
-        ///   - port: The port to use for connecting.
+        ///   - port: The port to use for connecting. Defaults to nil in which case the default port for `encryption` will be used.
         ///   - encryption: The encryption setting to use for the connection. Defaults to `.plain`.
-        public init(hostname: String, port: Int, encryption: Encryption = .plain) {
+        public init(hostname: String, port: Int? = nil, encryption: Encryption = .plain) {
             self.hostname = hostname
-            self.port = port
+            self.port = port ?? encryption.defaultPort
             self.encryption = encryption
         }
     }
@@ -77,6 +77,18 @@ extension Configuration.Server {
     public enum Encryption: Hashable {
         case plain, ssl
         case startTLS(StartTLSMode)
+
+        /// The default port for this encryption:
+        /// - plain: 25
+        /// - ssl: 465
+        /// - startTLS: 587
+        public var defaultPort: Int {
+            switch self {
+            case .plain: return 25
+            case .ssl: return 465
+            case .startTLS(_): return 587
+            }
+        }
     }
 }
 

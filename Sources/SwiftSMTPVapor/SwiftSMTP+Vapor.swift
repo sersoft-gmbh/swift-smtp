@@ -13,7 +13,7 @@ public enum SwiftSMTPEventLoopGroupSource {
 }
 
 @usableFromInline
-internal struct SwiftSMTPVaporConfig {
+struct SwiftSMTPVaporConfig {
     @usableFromInline
     let eventLoopGroupSource: SwiftSMTPEventLoopGroupSource
     @usableFromInline
@@ -33,7 +33,6 @@ internal struct SwiftSMTPVaporConfig {
                       transmissionLogger: logTransmissions ? Logger(label: "de.sersoft.swiftsmtp") : nil)
     }
 
-    @usableFromInline
     init(eventLoopGroupSource: SwiftSMTPEventLoopGroupSource, configuration: Configuration, logTransmissions: Bool) {
         self.eventLoopGroupSource = eventLoopGroupSource
         self.configuration = configuration
@@ -70,39 +69,33 @@ public struct SMTPInitializer: LifecycleHandler {
                             logTransmissions: logTransmissions)
     }
 
-    @inlinable
     public func willBoot(_ application: Application) throws {
         application.swiftSMTP.initialize(with: config, registerShutdownHandler: false)
     }
 
-    @inlinable
     public func shutdown(_ application: Application) {
         guard case .custom(_) = eventLoopGroupSource else { return }
         SharedMailerGroupShutdownHandler.shutdownSharedMailerGroup(of: application)
     }
 }
 
-@usableFromInline
 struct SharedMailerGroupShutdownHandler: LifecycleHandler {
-    @usableFromInline
     static func shutdownSharedMailerGroup(of application: Application) {
         guard let sharedMailer = application.storage[Application.SwiftSMTP.SharedMailerKeys.Storage.self] else { return }
         do {
             try sharedMailer.group.syncShutdownGracefully()
         } catch {
-            application.logger.error("Failed to shutdown custom event loop group of shared mailer!")
+            application.logger.error("[SWIFTSMTP]: Failed to shutdown custom event loop group of shared mailer!")
             application.logger.report(error: error)
         }
     }
 
-    @inlinable
     func shutdown(_ application: Application) {
         Self.shutdownSharedMailerGroup(of: application)
     }
 }
 
 extension Logger: SMTPLogger {
-    @inlinable
     public func logSMTPMessage(_ message: @autoclosure () -> String) {
         log(level: .info, "\(message())")
     }
@@ -120,7 +113,6 @@ extension Application {
         @usableFromInline
         let application: Application
 
-        @inlinable
         init(application: Application) { self.application = application }
 
         @usableFromInline
@@ -147,7 +139,6 @@ extension Application {
             }
         }
 
-        @usableFromInline
         func initialize(with config: SwiftSMTPVaporConfig, registerShutdownHandler: Bool = true) {
             application.storage[ConfigKey.self] = config
             if registerShutdownHandler, case .custom(_) = config.eventLoopGroupSource {
@@ -177,7 +168,6 @@ extension Application {
     }
 
     /// Returns the SwiftSMTP configuration for this application.
-    @inlinable
     public var swiftSMTP: SwiftSMTP { .init(application: self) }
 }
 
