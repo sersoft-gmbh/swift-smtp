@@ -1,7 +1,7 @@
 import NIO
 import NIOSSL
 
-internal final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChannelHandler {
+final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChannelHandler {
     typealias InboundIn = SMTPResponse
     typealias InboundOut = SMTPResponse
     typealias OutboundIn = SMTPRequest
@@ -31,16 +31,16 @@ internal final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChann
 
         defer { state = .finished }
 
-        do {
-            try unwrapInboundIn(data).validate()
-        } catch {
-            switch tlsMode {
-            case .always: context.fireErrorCaught(error)
-            case .ifAvailable:
-                context.fireChannelRead(wrapInboundOut(.ok(201, "STARTTLS is not supported")))
-            }
+        switch (unwrapInboundIn(data), tlsMode) {
+        case (.success(_), _): break
+        case (.failure(_), .ifAvailable):
+            context.fireChannelRead(wrapInboundOut(.success((201, "STARTTLS is not supported"))))
+            return
+        case (.failure(let error), .always):
+            context.fireErrorCaught(error)
             return
         }
+
         do {
             let sslContext = try NIOSSLContext(configuration: .forClient())
             let sslHandler = try NIOSSLClientHandler(context: sslContext, serverHostname: server.hostname)

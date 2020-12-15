@@ -8,3 +8,7 @@ Once you have a `Configuration` (together with an NIO EventLoopGroup), you can c
 
 With a `Mailer` at your disposal, you can use it to send an `Email`. Since SMTP terminates the connection after each delivery, `Mailer` needs to create a new connection per `Email` that is to be delivered.
 
+To use SwiftSMTP, add the following package dependency:
+```swift
+.package(url: "https://github.com/sersoft-gmbh/swift-smtp.git", from: "2.0.0")
+```

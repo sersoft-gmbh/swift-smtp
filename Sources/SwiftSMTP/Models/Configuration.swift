@@ -19,13 +19,6 @@ public struct Configuration: Hashable {
         self.connectionTimeOut = connectionTimeOut
         self.credentials = credentials
     }
-
-    // TODO: Remove this once `TimeAmount` conforms to `Hashable`.
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(server)
-        hasher.combine(connectionTimeOut.nanoseconds)
-        hasher.combine(credentials)
-    }
 }
 
 extension Configuration {

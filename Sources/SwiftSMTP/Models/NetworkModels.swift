@@ -11,14 +11,4 @@ enum SMTPRequest {
     case quit
 }
 
-enum SMTPResponse {
-    case ok(Int, String)
-    case error(String)
-
-    @inline(__always)
-    func validate() throws {
-        if case .error(let message) = self {
-            throw ServerError(serverMessage: message)
-        }
-    }
-}
+typealias SMTPResponse = Result<(Int, String), ServerError>

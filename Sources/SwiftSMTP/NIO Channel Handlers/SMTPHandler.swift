@@ -4,10 +4,9 @@ import NIOSSL
 
 fileprivate extension SMTPResponse {
     func verify<T>(failing promise: EventLoopPromise<T>) -> Bool {
-        do {
-            try validate()
-            return true
-        } catch {
+        switch self {
+        case .success(_): return true
+        case .failure(let error):
             promise.fail(error)
             return false
         }

@@ -64,9 +64,9 @@ public struct SMTPInitializer: LifecycleHandler {
     public init(configuration: Configuration,
                 eventLoopGroupSource: SwiftSMTPEventLoopGroupSource = .application,
                 logTransmissions: Bool = false) {
-        self.config = .init(eventLoopGroupSource: eventLoopGroupSource,
-                            configuration: configuration,
-                            logTransmissions: logTransmissions)
+        config = .init(eventLoopGroupSource: eventLoopGroupSource,
+                       configuration: configuration,
+                       logTransmissions: logTransmissions)
     }
 
     public func willBoot(_ application: Application) throws {
@@ -85,7 +85,7 @@ struct SharedMailerGroupShutdownHandler: LifecycleHandler {
         do {
             try sharedMailer.group.syncShutdownGracefully()
         } catch {
-            application.logger.error("[SWIFTSMTP]: Failed to shutdown custom event loop group of shared mailer!")
+            application.logger.error("[swift-smtp]: Failed to shutdown custom event loop group of shared mailer!")
             application.logger.report(error: error)
         }
     }

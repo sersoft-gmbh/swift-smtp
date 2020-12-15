@@ -58,8 +58,8 @@ extension Configuration.Credentials {
     /// Both must be set or `nil` will be returned.
     public static func fromEnvironment() -> Configuration.Credentials? {
         guard let username = getEnvValue(forKey: "SMTP_USERNAME"),
-            let password = getEnvValue(forKey: "SMTP_PASSWORD")
-            else { return nil }
+              let password = getEnvValue(forKey: "SMTP_PASSWORD")
+        else { return nil }
         return self.init(username: username, password: password)
     }
 }
