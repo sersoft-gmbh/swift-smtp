@@ -41,6 +41,7 @@ struct SwiftSMTPVaporConfig {
 }
 
 /// Initializes the SwiftSMTP configuration on the application on boot.
+/// You can add it to your application in `configure` by using `app.lifecycle.use(SMTPInitializer(...))`.
 public struct SMTPInitializer: LifecycleHandler {
     @usableFromInline
     let config: SwiftSMTPVaporConfig
@@ -139,7 +140,7 @@ extension Application {
             }
         }
 
-        func initialize(with config: SwiftSMTPVaporConfig, registerShutdownHandler: Bool = true) {
+        func initialize(with config: SwiftSMTPVaporConfig, registerShutdownHandler: Bool) {
             application.storage[ConfigKey.self] = config
             if registerShutdownHandler, case .custom(_) = config.eventLoopGroupSource {
                 application.lifecycle.use(SharedMailerGroupShutdownHandler())
@@ -155,7 +156,8 @@ extension Application {
                                logTransmissions: Bool = false) {
             initialize(with: .init(eventLoopGroupSource: eventLoopGroupSource,
                                    configuration: configuration,
-                                   logTransmissions: logTransmissions))
+                                   logTransmissions: logTransmissions),
+                       registerShutdownHandler: true)
         }
 
         /// Creates a new Mailer.
