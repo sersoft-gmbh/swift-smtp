@@ -64,6 +64,19 @@ extension Configuration.Credentials {
     }
 }
 
+extension Configuration.FeatureFlags {
+    /// Creates the feature flags from environment variables.
+    /// The following environment variables are used to set the corresponding feature flags (env var = 1 will set the flag):
+    /// - `SMTP_USE_ESMTP`: Controls the `.useESMTP` flag.
+    public static func fromEnvironment() -> Configuration.FeatureFlags {
+        var flags: Configuration.FeatureFlags = []
+        if getEnvValue(forKey: "SMTP_USE_ESMTP") == "1" {
+            flags.insert(.useESMTP)
+        }
+        return flags
+    }
+}
+
 extension Configuration {
     /// Creates a configuration from environment variables (or defaults).
     /// The following environment variables are read:
@@ -73,6 +86,7 @@ extension Configuration {
     /// - `SMTP_TIMEOUT`: The connection time out in seconds. If not set or not a valid 64-bit integer, the default defined in `self.init(server:connectionTimeOut:credentials:)` will be used.
     /// - `SMTP_USERNAME`: The username to use.
     /// - `SMTP_PASSWORD`: The password to use.
+    /// - `SMTP_USE_ESMTP`: If set to 1, this will add `.useESMTP` to `featureFlags`.
     ///
     /// - SeeAlso: `Configuration.Server.fromEnvironment()`
     /// - SeeAlso: `Configuration.Credentials.fromEnvironment()`
@@ -81,9 +95,12 @@ extension Configuration {
         if let timeOutSeconds = getEnvValue(forKey: "SMTP_TIMEOUT").flatMap(Int64.init) {
             return self.init(server: .fromEnvironment(),
                              connectionTimeOut: .seconds(timeOutSeconds),
-                             credentials: .fromEnvironment())
+                             credentials: .fromEnvironment(),
+                             featureFlags: .fromEnvironment())
         } else {
-            return self.init(server: .fromEnvironment(), credentials: .fromEnvironment())
+            return self.init(server: .fromEnvironment(),
+                             credentials: .fromEnvironment(),
+                             featureFlags: .fromEnvironment())
         }
     }
 }

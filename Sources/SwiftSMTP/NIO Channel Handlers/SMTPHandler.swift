@@ -76,12 +76,14 @@ final class SMTPHandler: ChannelInboundHandler {
 
         switch state {
         case .idle(didSend: false):
-            send(command: .sayHello(serverName: configuration.server.hostname))
+            send(command: .sayHello(serverName: configuration.server.hostname,
+                                    useEHello: configuration.featureFlags.contains(.useESMTP)))
             state = .helloSent(afterStartTLS: false)
         case .helloSent(let afterStartTLS):
             state = nextStateAfterSayHello(afterStartTLS: afterStartTLS)
         case .startTLSSent:
-            send(command: .sayHello(serverName: configuration.server.hostname))
+            send(command: .sayHello(serverName: configuration.server.hostname,
+                                    useEHello: configuration.featureFlags.contains(.useESMTP)))
             state = .helloSent(afterStartTLS: true)
         case .authBegan(let credentials):
             send(command: .authUser(credentials.username))

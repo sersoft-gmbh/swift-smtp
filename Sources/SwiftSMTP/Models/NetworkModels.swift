@@ -1,5 +1,5 @@
 enum SMTPRequest {
-    case sayHello(serverName: String)
+    case sayHello(serverName: String, useEHello: Bool)
     case startTLS
     case beginAuthentication
     case authUser(String)

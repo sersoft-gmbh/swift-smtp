@@ -8,16 +8,23 @@ public struct Configuration: Hashable {
     public var connectionTimeOut: TimeAmount
     /// The credentials to use for connecting. `nil` if no authentication should be used.
     public var credentials: Credentials?
+    /// The feature flags of this configuration.
+    public var featureFlags: FeatureFlags
 
     /// Creates a new configuration with the given parameters.
     /// - Parameters:
     ///   - server: The server to connect to.
     ///   - connectionTimeOut: The time out to use for connections to the server.
     ///   - credentials: The credentials to use for connecting. `nil` if no authentication should be used.
-    public init(server: Server, connectionTimeOut: TimeAmount = .seconds(60), credentials: Credentials? = nil) {
+    ///   - featureFlags: The feature flags to  use. Defaults to an empty list.
+    public init(server: Server,
+                connectionTimeOut: TimeAmount = .seconds(60),
+                credentials: Credentials? = nil,
+                featureFlags: FeatureFlags = []) {
         self.server = server
         self.connectionTimeOut = connectionTimeOut
         self.credentials = credentials
+        self.featureFlags = featureFlags
     }
 }
 
@@ -59,6 +66,22 @@ extension Configuration {
             self.password = password
         }
     }
+
+    /// Represents feature flags of the server.
+    @frozen
+    public struct FeatureFlags: OptionSet, Hashable {
+        /// inherited
+        public typealias RawValue = UInt
+
+        /// inherited
+        public let rawValue: RawValue
+
+        /// inherited
+        @inlinable
+        public init(rawValue: RawValue) {
+            self.rawValue = rawValue
+        }
+    }
 }
 
 extension Configuration.Server {
@@ -92,4 +115,9 @@ extension Configuration.Server.Encryption {
     public enum StartTLSMode: Hashable {
         case always, ifAvailable
     }
+}
+
+extension Configuration.FeatureFlags {
+    /// Whether ESMTP should be used (e.g. send EHLO instead of HELO).
+    public static let useESMTP = Configuration.FeatureFlags(rawValue: 1 << 0)
 }

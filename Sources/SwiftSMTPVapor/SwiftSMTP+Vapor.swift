@@ -4,11 +4,31 @@ import Vapor
 
 /// Represents the source for the event loop group used by the Mailer.
 public enum SwiftSMTPEventLoopGroupSource {
+    /// Use the application's ELG.
     case application
+    /// Provide a custom ELG per Mailer.
     case custom(() -> EventLoopGroup)
 
+    /// Uses a custom source by creating a new `MultiThreadedEventLoopGroup` with the given number of threads.
+    /// - Parameter numberOfThreads: The number of threads for the new ELG. Defaults to half the number of system cores.
     public static func createNew(numberOfThreads: Int = max(System.coreCount / 2, 1)) -> SwiftSMTPEventLoopGroupSource {
         .custom { MultiThreadedEventLoopGroup(numberOfThreads: numberOfThreads) }
+    }
+}
+
+/// Represents the maximum connections configuration per Mailer.
+public enum SwiftSMTPMaxConnectionsConfiguration: ExpressibleByIntegerLiteral, ExpressibleByNilLiteral {
+    /// Uses the default specified by `Mailer`.
+    case useDefault
+    /// Explicitly sets the default to the given value.
+    case custom(maxConnections: Int?)
+
+    public init(integerLiteral value: IntegerLiteralType) {
+        self = .custom(maxConnections: value)
+    }
+
+    public init(nilLiteral: ()) {
+        self = .custom(maxConnections: nil)
     }
 }
 
@@ -19,6 +39,8 @@ struct SwiftSMTPVaporConfig {
     @usableFromInline
     let configuration: Configuration
     @usableFromInline
+    let maxConnectionsConfig: SwiftSMTPMaxConnectionsConfiguration
+    @usableFromInline
     let logTransmissions: Bool
 
     @usableFromInline
@@ -28,14 +50,26 @@ struct SwiftSMTPVaporConfig {
         case .application: eventLoopGroup = application.eventLoopGroup
         case .custom(let creator): eventLoopGroup = creator()
         }
-        return Mailer(group: eventLoopGroup,
-                      configuration: configuration,
-                      transmissionLogger: logTransmissions ? Logger(label: "de.sersoft.swiftsmtp") : nil)
+        let logger = logTransmissions ? Logger(label: "de.sersoft.swiftsmtp") : nil
+        if case .custom(let maxConnections) = maxConnectionsConfig {
+            return Mailer(group: eventLoopGroup,
+                          configuration: configuration,
+                          maxConnections: maxConnections,
+                          transmissionLogger: logger)
+        } else {
+            return Mailer(group: eventLoopGroup,
+                          configuration: configuration,
+                          transmissionLogger: logger)
+        }
     }
 
-    init(eventLoopGroupSource: SwiftSMTPEventLoopGroupSource, configuration: Configuration, logTransmissions: Bool) {
+    init(eventLoopGroupSource: SwiftSMTPEventLoopGroupSource,
+         configuration: Configuration,
+         maxConnectionsConfig: SwiftSMTPMaxConnectionsConfiguration,
+         logTransmissions: Bool) {
         self.eventLoopGroupSource = eventLoopGroupSource
         self.configuration = configuration
+        self.maxConnectionsConfig = maxConnectionsConfig
         self.logTransmissions = logTransmissions
     }
 }
@@ -54,19 +88,27 @@ public struct SMTPInitializer: LifecycleHandler {
     @inlinable
     public var configuration: Configuration { config.configuration }
 
+    /// The maximum connections configuration per mailer.
+    @inlinable
+    public var maxConnectionsConfiguration: SwiftSMTPMaxConnectionsConfiguration { config.maxConnectionsConfig }
+
     /// Wether or not to log transissions.
     @inlinable
     public var logTransmissions: Bool { config.logTransmissions }
 
+
     /// Creates a new initializer for a given configuration.
     /// - Parameter configuration: The configuration to use for the application's mailers.
     /// - Parameter eventLoopGroupSource: The source for the event loop group.
-    /// - Parameter logTransmission: Whether or not to log transmissions with a SwiftLogger. Defaults to `false`.
+    /// - Parameter maxConnectionsConfiguration: The maximum connections configuration per mailer. Defaults to `.useDefault`.
+    /// - Parameter logTransmissions: Whether or not to log transmissions with a `Logger`. Defaults to `false`.
     public init(configuration: Configuration,
                 eventLoopGroupSource: SwiftSMTPEventLoopGroupSource = .application,
+                maxConnectionsConfiguration: SwiftSMTPMaxConnectionsConfiguration = .useDefault,
                 logTransmissions: Bool = false) {
         config = .init(eventLoopGroupSource: eventLoopGroupSource,
                        configuration: configuration,
+                       maxConnectionsConfig: maxConnectionsConfiguration,
                        logTransmissions: logTransmissions)
     }
 
@@ -150,12 +192,15 @@ extension Application {
         /// Initializes the SwiftSMTP setup of the application with the given configuration.
         /// - Parameter configuration: The configuration to use for the application's mailers.
         /// - Parameter eventLoopGroupSource: The source for the event loop group to use. Defaults to `.application`.
+        /// - Parameter maxConnectionsConfiguration: The maximum connections configuration per mailer. Defaults to `.useDefault`.
         /// - Parameter logTransmissions: Whether to log transmissions with a SwiftLogger. Defaults to `false`.
         public func initialize(with configuration: Configuration,
                                eventLoopGroupSource: SwiftSMTPEventLoopGroupSource = .application,
+                               maxConnectionsConfiguration: SwiftSMTPMaxConnectionsConfiguration = .useDefault,
                                logTransmissions: Bool = false) {
             initialize(with: .init(eventLoopGroupSource: eventLoopGroupSource,
                                    configuration: configuration,
+                                   maxConnectionsConfig: maxConnectionsConfiguration,
                                    logTransmissions: logTransmissions),
                        registerShutdownHandler: true)
         }
