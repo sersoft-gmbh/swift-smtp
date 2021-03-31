@@ -28,10 +28,10 @@ struct SMTPRequestEncoder: MessageToByteEncoder {
         }.joined(separator: "\r\n--\(boundary)\r\n")
     }
 
-    func encode(data: SMTPRequest, out: inout ByteBuffer) throws {
+    func encode(data: OutboundIn, out: inout ByteBuffer) throws {
         switch data {
-        case .sayHello(serverName: let server):
-            out.writeString("HELO \(server)")
+        case .sayHello(let serverName, let useEHello):
+            out.writeString("\(useEHello ? "EHLO" : "HELO") \(serverName)")
         case .startTLS:
             out.writeString("STARTTLS")
         case .beginAuthentication:
