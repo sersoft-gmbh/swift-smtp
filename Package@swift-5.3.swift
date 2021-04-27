@@ -1,4 +1,4 @@
-// swift-tools-version:5.4
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -41,7 +41,7 @@ let package = Package(
                 .product(name: "Vapor", package: "vapor"),
                 "SwiftSMTP",
             ]),
-        .executableTarget(
+        .target(
             name: "SwiftSMTPCLI",
             dependencies: [
                 .product(name: "NIO", package: "swift-nio"),
