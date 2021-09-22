@@ -42,7 +42,7 @@ final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChannelHandler
         }
 
         do {
-            let sslContext = try NIOSSLContext(configuration: .forClient())
+            let sslContext = try NIOSSLContext(configuration: .makeClientConfiguration())
             let sslHandler = try NIOSSLClientHandler(context: sslContext, serverHostname: server.hostname)
             _ = context.channel.pipeline.addHandler(sslHandler, position: .first)
             context.fireChannelRead(data)

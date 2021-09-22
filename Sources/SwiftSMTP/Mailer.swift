@@ -16,7 +16,7 @@ fileprivate extension Configuration.Server {
         switch encryption {
         case .plain: return .none
         case .ssl:
-            let sslContext = try NIOSSLContext(configuration: .forClient())
+            let sslContext = try NIOSSLContext(configuration: .makeClientConfiguration())
             let sslHandler = try NIOSSLClientHandler(context: sslContext, serverHostname: hostname)
             return .atBeginning(sslHandler)
         case .startTLS(let mode):
