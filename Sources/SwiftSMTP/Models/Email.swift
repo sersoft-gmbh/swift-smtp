@@ -10,7 +10,11 @@ public struct Email {
 
     /// The recipients of the email.
     /// - Precondition: Must not be empty.
-    public var recipients: [Contact]
+    public var recipients: [Contact] {
+        didSet {
+            assert(!recipients.isEmpty, "Recipients must not be empty!")
+        }
+    }
     /// The (carbon-)copy recipients of the email.
     public var cc: [Contact]
     /// The blind (carbon-)copy recipients of the email.
@@ -72,7 +76,11 @@ extension Email {
         public var name: String?
         /// The email address of the contact.
         /// - Precondition: Must not be empty!
-        public var emailAddress: String
+        public var emailAddress: String {
+            didSet {
+                assert(!emailAddress.isEmpty)
+            }
+        }
 
         var asMIME: String { name.map { "\($0) <\(emailAddress)>" } ?? emailAddress }
 

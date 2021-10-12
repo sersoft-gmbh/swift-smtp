@@ -120,4 +120,9 @@ extension Configuration.Server.Encryption {
 extension Configuration.FeatureFlags {
     /// Whether ESMTP should be used (e.g. send EHLO instead of HELO).
     public static let useESMTP = Configuration.FeatureFlags(rawValue: 1 << 0)
+
+    /// Whether the base64 line length should be limited to 64 characters.
+    public static let maximumBase64LineLength64 = Configuration.FeatureFlags(rawValue: 1 << 10)
+    /// Whether the base64 line length should be limited to 76 characters.
+    public static let maximumBase64LineLength76 = Configuration.FeatureFlags(rawValue: 1 << 11)
 }

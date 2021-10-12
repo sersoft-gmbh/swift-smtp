@@ -68,10 +68,18 @@ extension Configuration.FeatureFlags {
     /// Creates the feature flags from environment variables.
     /// The following environment variables are used to set the corresponding feature flags (env var = 1 will set the flag):
     /// - `SMTP_USE_ESMTP`: Controls the `.useESMTP` flag.
+    /// - `SMTP_MAX_BASE64_LINE_64`: Controls the `.maximumBase64LineLength64` flag.
+    /// - `SMTP_MAX_BASE64_LINE_76`: Controls the `.maximumBase64LineLength76` flag.
     public static func fromEnvironment() -> Configuration.FeatureFlags {
         var flags: Configuration.FeatureFlags = []
         if getEnvValue(forKey: "SMTP_USE_ESMTP") == "1" {
             flags.insert(.useESMTP)
+        }
+        if getEnvValue(forKey: "SMTP_MAX_BASE64_LINE_64") == "1" {
+            flags.insert(.maximumBase64LineLength64)
+        }
+        if getEnvValue(forKey: "SMTP_MAX_BASE64_LINE_76") == "1" {
+            flags.insert(.maximumBase64LineLength76)
         }
         return flags
     }
@@ -87,10 +95,13 @@ extension Configuration {
     /// - `SMTP_USERNAME`: The username to use.
     /// - `SMTP_PASSWORD`: The password to use.
     /// - `SMTP_USE_ESMTP`: If set to 1, this will add `.useESMTP` to `featureFlags`.
+    /// - `SMTP_MAX_BASE64_LINE_64`: If set to 1, this will add `.maximumBase64LineLength64` to `featureFlags`.
+    /// - `SMTP_MAX_BASE64_LINE_76`: If set to 1, this will add `.maximumBase64LineLength76` to `featureFlags`.
     ///
     /// - SeeAlso: `Configuration.Server.fromEnvironment()`
     /// - SeeAlso: `Configuration.Credentials.fromEnvironment()`
-    /// - SeeAlso: `Configuration.init(server:connectionTimeOut:credentials:)`
+    /// - SeeAlso: `Configuration.FeatureFlags.fromEnvironment()`
+    /// - SeeAlso: `Configuration.init(server:connectionTimeOut:credentials:featureFlags:)`
     public static func fromEnvironment() -> Configuration {
         if let timeOutSeconds = getEnvValue(forKey: "SMTP_TIMEOUT").flatMap(Int64.init) {
             return self.init(server: .fromEnvironment(),

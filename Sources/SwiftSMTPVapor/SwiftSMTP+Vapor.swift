@@ -23,10 +23,12 @@ public enum SwiftSMTPMaxConnectionsConfiguration: ExpressibleByIntegerLiteral, E
     /// Explicitly sets the default to the given value.
     case custom(maxConnections: Int?)
 
+    /// inherited
     public init(integerLiteral value: IntegerLiteralType) {
         self = .custom(maxConnections: value)
     }
 
+    /// inherited
     public init(nilLiteral: ()) {
         self = .custom(maxConnections: nil)
     }
@@ -112,10 +114,12 @@ public struct SMTPInitializer: LifecycleHandler {
                        logTransmissions: logTransmissions)
     }
 
+    /// inherited
     public func willBoot(_ application: Application) throws {
         application.swiftSMTP.initialize(with: config, registerShutdownHandler: false)
     }
 
+    /// inherited
     public func shutdown(_ application: Application) {
         guard case .custom(_) = eventLoopGroupSource else { return }
         SharedMailerGroupShutdownHandler.shutdownSharedMailerGroup(of: application)
@@ -139,6 +143,7 @@ struct SharedMailerGroupShutdownHandler: LifecycleHandler {
 }
 
 extension Logger: SMTPLogger {
+    /// inherited
     public func logSMTPMessage(_ message: @autoclosure () -> String) {
         log(level: .info, "\(message())")
     }

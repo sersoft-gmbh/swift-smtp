@@ -98,10 +98,17 @@ public final class Mailer {
             .connectTimeout(configuration.connectionTimeOut)
             .channelInitializer { [configuration, transmissionLogger] in
                 do {
+                    var base64Options: Data.Base64EncodingOptions = []
+                    if configuration.featureFlags.contains(.maximumBase64LineLength64) {
+                        base64Options.insert(.lineLength64Characters)
+                    }
+                    if configuration.featureFlags.contains(.maximumBase64LineLength76) {
+                        base64Options.insert(.lineLength76Characters)
+                    }
                     var handlers: [ChannelHandler] = [
                         ByteToMessageHandler(LineBasedFrameDecoder()),
                         SMTPResponseDecoder(),
-                        MessageToByteHandler(SMTPRequestEncoder()),
+                        MessageToByteHandler(SMTPRequestEncoder(base64EncodingOptions: base64Options)),
                         SMTPHandler(configuration: configuration, email: email.email, allDonePromise: email.promise),
                     ]
                     if let logger = transmissionLogger {
