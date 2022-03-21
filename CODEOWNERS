@@ -2,12 +2,12 @@
 *  @ffried
 
 # Workflow & Deployment related files
-.github/*      @ffried
-.jazzy.yaml    @ffried
-.codecov.yml   @ffried
+.github/*       @ffried
+.jazzy.yaml     @ffried
+.codecov.yml    @ffried
 
 # Project & Source files
-/Package.*     @ffried
-*.swift        @ffried
-/Sources/*     @ffried
-/Tests/*       @ffried
+*.swift         @ffried
+/Package*.swift @ffried
+/Sources/*      @ffried
+/Tests/*        @ffried

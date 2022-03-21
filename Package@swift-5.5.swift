@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -19,7 +19,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/apple/swift-nio.git", from: "2.16.0"),
+        .package(url: "https://github.com/apple/swift-nio.git", from: "2.33.0"),
         .package(url: "https://github.com/apple/swift-nio-extras.git", from: "1.4.0"),
         .package(url: "https://github.com/apple/swift-nio-ssl.git", from: "2.14.0"),
         .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
@@ -41,7 +41,7 @@ let package = Package(
                 .product(name: "Vapor", package: "vapor"),
                 "SwiftSMTP",
             ]),
-        .target(
+        .executableTarget(
             name: "SwiftSMTPCLI",
             dependencies: [
                 .product(name: "NIO", package: "swift-nio"),

@@ -137,13 +137,26 @@ public final class Mailer {
         }
     }
 
-    /// Schedules an email for delivery. Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.
-    /// - Parameter email: The email to send.
-    /// - Returns: A future that will complete with the result of sending the email.
-    public func send(email: Email) -> EventLoopFuture<Void> {
+    @usableFromInline
+    func _sendFuture(for email: Email) -> EventLoopFuture<Void> {
         let promise = group.next().makePromise(of: Void.self)
         pushEmail(ScheduledEmail(email: email, promise: promise))
         scheduleMailDelivery()
         return promise.futureResult
     }
+
+    /// Schedules an email for delivery. Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.
+    /// - Parameter email: The email to send.
+    /// - Returns: A future that will complete with the result of sending the email.
+    @inlinable
+    public func send(email: Email) -> EventLoopFuture<Void> {
+        _sendFuture(for: email)
+    }
+
+#if compiler(>=5.5.2) && canImport(_Concurrency)
+    @inlinable
+    public func send(email: Email) async throws {
+        try await _sendFuture(for: email).get()
+    }
+#endif
 }
