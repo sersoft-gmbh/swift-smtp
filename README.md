@@ -6,7 +6,7 @@ There is the `Configuration` struct (and its nested structs and enums) that conf
 
 Once you have a `Configuration` (together with an NIO EventLoopGroup), you can create a `Mailer`. The mailer is responsible for setting up the NIO channel that connects to the SMTP server and delivers the email.
 
-With a `Mailer` at your disposal, you can use it to send an `Email`. Since SMTP terminates the connection after each delivery, `Mailer` needs to create a new connection per `Email` that is to be delivered.
+With a `Mailer` at your disposal, you can use it to send an `Email`. Since SMTP terminates the connection after each delivery, `Mailer` will create a new connection per `Email` that is to be delivered.
 
 To use SwiftSMTP, add the following package dependency:
 ```swift
@@ -15,7 +15,7 @@ To use SwiftSMTP, add the following package dependency:
 
 ## Usage
 
-The package contains two targets `SwiftSMTP` and `SwiftSMTPVapor`. The former is a pure SwifTNIO implementation, while the latter contains some helpers for using SwiftSMTP in Vapor applications.
+The package contains two targets `SwiftSMTP` and `SwiftSMTPVapor`. The former is a pure SwiftNIO implementation, while the latter contains some helpers for using SwiftSMTP in Vapor (4) applications.
 
 ### SwiftSMTP
 
@@ -84,3 +84,14 @@ func handleRequest(_ request: Request) -> EventLoopFuture<Response> {
 
 When using the application's event loop group (which is the default), there will be almost no difference between the two - except maybe for the connection limit. A mailer has a connection limit of two connections by default, which means that a new mailer does not have any connections in its queue.
 When using a custom event loop group source, however, creating a new mailer will also create a new event loop group. It's important to keep this in mind, since you're responsible for shutting down that event loop group - whereas SwiftSMTPVapor takes care of shutting down the event loop group of the shared mailer if you use a custom source there.
+
+
+SwiftSMTP also works with Swift concurrency:
+
+```swift
+func handleRequest(_ request: Request) async throws -> Response {
+    let email: Email // created before
+    try await request.swiftSMTP.mailer.send(email: email)
+    return Response()
+}
+```
