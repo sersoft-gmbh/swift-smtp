@@ -18,7 +18,7 @@ struct SMTPRequestEncoder: MessageToByteEncoder {
         String(UUID().uuidString.filter(\.isHexDigit))
     }
 
-    private func encode(attachments: [Email.Attachment], with boundary: String) -> String {
+    private func encode(attachments: Array<Email.Attachment>, with boundary: String) -> String {
         assert(!attachments.isEmpty)
         return attachments.lazy.map {
             """

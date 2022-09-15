@@ -7,7 +7,11 @@ public enum SwiftSMTPEventLoopGroupSource {
     /// Use the application's ELG.
     case application
     /// Provide a custom ELG per Mailer.
+#if compiler(>=5.5.2) && canImport(_Concurrency)
+    case custom(@Sendable () -> EventLoopGroup)
+#else
     case custom(() -> EventLoopGroup)
+#endif
 
     /// Uses a custom source by creating a new `MultiThreadedEventLoopGroup` with the given number of threads.
     /// - Parameter numberOfThreads: The number of threads for the new ELG. Defaults to half the number of system cores.
@@ -15,6 +19,10 @@ public enum SwiftSMTPEventLoopGroupSource {
         .custom { MultiThreadedEventLoopGroup(numberOfThreads: numberOfThreads) }
     }
 }
+
+#if compiler(>=5.5.2) && canImport(_Concurrency)
+extension SwiftSMTPEventLoopGroupSource: Sendable {}
+#endif
 
 /// Represents the maximum connections configuration per Mailer.
 public enum SwiftSMTPMaxConnectionsConfiguration: ExpressibleByIntegerLiteral, ExpressibleByNilLiteral {
@@ -33,6 +41,10 @@ public enum SwiftSMTPMaxConnectionsConfiguration: ExpressibleByIntegerLiteral, E
         self = .custom(maxConnections: nil)
     }
 }
+
+#if compiler(>=5.5.2) && canImport(_Concurrency)
+extension SwiftSMTPMaxConnectionsConfiguration: Sendable {}
+#endif
 
 @usableFromInline
 struct SwiftSMTPVaporConfig {
@@ -75,6 +87,10 @@ struct SwiftSMTPVaporConfig {
         self.logTransmissions = logTransmissions
     }
 }
+
+#if compiler(>=5.5.2) && canImport(_Concurrency)
+extension SwiftSMTPVaporConfig: Sendable {}
+#endif
 
 /// Initializes the SwiftSMTP configuration on the application on boot.
 /// You can add it to your application in `configure` by using `app.lifecycle.use(SMTPInitializer(...))`.
@@ -126,6 +142,10 @@ public struct SMTPInitializer: LifecycleHandler {
     }
 }
 
+#if compiler(>=5.5.2) && canImport(_Concurrency)
+extension SMTPInitializer: Sendable {}
+#endif
+
 struct SharedMailerGroupShutdownHandler: LifecycleHandler {
     static func shutdownSharedMailerGroup(of application: Application) {
         guard let sharedMailer = application.storage[Application.SwiftSMTP.SharedMailerKeys.Storage.self] else { return }
@@ -141,6 +161,10 @@ struct SharedMailerGroupShutdownHandler: LifecycleHandler {
         Self.shutdownSharedMailerGroup(of: application)
     }
 }
+
+#if compiler(>=5.5.2) && canImport(_Concurrency)
+extension SharedMailerGroupShutdownHandler: Sendable {}
+#endif
 
 extension Logger: SMTPLogger {
     /// inherited

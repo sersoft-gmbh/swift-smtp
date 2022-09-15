@@ -1,4 +1,8 @@
+#if compiler(>=5.7) || compiler(<5.6) || !canImport(_Concurrency)
 import struct Foundation.Data
+#else
+@preconcurrency import Foundation
+#endif
 import struct NIO.ByteBuffer
 
 /// Represents an email.
@@ -10,15 +14,15 @@ public struct Email {
 
     /// The recipients of the email.
     /// - Precondition: Must not be empty.
-    public var recipients: [Contact] {
+    public var recipients: Array<Contact> {
         didSet {
             assert(!recipients.isEmpty, "Recipients must not be empty!")
         }
     }
     /// The (carbon-)copy recipients of the email.
-    public var cc: [Contact]
+    public var cc: Array<Contact>
     /// The blind (carbon-)copy recipients of the email.
-    public var bcc: [Contact]
+    public var bcc: Array<Contact>
 
     /// The subject of the email.
     public var subject: String
@@ -26,10 +30,10 @@ public struct Email {
     public var body: Body
 
     /// The attachments to attach to the email.
-    public var attachments: [Attachment]
+    public var attachments: Array<Attachment>
 
     @inlinable
-    var allRecipients: [Contact] { recipients + cc + bcc }
+    var allRecipients: Array<Contact> { recipients + cc + bcc }
 
     var isMultipart: Bool {
         guard attachments.isEmpty else { return true }
@@ -51,12 +55,12 @@ public struct Email {
     ///   - attachments: The list of attachments of the email. Defaults to an empty array.
     public init(sender: Contact,
                 replyTo: Contact? = nil,
-                recipients: [Contact],
-                cc: [Contact] = [],
-                bcc: [Contact] = [],
+                recipients: Array<Contact>,
+                cc: Array<Contact> = [],
+                bcc: Array<Contact> = [],
                 subject: String,
                 body: Body,
-                attachments: [Attachment] = []) {
+                attachments: Array<Attachment> = []) {
         assert(!recipients.isEmpty, "Recipients must not be empty!")
         self.sender = sender
         self.replyTo = replyTo
@@ -135,3 +139,10 @@ extension Email {
         }
     }
 }
+
+#if compiler(>=5.5.2) && canImport(_Concurrency)
+extension Email.Contact: Sendable {}
+extension Email.Body: Sendable {}
+extension Email.Attachment: Sendable {}
+extension Email: Sendable {}
+#endif

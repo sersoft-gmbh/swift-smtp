@@ -167,3 +167,7 @@ public final class Mailer {
     }
 #endif
 }
+
+#if compiler(>=5.5.2) && canImport(_Concurrency)
+extension Mailer: @unchecked Sendable {}
+#endif

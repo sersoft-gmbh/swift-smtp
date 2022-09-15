@@ -1,6 +1,16 @@
 import NIO
 import Foundation
 
+#if compiler(>=5.6)
+/// Describes a logger that logs SMTP messages.
+@preconcurrency
+public protocol SMTPLogger: Sendable {
+    /// Called whenever an SMTP message should be logged.
+    /// - Parameter message: The message to log as an @autoclosure.
+    ///                      If the logger does not log the message, the closure should not be executed for performance reasons.
+    func logSMTPMessage(_ message: @autoclosure () -> String)
+}
+#else
 /// Describes a logger that logs SMTP messages.
 public protocol SMTPLogger {
     /// Called whenever an SMTP message should be logged.
@@ -8,6 +18,7 @@ public protocol SMTPLogger {
     ///                      If the logger does not log the message, the closure should not be executed for performance reasons.
     func logSMTPMessage(_ message: @autoclosure () -> String)
 }
+#endif
 
 /// A simple SMTP logger that logs messages using `print`.
 @frozen

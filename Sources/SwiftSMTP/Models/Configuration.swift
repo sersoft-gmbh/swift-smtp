@@ -126,3 +126,11 @@ extension Configuration.FeatureFlags {
     /// Whether the base64 line length should be limited to 76 characters.
     public static let maximumBase64LineLength76 = Configuration.FeatureFlags(rawValue: 1 << 11)
 }
+
+#if compiler(>=5.5.2) && canImport(_Concurrency)
+extension Configuration.Server.Encryption.StartTLSMode: Sendable {}
+extension Configuration.Server.Encryption: Sendable {}
+extension Configuration.Server: Sendable {}
+extension Configuration.Credentials: Sendable {}
+extension Configuration: Sendable {}
+#endif
