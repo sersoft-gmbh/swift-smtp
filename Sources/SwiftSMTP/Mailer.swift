@@ -54,11 +54,9 @@ public final class Mailer {
     private let connectionsSemaphore: DispatchSemaphore?
     private let senderQueue = DispatchQueue(label: "SMTP Mailer Sender Queue")
 
-    private let emailsLock = Lock()
-    private var emailsStack = Array<ScheduledEmail>()
+    private let emailsStack = NIOLockedValueBox(Array<ScheduledEmail>())
 
-    private let bootstrapsLock = Lock()
-    private var bootstraps = Dictionary<ScheduledEmail, ClientBootstrap>()
+    private let bootstraps: NIOLockedValueBox<Dictionary<ScheduledEmail, ClientBootstrap>>
 
     /// Creates a new mailer with the given parameters.
     /// - Parameters:
@@ -75,21 +73,23 @@ public final class Mailer {
         self.maxConnections = maxConnections
         self.transmissionLogger = transmissionLogger
 
+        var _bootstraps = Dictionary<ScheduledEmail, ClientBootstrap>()
         if let maxConnections = maxConnections {
             assert(maxConnections > 0)
             connectionsSemaphore = DispatchSemaphore(value: maxConnections)
-            bootstraps.reserveCapacity(maxConnections)
+            _bootstraps.reserveCapacity(maxConnections)
         } else {
             connectionsSemaphore = nil
         }
+        bootstraps = .init(_bootstraps)
     }
 
     private func pushEmail(_ email: ScheduledEmail) {
-        emailsLock.withLockVoid { emailsStack.append(email) }
+        emailsStack.withLockedValue { $0.append(email) }
     }
 
     private func popEmail() -> ScheduledEmail? {
-        emailsLock.withLock { emailsStack.isEmpty ? nil : emailsStack.removeFirst() }
+        emailsStack.withLockedValue { $0.isEmpty ? nil : $0.removeFirst() }
     }
 
     private func connectBootstrap(sending email: ScheduledEmail) {
@@ -124,13 +124,13 @@ public final class Mailer {
                     return $0.eventLoop.makeFailedFuture(error)
                 }
         }
-        bootstrapsLock.withLockVoid { bootstraps[email] = bootstrap }
+        bootstraps.withLockedValue { $0[email] = bootstrap }
         let connectionFuture = bootstrap.connect(host: configuration.server.hostname, port: configuration.server.port)
         connectionFuture.cascadeFailure(to: email.promise)
         email.promise.futureResult.whenComplete { [weak self] _ in
             connectionFuture.whenSuccess { $0.close(mode: .all, promise: nil) }
             guard let self = self else { return }
-            self.bootstrapsLock.withLockVoid { self.bootstraps.removeValue(forKey: email) }
+            self.bootstraps.withLockedValue { _ = $0.removeValue(forKey: email) }
             self.connectionsSemaphore?.signal()
             self.scheduleMailDelivery()
         }

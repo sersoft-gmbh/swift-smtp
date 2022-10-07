@@ -51,7 +51,7 @@ final class SMTPHandler: ChannelInboundHandler {
             context.writeAndFlush(wrapOutboundOut(command)).cascadeFailure(to: allDonePromise)
         }
 
-        func nextState(for iterator: inout IndexingIterator<[Email.Contact]>) -> State {
+        func nextState(for iterator: inout IndexingIterator<Array<Email.Contact>>) -> State {
             if let next = iterator.next() {
                 send(command: .recipient(next.emailAddress))
                 return .recipientSent(iterator)
