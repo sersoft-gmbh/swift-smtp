@@ -6,7 +6,7 @@ import struct Foundation.Data
 import struct NIO.ByteBuffer
 
 /// Represents an email.
-public struct Email {
+public struct Email: Equatable {
     /// The sender of the email.
     public var sender: Contact
     /// An optional reply-to address.
@@ -110,7 +110,7 @@ extension Email {
     }
 
     /// Represents an email attachment.
-    public struct Attachment {
+    public struct Attachment: Equatable {
         /// The (file) name of the attachment.
         public var name: String
         /// The content type of the attachment.

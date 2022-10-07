@@ -94,7 +94,7 @@ public final class Mailer {
 
     private func connectBootstrap(sending email: ScheduledEmail) {
         let bootstrap = ClientBootstrap(group: group)
-            .channelOption(ChannelOptions.socket(SocketOptionLevel(SOL_SOCKET), SO_REUSEADDR), value: 1)
+            .channelOption(ChannelOptions.socketOption(.so_reuseaddr), value: 1)
             .connectTimeout(configuration.connectionTimeOut)
             .channelInitializer { [configuration, transmissionLogger] in
                 do {
@@ -105,7 +105,7 @@ public final class Mailer {
                     if configuration.featureFlags.contains(.maximumBase64LineLength76) {
                         base64Options.insert(.lineLength76Characters)
                     }
-                    var handlers: [ChannelHandler] = [
+                    var handlers: Array<ChannelHandler> = [
                         ByteToMessageHandler(LineBasedFrameDecoder()),
                         SMTPResponseDecoder(),
                         MessageToByteHandler(SMTPRequestEncoder(base64EncodingOptions: base64Options)),
@@ -123,7 +123,7 @@ public final class Mailer {
                 } catch {
                     return $0.eventLoop.makeFailedFuture(error)
                 }
-        }
+            }
         bootstraps.withLockedValue { $0[email] = bootstrap }
         let connectionFuture = bootstrap.connect(host: configuration.server.hostname, port: configuration.server.port)
         connectionFuture.cascadeFailure(to: email.promise)
@@ -161,7 +161,8 @@ public final class Mailer {
     }
 
 #if compiler(>=5.5.2) && canImport(_Concurrency)
-    @inlinable
+    /// Schedules an email for delivery. Returns when once the email is successfully sent, or throws any error that occurrs during sending.
+    /// - Parameter email: The email to send.
     public func send(email: Email) async throws {
         try await _sendFuture(for: email).get()
     }
