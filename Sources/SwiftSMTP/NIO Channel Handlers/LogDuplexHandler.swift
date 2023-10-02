@@ -1,7 +1,6 @@
 import NIO
 import Foundation
 
-#if compiler(>=5.6)
 /// Describes a logger that logs SMTP messages.
 @preconcurrency
 public protocol SMTPLogger: Sendable {
@@ -10,17 +9,8 @@ public protocol SMTPLogger: Sendable {
     ///                      If the logger does not log the message, the closure should not be executed for performance reasons.
     func logSMTPMessage(_ message: @autoclosure () -> String)
 }
-#else
-/// Describes a logger that logs SMTP messages.
-public protocol SMTPLogger {
-    /// Called whenever an SMTP message should be logged.
-    /// - Parameter message: The message to log as an @autoclosure.
-    ///                      If the logger does not log the message, the closure should not be executed for performance reasons.
-    func logSMTPMessage(_ message: @autoclosure () -> String)
-}
-#endif
 
-/// A simple SMTP logger that logs messages using `print`.
+/// A simple SMTP logger that logs messages using `Swift.print`.
 @frozen
 public struct PrintSMTPLogger: SMTPLogger {
     /// Creates a new PrintSMTPLogger.
@@ -29,19 +19,19 @@ public struct PrintSMTPLogger: SMTPLogger {
 
     @inlinable
     public func logSMTPMessage(_ message: @autoclosure () -> String) {
-        print(message())
+        Swift.print(message())
     }
 }
 
-final class LogDuplexHandler: ChannelDuplexHandler {
+final class LogDuplexHandler: Sendable, ChannelDuplexHandler {
     typealias InboundIn = ByteBuffer
     typealias InboundOut = ByteBuffer
     typealias OutboundIn = ByteBuffer
     typealias OutboundOut = ByteBuffer
 
-    let logger: SMTPLogger
+    let logger: any SMTPLogger
 
-    init(logger: SMTPLogger) {
+    init(logger: any SMTPLogger) {
         self.logger = logger
     }
 

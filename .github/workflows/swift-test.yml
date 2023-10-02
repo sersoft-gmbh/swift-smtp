@@ -1,0 +1,58 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  variables:
+    outputs:
+      max-supported-swift-version: '5.9'
+      xcode-scheme: swift-smtp-Package
+      xcode-platform-version: latest
+      fail-if-codecov-fails: true
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 0
+
+  test-spm:
+    needs: variables
+    strategy:
+      matrix:
+        os: [ macOS, ubuntu ]
+        swift-version-offset: [ 0 ]
+    uses: sersoft-gmbh/oss-common-actions/.github/workflows/swift-test-spm.yml@main
+    with:
+      os: ${{ matrix.os }}
+      max-swift-version: ${{ needs.variables.outputs.max-supported-swift-version }}
+      swift-version-offset: ${{ matrix.swift-version-offset }}
+      fail-if-codecov-fails: ${{ fromJson(needs.variables.outputs.fail-if-codecov-fails) }}
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  test-xcode:
+    needs: variables
+    strategy:
+      matrix:
+        platform:
+          - macOS
+          # - iOS
+          # - iPadOS
+          # - tvOS
+          # - watchOS
+        swift-version-offset: [ 0 ]
+    uses: sersoft-gmbh/oss-common-actions/.github/workflows/swift-test-xcode.yml@main
+    with:
+      xcode-scheme: ${{ needs.variables.outputs.xcode-scheme }}
+      max-swift-version: ${{ needs.variables.outputs.max-supported-swift-version }}
+      swift-version-offset: ${{ matrix.swift-version-offset }}
+      platform: ${{ matrix.platform }}
+      platform-version: ${{ needs.variables.outputs.xcode-platform-version }}
+      fail-if-codecov-fails: ${{ fromJson(needs.variables.outputs.fail-if-codecov-fails) }}
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

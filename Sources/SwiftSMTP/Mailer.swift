@@ -8,8 +8,8 @@ import NIOConcurrencyHelpers
 fileprivate extension Configuration.Server {
     enum EncryptionHandler {
         case none
-        case atBeginning(ChannelHandler)
-        case beforeSMTPHandler(ChannelHandler)
+        case atBeginning(any ChannelHandler)
+        case beforeSMTPHandler(any ChannelHandler)
     }
     
     func createEncryptionHandlers() throws -> EncryptionHandler {
@@ -26,8 +26,8 @@ fileprivate extension Configuration.Server {
 }
 
 /// A Mailer is responsible for opening server connections and dispatching emails.
-public final class Mailer {
-    private struct ScheduledEmail: Hashable {
+public final class Mailer: @unchecked Sendable {
+    private struct ScheduledEmail: Sendable, Hashable {
         private let uuid = UUID()
 
         let email: Email
@@ -37,19 +37,19 @@ public final class Mailer {
             hasher.combine(uuid)
         }
 
-        static func ==(lhs: ScheduledEmail, rhs: ScheduledEmail) -> Bool {
+        static func ==(lhs: Self, rhs: Self) -> Bool {
             lhs.uuid == rhs.uuid
         }
     }
 
     /// The event loop group this mailer uses.
-    public let group: EventLoopGroup
+    public let group: any EventLoopGroup
     /// The configuration used by this mailer.
     public let configuration: Configuration
     /// The maximum number of connections this mailer should open. `nil` if no limit is set.
     public let maxConnections: Int?
     /// The logger to use for logging all transmissions. If `nil` no messages will be logged.
-    public let transmissionLogger: SMTPLogger?
+    public let transmissionLogger: (any SMTPLogger)?
 
     private let connectionsSemaphore: DispatchSemaphore?
     private let senderQueue = DispatchQueue(label: "SMTP Mailer Sender Queue")
@@ -64,10 +64,10 @@ public final class Mailer {
     ///   - configuration: The configuration to use for the new mailer.
     ///   - maxConnections: The maximum number of connections this mailer should open. `nil` if no limit should be set. Defaults to 2.
     ///   - transmissionLogger: The logger to use for logging all transmissions. If `nil` no messages will be logged.
-    public init(group: EventLoopGroup,
+    public init(group: any EventLoopGroup,
                 configuration: Configuration,
                 maxConnections: Int? = 2,
-                transmissionLogger: SMTPLogger? = nil) {
+                transmissionLogger: (any SMTPLogger)? = nil) {
         self.group = group
         self.configuration = configuration
         self.maxConnections = maxConnections
@@ -105,7 +105,7 @@ public final class Mailer {
                     if configuration.featureFlags.contains(.maximumBase64LineLength76) {
                         base64Options.insert(.lineLength76Characters)
                     }
-                    var handlers: Array<ChannelHandler> = [
+                    var handlers: Array<any ChannelHandler> = [
                         ByteToMessageHandler(LineBasedFrameDecoder()),
                         SMTPResponseDecoder(),
                         MessageToByteHandler(SMTPRequestEncoder(base64EncodingOptions: base64Options)),
@@ -129,7 +129,7 @@ public final class Mailer {
         connectionFuture.cascadeFailure(to: email.promise)
         email.promise.futureResult.whenComplete { [weak self] _ in
             connectionFuture.whenSuccess { $0.close(mode: .all, promise: nil) }
-            guard let self = self else { return }
+            guard let self else { return }
             self.bootstraps.withLockedValue { _ = $0.removeValue(forKey: email) }
             self.connectionsSemaphore?.signal()
             self.scheduleMailDelivery()
@@ -156,19 +156,27 @@ public final class Mailer {
     /// - Parameter email: The email to send.
     /// - Returns: A future that will complete with the result of sending the email.
     @inlinable
-    public func send(email: Email) -> EventLoopFuture<Void> {
+    public func send(_ email: Email) -> EventLoopFuture<Void> {
         _sendFuture(for: email)
     }
 
-#if compiler(>=5.5.2) && canImport(_Concurrency)
     /// Schedules an email for delivery. Returns when once the email is successfully sent, or throws any error that occurrs during sending.
     /// - Parameter email: The email to send.
-    public func send(email: Email) async throws {
+    public func send(_ email: Email) async throws {
         try await _sendFuture(for: email).get()
     }
-#endif
 }
 
-#if compiler(>=5.5.2) && canImport(_Concurrency)
-extension Mailer: @unchecked Sendable {}
-#endif
+extension Mailer {
+    /// Schedules an email for delivery. Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.
+    /// - Parameter email: The email to send.
+    /// - Returns: A future that will complete with the result of sending the email.
+    @inlinable
+    @available(*, deprecated, renamed: "send(_:)")
+    public func send(email: Email) -> EventLoopFuture<Void> { send(email) }
+
+    /// Schedules an email for delivery. Returns when once the email is successfully sent, or throws any error that occurrs during sending.
+    /// - Parameter email: The email to send.
+    @available(*, deprecated, renamed: "send(_:)")
+    public func send(email: Email) async throws { try await send(email) }
+}

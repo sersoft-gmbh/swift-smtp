@@ -1,7 +1,7 @@
 import struct NIO.TimeAmount
 
 /// Represents a configuration for sending emails.
-public struct Configuration: Hashable {
+public struct Configuration: Sendable, Hashable {
     /// The server to connect to.
     public var server: Server
     /// The connection time out for connections to the server.
@@ -30,7 +30,7 @@ public struct Configuration: Hashable {
 
 extension Configuration {
     /// Represents a server configuration.
-    public struct Server: Hashable {
+    public struct Server: Sendable, Hashable {
         /// The hostname of the server. Can be a DNS name or an IP.
         public var hostname: String
         /// The port to use for connecting.
@@ -42,7 +42,7 @@ extension Configuration {
         /// - Parameters:
         ///   - hostname: The hostname of the server. Can be a DNS name or an IP.
         ///   - port: The port to use for connecting. Defaults to nil in which case the default port for `encryption` will be used.
-        ///   - encryption: The encryption setting to use for the connection. Defaults to `.plain`.
+        ///   - encryption: The encryption setting to use for the connection. Defaults to ``Configuration/Encryption/plain``.
         public init(hostname: String, port: Int? = nil, encryption: Encryption = .plain) {
             self.hostname = hostname
             self.port = port ?? encryption.defaultPort
@@ -51,7 +51,7 @@ extension Configuration {
     }
 
     /// Represents a set of credentials.
-    public struct Credentials: Hashable {
+    public struct Credentials: Sendable, Hashable {
         /// The username to use for authentication.
         public var username: String
         /// The password to use for authentication.
@@ -69,14 +69,11 @@ extension Configuration {
 
     /// Represents feature flags of the server.
     @frozen
-    public struct FeatureFlags: OptionSet, Hashable {
-        /// inherited
+    public struct FeatureFlags: OptionSet, Hashable, Sendable {
         public typealias RawValue = UInt
 
-        /// inherited
         public let rawValue: RawValue
 
-        /// inherited
         @inlinable
         public init(rawValue: RawValue) {
             self.rawValue = rawValue
@@ -86,12 +83,13 @@ extension Configuration {
 
 extension Configuration.Server {
     /// Represents an encryption setting.
-    /// - plain: No encryption is used.
-    /// - ssl: Normal SSL (TLS) encryption is used.
-    /// - startTLS: A TLS encryption is opened after first connecting with a plain connection.
-    ///             Depending on the `StartTLSMode`, the connection might continue without encryption.
-    public enum Encryption: Hashable {
-        case plain, ssl
+    public enum Encryption: Sendable, Hashable {
+        /// No encryption is used.
+        case plain
+        /// Normal SSL (TLS) encryption is used.
+        case ssl
+        /// A TLS encryption is opened after first connecting with a plain connection.
+        /// Depending on the ``StartTLSMode``, the connection might continue without encryption.
         case startTLS(StartTLSMode)
 
         /// The default port for this encryption:
@@ -110,10 +108,11 @@ extension Configuration.Server {
 
 extension Configuration.Server.Encryption {
     /// Represents a StartTLS mode.
-    /// - always: After sending the StartTLS command, a TLS encryption *has to* be opened. The connection will fail if the server does not support it.
-    /// - ifAvailable: The connection will continue without encryption after the StartTLS command if the server does not support encryption.
-    public enum StartTLSMode: Hashable {
-        case always, ifAvailable
+    public enum StartTLSMode: Sendable, Hashable {
+        /// After sending the StartTLS command, a TLS encryption *has to* be opened. The connection will fail if the server does not support it.
+        case always
+        /// The connection will continue without encryption after the StartTLS command if the server does not support encryption.
+        case ifAvailable
     }
 }
 
@@ -126,11 +125,3 @@ extension Configuration.FeatureFlags {
     /// Whether the base64 line length should be limited to 76 characters.
     public static let maximumBase64LineLength76 = Configuration.FeatureFlags(rawValue: 1 << 11)
 }
-
-#if compiler(>=5.5.2) && canImport(_Concurrency)
-extension Configuration.Server.Encryption.StartTLSMode: Sendable {}
-extension Configuration.Server.Encryption: Sendable {}
-extension Configuration.Server: Sendable {}
-extension Configuration.Credentials: Sendable {}
-extension Configuration: Sendable {}
-#endif

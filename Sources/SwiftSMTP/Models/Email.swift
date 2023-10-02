@@ -1,4 +1,4 @@
-#if compiler(>=5.7) || compiler(<5.6) || !canImport(_Concurrency)
+#if canImport(Darwin)
 import struct Foundation.Data
 #else
 @preconcurrency import Foundation
@@ -6,7 +6,7 @@ import struct Foundation.Data
 import struct NIO.ByteBuffer
 
 /// Represents an email.
-public struct Email: Equatable {
+public struct Email: Sendable, Equatable {
     /// The sender of the email.
     public var sender: Contact
     /// An optional reply-to address.
@@ -75,7 +75,7 @@ public struct Email: Equatable {
 
 extension Email {
     /// Represents an email contact.
-    public struct Contact: Hashable {
+    public struct Contact: Sendable, Hashable {
         /// The (full) name of the contact. Can be `nil`.
         public var name: String?
         /// The email address of the contact.
@@ -103,14 +103,14 @@ extension Email {
     /// - plain: A plain text body with no formatting.
     /// - html: An HTML formatted body.
     /// - universal: A body containing both, plain text and HTML. The recipient's client will determine what to show.
-    public enum Body: Hashable {
+    public enum Body: Sendable, Hashable {
         case plain(String)
         case html(String)
         case universal(plain: String, html: String)
     }
 
     /// Represents an email attachment.
-    public struct Attachment: Equatable {
+    public struct Attachment: Sendable, Equatable {
         /// The (file) name of the attachment.
         public var name: String
         /// The content type of the attachment.
@@ -139,10 +139,3 @@ extension Email {
         }
     }
 }
-
-#if compiler(>=5.5.2) && canImport(_Concurrency)
-extension Email.Contact: Sendable {}
-extension Email.Body: Sendable {}
-extension Email.Attachment: Sendable {}
-extension Email: Sendable {}
-#endif

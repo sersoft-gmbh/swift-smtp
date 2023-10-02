@@ -7,7 +7,7 @@ final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChannelHandler
     typealias OutboundIn = SMTPRequest
     typealias OutboundOut = SMTPRequest
 
-    private enum State {
+    private enum State: Sendable {
         case idle
         case waitingForStartTLSResponse
         case finished

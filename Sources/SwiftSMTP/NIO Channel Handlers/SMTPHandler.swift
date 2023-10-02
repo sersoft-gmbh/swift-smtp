@@ -18,7 +18,7 @@ final class SMTPHandler: ChannelInboundHandler {
     typealias OutboundIn = Email
     typealias OutboundOut = SMTPRequest
 
-    private enum State {
+    private enum State: Sendable {
         case idle(didSend: Bool)
         case helloSent(afterStartTLS: Bool)
         case startTLSSent
@@ -26,7 +26,7 @@ final class SMTPHandler: ChannelInboundHandler {
         case usernameSent(Configuration.Credentials)
         case passwordSent
         case mailFromSent
-        case recipientSent(IndexingIterator<[Email.Contact]>)
+        case recipientSent(IndexingIterator<Array<Email.Contact>>)
         case dataCommandSent
         case mailDataSent
         case quitSent
@@ -118,7 +118,7 @@ final class SMTPHandler: ChannelInboundHandler {
         }
     }
 
-    private func shouldIgnoreError(_ error: Error) -> Bool {
+    private func shouldIgnoreError(_ error: any Error) -> Bool {
         // It seems that if the remote closes the connection, we're left with unclean shutdowns... :/
         guard error as? NIOSSLError == .uncleanShutdown || error is NIOExtrasErrors.LeftOverBytesError else { return false }
         switch state {
@@ -127,7 +127,7 @@ final class SMTPHandler: ChannelInboundHandler {
         }
     }
 
-    func errorCaught(ctx: ChannelHandlerContext, error: Error) {
+    func errorCaught(ctx: ChannelHandlerContext, error: any Error) {
         guard !shouldIgnoreError(error) else { return }
         allDonePromise.fail(error)
     }

@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Debug SwiftSMTPCLI",
+            "program": "${workspaceFolder:swift-smtp}/.build/debug/SwiftSMTPCLI",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-smtp}",
+            "preLaunchTask": "swift: Build Debug SwiftSMTPCLI"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "name": "Release SwiftSMTPCLI",
+            "program": "${workspaceFolder:swift-smtp}/.build/release/SwiftSMTPCLI",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-smtp}",
+            "preLaunchTask": "swift: Build Release SwiftSMTPCLI"
+        }
+    ]
+}

@@ -1,4 +1,4 @@
-enum SMTPRequest {
+enum SMTPRequest: Sendable {
     case sayHello(serverName: String, useEHello: Bool)
     case startTLS
     case beginAuthentication

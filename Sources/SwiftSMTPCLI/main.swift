@@ -45,15 +45,19 @@ let email = Email(sender: .init(name: "SwiftSMTP CLI", emailAddress: "swiftpm@se
 let evg = MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount)
 let mailer = Mailer(group: evg, configuration: config, transmissionLogger: PrintSMTPLogger())
 
+func _send(_ email: Email) async throws {
+    try await mailer.send(email)
+}
+
 do {
     print("Sending mail...")
-    try mailer.send(email: email).wait()
+    try await _send(email)
     print("Successfully sent mail!")
 } catch {
     print("Failed sending: \(error)")
 }
 do {
-    try evg.syncShutdownGracefully()
+    try await evg.shutdownGracefully()
 } catch {
     print("Failed shutdown: \(error)")
 }

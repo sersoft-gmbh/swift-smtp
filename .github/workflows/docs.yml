@@ -1,0 +1,26 @@
+name: Publish Documentation
+
+on:
+  release:
+    types:
+      - published
+      - edited
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate-and-publish-docs:
+    uses: sersoft-gmbh/oss-common-actions/.github/workflows/swift-generate-and-publish-docs.yml@main
+    with:
+      os: ubuntu
+      swift-version: '5.9'
+      organisation: ${{ github.repository_owner }}
+      repository: ${{ github.event.repository.name }}
+      pages-branch: gh-pages

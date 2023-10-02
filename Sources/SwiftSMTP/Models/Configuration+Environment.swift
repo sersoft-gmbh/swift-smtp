@@ -15,10 +15,10 @@ fileprivate func getEnvValue(forKey key: String) -> String? {
 extension Configuration.Server.Encryption {
     /// Attempts to create an encryption from the environment variable `SMTP_ENCRYPTION`.
     /// Possible values (case insensitive):
-    /// - "plain": `.plain`
-    /// - "ssl": `.ssl`
-    /// - "starttls": `.startTLS(.ifAvailable)`
-    /// - "starttls_always": `.startTLS(.always)`
+    /// - "plain": ``Configuration/Server/Encryption/plain``
+    /// - "ssl": ``Configuration/Server/Encryption/ssl``
+    /// - "starttls": ``Configuration/Server/Encryption/startTLS(_:)`` with ``Configuration/Server/Encryption/StartTLSMode/ifAvailable``
+    /// - "starttls_always": ``Configuration/Server/Encryption/startTLS(_:)`` with ``Configuration/Server/Encryption/StartTLSMode/always``
     /// If the environment variable is not set or is an unsupported value, `nil` is returned.
     public static func fromEnvironment() -> Configuration.Server.Encryption? {
         switch getEnvValue(forKey: "SMTP_ENCRYPTION")?.lowercased() {
@@ -36,9 +36,9 @@ extension Configuration.Server {
     /// The following environment variables are read:
     /// - `SMTP_HOST`: The hostname to use or `127.0.0.1` if none is set.
     /// - `SMTP_PORT`: The port to use. The encryption's default will be used if not set or not a valid integer.
-    /// The encryption will also be read from the environment. If none is set, the default defined in `self.init(hostname:port:encryption:)` will be used.
-    /// - SeeAlso: `Encryption.fromEnvironment()`
-    /// - SeeAlso: `Configuration.Server.init(hostname:port:encryption:)`
+    /// The encryption will also be read from the environment. If none is set, the default defined in ``Configuration/Server/init(hostname:port:encryption:)`` will be used.
+    /// - SeeAlso: ``Encryption/fromEnvironment()``
+    /// - SeeAlso: ``Configuration/Server/init(hostname:port:encryption:)``
     public static func fromEnvironment() -> Configuration.Server {
         let hostname = getEnvValue(forKey: "SMTP_HOST") ?? "127.0.0.1"
         let port = getEnvValue(forKey: "SMTP_PORT").flatMap(Int.init)
@@ -67,9 +67,9 @@ extension Configuration.Credentials {
 extension Configuration.FeatureFlags {
     /// Creates the feature flags from environment variables.
     /// The following environment variables are used to set the corresponding feature flags (env var = 1 will set the flag):
-    /// - `SMTP_USE_ESMTP`: Controls the `.useESMTP` flag.
-    /// - `SMTP_MAX_BASE64_LINE_64`: Controls the `.maximumBase64LineLength64` flag.
-    /// - `SMTP_MAX_BASE64_LINE_76`: Controls the `.maximumBase64LineLength76` flag.
+    /// - `SMTP_USE_ESMTP`: Controls the ``Configuration/FeatureFlags/useESMTP`` flag.
+    /// - `SMTP_MAX_BASE64_LINE_64`: Controls the ``Configuration/FeatureFlags/maximumBase64LineLength64`` flag.
+    /// - `SMTP_MAX_BASE64_LINE_76`: Controls the ``Configuration/FeatureFlags/maximumBase64LineLength76`` flag.
     public static func fromEnvironment() -> Configuration.FeatureFlags {
         var flags: Configuration.FeatureFlags = []
         if getEnvValue(forKey: "SMTP_USE_ESMTP") == "1" {
@@ -91,17 +91,17 @@ extension Configuration {
     /// - `SMTP_HOST`: The hostname to use or `127.0.0.1` if none is set.
     /// - `SMTP_PORT`: The port to use. The encryption's default will be used if not set or not a valid integer.
     /// - `SMTP_ENCRYPTION`: The encyrption to use.
-    /// - `SMTP_TIMEOUT`: The connection time out in seconds. If not set or not a valid 64-bit integer, the default defined in `self.init(server:connectionTimeOut:credentials:)` will be used.
+    /// - `SMTP_TIMEOUT`: The connection time out in seconds. If not set or not a valid 64-bit integer, the default defined in ``Configuration/init(server:connectionTimeOut:credentials:)`` will be used.
     /// - `SMTP_USERNAME`: The username to use.
     /// - `SMTP_PASSWORD`: The password to use.
-    /// - `SMTP_USE_ESMTP`: If set to 1, this will add `.useESMTP` to `featureFlags`.
-    /// - `SMTP_MAX_BASE64_LINE_64`: If set to 1, this will add `.maximumBase64LineLength64` to `featureFlags`.
-    /// - `SMTP_MAX_BASE64_LINE_76`: If set to 1, this will add `.maximumBase64LineLength76` to `featureFlags`.
+    /// - `SMTP_USE_ESMTP`: If set to 1, this will add ``Configuration/FeatureFlags/useESMTP`` to ``Configuration/featureFlags``.
+    /// - `SMTP_MAX_BASE64_LINE_64`: If set to 1, this will add ``Configuration/FeatureFlags/maximumBase64LineLength64`` to ``Configuration/featureFlags``.
+    /// - `SMTP_MAX_BASE64_LINE_76`: If set to 1, this will add ``Configuration/FeatureFlags/maximumBase64LineLength76`` to ``Configuration/featureFlags``.
     ///
-    /// - SeeAlso: `Configuration.Server.fromEnvironment()`
-    /// - SeeAlso: `Configuration.Credentials.fromEnvironment()`
-    /// - SeeAlso: `Configuration.FeatureFlags.fromEnvironment()`
-    /// - SeeAlso: `Configuration.init(server:connectionTimeOut:credentials:featureFlags:)`
+    /// - SeeAlso: ``Configuration/Server/fromEnvironment()``
+    /// - SeeAlso: ``Configuration/Credentials/fromEnvironment()``
+    /// - SeeAlso: ``Configuration/FeatureFlags/fromEnvironment()``
+    /// - SeeAlso: ``Configuration/init(server:connectionTimeOut:credentials:featureFlags:)``
     public static func fromEnvironment() -> Configuration {
         if let timeOutSeconds = getEnvValue(forKey: "SMTP_TIMEOUT").flatMap(Int64.init) {
             return self.init(server: .fromEnvironment(),
