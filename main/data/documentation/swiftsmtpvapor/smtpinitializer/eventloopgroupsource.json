@@ -1,0 +1,270 @@
+{
+  "abstract" : [
+    {
+      "text" : "The source for the event loop group for the Mailer.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer\/eventLoopGroupSource"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:14SwiftSMTPVapor15SMTPInitializerV20eventLoopGroupSourceAA0a9SMTPEventefG0Ovp",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "var"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "eventLoopGroupSource"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:14SwiftSMTPVapor0A24SMTPEventLoopGroupSourceO",
+        "text" : "SwiftSMTPEventLoopGroupSource"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTPVapor"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "eventLoopGroupSource"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "var"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "eventLoopGroupSource"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:14SwiftSMTPVapor0A24SMTPEventLoopGroupSourceO",
+              "text" : "SwiftSMTPEventLoopGroupSource"
+            },
+            {
+              "kind" : "text",
+              "text" : " { "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "get"
+            },
+            {
+              "kind" : "text",
+              "text" : " }"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtpvapor\/smtpinitializer\/eventloopgroupsource"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTPVapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SMTPInitializer": {
+  "abstract" : [
+    {
+      "text" : "Initializes the SwiftSMTP configuration on the application on boot.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "You can add it to your application in ",
+      "type" : "text"
+    },
+    {
+      "code" : "configure",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " by using ",
+      "type" : "text"
+    },
+    {
+      "code" : "app.lifecycle.use(SMTPInitializer(...))",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SMTPInitializer"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SMTPInitializer"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "SMTPInitializer",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/smtpinitializer"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SMTPInitializer/eventLoopGroupSource": {
+  "abstract" : [
+    {
+      "text" : "The source for the event loop group for the Mailer.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "eventLoopGroupSource"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:14SwiftSMTPVapor0A24SMTPEventLoopGroupSourceO",
+      "text" : "SwiftSMTPEventLoopGroupSource"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer\/eventLoopGroupSource",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "eventLoopGroupSource",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/smtpinitializer\/eventloopgroupsource"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPEventLoopGroupSource": {
+  "abstract" : [
+    {
+      "text" : "Represents the source for the event loop group used by the Mailer.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPEventLoopGroupSource"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPEventLoopGroupSource"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "SwiftSMTPEventLoopGroupSource",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpeventloopgroupsource"
+}
+}
+}
