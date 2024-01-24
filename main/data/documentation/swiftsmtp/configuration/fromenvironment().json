@@ -284,6 +284,41 @@
                 {
                   "inlineContent" : [
                     {
+                      "code" : "SMTP_ALL_BASE64",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ": If set to 1, this will add ",
+                      "type" : "text"
+                    },
+                    {
+                      "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/base64EncodeAllMessages",
+                      "isActive" : true,
+                      "type" : "reference"
+                    },
+                    {
+                      "text" : " to ",
+                      "type" : "text"
+                    },
+                    {
+                      "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/featureFlags-swift.property",
+                      "isActive" : true,
+                      "type" : "reference"
+                    },
+                    {
+                      "text" : ".",
+                      "type" : "text"
+                    }
+                  ],
+                  "type" : "paragraph"
+                }
+              ]
+            },
+            {
+              "content" : [
+                {
+                  "inlineContent" : [
+                    {
                       "code" : "SMTP_MAX_BASE64_LINE_64",
                       "type" : "codeVoice"
                     },
@@ -572,6 +607,60 @@
   "title" : "fromEnvironment()",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/configuration\/credentials-swift.struct\/fromenvironment()"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/base64EncodeAllMessages": {
+  "abstract" : [
+    {
+      "text" : "Whether all messages sent to the server should be using base64 (transfer) encoding. Use further options to customize the line length.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "base64EncodeAllMessages"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV",
+      "text" : "FeatureFlags"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/base64EncodeAllMessages",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "base64EncodeAllMessages",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/base64encodeallmessages"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/fromEnvironment()": {
   "abstract" : [

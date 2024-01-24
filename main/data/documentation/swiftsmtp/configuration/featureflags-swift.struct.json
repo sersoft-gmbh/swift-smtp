@@ -133,6 +133,7 @@
     },
     {
       "identifiers" : [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/base64EncodeAllMessages",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/maximumBase64LineLength64",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/maximumBase64LineLength76",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/useESMTP"
@@ -338,6 +339,60 @@
   "title" : "SetAlgebra Implementations",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/setalgebra-implementations"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/base64EncodeAllMessages": {
+  "abstract" : [
+    {
+      "text" : "Whether all messages sent to the server should be using base64 (transfer) encoding. Use further options to customize the line length.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "base64EncodeAllMessages"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV",
+      "text" : "FeatureFlags"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/base64EncodeAllMessages",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "base64EncodeAllMessages",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/base64encodeallmessages"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/fromEnvironment()": {
   "abstract" : [

@@ -194,6 +194,11 @@
                     "type" : "groupMarker"
                   },
                   {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/base64encodeallmessages",
+                    "title" : "static let base64EncodeAllMessages: Configuration.FeatureFlags",
+                    "type" : "property"
+                  },
+                  {
                     "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/maximumbase64linelength64",
                     "title" : "static let maximumBase64LineLength64: Configuration.FeatureFlags",
                     "type" : "property"
