@@ -68,12 +68,16 @@ extension Configuration.FeatureFlags {
     /// Creates the feature flags from environment variables.
     /// The following environment variables are used to set the corresponding feature flags (env var = 1 will set the flag):
     /// - `SMTP_USE_ESMTP`: Controls the ``Configuration/FeatureFlags/useESMTP`` flag.
+    /// - `SMTP_ALL_BASE64`: Controls the ``Configuration/FeatureFlags/base64EncodeAllMessages`` flag.
     /// - `SMTP_MAX_BASE64_LINE_64`: Controls the ``Configuration/FeatureFlags/maximumBase64LineLength64`` flag.
     /// - `SMTP_MAX_BASE64_LINE_76`: Controls the ``Configuration/FeatureFlags/maximumBase64LineLength76`` flag.
     public static func fromEnvironment() -> Configuration.FeatureFlags {
         var flags: Configuration.FeatureFlags = []
         if getEnvValue(forKey: "SMTP_USE_ESMTP") == "1" {
             flags.insert(.useESMTP)
+        }
+        if getEnvValue(forKey: "SMTP_ALL_BASE64") == "1" {
+            flags.insert(.base64EncodeAllMessages)
         }
         if getEnvValue(forKey: "SMTP_MAX_BASE64_LINE_64") == "1" {
             flags.insert(.maximumBase64LineLength64)
@@ -95,6 +99,7 @@ extension Configuration {
     /// - `SMTP_USERNAME`: The username to use.
     /// - `SMTP_PASSWORD`: The password to use.
     /// - `SMTP_USE_ESMTP`: If set to 1, this will add ``Configuration/FeatureFlags/useESMTP`` to ``Configuration/featureFlags``.
+    /// - `SMTP_ALL_BASE64`: If set to 1, this will add ``Configuration/FeatureFlags/base64EncodeAllMessages`` to ``Configuration/featureFlags``.
     /// - `SMTP_MAX_BASE64_LINE_64`: If set to 1, this will add ``Configuration/FeatureFlags/maximumBase64LineLength64`` to ``Configuration/featureFlags``.
     /// - `SMTP_MAX_BASE64_LINE_76`: If set to 1, this will add ``Configuration/FeatureFlags/maximumBase64LineLength76`` to ``Configuration/featureFlags``.
     ///

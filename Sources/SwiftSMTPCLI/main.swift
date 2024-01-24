@@ -2,9 +2,13 @@ import Foundation
 import NIO
 import SwiftSMTP
 
-let config = Configuration(server: .init(hostname: "mail.server.com", port: 587, encryption: .startTLS(.ifAvailable)),
+let config = Configuration(server: .init(hostname: "mail.server.com", 
+                                         port: 587,
+                                         encryption: .startTLS(.ifAvailable)),
                            connectionTimeOut: .seconds(5),
-                           credentials: .init(username: "user", password: "password"))
+                           credentials: .init(username: "user",
+                                              password: "password"),
+                           featureFlags: [.base64EncodeAllMessages, .maximumBase64LineLength64])
 
 let plainText = """
 Hi there,
@@ -15,7 +19,7 @@ Have a nice day!
 """
 let htmlText = """
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -28,7 +32,7 @@ let htmlText = """
 </body>
 </html>
 """
-let email = Email(sender: .init(name: "SwiftSMTP CLI", emailAddress: "swiftpm@server.com"),
+let email = Email(sender: .init(name: "SwiftSMTP CLI", emailAddress: "swiftsmtp@server.com"),
                   replyTo: nil,
                   recipients: [
                     .init(name: "Test Recipient", emailAddress: "tester@server.com"),
@@ -40,8 +44,9 @@ let email = Email(sender: .init(name: "SwiftSMTP CLI", emailAddress: "swiftpm@se
                   attachments: [
                     .init(name: "Test.txt",
                           contentType: #"text/plain; charset="UTF-8""#,
-                          data: Data("This is simple text file\nwith two lines".utf8))
+                          data: Data("This is simple text file\nwith two lines...".utf8))
                   ])
+
 let evg = MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount)
 let mailer = Mailer(group: evg, configuration: config, transmissionLogger: PrintSMTPLogger())
 

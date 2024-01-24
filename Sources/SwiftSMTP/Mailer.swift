@@ -108,7 +108,10 @@ public final class Mailer: @unchecked Sendable {
                     var handlers: Array<any ChannelHandler> = [
                         ByteToMessageHandler(LineBasedFrameDecoder()),
                         SMTPResponseDecoder(),
-                        MessageToByteHandler(SMTPRequestEncoder(base64EncodingOptions: base64Options)),
+                        MessageToByteHandler(SMTPRequestEncoder(
+                            base64EncodeAllMessages: configuration.featureFlags.contains(.base64EncodeAllMessages),
+                            base64EncodingOptions: base64Options
+                        )),
                         SMTPHandler(configuration: configuration, email: email.email, allDonePromise: email.promise),
                     ]
                     if let logger = transmissionLogger {
