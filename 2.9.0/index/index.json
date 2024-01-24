@@ -1,0 +1,1016 @@
+{
+  "interfaceLanguages" : {
+    "swift" : [
+      {
+        "children" : [
+          {
+            "title" : "Classes",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/mailer\/init(group:configuration:maxconnections:transmissionlogger:)",
+                "title" : "init(group: EventLoopGroup, configuration: Configuration, maxConnections: Int?, transmissionLogger: (SMTPLogger)?)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/mailer\/configuration",
+                "title" : "let configuration: Configuration",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/mailer\/group",
+                "title" : "let group: EventLoopGroup",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/mailer\/maxconnections",
+                "title" : "let maxConnections: Int?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/mailer\/transmissionlogger",
+                "title" : "let transmissionLogger: (SMTPLogger)?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/mailer\/send(_:)-3qwba",
+                "title" : "func send(Email) -> EventLoopFuture<Void>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/mailer\/send(_:)-4jqid",
+                "title" : "func send(Email) async throws",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/mailer\/send(email:)-821mq",
+                "title" : "func send(email: Email) -> EventLoopFuture<Void>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/mailer\/send(email:)-8v7m5",
+                "title" : "func send(email: Email) async throws",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/swiftsmtp\/mailer",
+            "title" : "Mailer",
+            "type" : "class"
+          },
+          {
+            "title" : "Protocols",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/smtplogger\/logsmtpmessage(_:)",
+                "title" : "func logSMTPMessage(() -> String)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/swiftsmtp\/smtplogger",
+            "title" : "SMTPLogger",
+            "type" : "protocol"
+          },
+          {
+            "title" : "Structures",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Structures",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Initializers",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/credentials-swift.struct\/init(username:password:)",
+                    "title" : "init(username: String, password: String)",
+                    "type" : "init"
+                  },
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/credentials-swift.struct\/password",
+                    "title" : "var password: String",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/credentials-swift.struct\/username",
+                    "title" : "var username: String",
+                    "type" : "property"
+                  },
+                  {
+                    "title" : "Type Methods",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/credentials-swift.struct\/fromenvironment()",
+                    "title" : "static func fromEnvironment() -> Configuration.Credentials?",
+                    "type" : "method"
+                  },
+                  {
+                    "title" : "Default Implementations",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Operators",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/credentials-swift.struct\/!=(_:_:)",
+                        "title" : "static func != (Self, Self) -> Bool",
+                        "type" : "op"
+                      }
+                    ],
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/credentials-swift.struct\/equatable-implementations",
+                    "title" : "Equatable Implementations",
+                    "type" : "symbol"
+                  }
+                ],
+                "path" : "\/documentation\/swiftsmtp\/configuration\/credentials-swift.struct",
+                "title" : "Configuration.Credentials",
+                "type" : "struct"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Initializers",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/init(rawvalue:)",
+                    "title" : "init(rawValue: Configuration.FeatureFlags.RawValue)",
+                    "type" : "init"
+                  },
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/rawvalue-swift.property",
+                    "title" : "let rawValue: Configuration.FeatureFlags.RawValue",
+                    "type" : "property"
+                  },
+                  {
+                    "title" : "Type Aliases",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/rawvalue-swift.typealias",
+                    "title" : "Configuration.FeatureFlags.RawValue",
+                    "type" : "typealias"
+                  },
+                  {
+                    "title" : "Type Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/base64encodeallmessages",
+                    "title" : "static let base64EncodeAllMessages: Configuration.FeatureFlags",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/maximumbase64linelength64",
+                    "title" : "static let maximumBase64LineLength64: Configuration.FeatureFlags",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/maximumbase64linelength76",
+                    "title" : "static let maximumBase64LineLength76: Configuration.FeatureFlags",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/useesmtp",
+                    "title" : "static let useESMTP: Configuration.FeatureFlags",
+                    "type" : "property"
+                  },
+                  {
+                    "title" : "Type Methods",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/fromenvironment()",
+                    "title" : "static func fromEnvironment() -> Configuration.FeatureFlags",
+                    "type" : "method"
+                  },
+                  {
+                    "title" : "Default Implementations",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Operators",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/!=(_:_:)",
+                        "title" : "static func != (Self, Self) -> Bool",
+                        "type" : "op"
+                      }
+                    ],
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/equatable-implementations",
+                    "title" : "Equatable Implementations",
+                    "type" : "symbol"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Initializers",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/init()",
+                        "title" : "init()",
+                        "type" : "init"
+                      },
+                      {
+                        "title" : "Instance Methods",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/contains(_:)",
+                        "title" : "func contains(Self) -> Bool",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/formintersection(_:)",
+                        "title" : "func formIntersection(Self)",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/formsymmetricdifference(_:)",
+                        "title" : "func formSymmetricDifference(Self)",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/formunion(_:)",
+                        "title" : "func formUnion(Self)",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/insert(_:)",
+                        "title" : "func insert(Self.Element) -> (inserted: Bool, memberAfterInsert: Self.Element)",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/intersection(_:)",
+                        "title" : "func intersection(Self) -> Self",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/remove(_:)",
+                        "title" : "func remove(Self.Element) -> Self.Element?",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/symmetricdifference(_:)",
+                        "title" : "func symmetricDifference(Self) -> Self",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/union(_:)",
+                        "title" : "func union(Self) -> Self",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/update(with:)",
+                        "title" : "func update(with: Self.Element) -> Self.Element?",
+                        "type" : "method"
+                      }
+                    ],
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/optionset-implementations",
+                    "title" : "OptionSet Implementations",
+                    "type" : "symbol"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Instance Properties",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/hashvalue",
+                        "title" : "var hashValue: Int",
+                        "type" : "property"
+                      },
+                      {
+                        "title" : "Instance Methods",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/hash(into:)",
+                        "title" : "func hash(into: inout Hasher)",
+                        "type" : "method"
+                      }
+                    ],
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/rawrepresentable-implementations",
+                    "title" : "RawRepresentable Implementations",
+                    "type" : "symbol"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Initializers",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/init(_:)",
+                        "title" : "init<S>(S)",
+                        "type" : "init"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/init(arrayliteral:)",
+                        "title" : "init(arrayLiteral: Self.Element...)",
+                        "type" : "init"
+                      },
+                      {
+                        "title" : "Instance Properties",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/isempty",
+                        "title" : "var isEmpty: Bool",
+                        "type" : "property"
+                      },
+                      {
+                        "title" : "Instance Methods",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/isdisjoint(with:)",
+                        "title" : "func isDisjoint(with: Self) -> Bool",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/isstrictsubset(of:)",
+                        "title" : "func isStrictSubset(of: Self) -> Bool",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/isstrictsuperset(of:)",
+                        "title" : "func isStrictSuperset(of: Self) -> Bool",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/issubset(of:)",
+                        "title" : "func isSubset(of: Self) -> Bool",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/issuperset(of:)",
+                        "title" : "func isSuperset(of: Self) -> Bool",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/subtract(_:)",
+                        "title" : "func subtract(Self)",
+                        "type" : "method"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/subtracting(_:)",
+                        "title" : "func subtracting(Self) -> Self",
+                        "type" : "method"
+                      }
+                    ],
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/setalgebra-implementations",
+                    "title" : "SetAlgebra Implementations",
+                    "type" : "symbol"
+                  }
+                ],
+                "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct",
+                "title" : "Configuration.FeatureFlags",
+                "type" : "struct"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Initializers",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/init(hostname:port:encryption:)",
+                    "title" : "init(hostname: String, port: Int?, encryption: Configuration.Server.Encryption)",
+                    "type" : "init"
+                  },
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.property",
+                    "title" : "var encryption: Configuration.Server.Encryption",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/hostname",
+                    "title" : "var hostname: String",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/port",
+                    "title" : "var port: Int",
+                    "type" : "property"
+                  },
+                  {
+                    "title" : "Type Methods",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/fromenvironment()",
+                    "title" : "static func fromEnvironment() -> Configuration.Server",
+                    "type" : "method"
+                  },
+                  {
+                    "title" : "Enumerations",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Enumeration Cases",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/plain",
+                        "title" : "case plain",
+                        "type" : "case"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/ssl",
+                        "title" : "case ssl",
+                        "type" : "case"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/starttls(_:)",
+                        "title" : "case startTLS(Configuration.Server.Encryption.StartTLSMode)",
+                        "type" : "case"
+                      },
+                      {
+                        "title" : "Instance Properties",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/defaultport",
+                        "title" : "var defaultPort: Int",
+                        "type" : "property"
+                      },
+                      {
+                        "title" : "Type Methods",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/fromenvironment()",
+                        "title" : "static func fromEnvironment() -> Configuration.Server.Encryption?",
+                        "type" : "method"
+                      },
+                      {
+                        "title" : "Enumerations",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "title" : "Enumeration Cases",
+                            "type" : "groupMarker"
+                          },
+                          {
+                            "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/starttlsmode\/always",
+                            "title" : "case always",
+                            "type" : "case"
+                          },
+                          {
+                            "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/starttlsmode\/ifavailable",
+                            "title" : "case ifAvailable",
+                            "type" : "case"
+                          },
+                          {
+                            "title" : "Default Implementations",
+                            "type" : "groupMarker"
+                          },
+                          {
+                            "children" : [
+                              {
+                                "title" : "Operators",
+                                "type" : "groupMarker"
+                              },
+                              {
+                                "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/starttlsmode\/!=(_:_:)",
+                                "title" : "static func != (Self, Self) -> Bool",
+                                "type" : "op"
+                              }
+                            ],
+                            "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/starttlsmode\/equatable-implementations",
+                            "title" : "Equatable Implementations",
+                            "type" : "symbol"
+                          }
+                        ],
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/starttlsmode",
+                        "title" : "Configuration.Server.Encryption.StartTLSMode",
+                        "type" : "enum"
+                      },
+                      {
+                        "title" : "Default Implementations",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "title" : "Operators",
+                            "type" : "groupMarker"
+                          },
+                          {
+                            "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/!=(_:_:)",
+                            "title" : "static func != (Self, Self) -> Bool",
+                            "type" : "op"
+                          }
+                        ],
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/equatable-implementations",
+                        "title" : "Equatable Implementations",
+                        "type" : "symbol"
+                      }
+                    ],
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum",
+                    "title" : "Configuration.Server.Encryption",
+                    "type" : "enum"
+                  },
+                  {
+                    "title" : "Default Implementations",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Operators",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/!=(_:_:)",
+                        "title" : "static func != (Self, Self) -> Bool",
+                        "type" : "op"
+                      }
+                    ],
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/equatable-implementations",
+                    "title" : "Equatable Implementations",
+                    "type" : "symbol"
+                  }
+                ],
+                "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct",
+                "title" : "Configuration.Server",
+                "type" : "struct"
+              },
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/configuration\/init(server:connectiontimeout:credentials:featureflags:)",
+                "title" : "init(server: Configuration.Server, connectionTimeOut: TimeAmount, credentials: Configuration.Credentials?, featureFlags: Configuration.FeatureFlags)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/configuration\/connectiontimeout",
+                "title" : "var connectionTimeOut: TimeAmount",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/configuration\/credentials-swift.property",
+                "title" : "var credentials: Configuration.Credentials?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.property",
+                "title" : "var featureFlags: Configuration.FeatureFlags",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/configuration\/server-swift.property",
+                "title" : "var server: Configuration.Server",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/configuration\/fromenvironment()",
+                "title" : "static func fromEnvironment() -> Configuration",
+                "type" : "method"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Operators",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/configuration\/!=(_:_:)",
+                    "title" : "static func != (Self, Self) -> Bool",
+                    "type" : "op"
+                  }
+                ],
+                "path" : "\/documentation\/swiftsmtp\/configuration\/equatable-implementations",
+                "title" : "Equatable Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/swiftsmtp\/configuration",
+            "title" : "Configuration",
+            "type" : "struct"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Structures",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Initializers",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/attachment\/init(name:contenttype:contents:)",
+                    "title" : "init(name: String, contentType: String, contents: ByteBuffer)",
+                    "type" : "init"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/attachment\/init(name:contenttype:data:)",
+                    "title" : "init(name: String, contentType: String, data: Data)",
+                    "type" : "init"
+                  },
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/attachment\/contenttype",
+                    "title" : "var contentType: String",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/attachment\/data",
+                    "title" : "var data: Data",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/attachment\/name",
+                    "title" : "var name: String",
+                    "type" : "property"
+                  },
+                  {
+                    "title" : "Default Implementations",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Operators",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/email\/attachment\/!=(_:_:)",
+                        "title" : "static func != (Self, Self) -> Bool",
+                        "type" : "op"
+                      }
+                    ],
+                    "path" : "\/documentation\/swiftsmtp\/email\/attachment\/equatable-implementations",
+                    "title" : "Equatable Implementations",
+                    "type" : "symbol"
+                  }
+                ],
+                "path" : "\/documentation\/swiftsmtp\/email\/attachment",
+                "title" : "Email.Attachment",
+                "type" : "struct"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Initializers",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/contact\/init(name:emailaddress:)",
+                    "title" : "init(name: String?, emailAddress: String)",
+                    "type" : "init"
+                  },
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/contact\/emailaddress",
+                    "title" : "var emailAddress: String",
+                    "type" : "property"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/contact\/name",
+                    "title" : "var name: String?",
+                    "type" : "property"
+                  },
+                  {
+                    "title" : "Default Implementations",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Operators",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/email\/contact\/!=(_:_:)",
+                        "title" : "static func != (Self, Self) -> Bool",
+                        "type" : "op"
+                      }
+                    ],
+                    "path" : "\/documentation\/swiftsmtp\/email\/contact\/equatable-implementations",
+                    "title" : "Equatable Implementations",
+                    "type" : "symbol"
+                  }
+                ],
+                "path" : "\/documentation\/swiftsmtp\/email\/contact",
+                "title" : "Email.Contact",
+                "type" : "struct"
+              },
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/email\/init(sender:replyto:recipients:cc:bcc:subject:body:attachments:)",
+                "title" : "init(sender: Email.Contact, replyTo: Email.Contact?, recipients: Array<Email.Contact>, cc: Array<Email.Contact>, bcc: Array<Email.Contact>, subject: String, body: Email.Body, attachments: Array<Email.Attachment>)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/email\/attachments",
+                "title" : "var attachments: Array<Email.Attachment>",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/email\/bcc",
+                "title" : "var bcc: Array<Email.Contact>",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/email\/body-swift.property",
+                "title" : "var body: Email.Body",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/email\/cc",
+                "title" : "var cc: Array<Email.Contact>",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/email\/recipients",
+                "title" : "var recipients: Array<Email.Contact>",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/email\/replyto",
+                "title" : "var replyTo: Email.Contact?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/email\/sender",
+                "title" : "var sender: Email.Contact",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/email\/subject",
+                "title" : "var subject: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Enumerations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Enumeration Cases",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/body-swift.enum\/html(_:)",
+                    "title" : "case html(String)",
+                    "type" : "case"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/body-swift.enum\/plain(_:)",
+                    "title" : "case plain(String)",
+                    "type" : "case"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/body-swift.enum\/universal(plain:html:)",
+                    "title" : "case universal(plain: String, html: String)",
+                    "type" : "case"
+                  },
+                  {
+                    "title" : "Default Implementations",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Operators",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/email\/body-swift.enum\/!=(_:_:)",
+                        "title" : "static func != (Self, Self) -> Bool",
+                        "type" : "op"
+                      }
+                    ],
+                    "path" : "\/documentation\/swiftsmtp\/email\/body-swift.enum\/equatable-implementations",
+                    "title" : "Equatable Implementations",
+                    "type" : "symbol"
+                  }
+                ],
+                "path" : "\/documentation\/swiftsmtp\/email\/body-swift.enum",
+                "title" : "Email.Body",
+                "type" : "enum"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Operators",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/!=(_:_:)",
+                    "title" : "static func != (Self, Self) -> Bool",
+                    "type" : "op"
+                  }
+                ],
+                "path" : "\/documentation\/swiftsmtp\/email\/equatable-implementations",
+                "title" : "Equatable Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/swiftsmtp\/email",
+            "title" : "Email",
+            "type" : "struct"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/malformedsmtpmessageerror\/description",
+                "title" : "var description: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/malformedsmtpmessageerror\/localizeddescription",
+                    "title" : "var localizedDescription: String",
+                    "type" : "property"
+                  }
+                ],
+                "path" : "\/documentation\/swiftsmtp\/malformedsmtpmessageerror\/error-implementations",
+                "title" : "Error Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/swiftsmtp\/malformedsmtpmessageerror",
+            "title" : "MalformedSMTPMessageError",
+            "type" : "struct"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/printsmtplogger\/init()",
+                "title" : "init()",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/printsmtplogger\/logsmtpmessage(_:)",
+                "title" : "func logSMTPMessage(() -> String)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/swiftsmtp\/printsmtplogger",
+            "title" : "PrintSMTPLogger",
+            "type" : "struct"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/servererror\/description",
+                "title" : "var description: String",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/swiftsmtp\/servererror\/servermessage",
+                "title" : "let serverMessage: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Default Implementations",
+                "type" : "groupMarker"
+              },
+              {
+                "children" : [
+                  {
+                    "title" : "Instance Properties",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/servererror\/localizeddescription",
+                    "title" : "var localizedDescription: String",
+                    "type" : "property"
+                  }
+                ],
+                "path" : "\/documentation\/swiftsmtp\/servererror\/error-implementations",
+                "title" : "Error Implementations",
+                "type" : "symbol"
+              }
+            ],
+            "path" : "\/documentation\/swiftsmtp\/servererror",
+            "title" : "ServerError",
+            "type" : "struct"
+          }
+        ],
+        "path" : "\/documentation\/swiftsmtp",
+        "title" : "SwiftSMTP",
+        "type" : "module"
+      }
+    ]
+  },
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 1,
+    "patch" : 1
+  }
+}
