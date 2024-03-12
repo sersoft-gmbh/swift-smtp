@@ -107,8 +107,8 @@ final class SMTPHandler: ChannelInboundHandler {
             state = .quitSent
         case .quitSent:
             let promise = context.eventLoop.makePromise(of: Void.self)
-            promise.futureResult.flatMapErrorThrowing {
-                guard !self.shouldIgnoreError($0) else { return }
+            promise.futureResult.flatMapErrorThrowing { [state] in
+                guard !Self.shouldIgnoreError($0, forState: state) else { return }
                 throw $0
             }.cascade(to: allDonePromise)
             context.close(promise: promise)
@@ -118,7 +118,7 @@ final class SMTPHandler: ChannelInboundHandler {
         }
     }
 
-    private func shouldIgnoreError(_ error: any Error) -> Bool {
+    private static func shouldIgnoreError(_ error: any Error, forState state: State) -> Bool {
         // It seems that if the remote closes the connection, we're left with unclean shutdowns... :/
         guard error as? NIOSSLError == .uncleanShutdown || error is NIOExtrasErrors.LeftOverBytesError else { return false }
         switch state {
@@ -128,7 +128,7 @@ final class SMTPHandler: ChannelInboundHandler {
     }
 
     func errorCaught(ctx: ChannelHandlerContext, error: any Error) {
-        guard !shouldIgnoreError(error) else { return }
+        guard !Self.shouldIgnoreError(error, forState: state) else { return }
         allDonePromise.fail(error)
     }
 }

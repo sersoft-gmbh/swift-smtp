@@ -12,7 +12,7 @@ permissions:
 jobs:
   variables:
     outputs:
-      max-supported-swift-version: '5.9'
+      max-supported-swift-version: '5.10'
       xcode-scheme: swift-smtp-Package
       xcode-platform-version: latest
       fail-if-codecov-fails: true
@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         os: [ macOS, ubuntu ]
-        swift-version-offset: [ 0 ]
+        swift-version-offset: [ 0, 1 ]
     uses: sersoft-gmbh/oss-common-actions/.github/workflows/swift-test-spm.yml@main
     with:
       os: ${{ matrix.os }}
@@ -45,7 +45,8 @@ jobs:
           # - iPadOS
           # - tvOS
           # - watchOS
-        swift-version-offset: [ 0 ]
+          # - visionOS
+        swift-version-offset: [ 0, 1 ]
     uses: sersoft-gmbh/oss-common-actions/.github/workflows/swift-test-xcode.yml@main
     with:
       xcode-scheme: ${{ needs.variables.outputs.xcode-scheme }}
