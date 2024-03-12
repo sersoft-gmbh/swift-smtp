@@ -15,7 +15,7 @@
               },
               {
                 "path" : "\/documentation\/swiftsmtp\/mailer\/init(group:configuration:maxconnections:transmissionlogger:)",
-                "title" : "init(group: EventLoopGroup, configuration: Configuration, maxConnections: Int?, transmissionLogger: (SMTPLogger)?)",
+                "title" : "init(group: any EventLoopGroup, configuration: Configuration, maxConnections: Int?, transmissionLogger: (any SMTPLogger)?)",
                 "type" : "init"
               },
               {
@@ -29,7 +29,7 @@
               },
               {
                 "path" : "\/documentation\/swiftsmtp\/mailer\/group",
-                "title" : "let group: EventLoopGroup",
+                "title" : "let group: any EventLoopGroup",
                 "type" : "property"
               },
               {
@@ -39,7 +39,7 @@
               },
               {
                 "path" : "\/documentation\/swiftsmtp\/mailer\/transmissionlogger",
-                "title" : "let transmissionLogger: (SMTPLogger)?",
+                "title" : "let transmissionLogger: (any SMTPLogger)?",
                 "type" : "property"
               },
               {

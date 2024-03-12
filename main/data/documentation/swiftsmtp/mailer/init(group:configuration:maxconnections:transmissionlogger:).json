@@ -35,7 +35,7 @@
       },
       {
         "kind" : "text",
-        "text" : ": "
+        "text" : ": any "
       },
       {
         "kind" : "typeIdentifier",
@@ -86,7 +86,7 @@
       },
       {
         "kind" : "text",
-        "text" : ": ("
+        "text" : ": (any "
       },
       {
         "kind" : "typeIdentifier",
@@ -133,7 +133,7 @@
             },
             {
               "kind" : "text",
-              "text" : ": "
+              "text" : ": any "
             },
             {
               "kind" : "typeIdentifier",
@@ -185,7 +185,7 @@
             },
             {
               "kind" : "text",
-              "text" : ": ("
+              "text" : ": (any "
             },
             {
               "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/SMTPLogger",
@@ -403,7 +403,7 @@
     },
     {
       "kind" : "text",
-      "text" : ": "
+      "text" : ": any "
     },
     {
       "kind" : "typeIdentifier",
@@ -454,7 +454,7 @@
     },
     {
       "kind" : "text",
-      "text" : ": ("
+      "text" : ": (any "
     },
     {
       "kind" : "typeIdentifier",
