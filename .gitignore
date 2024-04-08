@@ -4,9 +4,11 @@
 /Packages
 xcuserdata/
 DerivedData/
-.swiftpm/configuration/registries.json
-.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
+
+# We ignore the complete .swiftpm directory for now, since Xcode shows schemes from dependencies.
+# See discussion in https://github.com/sersoft-gmbh/xmlwrangler#122 for more details.
+.swiftpm/
 
 # VS Code
 .vscode/*
