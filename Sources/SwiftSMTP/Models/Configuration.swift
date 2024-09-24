@@ -1,4 +1,4 @@
-import struct NIO.TimeAmount
+public import struct NIO.TimeAmount
 
 /// Represents a configuration for sending emails.
 public struct Configuration: Sendable, Hashable {

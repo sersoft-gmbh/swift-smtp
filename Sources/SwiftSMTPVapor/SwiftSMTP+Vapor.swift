@@ -1,6 +1,6 @@
-import NIO
-import Vapor
-@_exported import SwiftSMTP
+public import NIO
+public import Vapor
+@_exported public import SwiftSMTP
 
 /// Represents the source for the event loop group used by the Mailer.
 public enum SwiftSMTPEventLoopGroupSource: Sendable {

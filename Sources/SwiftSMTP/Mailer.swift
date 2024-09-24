@@ -1,6 +1,6 @@
 import Dispatch
 import Foundation
-import NIO
+public import NIO
 import NIOExtras
 import NIOSSL
 import NIOConcurrencyHelpers

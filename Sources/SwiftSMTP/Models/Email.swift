@@ -1,9 +1,9 @@
 #if canImport(Darwin)
-import struct Foundation.Data
+public import struct Foundation.Data
 #else
-@preconcurrency import Foundation
+@preconcurrency public import Foundation
 #endif
-import struct NIO.ByteBuffer
+public import struct NIO.ByteBuffer
 
 /// Represents an email.
 public struct Email: Sendable, Equatable {
