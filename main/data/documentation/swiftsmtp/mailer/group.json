@@ -50,7 +50,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Mailer.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Mailer.swift#L46"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Mailer.swift#L50"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Property",
