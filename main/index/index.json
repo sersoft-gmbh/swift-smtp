@@ -1,4 +1,7 @@
 {
+  "includedArchiveIdentifiers" : [
+    "SwiftSMTP"
+  ],
   "interfaceLanguages" : {
     "swift" : [
       {
@@ -83,7 +86,7 @@
               },
               {
                 "path" : "\/documentation\/swiftsmtp\/smtplogger\/logsmtpmessage(_:)",
-                "title" : "func logSMTPMessage(() -> String)",
+                "title" : "func logSMTPMessage(@autoclosure () -> String)",
                 "type" : "method"
               }
             ],
@@ -952,7 +955,7 @@
               },
               {
                 "path" : "\/documentation\/swiftsmtp\/printsmtplogger\/logsmtpmessage(_:)",
-                "title" : "func logSMTPMessage(() -> String)",
+                "title" : "func logSMTPMessage(@autoclosure () -> String)",
                 "type" : "method"
               }
             ],
@@ -1011,6 +1014,6 @@
   "schemaVersion" : {
     "major" : 0,
     "minor" : 1,
-    "patch" : 1
+    "patch" : 2
   }
 }

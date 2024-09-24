@@ -82,6 +82,7 @@
   "relationshipsSections" : [
     {
       "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/s8CopyableP",
         "doc:\/\/SwiftSMTPVapor\/s8SendableP",
         "doc:\/\/SwiftSMTPVapor\/9SwiftSMTP10SMTPLoggerP"
       ],
@@ -100,6 +101,7 @@
   ],
   "topicSections" : [
     {
+      "anchor" : "Default-Implementations",
       "generated" : true,
       "identifiers" : [
         "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Logging\/Logger\/SMTPLogger-Implementations"
@@ -190,6 +192,11 @@
   "title" : "SMTPLogger Implementations",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtpvapor\/logging\/logger\/smtplogger-implementations"
+},
+"doc://SwiftSMTPVapor/s8CopyableP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s8CopyableP",
+  "title" : "Swift.Copyable",
+  "type" : "unresolvable"
 },
 "doc://SwiftSMTPVapor/s8SendableP": {
   "identifier" : "doc:\/\/SwiftSMTPVapor\/s8SendableP",

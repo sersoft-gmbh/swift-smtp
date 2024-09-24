@@ -33,18 +33,24 @@
   ],
   "topicSections" : [
     {
+      "anchor" : "Classes",
+      "generated" : true,
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer"
       ],
       "title" : "Classes"
     },
     {
+      "anchor" : "Protocols",
+      "generated" : true,
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/SMTPLogger"
       ],
       "title" : "Protocols"
     },
     {
+      "anchor" : "Structures",
+      "generated" : true,
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",

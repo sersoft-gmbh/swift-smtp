@@ -50,6 +50,10 @@
         "text" : "SwiftSMTP"
       }
     ],
+    "remoteSource" : {
+      "fileName" : "SwiftSMTP+Vapor.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L149"
+    },
     "role" : "symbol",
     "roleHeading" : "Structure",
     "symbolKind" : "struct",
@@ -94,6 +98,8 @@
   ],
   "topicSections" : [
     {
+      "anchor" : "Instance-Properties",
+      "generated" : true,
       "identifiers" : [
         "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/configuration",
         "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/mailer"
@@ -101,6 +107,8 @@
       "title" : "Instance Properties"
     },
     {
+      "anchor" : "Instance-Methods",
+      "generated" : true,
       "identifiers" : [
         "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/createNewMailer()",
         "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/initialize(with:eventLoopGroupSource:maxConnectionsConfiguration:logTransmissions:)"

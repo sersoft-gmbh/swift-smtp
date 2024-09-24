@@ -44,6 +44,10 @@
         "text" : "ServerError"
       }
     ],
+    "remoteSource" : {
+      "fileName" : "SMTPErrors.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/SMTPErrors.swift#L7"
+    },
     "role" : "symbol",
     "roleHeading" : "Structure",
     "symbolKind" : "struct",
@@ -100,6 +104,8 @@
   ],
   "topicSections" : [
     {
+      "anchor" : "Instance-Properties",
+      "generated" : true,
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/ServerError\/description",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/ServerError\/serverMessage"
@@ -107,6 +113,7 @@
       "title" : "Instance Properties"
     },
     {
+      "anchor" : "Default-Implementations",
       "generated" : true,
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/ServerError\/Error-Implementations"

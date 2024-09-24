@@ -42,6 +42,10 @@
         "name" : "SwiftSMTP"
       }
     ],
+    "remoteSource" : {
+      "fileName" : "SMTPErrors.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/SMTPErrors.swift#L3"
+    },
     "role" : "symbol",
     "roleHeading" : "Instance Property",
     "symbolKind" : "property",

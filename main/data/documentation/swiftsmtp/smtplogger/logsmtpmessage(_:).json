@@ -35,7 +35,15 @@
       },
       {
         "kind" : "text",
-        "text" : "(() -> "
+        "text" : "("
+      },
+      {
+        "kind" : "attribute",
+        "text" : "@autoclosure "
+      },
+      {
+        "kind" : "text",
+        "text" : "() -> "
       },
       {
         "kind" : "typeIdentifier",
@@ -52,6 +60,10 @@
         "name" : "SwiftSMTP"
       }
     ],
+    "remoteSource" : {
+      "fileName" : "LogDuplexHandler.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/NIO%20Channel%20Handlers\/LogDuplexHandler.swift#L10"
+    },
     "required" : true,
     "role" : "symbol",
     "roleHeading" : "Instance Method",
@@ -240,7 +252,15 @@
     },
     {
       "kind" : "text",
-      "text" : "(() -> "
+      "text" : "("
+    },
+    {
+      "kind" : "attribute",
+      "text" : "@autoclosure "
+    },
+    {
+      "kind" : "text",
+      "text" : "() -> "
     },
     {
       "kind" : "typeIdentifier",

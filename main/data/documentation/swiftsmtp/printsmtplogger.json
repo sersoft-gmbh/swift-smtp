@@ -52,6 +52,10 @@
         "text" : "PrintSMTPLogger"
       }
     ],
+    "remoteSource" : {
+      "fileName" : "LogDuplexHandler.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/NIO%20Channel%20Handlers\/LogDuplexHandler.swift#L15"
+    },
     "role" : "symbol",
     "roleHeading" : "Structure",
     "symbolKind" : "struct",
@@ -98,6 +102,7 @@
     {
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/SMTPLogger",
+        "doc:\/\/SwiftSMTP\/s15BitwiseCopyableP",
         "doc:\/\/SwiftSMTP\/s8SendableP"
       ],
       "kind" : "relationships",
@@ -115,12 +120,16 @@
   ],
   "topicSections" : [
     {
+      "anchor" : "Initializers",
+      "generated" : true,
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrintSMTPLogger\/init()"
       ],
       "title" : "Initializers"
     },
     {
+      "anchor" : "Instance-Methods",
+      "generated" : true,
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrintSMTPLogger\/logSMTPMessage(_:)"
       ],
@@ -237,7 +246,15 @@
     },
     {
       "kind" : "text",
-      "text" : "(() -> "
+      "text" : "("
+    },
+    {
+      "kind" : "attribute",
+      "text" : "@autoclosure "
+    },
+    {
+      "kind" : "text",
+      "text" : "() -> "
     },
     {
       "kind" : "typeIdentifier",
@@ -289,6 +306,11 @@
   "title" : "SMTPLogger",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/smtplogger"
+},
+"doc://SwiftSMTP/s15BitwiseCopyableP": {
+  "identifier" : "doc:\/\/SwiftSMTP\/s15BitwiseCopyableP",
+  "title" : "Swift.BitwiseCopyable",
+  "type" : "unresolvable"
 },
 "doc://SwiftSMTP/s8SendableP": {
   "identifier" : "doc:\/\/SwiftSMTP\/s8SendableP",

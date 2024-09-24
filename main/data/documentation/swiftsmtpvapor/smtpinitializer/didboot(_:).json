@@ -55,6 +55,10 @@
         ]
       }
     ],
+    "remoteSource" : {
+      "fileName" : "LifecycleHandler.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/.build\/checkouts\/vapor\/Sources\/Vapor\/Utilities\/LifecycleHandler.swift#L60"
+    },
     "role" : "symbol",
     "roleHeading" : "Instance Method",
     "symbolKind" : "method",
