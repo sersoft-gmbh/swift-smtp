@@ -1,5 +1,9 @@
 fileprivate import Dispatch
+#if swift(>=6.0)
 import Foundation
+#else
+public import Foundation
+#endif
 public import NIO
 import NIOExtras
 import NIOSSL
