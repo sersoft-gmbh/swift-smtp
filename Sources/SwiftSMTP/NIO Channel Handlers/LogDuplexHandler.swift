@@ -1,5 +1,8 @@
+#if swift(>=6.0)
 import NIO
-import Foundation
+#else
+public import NIO
+#endif
 
 /// Describes a logger that logs SMTP messages.
 @preconcurrency

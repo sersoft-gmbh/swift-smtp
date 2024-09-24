@@ -1,5 +1,9 @@
 import Foundation
+#if swift(>=6.0)
 import NIO
+#else
+public import NIO
+#endif
 
 fileprivate extension DateFormatter {
     static let smtp: DateFormatter = {

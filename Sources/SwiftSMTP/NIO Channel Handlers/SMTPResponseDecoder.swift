@@ -1,4 +1,8 @@
+#if swift(>=6.0)
 import NIO
+#else
+public import NIO
+#endif
 
 // Not a ByteToMessageDecoder since we already receive lines due to the `LineBasedFrameDecoder` in front of us.
 final class SMTPResponseDecoder: ChannelInboundHandler {

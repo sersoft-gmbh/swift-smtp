@@ -1,9 +1,9 @@
-import Dispatch
+fileprivate import Dispatch
 import Foundation
 public import NIO
 import NIOExtras
 import NIOSSL
-import NIOConcurrencyHelpers
+fileprivate import NIOConcurrencyHelpers
 
 fileprivate extension Configuration.Server {
     enum EncryptionHandler {
