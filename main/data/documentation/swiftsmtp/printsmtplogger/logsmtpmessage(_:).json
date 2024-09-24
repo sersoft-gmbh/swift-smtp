@@ -56,7 +56,7 @@
     ],
     "remoteSource" : {
       "fileName" : "LogDuplexHandler.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/NIO%20Channel%20Handlers\/LogDuplexHandler.swift#L21"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/NIO%20Channel%20Handlers\/LogDuplexHandler.swift#L24"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Method",

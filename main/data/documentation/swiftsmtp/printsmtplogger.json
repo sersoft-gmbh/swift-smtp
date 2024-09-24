@@ -54,7 +54,7 @@
     ],
     "remoteSource" : {
       "fileName" : "LogDuplexHandler.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/NIO%20Channel%20Handlers\/LogDuplexHandler.swift#L15"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/NIO%20Channel%20Handlers\/LogDuplexHandler.swift#L18"
     },
     "role" : "symbol",
     "roleHeading" : "Structure",
