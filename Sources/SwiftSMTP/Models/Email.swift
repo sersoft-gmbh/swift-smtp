@@ -1,4 +1,4 @@
-#if canImport(Darwin)
+#if canImport(Darwin) || swift(>=6.0)
 public import struct Foundation.Data
 #else
 @preconcurrency public import Foundation
@@ -86,7 +86,11 @@ extension Email {
             }
         }
 
-        var asMIME: String { name.map { "\($0) <\(emailAddress)>" } ?? emailAddress }
+        var asMIME: String {
+            guard let name else { return emailAddress }
+            let quotedName = #""\#(name.replacingOccurrences(of: #"""#, with: #"\"#))""#
+            return "\(quotedName) <\(emailAddress)>"
+        }
 
         /// Creates a new email contact with the given parameters.
         /// - Parameters:
