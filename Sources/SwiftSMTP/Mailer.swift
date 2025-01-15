@@ -11,20 +11,21 @@ fileprivate import NIOConcurrencyHelpers
 
 fileprivate extension Configuration.Server {
     enum EncryptionHandler {
-        case none
         case atBeginning(any ChannelHandler)
         case beforeSMTPHandler(any ChannelHandler)
     }
-    
-    func createEncryptionHandlers() throws -> EncryptionHandler {
+
+    // Errors are non-recoverable / non-retryable. Also, it's expensive to create these. So only do it once.
+    private static let sslContext = try! NIOSSLContext(configuration: .makeClientConfiguration())
+
+    func createEncryptionHandlers() throws -> EncryptionHandler? {
         switch encryption {
-        case .plain: return .none
+        case .plain: return nil
         case .ssl:
-            let sslContext = try NIOSSLContext(configuration: .makeClientConfiguration())
-            let sslHandler = try NIOSSLClientHandler(context: sslContext, serverHostname: hostname)
+            let sslHandler = try NIOSSLClientHandler(context: Self.sslContext, serverHostname: hostname)
             return .atBeginning(sslHandler)
         case .startTLS(let mode):
-            return .beforeSMTPHandler(StartTLSDuplexHandler(server: self, tlsMode: mode))
+            return .beforeSMTPHandler(StartTLSDuplexHandler(server: self, tlsMode: mode) { Self.sslContext })
         }
     }
 }
@@ -60,8 +61,6 @@ public final class Mailer: @unchecked Sendable {
 
     private let emailsStack = NIOLockedValueBox(Array<ScheduledEmail>())
 
-    private let bootstraps: NIOLockedValueBox<Dictionary<ScheduledEmail, ClientBootstrap>>
-
     /// Creates a new mailer with the given parameters.
     /// - Parameters:
     ///   - group: The event loop group the new mailer should use.
@@ -85,7 +84,6 @@ public final class Mailer: @unchecked Sendable {
         } else {
             connectionsSemaphore = nil
         }
-        bootstraps = .init(_bootstraps)
     }
 
     private func pushEmail(_ email: ScheduledEmail) {
@@ -100,8 +98,8 @@ public final class Mailer: @unchecked Sendable {
         let bootstrap = ClientBootstrap(group: group)
             .channelOption(ChannelOptions.socketOption(.so_reuseaddr), value: 1)
             .connectTimeout(configuration.connectionTimeOut)
-            .channelInitializer { [configuration, transmissionLogger] in
-                do {
+            .channelInitializer { [configuration, transmissionLogger] channel in
+                channel.eventLoop.makeCompletedFuture {
                     var base64Options: Data.Base64EncodingOptions = []
                     if configuration.featureFlags.contains(.maximumBase64LineLength64) {
                         base64Options.insert(.lineLength64Characters)
@@ -122,22 +120,18 @@ public final class Mailer: @unchecked Sendable {
                         handlers.insert(LogDuplexHandler(logger: logger), at: handlers.startIndex)
                     }
                     switch try configuration.server.createEncryptionHandlers() {
-                    case .none: break
-                    case .atBeginning(let handler): handlers.insert(handler, at: handlers.startIndex)
-                    case .beforeSMTPHandler(let handler): handlers.insert(handler, at: handlers.index(before: handlers.endIndex))
+                    case nil: break
+                    case .atBeginning(let handler)?: handlers.insert(handler, at: handlers.startIndex)
+                    case .beforeSMTPHandler(let handler)?: handlers.insert(handler, at: handlers.index(before: handlers.endIndex))
                     }
-                    return $0.pipeline.addHandlers(handlers, position: .last)
-                } catch {
-                    return $0.eventLoop.makeFailedFuture(error)
+                    try channel.pipeline.syncOperations.addHandlers(handlers, position: .last)
                 }
             }
-        bootstraps.withLockedValue { $0[email] = bootstrap }
         let connectionFuture = bootstrap.connect(host: configuration.server.hostname, port: configuration.server.port)
         connectionFuture.cascadeFailure(to: email.promise)
         email.promise.futureResult.whenComplete { [weak self] _ in
             connectionFuture.whenSuccess { $0.close(mode: .all, promise: nil) }
             guard let self else { return }
-            self.bootstraps.withLockedValue { _ = $0.removeValue(forKey: email) }
             self.connectionsSemaphore?.signal()
             self.scheduleMailDelivery()
         }

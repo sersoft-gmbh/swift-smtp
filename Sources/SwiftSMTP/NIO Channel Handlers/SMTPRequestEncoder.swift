@@ -6,12 +6,28 @@ public import Foundation
 public import NIO
 #endif
 
-fileprivate extension DateFormatter {
-    static let smtp: DateFormatter = {
+fileprivate extension Date {
+    private static let smtpLocale = Locale(identifier: "en_US_POSIX")
+    private static let smtpFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
+        formatter.locale = smtpLocale
         return formatter
     }()
+
+    var formattedForSMTP: String {
+#if swift(<6.0) && !canImport(Darwin)
+        return Self.smtpFormatter.string(from: self)
+#else
+        if #available(macOS 12, iOS 15, tvOS 15, watchOS 6, *) {
+            return formatted(VerbatimFormatStyle(
+                format: "\(weekday: .abbreviated), \(day: .twoDigits) \(standaloneMonth: .abbreviated) \(year: .padded(4)) \(hour: .twoDigits(clock: .twentyFourHour, hourCycle: .zeroBased)):\(minute: .twoDigits):\(second: .twoDigits) \(timeZone: .iso8601(.short))",
+                locale: Self.smtpLocale, timeZone: .current, calendar: .current))
+        } else {
+            return Self.smtpFormatter.string(from: self)
+        }
+#endif
+    }
 }
 
 struct SMTPRequestEncoder: MessageToByteEncoder {
@@ -50,6 +66,10 @@ struct SMTPRequestEncoder: MessageToByteEncoder {
     }
 
     func encode(data: OutboundIn, out: inout ByteBuffer) throws {
+        func writeLine(_ line: String, lineEndings: Int = 1) {
+            out.writeString(line + String(repeating: "\r\n", count: lineEndings))
+        }
+
         switch data {
         case .sayHello(let serverName, let useEHello):
             out.writeString("\(useEHello ? "EHLO" : "HELO") \(serverName)")
@@ -69,21 +89,17 @@ struct SMTPRequestEncoder: MessageToByteEncoder {
             out.writeString("DATA")
         case .transferData(let email):
             let date = Date()
-            out.writeString("From: \(email.sender.asMIME)\r\n")
-            out.writeString("To: \(email.recipients.lazy.map(\.asMIME).joined(separator: ", "))\r\n")
+            writeLine("From: \(email.sender.asMIME)")
+            writeLine("To: \(email.recipients.lazy.map(\.asMIME).joined(separator: ", "))")
             if let replyTo = email.replyTo {
-                out.writeString("Reply-to: \(replyTo.asMIME)\r\n")
+                writeLine("Reply-to: \(replyTo.asMIME)")
             }
             if !email.cc.isEmpty {
-                out.writeString("Cc: \(email.cc.lazy.map(\.asMIME).joined(separator: ", "))\r\n")
+                writeLine("Cc: \(email.cc.lazy.map(\.asMIME).joined(separator: ", "))")
             }
-            out.writeString("Date: \(DateFormatter.smtp.string(from: date))\r\n")
-            out.writeString("Message-ID: <\(date.timeIntervalSince1970)\(email.sender.emailAddress.drop { $0 != "@" })>\r\n")
-            out.writeString("Subject: \(email.subject)\r\n")
-
-            func writeLine(_ line: String, lineEndings: Int = 1) {
-                out.writeString(line + String(repeating: "\r\n", count: lineEndings))
-            }
+            writeLine("Date: \(date.formattedForSMTP)")
+            writeLine("Message-ID: <\(date.timeIntervalSince1970)\(email.sender.emailAddress.drop { $0 != "@" })>")
+            writeLine("Subject: \(email.subject)")
 
             func writeHeaders(contentType: String, usesBase64: Bool) {
                 writeLine(contentTypeHeaders(contentType, usesBase64: usesBase64))
@@ -91,11 +107,7 @@ struct SMTPRequestEncoder: MessageToByteEncoder {
             }
 
             func writeBoundary(_ boundary: String, isEnd: Bool = false) {
-                if isEnd {
-                    writeLine("--" + boundary + "--")
-                } else {
-                    writeLine("--" + boundary)
-                }
+                writeLine(isEnd ? ("--" + boundary + "--") : ("--" + boundary))
             }
 
             switch (email.body, email.attachments.isEmpty) {

@@ -19,12 +19,16 @@ final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChannelHandler
 
     private let server: Configuration.Server
     private let tlsMode: Configuration.Server.Encryption.StartTLSMode
+    private let sslContextProvider: () throws -> NIOSSLContext
 
     private var state = State.idle
 
-    init(server: Configuration.Server, tlsMode: Configuration.Server.Encryption.StartTLSMode) {
+    init(server: Configuration.Server,
+         tlsMode: Configuration.Server.Encryption.StartTLSMode,
+         sslContextProvider: @escaping () throws -> NIOSSLContext) {
         self.server = server
         self.tlsMode = tlsMode
+        self.sslContextProvider = sslContextProvider
     }
 
     func channelRead(context: ChannelHandlerContext, data: NIOAny) {
@@ -46,11 +50,13 @@ final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChannelHandler
         }
 
         do {
-            let sslContext = try NIOSSLContext(configuration: .makeClientConfiguration())
-            let sslHandler = try NIOSSLClientHandler(context: sslContext, serverHostname: server.hostname)
-            _ = context.channel.pipeline.addHandler(sslHandler, position: .first)
+            let sslHandler = try NIOSSLClientHandler(context: sslContextProvider(), serverHostname: server.hostname)
+            try context.channel.pipeline.syncOperations.addHandler(sslHandler, position: .first)
+            state = .finished // set before continuing.
             context.fireChannelRead(data)
-            _ = context.channel.pipeline.removeHandler(self)
+            // We can safely ignore the result of this.
+            // If it fails, the guard at the beginning of the method will just make this handler "transparent".
+            _ = context.channel.pipeline.syncOperations.removeHandler(self)
         } catch {
             context.fireErrorCaught(error)
         }
@@ -63,3 +69,6 @@ final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChannelHandler
         context.write(data, promise: promise)
     }
 }
+
+@available(*, unavailable)
+extension StartTLSDuplexHandler: Sendable {}
