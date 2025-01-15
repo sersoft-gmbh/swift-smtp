@@ -105,7 +105,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Mailer.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Mailer.swift#L71"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Mailer.swift#L70"
     },
     "role" : "symbol",
     "roleHeading" : "Initializer",
