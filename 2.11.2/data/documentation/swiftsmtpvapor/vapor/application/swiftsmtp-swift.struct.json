@@ -1,0 +1,441 @@
+{
+  "abstract" : [
+    {
+      "text" : "Represents the application’s SwiftSMTP configuration.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "extendedModule" : "Vapor",
+    "externalID" : "s:5Vapor11ApplicationC14SwiftSMTPVaporE0C4SMTPV",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "struct"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "SwiftSMTP"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTPVapor",
+        "relatedModules" : [
+          "Vapor"
+        ]
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "SwiftSMTP"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "SwiftSMTP+Vapor.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L149"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Structure",
+    "symbolKind" : "struct",
+    "title" : "Application.SwiftSMTP"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "struct"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "SwiftSMTP"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "anchor" : "Instance-Properties",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/configuration",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/mailer"
+      ],
+      "title" : "Instance Properties"
+    },
+    {
+      "anchor" : "Instance-Methods",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/createNewMailer()",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/initialize(with:eventLoopGroupSource:maxConnectionsConfiguration:logTransmissions:)"
+      ],
+      "title" : "Instance Methods"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtpvapor\/vapor\/application\/swiftsmtp-swift.struct"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTPVapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "Vapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Application": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:5Vapor11ApplicationC",
+      "text" : "Application"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Application"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Application",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/application"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Application/SwiftSMTP-swift.struct": {
+  "abstract" : [
+    {
+      "text" : "Represents the application’s SwiftSMTP configuration.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTP"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTP"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Application.SwiftSMTP",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/application\/swiftsmtp-swift.struct"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Application/SwiftSMTP-swift.struct/configuration": {
+  "abstract" : [
+    {
+      "text" : "The SwiftSMTP configuration this application uses.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/configuration",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "configuration",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/application\/swiftsmtp-swift.struct\/configuration"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Application/SwiftSMTP-swift.struct/createNewMailer()": {
+  "abstract" : [
+    {
+      "text" : "Creates a new Mailer.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "The caller is responsible for keeping the mailer alive until and cleaning up after all mails have been sent.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "createNewMailer"
+    },
+    {
+      "kind" : "text",
+      "text" : "() -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP6MailerC",
+      "text" : "Mailer"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/createNewMailer()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "createNewMailer()",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/application\/swiftsmtp-swift.struct\/createnewmailer()"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Application/SwiftSMTP-swift.struct/initialize(with:eventLoopGroupSource:maxConnectionsConfiguration:logTransmissions:)": {
+  "abstract" : [
+    {
+      "text" : "Initializes the SwiftSMTP setup of the application with the given configuration.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "initialize"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "with"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "eventLoopGroupSource"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:14SwiftSMTPVapor0A24SMTPEventLoopGroupSourceO",
+      "text" : "SwiftSMTPEventLoopGroupSource"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "maxConnectionsConfiguration"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:14SwiftSMTPVapor0A31SMTPMaxConnectionsConfigurationO",
+      "text" : "SwiftSMTPMaxConnectionsConfiguration"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "logTransmissions"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/initialize(with:eventLoopGroupSource:maxConnectionsConfiguration:logTransmissions:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "initialize(with:eventLoopGroupSource:maxConnectionsConfiguration:logTransmissions:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/application\/swiftsmtp-swift.struct\/initialize(with:eventloopgroupsource:maxconnectionsconfiguration:logtransmissions:)"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Application/SwiftSMTP-swift.struct/mailer": {
+  "abstract" : [
+    {
+      "text" : "The shared Mailer for this application.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "mailer"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP6MailerC",
+      "text" : "Mailer"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/mailer",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "mailer",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/application\/swiftsmtp-swift.struct\/mailer"
+}
+}
+}
