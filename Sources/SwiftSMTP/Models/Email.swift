@@ -121,6 +121,24 @@ extension Email {
         public var contentType: String
         /// The data of the attachment.
         public var data: Data
+        /// The content id of the attachment.
+        /// This can be used for referencing the attachment in the email body.
+        /// Note that the content id must be unique.
+        /// The recommended format is to use `<some-generated-value>@domain.example.com`.
+        public var contentID: String?
+
+        /// Creates a new email attachment with the given parameters.
+        /// - Parameters:
+        ///   - name: The (file) name of the attachment.
+        ///   - contentType: The content type of the attachment.
+        ///   - data: The data of the attachment.
+        ///   - contentID: The content id of the attachment.
+        public init(name: String, contentType: String, data: Data, contentID: String?) {
+            self.name = name
+            self.contentType = contentType
+            self.data = data
+            self.contentID = contentID
+        }
 
         /// Creates a new email attachment with the given parameters.
         /// - Parameters:
@@ -128,9 +146,17 @@ extension Email {
         ///   - contentType: The content type of the attachment.
         ///   - data: The data of the attachment.
         public init(name: String, contentType: String, data: Data) {
-            self.name = name
-            self.contentType = contentType
-            self.data = data
+            self.init(name: name, contentType: contentType, data: data, contentID: nil)
+        }
+
+        /// Creates a new email attachment with the given parameters.
+        /// - Parameters:
+        ///   - name: The (file) name of the attachment.
+        ///   - contentType: The content type of the attachment.
+        ///   - contents: The contents of the attachment.
+        ///   - contentID: The content id of the attachment.
+        public init(name: String, contentType: String, contents: ByteBuffer, contentID: String?) {
+            self.init(name: name, contentType: contentType, data: Data(contents.readableBytesView), contentID: contentID)
         }
 
         /// Creates a new email attachment with the given parameters.
@@ -139,7 +165,7 @@ extension Email {
         ///   - contentType: The content type of the attachment.
         ///   - contents: The contents of the attachment.
         public init(name: String, contentType: String, contents: ByteBuffer) {
-            self.init(name: name, contentType: contentType, data: Data(contents.readableBytesView))
+            self.init(name: name, contentType: contentType, contents: contents, contentID: nil)
         }
     }
 }
