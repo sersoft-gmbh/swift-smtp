@@ -54,7 +54,9 @@ struct SMTPRequestEncoder: MessageToByteEncoder {
         return attachments.lazy.map {
             """
             \(contentTypeHeaders($0.contentType, usesBase64: true))\r\n\
-            Content-Disposition: attachment; filename="\($0.name)"\r\n\r\n\
+            Content-Disposition: attachment; filename="\($0.name)"\r\n\
+            \($0.contentID.map { "Content-ID: <\($0)>" } ?? "")
+            \r\n\
             \($0.data.base64EncodedString(options: base64EncodingOptions))\r\n
             """
         }.joined(separator: "\r\n--\(boundary)\r\n")
