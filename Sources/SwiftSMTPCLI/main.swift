@@ -17,6 +17,7 @@ Hi there,
 this is a test mail from SwiftSMTP CLI.
 
 :-)
+[cid:\(imageContentId)]
 
 Have a nice day!
 """
