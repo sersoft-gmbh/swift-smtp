@@ -93,9 +93,9 @@ extension Configuration.Server {
         case startTLS(StartTLSMode)
 
         /// The default port for this encryption:
-        /// - plain: 25
-        /// - ssl: 465
-        /// - startTLS: 587
+        /// - ``plain``: `25`
+        /// - ``ssl``: `465`
+        /// - ``startTLS(_:)``: `587`
         public var defaultPort: Int {
             switch self {
             case .plain: return 25
@@ -117,7 +117,7 @@ extension Configuration.Server.Encryption {
 }
 
 extension Configuration.FeatureFlags {
-    /// Whether ESMTP should be used (e.g. send EHLO instead of HELO).
+    /// Whether ESMTP should be used (e.g. send `EHLO` instead of `HELO`).
     public static let useESMTP = Configuration.FeatureFlags(rawValue: 1 << 0)
 
     /// Whether all messages sent to the server should be using base64 (transfer) encoding. Use further options to customize the line length.

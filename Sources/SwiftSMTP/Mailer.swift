@@ -117,7 +117,12 @@ public final class Mailer: @unchecked Sendable {
                         SMTPHandler(configuration: configuration, email: email.email, allDonePromise: email.promise),
                     ]
                     if let logger = transmissionLogger {
-                        handlers.insert(LogDuplexHandler(logger: logger), at: handlers.startIndex)
+                        func makeLogHandler<Logger: SMTPLogger>(_ logger: Logger) -> LogDuplexHandler<Logger> {
+                            LogDuplexHandler(logger: logger)
+                        }
+                        // TODO: Shouldn't this be handled by Swift nowadays?
+                        let logHandler = _openExistential(logger, do: makeLogHandler)
+                        handlers.insert(logHandler, at: handlers.startIndex)
                     }
                     switch try configuration.server.createEncryptionHandlers() {
                     case nil: break

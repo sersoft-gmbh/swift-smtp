@@ -1,20 +1,25 @@
 #if swift(>=6.0)
 import Foundation
+import Algorithms
 import NIO
 #else
 public import Foundation
+public import Algorithms
 public import NIO
 #endif
 
-fileprivate extension Date {
+extension Date {
     private static let smtpLocale = Locale(identifier: "en_US_POSIX")
     private static let smtpFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
         formatter.locale = smtpLocale
+        formatter.timeZone = .current
+        formatter.calendar = .current
         return formatter
     }()
 
+    /* fileprivate but @testable*/
     var formattedForSMTP: String {
 #if swift(<6.0) && !canImport(Darwin)
         return Self.smtpFormatter.string(from: self)
@@ -48,15 +53,14 @@ struct SMTPRequestEncoder: MessageToByteEncoder {
         return headers
     }
 
-    private func encodeAttachments(_ attachments: Array<Email.Attachment>,
+    private func encodeAttachments(_ attachments: some Collection<Email.Attachment>,
                                    separatedWith boundary: String) -> String {
         assert(!attachments.isEmpty)
         return attachments.lazy.map {
             """
             \(contentTypeHeaders($0.contentType, usesBase64: true))\r\n\
-            Content-Disposition: attachment; filename="\($0.name)"\r\n\
-            \($0.contentID.map { "Content-ID: <\($0)>" } ?? "")
-            \r\n\
+            Content-Disposition: \($0.isInline ? "inline" : "attachment"); filename="\($0.name)"\r\n\
+            \($0.contentID.map { "Content-ID: <\($0)>\r\n" } ?? "")\r\n\
             \($0.data.base64EncodedString(options: base64EncodingOptions))\r\n
             """
         }.joined(separator: "\r\n--\(boundary)\r\n")
@@ -89,8 +93,7 @@ struct SMTPRequestEncoder: MessageToByteEncoder {
             out.writeString("RCPT TO:<\(rcpt)>")
         case .data:
             out.writeString("DATA")
-        case .transferData(let email):
-            let date = Date()
+        case .transferData(let date, let email):
             writeLine("From: \(email.sender.asMIME)")
             writeLine("To: \(email.recipients.lazy.map(\.asMIME).joined(separator: ", "))")
             if let replyTo = email.replyTo {
@@ -102,91 +105,74 @@ struct SMTPRequestEncoder: MessageToByteEncoder {
             writeLine("Date: \(date.formattedForSMTP)")
             writeLine("Message-ID: <\(date.timeIntervalSince1970)\(email.sender.emailAddress.drop { $0 != "@" })>")
             writeLine("Subject: \(email.subject)")
+            writeLine("MIME-Version: 1.0")
 
             func writeHeaders(contentType: String, usesBase64: Bool) {
-                writeLine(contentTypeHeaders(contentType, usesBase64: usesBase64))
-                writeLine("MIME-Version: 1.0", lineEndings: 2)
+                writeLine(contentTypeHeaders(contentType, usesBase64: usesBase64), lineEndings: 2)
             }
 
             func writeBoundary(_ boundary: String, isEnd: Bool = false) {
                 writeLine(isEnd ? ("--" + boundary + "--") : ("--" + boundary))
             }
 
-            switch (email.body, email.attachments.isEmpty) {
-            case (.plain(let plain), true):
-                writeHeaders(contentType: #"text/plain; charset="UTF-8""#,
-                             usesBase64: base64EncodeAllMessages)
-                writeLine(base64EncodedIfNeeded(plain))
-            case (.plain(let plain), false):
-                let boundary = createMultipartBoundary()
-                writeHeaders(contentType: #"multipart/mixed; boundary=\#(boundary)"#,
-                             usesBase64: false)
-                writeBoundary(boundary)
-                writeLine(contentTypeHeaders(#"text/plain; charset="UTF-8""#,
-                                             usesBase64: base64EncodeAllMessages),
-                          lineEndings: 2)
-                writeLine(base64EncodedIfNeeded(plain), lineEndings: 2)
-                writeBoundary(boundary)
-                writeLine(encodeAttachments(email.attachments, separatedWith: boundary))
-                writeBoundary(boundary, isEnd: true)
-            case (.html(let html), true):
-                writeHeaders(contentType: #"text/html; charset="UTF-8""#,
-                             usesBase64: base64EncodeAllMessages)
-                writeLine(base64EncodedIfNeeded(html))
-            case (.html(let html), false):
-                let boundary = createMultipartBoundary()
-                writeHeaders(contentType: #"multipart/mixed; boundary=\#(boundary)"#, 
-                             usesBase64: false)
-                writeBoundary(boundary)
-                writeLine(contentTypeHeaders(#"text/html; charset="UTF-8""#,
-                                             usesBase64: base64EncodeAllMessages),
-                          lineEndings: 2)
-                writeLine(base64EncodedIfNeeded(html), lineEndings: 2)
-                writeBoundary(boundary)
-                writeLine(encodeAttachments(email.attachments, separatedWith: boundary))
-                writeBoundary(boundary, isEnd: true)
-            case (.universal(let plain, let html), true):
-                let boundary = createMultipartBoundary()
-                writeHeaders(contentType: #"multipart/alternative; boundary=\#(boundary)"#, 
-                             usesBase64: false)
-                writeBoundary(boundary)
-                writeLine(contentTypeHeaders(#"text/plain; charset="UTF-8""#,
-                                             usesBase64: base64EncodeAllMessages),
-                          lineEndings: 2)
-                writeLine(base64EncodedIfNeeded(plain), lineEndings: 2)
-                writeBoundary(boundary)
-                writeLine(contentTypeHeaders(#"text/html; charset="UTF-8""#,
-                                             usesBase64: base64EncodeAllMessages),
-                          lineEndings: 2)
-                writeLine(base64EncodedIfNeeded(html), lineEndings: 2)
-                writeBoundary(boundary, isEnd: true)
-            case (.universal(let plain, let html), false):
-                let mainBoundary = createMultipartBoundary()
-                let attachmentsBoundary = createMultipartBoundary()
+            let attachments = {
+                var attachments = email.attachments
+                let splitIndex = attachments.stablePartition(by: \.isInline)
+                return (inline: attachments[splitIndex...], regular: attachments[..<splitIndex])
+            }()
 
-                writeHeaders(contentType: #"multipart/alternative; boundary=\#(mainBoundary)"#, 
-                             usesBase64: false)
-                writeBoundary(mainBoundary)
-                writeLine(contentTypeHeaders(#"text/plain; charset="UTF-8""#,
-                                             usesBase64: base64EncodeAllMessages),
-                          lineEndings: 2)
-                writeLine(base64EncodedIfNeeded(plain), lineEndings: 2)
-                writeBoundary(mainBoundary)
-                
-                writeLine(contentTypeHeaders(#"multipart/mixed; boundary=\#(attachmentsBoundary)"#,
-                                             usesBase64: false),
-                          lineEndings: 2)
-                writeBoundary(attachmentsBoundary)
-                writeLine(contentTypeHeaders(#"text/html; charset="UTF-8""#,
-                                             usesBase64: base64EncodeAllMessages),
-                          lineEndings: 2)
-                writeLine(base64EncodedIfNeeded(html), lineEndings: 2)
-                writeBoundary(attachmentsBoundary)
-                writeLine(encodeAttachments(email.attachments, separatedWith: attachmentsBoundary))
-                writeBoundary(attachmentsBoundary, isEnd: true)
-                writeBoundary(mainBoundary, isEnd: true)
+            func withRegularAttachmentsPart(_ content: () -> ()) {
+                if (attachments.regular.isEmpty) {
+                    content()
+                } else {
+                    let mixedBoundary = createMultipartBoundary()
+                    writeHeaders(contentType: #"multipart/mixed; boundary=\#(mixedBoundary)"#, usesBase64: false)
+                    writeBoundary(mixedBoundary)
+                    content()
+                    writeBoundary(mixedBoundary)
+                    writeLine(encodeAttachments(attachments.regular, separatedWith: mixedBoundary))
+                    writeBoundary(mixedBoundary, isEnd: true)
+                }
             }
-            out.writeString("\r\n.")
+
+            func withInlineAttachmentsPart(_ content: () -> ()) {
+                if (attachments.inline.isEmpty) {
+                    content()
+                } else {
+                    let relatedBoundary = createMultipartBoundary()
+                    writeHeaders(contentType: #"multipart/related; boundary=\#(relatedBoundary)"#, usesBase64: false)
+                    writeBoundary(relatedBoundary)
+                    content()
+                    writeBoundary(relatedBoundary)
+                    writeLine(encodeAttachments(attachments.inline, separatedWith: relatedBoundary))
+                    writeBoundary(relatedBoundary, isEnd: true)
+                }
+            }
+
+            withRegularAttachmentsPart {
+                withInlineAttachmentsPart {
+                    switch (email.body) {
+                    case .plain(let plain):
+                        writeHeaders(contentType: #"text/plain; charset="UTF-8""#, usesBase64: base64EncodeAllMessages)
+                        writeLine(base64EncodedIfNeeded(plain))
+                    case .html(let html):
+                        writeHeaders(contentType: #"text/html; charset="UTF-8""#, usesBase64: base64EncodeAllMessages)
+                        writeLine(base64EncodedIfNeeded(html))
+                    case .universal(let plain, let html):
+                        let alternativeBoundary = createMultipartBoundary()
+                        writeHeaders(contentType: #"multipart/alternative; boundary=\#(alternativeBoundary)"#, usesBase64: false)
+                        writeBoundary(alternativeBoundary)
+                        writeHeaders(contentType: #"text/plain; charset="UTF-8""#, usesBase64: base64EncodeAllMessages)
+                        writeLine(base64EncodedIfNeeded(plain), lineEndings: 2)
+                        writeBoundary(alternativeBoundary)
+                        writeHeaders(contentType: #"text/html; charset="UTF-8""#, usesBase64: base64EncodeAllMessages)
+                        writeLine(base64EncodedIfNeeded(html), lineEndings: 2)
+                        writeBoundary(alternativeBoundary, isEnd: true)
+                    }
+                }
+            }
+
+            out.writeString("\r\n.") // second \r\n is added at the very end of the function
         case .quit:
             out.writeString("QUIT")
         }

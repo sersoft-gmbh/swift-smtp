@@ -16,7 +16,7 @@ public protocol SMTPLogger: Sendable {
 /// A simple SMTP logger that logs messages using `Swift.print`.
 @frozen
 public struct PrintSMTPLogger: SMTPLogger {
-    /// Creates a new PrintSMTPLogger.
+    /// Creates a new ``PrintSMTPLogger``.
     @inlinable
     public init() {}
 
@@ -26,15 +26,15 @@ public struct PrintSMTPLogger: SMTPLogger {
     }
 }
 
-final class LogDuplexHandler: Sendable, ChannelDuplexHandler {
+final class LogDuplexHandler<Logger: SMTPLogger>: Sendable, ChannelDuplexHandler {
     typealias InboundIn = ByteBuffer
     typealias InboundOut = ByteBuffer
     typealias OutboundIn = ByteBuffer
     typealias OutboundOut = ByteBuffer
 
-    let logger: any SMTPLogger
+    let logger: Logger
 
-    init(logger: any SMTPLogger) {
+    init(logger: Logger) {
         self.logger = logger
     }
 

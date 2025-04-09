@@ -29,6 +29,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
+        .package(url: "https://github.com/apple/swift-algorithms", from: "1.2.0"),
         .package(url: "https://github.com/apple/swift-nio", from: "2.43.0"),
         .package(url: "https://github.com/apple/swift-nio-extras", from: "1.4.0"),
         .package(url: "https://github.com/apple/swift-nio-ssl", from: "2.14.0"),
@@ -40,6 +41,7 @@ let package = Package(
         .target(
             name: "SwiftSMTP",
             dependencies: [
+                .product(name: "Algorithms", package: "swift-algorithms"),
                 .product(name: "NIO", package: "swift-nio"),
                 .product(name: "NIOConcurrencyHelpers", package: "swift-nio"),
                 .product(name: "NIOExtras", package: "swift-nio-extras"),

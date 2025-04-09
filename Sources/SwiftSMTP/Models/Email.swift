@@ -33,15 +33,7 @@ public struct Email: Sendable, Equatable {
     public var attachments: Array<Attachment>
 
     @inlinable
-    var allRecipients: Array<Contact> { recipients + cc + bcc }
-
-    var isMultipart: Bool {
-        guard attachments.isEmpty else { return true }
-        switch body {
-        case .plain(_), .html(_): return false
-        case .universal(_, _): return true
-        }
-    }
+    internal var allRecipients: Array<Contact> { recipients + cc + bcc }
 
     /// Creates a new email with the given parameters.
     /// - Parameters:
@@ -86,7 +78,7 @@ extension Email {
             }
         }
 
-        var asMIME: String {
+        internal var asMIME: String {
             guard let name else { return emailAddress }
             let quotedName = #""\#(name.replacingOccurrences(of: #"""#, with: #"\"#))""#
             return "\(quotedName) <\(emailAddress)>"
@@ -103,69 +95,101 @@ extension Email {
         }
     }
 
+    // TODO: The whole "body" & "attachments" part should be refactored to allow some kind of dynamic composition.
+    //       This would also make multipart handling easier (alternative, mixed, related)...
+
     /// Represents the body of an email.
-    /// - plain: A plain text body with no formatting.
-    /// - html: An HTML formatted body.
-    /// - universal: A body containing both, plain text and HTML. The recipient's client will determine what to show.
     public enum Body: Sendable, Hashable {
+        /// A plain text body with no formatting.
         case plain(String)
+        /// An HTML formatted body.
         case html(String)
+        /// A body containing both, plain text and HTML. The recipient's client will determine what to show.
         case universal(plain: String, html: String)
     }
 
     /// Represents an email attachment.
     public struct Attachment: Sendable, Equatable {
+        /// Defines the attachment kind. Relates to how email clients show it.
+        /// This controls the `Content-Disposition` header of the attachment's MIME-part.
+        /// The content id be used for referencing the attachment in the email body.
+        /// Note that the content id must be unique. The recommended format is to use `<some-generated-value>@domain.example.com`.
+        public enum Kind: Sendable, Hashable {
+            /// A default attachment, that is shown by email clients as such. The content ID is optional.
+            /// - Parameter contentID: The content ID of the attachment.
+            case attachment(contentID: String?)
+            /// An inline attachment, that can be referenced in HTML emails. A content ID is required.
+            /// - Parameter contentID: The content ID of the attachment for later referencing.
+            case inline(contentID: String)
+
+            @usableFromInline
+            internal var contentID: String? {
+                switch self {
+                case .attachment(let contentID), .inline(let contentID as String?): contentID
+                }
+            }
+        }
+
+        /// The kind of the attachment.
+        public var kind: Kind
         /// The (file) name of the attachment.
         public var name: String
         /// The content type of the attachment.
         public var contentType: String
         /// The data of the attachment.
         public var data: Data
-        /// The content id of the attachment.
-        /// This can be used for referencing the attachment in the email body.
-        /// Note that the content id must be unique.
-        /// The recommended format is to use `<some-generated-value>@domain.example.com`.
-        public var contentID: String?
+
+        internal var isInline: Bool {
+            switch kind {
+            case .attachment(_): false
+            case .inline(_): true
+            }
+        }
+
+        /// The content id of this attachment. Defined via ``kind-swift.property``.
+        /// - SeeAlso:``Kind-swift.enum``
+        @inlinable
+        public var contentID: String? { kind.contentID }
 
         /// Creates a new email attachment with the given parameters.
         /// - Parameters:
+        ///   - kind: The kind of this attachment.
         ///   - name: The (file) name of the attachment.
         ///   - contentType: The content type of the attachment.
         ///   - data: The data of the attachment.
-        ///   - contentID: The content id of the attachment.
-        public init(name: String, contentType: String, data: Data, contentID: String?) {
+        public init(kind: Kind, name: String, contentType: String, data: Data) {
+            self.kind = kind
             self.name = name
             self.contentType = contentType
             self.data = data
-            self.contentID = contentID
         }
 
-        /// Creates a new email attachment with the given parameters.
+        /// Creates a new email attachment with the given parameters. The resulting attachment is of kind `.attachment(contentID: nil)`.
         /// - Parameters:
         ///   - name: The (file) name of the attachment.
         ///   - contentType: The content type of the attachment.
         ///   - data: The data of the attachment.
         public init(name: String, contentType: String, data: Data) {
-            self.init(name: name, contentType: contentType, data: data, contentID: nil)
+            self.init(kind: .attachment(contentID: nil), name: name, contentType: contentType, data: data)
         }
 
         /// Creates a new email attachment with the given parameters.
         /// - Parameters:
+        ///   - kind: The kind of this attachment.
         ///   - name: The (file) name of the attachment.
         ///   - contentType: The content type of the attachment.
         ///   - contents: The contents of the attachment.
-        ///   - contentID: The content id of the attachment.
-        public init(name: String, contentType: String, contents: ByteBuffer, contentID: String?) {
-            self.init(name: name, contentType: contentType, data: Data(contents.readableBytesView), contentID: contentID)
+        public init(kind: Kind, name: String, contentType: String, contents: ByteBuffer) {
+            self.init(kind: kind, name: name, contentType: contentType, data: Data(contents.readableBytesView))
         }
 
-        /// Creates a new email attachment with the given parameters.
+        /// Creates a new email attachment with the given parameters. The resulting attachment is of kind `.attachment(contentID: nil)`.
         /// - Parameters:
         ///   - name: The (file) name of the attachment.
         ///   - contentType: The content type of the attachment.
         ///   - contents: The contents of the attachment.
         public init(name: String, contentType: String, contents: ByteBuffer) {
-            self.init(name: name, contentType: contentType, contents: contents, contentID: nil)
+            self.init(kind: .attachment(contentID: nil), name: name, contentType: contentType, contents: contents)
         }
     }
 }

@@ -1,6 +1,8 @@
 #if swift(>=6.0)
+import Foundation
 import NIO
 #else
+public import Foundation
 public import NIO
 #endif
 import NIOExtras
@@ -104,7 +106,7 @@ final class SMTPHandler: ChannelInboundHandler {
         case .recipientSent(var iterator):
             state = nextState(for: &iterator)
         case .dataCommandSent:
-            send(command: .transferData(email))
+            send(command: .transferData(date: Date(), email: email))
             state = .mailDataSent
         case .mailDataSent:
             send(command: .quit)
