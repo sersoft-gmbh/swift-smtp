@@ -48,7 +48,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Email.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L110"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L102"
     },
     "role" : "symbol",
     "roleHeading" : "Enumeration",
@@ -82,61 +82,6 @@
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "overview",
-          "level" : 2,
-          "text" : "Overview",
-          "type" : "heading"
-        },
-        {
-          "items" : [
-            {
-              "content" : [
-                {
-                  "inlineContent" : [
-                    {
-                      "text" : "plain: A plain text body with no formatting.",
-                      "type" : "text"
-                    }
-                  ],
-                  "type" : "paragraph"
-                }
-              ]
-            },
-            {
-              "content" : [
-                {
-                  "inlineContent" : [
-                    {
-                      "text" : "html: An HTML formatted body.",
-                      "type" : "text"
-                    }
-                  ],
-                  "type" : "paragraph"
-                }
-              ]
-            },
-            {
-              "content" : [
-                {
-                  "inlineContent" : [
-                    {
-                      "text" : "universal: A body containing both, plain text and HTML. The recipient’s client will determine what to show.",
-                      "type" : "text"
-                    }
-                  ],
-                  "type" : "paragraph"
-                }
-              ]
-            }
-          ],
-          "type" : "unorderedList"
-        }
-      ],
-      "kind" : "content"
     }
   ],
   "relationshipsSections" : [
@@ -295,7 +240,10 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Email/Body-swift.enum/html(_:)": {
   "abstract" : [
-
+    {
+      "text" : "An HTML formatted body.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -333,7 +281,10 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Email/Body-swift.enum/plain(_:)": {
   "abstract" : [
-
+    {
+      "text" : "A plain text body with no formatting.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -371,7 +322,10 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Email/Body-swift.enum/universal(plain:html:)": {
   "abstract" : [
-
+    {
+      "text" : "A body containing both, plain text and HTML. The recipient’s client will determine what to show.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

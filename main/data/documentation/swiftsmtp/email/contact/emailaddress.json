@@ -51,7 +51,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Email.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L83"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L75"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Property",

@@ -206,7 +206,16 @@
 "doc://SwiftSMTP/documentation/SwiftSMTP/PrintSMTPLogger/init()": {
   "abstract" : [
     {
-      "text" : "Creates a new PrintSMTPLogger.",
+      "text" : "Creates a new ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrintSMTPLogger",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],

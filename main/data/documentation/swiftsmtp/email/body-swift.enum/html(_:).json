@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "An HTML formatted body.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -49,7 +55,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Email.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L112"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L106"
     },
     "role" : "symbol",
     "roleHeading" : "Case",
@@ -201,7 +207,10 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Email/Body-swift.enum/html(_:)": {
   "abstract" : [
-
+    {
+      "text" : "An HTML formatted body.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

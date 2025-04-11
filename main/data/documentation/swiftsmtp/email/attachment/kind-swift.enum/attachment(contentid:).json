@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "A body containing both, plain text and HTML. The recipient’s client will determine what to show.",
+      "text" : "A default attachment, that is shown by email clients as such. The content ID is optional.",
       "type" : "text"
     }
   ],
@@ -10,17 +10,18 @@
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Body-swift.enum"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Body-swift.enum\/universal(plain:html:)"
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum\/attachment(contentID:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:9SwiftSMTP5EmailV4BodyO9universalyAESS_SStcAEmF",
+    "externalID" : "s:9SwiftSMTP5EmailV10AttachmentV4KindO10attachmentyAGSSSg_tcAGmF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,7 +33,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "universal"
+        "text" : "attachment"
       },
       {
         "kind" : "text",
@@ -40,7 +41,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "plain"
+        "text" : "contentID"
       },
       {
         "kind" : "text",
@@ -53,24 +54,7 @@
       },
       {
         "kind" : "text",
-        "text" : ", "
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "html"
-      },
-      {
-        "kind" : "text",
-        "text" : ": "
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:SS",
-        "text" : "String"
-      },
-      {
-        "kind" : "text",
-        "text" : ")"
+        "text" : "?)"
       }
     ],
     "modules" : [
@@ -80,12 +64,12 @@
     ],
     "remoteSource" : {
       "fileName" : "Email.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L108"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L120"
     },
     "role" : "symbol",
     "roleHeading" : "Case",
     "symbolKind" : "case",
-    "title" : "Email.Body.universal(plain:html:)"
+    "title" : "Email.Attachment.Kind.attachment(contentID:)"
   },
   "primaryContentSections" : [
     {
@@ -108,7 +92,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "universal"
+              "text" : "attachment"
             },
             {
               "kind" : "text",
@@ -116,7 +100,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "plain"
+              "text" : "contentID"
             },
             {
               "kind" : "text",
@@ -129,29 +113,31 @@
             },
             {
               "kind" : "text",
-              "text" : ", "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "html"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:SS",
-              "text" : "String"
-            },
-            {
-              "kind" : "text",
-              "text" : ")"
+              "text" : "?)"
             }
           ]
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The content ID of the attachment.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "contentID"
+        }
+      ]
     }
   ],
   "schemaVersion" : {
@@ -165,7 +151,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/swiftsmtp\/email\/body-swift.enum\/universal(plain:html:)"
+        "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum\/attachment(contentid:)"
       ],
       "traits" : [
         {
@@ -221,10 +207,84 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/email"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Body-swift.enum": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment": {
   "abstract" : [
     {
-      "text" : "Represents the body of an email.",
+      "text" : "Represents an email attachment.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Attachment"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Attachment"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Email.Attachment",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/email\/attachment"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/Kind-swift.enum": {
+  "abstract" : [
+    {
+      "text" : "Defines the attachment kind. Relates to how email clients show it.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "This controls the ",
+      "type" : "text"
+    },
+    {
+      "code" : "Content-Disposition",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " header of the attachment’s MIME-part.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "The content id be used for referencing the attachment in the email body.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Note that the content id must be unique. The recommended format is to use ",
+      "type" : "text"
+    },
+    {
+      "code" : "<some-generated-value>@domain.example.com",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -239,26 +299,26 @@
     },
     {
       "kind" : "identifier",
-      "text" : "Body"
+      "text" : "Kind"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Body-swift.enum",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "Body"
+      "text" : "Kind"
     }
   ],
   "role" : "symbol",
-  "title" : "Email.Body",
+  "title" : "Email.Attachment.Kind",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/email\/body-swift.enum"
+  "url" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Body-swift.enum/universal(plain:html:)": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/Kind-swift.enum/attachment(contentID:)": {
   "abstract" : [
     {
-      "text" : "A body containing both, plain text and HTML. The recipient’s client will determine what to show.",
+      "text" : "A default attachment, that is shown by email clients as such. The content ID is optional.",
       "type" : "text"
     }
   ],
@@ -273,7 +333,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "universal"
+      "text" : "attachment"
     },
     {
       "kind" : "text",
@@ -281,7 +341,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "plain"
+      "text" : "contentID"
     },
     {
       "kind" : "text",
@@ -294,32 +354,15 @@
     },
     {
       "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "html"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ")"
+      "text" : "?)"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Body-swift.enum\/universal(plain:html:)",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum\/attachment(contentID:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "Email.Body.universal(plain:html:)",
+  "title" : "Email.Attachment.Kind.attachment(contentID:)",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/email\/body-swift.enum\/universal(plain:html:)"
+  "url" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum\/attachment(contentid:)"
 }
 }
 }

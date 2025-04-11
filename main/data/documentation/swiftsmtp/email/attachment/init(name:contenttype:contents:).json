@@ -1,7 +1,15 @@
 {
   "abstract" : [
     {
-      "text" : "Creates a new email attachment with the given parameters.",
+      "text" : "Creates a new email attachment with the given parameters. The resulting attachment is of kind ",
+      "type" : "text"
+    },
+    {
+      "code" : ".attachment(contentID: nil)",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -89,7 +97,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Email.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L141"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L191"
     },
     "role" : "symbol",
     "roleHeading" : "Initializer",
@@ -323,7 +331,15 @@
 "doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/init(name:contentType:contents:)": {
   "abstract" : [
     {
-      "text" : "Creates a new email attachment with the given parameters.",
+      "text" : "Creates a new email attachment with the given parameters. The resulting attachment is of kind ",
+      "type" : "text"
+    },
+    {
+      "code" : ".attachment(contentID: nil)",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],

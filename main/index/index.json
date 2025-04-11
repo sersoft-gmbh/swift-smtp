@@ -671,6 +671,16 @@
                     "type" : "groupMarker"
                   },
                   {
+                    "path" : "\/documentation\/swiftsmtp\/email\/attachment\/init(kind:name:contenttype:contents:)",
+                    "title" : "init(kind: Email.Attachment.Kind, name: String, contentType: String, contents: ByteBuffer)",
+                    "type" : "init"
+                  },
+                  {
+                    "path" : "\/documentation\/swiftsmtp\/email\/attachment\/init(kind:name:contenttype:data:)",
+                    "title" : "init(kind: Email.Attachment.Kind, name: String, contentType: String, data: Data)",
+                    "type" : "init"
+                  },
+                  {
                     "path" : "\/documentation\/swiftsmtp\/email\/attachment\/init(name:contenttype:contents:)",
                     "title" : "init(name: String, contentType: String, contents: ByteBuffer)",
                     "type" : "init"
@@ -685,6 +695,11 @@
                     "type" : "groupMarker"
                   },
                   {
+                    "path" : "\/documentation\/swiftsmtp\/email\/attachment\/contentid",
+                    "title" : "var contentID: String?",
+                    "type" : "property"
+                  },
+                  {
                     "path" : "\/documentation\/swiftsmtp\/email\/attachment\/contenttype",
                     "title" : "var contentType: String",
                     "type" : "property"
@@ -695,9 +710,59 @@
                     "type" : "property"
                   },
                   {
+                    "path" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.property",
+                    "title" : "var kind: Email.Attachment.Kind",
+                    "type" : "property"
+                  },
+                  {
                     "path" : "\/documentation\/swiftsmtp\/email\/attachment\/name",
                     "title" : "var name: String",
                     "type" : "property"
+                  },
+                  {
+                    "title" : "Enumerations",
+                    "type" : "groupMarker"
+                  },
+                  {
+                    "children" : [
+                      {
+                        "title" : "Enumeration Cases",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum\/attachment(contentid:)",
+                        "title" : "case attachment(contentID: String?)",
+                        "type" : "case"
+                      },
+                      {
+                        "path" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum\/inline(contentid:)",
+                        "title" : "case inline(contentID: String)",
+                        "type" : "case"
+                      },
+                      {
+                        "title" : "Default Implementations",
+                        "type" : "groupMarker"
+                      },
+                      {
+                        "children" : [
+                          {
+                            "title" : "Operators",
+                            "type" : "groupMarker"
+                          },
+                          {
+                            "path" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum\/!=(_:_:)",
+                            "title" : "static func != (Self, Self) -> Bool",
+                            "type" : "op"
+                          }
+                        ],
+                        "path" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum\/equatable-implementations",
+                        "title" : "Equatable Implementations",
+                        "type" : "symbol"
+                      }
+                    ],
+                    "path" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum",
+                    "title" : "Email.Attachment.Kind",
+                    "type" : "enum"
                   },
                   {
                     "title" : "Default Implementations",

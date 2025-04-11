@@ -1,7 +1,16 @@
 {
   "abstract" : [
     {
-      "text" : "The content type of the attachment.",
+      "text" : "The content id of this attachment. Defined via ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/kind-swift.property",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -16,11 +25,11 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/contentType"
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/contentID"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:9SwiftSMTP5EmailV10AttachmentV11contentTypeSSvp",
+    "externalID" : "s:9SwiftSMTP5EmailV10AttachmentV9contentIDSSSgvp",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,7 +41,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "contentType"
+        "text" : "contentID"
       },
       {
         "kind" : "text",
@@ -42,6 +51,10 @@
         "kind" : "typeIdentifier",
         "preciseIdentifier" : "s:SS",
         "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : "?"
       }
     ],
     "modules" : [
@@ -51,12 +64,12 @@
     ],
     "remoteSource" : {
       "fileName" : "Email.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L138"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L152"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Property",
     "symbolKind" : "property",
-    "title" : "contentType"
+    "title" : "contentID"
   },
   "primaryContentSections" : [
     {
@@ -79,7 +92,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "contentType"
+              "text" : "contentID"
             },
             {
               "kind" : "text",
@@ -89,6 +102,18 @@
               "kind" : "typeIdentifier",
               "preciseIdentifier" : "s:SS",
               "text" : "String"
+            },
+            {
+              "kind" : "text",
+              "text" : "? { "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "get"
+            },
+            {
+              "kind" : "text",
+              "text" : " }"
             }
           ]
         }
@@ -107,7 +132,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/swiftsmtp\/email\/attachment\/contenttype"
+        "\/documentation\/swiftsmtp\/email\/attachment\/contentid"
       ],
       "traits" : [
         {
@@ -197,10 +222,19 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/email\/attachment"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/contentType": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/contentID": {
   "abstract" : [
     {
-      "text" : "The content type of the attachment.",
+      "text" : "The content id of this attachment. Defined via ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/kind-swift.property",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
@@ -215,7 +249,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "contentType"
+      "text" : "contentID"
     },
     {
       "kind" : "text",
@@ -225,14 +259,73 @@
       "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:SS",
       "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/contentType",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/contentID",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "contentType",
+  "title" : "contentID",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/email\/attachment\/contenttype"
+  "url" : "\/documentation\/swiftsmtp\/email\/attachment\/contentid"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/kind-swift.property": {
+  "abstract" : [
+    {
+      "text" : "The kind of the attachment.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "kind"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
+      "text" : "Email"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV",
+      "text" : "Attachment"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV4KindO",
+      "text" : "Kind"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/kind-swift.property",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "kind",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.property"
 }
 }
 }

@@ -691,7 +691,23 @@
 "doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/useESMTP": {
   "abstract" : [
     {
-      "text" : "Whether ESMTP should be used (e.g. send EHLO instead of HELO).",
+      "text" : "Whether ESMTP should be used (e.g. send ",
+      "type" : "text"
+    },
+    {
+      "code" : "EHLO",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " instead of ",
+      "type" : "text"
+    },
+    {
+      "code" : "HELO",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ").",
       "type" : "text"
     }
   ],

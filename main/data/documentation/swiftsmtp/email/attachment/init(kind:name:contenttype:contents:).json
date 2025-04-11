@@ -1,15 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Creates a new email attachment with the given parameters. The resulting attachment is of kind ",
-      "type" : "text"
-    },
-    {
-      "code" : ".attachment(contentID: nil)",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
+      "text" : "Creates a new email attachment with the given parameters.",
       "type" : "text"
     }
   ],
@@ -24,11 +16,11 @@
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/init(name:contentType:data:)"
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/init(kind:name:contentType:contents:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:9SwiftSMTP5EmailV10AttachmentV4name11contentType4dataAESS_SS20FoundationEssentials4DataVtcfc",
+    "externalID" : "s:9SwiftSMTP5EmailV10AttachmentV4kind4name11contentType8contentsA2E4KindO_S2S7NIOCore10ByteBufferVtcfc",
     "fragments" : [
       {
         "kind" : "identifier",
@@ -37,6 +29,41 @@
       {
         "kind" : "text",
         "text" : "("
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "kind"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
+        "text" : "Email"
+      },
+      {
+        "kind" : "text",
+        "text" : "."
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV",
+        "text" : "Attachment"
+      },
+      {
+        "kind" : "text",
+        "text" : "."
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV4KindO",
+        "text" : "Kind"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
       },
       {
         "kind" : "externalParam",
@@ -74,7 +101,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "data"
+        "text" : "contents"
       },
       {
         "kind" : "text",
@@ -82,8 +109,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:20FoundationEssentials4DataV",
-        "text" : "Data"
+        "preciseIdentifier" : "s:7NIOCore10ByteBufferV",
+        "text" : "ByteBuffer"
       },
       {
         "kind" : "text",
@@ -97,12 +124,12 @@
     ],
     "remoteSource" : {
       "fileName" : "Email.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L172"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L182"
     },
     "role" : "symbol",
     "roleHeading" : "Initializer",
     "symbolKind" : "init",
-    "title" : "init(name:contentType:data:)"
+    "title" : "init(kind:name:contentType:contents:)"
   },
   "primaryContentSections" : [
     {
@@ -122,6 +149,44 @@
             {
               "kind" : "text",
               "text" : "("
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "kind"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
+              "text" : "Email"
+            },
+            {
+              "kind" : "text",
+              "text" : "."
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV",
+              "text" : "Attachment"
+            },
+            {
+              "kind" : "text",
+              "text" : "."
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV4KindO",
+              "text" : "Kind"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
             },
             {
               "kind" : "externalParam",
@@ -159,7 +224,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "data"
+              "text" : "contents"
             },
             {
               "kind" : "text",
@@ -167,8 +232,8 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:20FoundationEssentials4DataV",
-              "text" : "Data"
+              "preciseIdentifier" : "s:7NIOCore10ByteBufferV",
+              "text" : "ByteBuffer"
             },
             {
               "kind" : "text",
@@ -182,6 +247,20 @@
     {
       "kind" : "parameters",
       "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The kind of this attachment.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "kind"
+        },
         {
           "content" : [
             {
@@ -215,14 +294,14 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "The data of the attachment.",
+                  "text" : "The contents of the attachment.",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "data"
+          "name" : "contents"
         }
       ]
     }
@@ -238,7 +317,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/swiftsmtp\/email\/attachment\/init(name:contenttype:data:)"
+        "\/documentation\/swiftsmtp\/email\/attachment\/init(kind:name:contenttype:contents:)"
       ],
       "traits" : [
         {
@@ -328,18 +407,84 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/email\/attachment"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/init(name:contentType:data:)": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/Kind-swift.enum": {
   "abstract" : [
     {
-      "text" : "Creates a new email attachment with the given parameters. The resulting attachment is of kind ",
+      "text" : "Defines the attachment kind. Relates to how email clients show it.",
       "type" : "text"
     },
     {
-      "code" : ".attachment(contentID: nil)",
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "This controls the ",
+      "type" : "text"
+    },
+    {
+      "code" : "Content-Disposition",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " header of the attachment’s MIME-part.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "The content id be used for referencing the attachment in the email body.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Note that the content id must be unique. The recommended format is to use ",
+      "type" : "text"
+    },
+    {
+      "code" : "<some-generated-value>@domain.example.com",
       "type" : "codeVoice"
     },
     {
       "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Kind"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Kind"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Email.Attachment.Kind",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/init(kind:name:contentType:contents:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a new email attachment with the given parameters.",
       "type" : "text"
     }
   ],
@@ -351,6 +496,41 @@
     {
       "kind" : "text",
       "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "kind"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
+      "text" : "Email"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV",
+      "text" : "Attachment"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV4KindO",
+      "text" : "Kind"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
     },
     {
       "kind" : "externalParam",
@@ -388,7 +568,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "data"
+      "text" : "contents"
     },
     {
       "kind" : "text",
@@ -396,20 +576,20 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:20FoundationEssentials4DataV",
-      "text" : "Data"
+      "preciseIdentifier" : "s:7NIOCore10ByteBufferV",
+      "text" : "ByteBuffer"
     },
     {
       "kind" : "text",
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/init(name:contentType:data:)",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/init(kind:name:contentType:contents:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "init(name:contentType:data:)",
+  "title" : "init(kind:name:contentType:contents:)",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/email\/attachment\/init(name:contenttype:data:)"
+  "url" : "\/documentation\/swiftsmtp\/email\/attachment\/init(kind:name:contenttype:contents:)"
 }
 }
 }

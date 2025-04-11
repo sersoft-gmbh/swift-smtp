@@ -123,8 +123,17 @@
                 {
                   "inlineContent" : [
                     {
-                      "text" : "plain: 25",
+                      "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/plain",
+                      "isActive" : true,
+                      "type" : "reference"
+                    },
+                    {
+                      "text" : ": ",
                       "type" : "text"
+                    },
+                    {
+                      "code" : "25",
+                      "type" : "codeVoice"
                     }
                   ],
                   "type" : "paragraph"
@@ -136,8 +145,17 @@
                 {
                   "inlineContent" : [
                     {
-                      "text" : "ssl: 465",
+                      "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/ssl",
+                      "isActive" : true,
+                      "type" : "reference"
+                    },
+                    {
+                      "text" : ": ",
                       "type" : "text"
+                    },
+                    {
+                      "code" : "465",
+                      "type" : "codeVoice"
                     }
                   ],
                   "type" : "paragraph"
@@ -149,8 +167,17 @@
                 {
                   "inlineContent" : [
                     {
-                      "text" : "startTLS: 587",
+                      "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/startTLS(_:)",
+                      "isActive" : true,
+                      "type" : "reference"
+                    },
+                    {
+                      "text" : ": ",
                       "type" : "text"
+                    },
+                    {
+                      "code" : "587",
+                      "type" : "codeVoice"
                     }
                   ],
                   "type" : "paragraph"
@@ -299,6 +326,40 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum"
 },
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/Server-swift.struct/Encryption-swift.enum/StartTLSMode": {
+  "abstract" : [
+    {
+      "text" : "Represents a StartTLS mode.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StartTLSMode"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/StartTLSMode",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StartTLSMode"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Configuration.Server.Encryption.StartTLSMode",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/starttlsmode"
+},
 "doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/Server-swift.struct/Encryption-swift.enum/defaultPort": {
   "abstract" : [
     {
@@ -335,6 +396,147 @@
   "title" : "defaultPort",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/defaultport"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/Server-swift.struct/Encryption-swift.enum/plain": {
+  "abstract" : [
+    {
+      "text" : "No encryption is used.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "plain"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/plain",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "Configuration.Server.Encryption.plain",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/plain"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/Server-swift.struct/Encryption-swift.enum/ssl": {
+  "abstract" : [
+    {
+      "text" : "Normal SSL (TLS) encryption is used.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "ssl"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/ssl",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "Configuration.Server.Encryption.ssl",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/ssl"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/Server-swift.struct/Encryption-swift.enum/startTLS(_:)": {
+  "abstract" : [
+    {
+      "text" : "A TLS encryption is opened after first connecting with a plain connection.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Depending on the ",
+      "type" : "text"
+    },
+    {
+      "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/StartTLSMode",
+      "isActive" : true,
+      "type" : "reference"
+    },
+    {
+      "text" : ", the connection might continue without encryption.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "startTLS"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV",
+      "text" : "Server"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV10EncryptionO",
+      "text" : "Encryption"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV10EncryptionO12StartTLSModeO",
+      "text" : "StartTLSMode"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/startTLS(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "Configuration.Server.Encryption.startTLS(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/starttls(_:)"
 }
 }
 }

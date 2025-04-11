@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Schedules an email for delivery. Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.",
+      "text" : "The kind of the attachment.",
       "type" : "text"
     }
   ],
@@ -9,22 +9,22 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(email:)-821mq"
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/kind-swift.property"
   },
   "kind" : "symbol",
   "metadata" : {
-    "extendedModule" : "SwiftSMTP",
-    "externalID" : "s:9SwiftSMTP6MailerC4send5email7NIOCore15EventLoopFutureCyytGAA5EmailV_tF",
+    "externalID" : "s:9SwiftSMTP5EmailV10AttachmentV4kindAE4KindOvp",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "func"
+        "text" : "var"
       },
       {
         "kind" : "text",
@@ -32,15 +32,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "send"
-      },
-      {
-        "kind" : "text",
-        "text" : "("
-      },
-      {
-        "kind" : "externalParam",
-        "text" : "email"
+        "text" : "kind"
       },
       {
         "kind" : "text",
@@ -53,25 +45,21 @@
       },
       {
         "kind" : "text",
-        "text" : ") -> "
+        "text" : "."
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:7NIOCore15EventLoopFutureC",
-        "text" : "EventLoopFuture"
+        "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV",
+        "text" : "Attachment"
       },
       {
         "kind" : "text",
-        "text" : "<"
+        "text" : "."
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:s4Voida",
-        "text" : "Void"
-      },
-      {
-        "kind" : "text",
-        "text" : ">"
+        "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV4KindO",
+        "text" : "Kind"
       }
     ],
     "modules" : [
@@ -79,17 +67,14 @@
         "name" : "SwiftSMTP"
       }
     ],
-    "platforms" : [
-
-    ],
     "remoteSource" : {
-      "fileName" : "Mailer.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Mailer.swift#L182"
+      "fileName" : "Email.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Email.swift#L134"
     },
     "role" : "symbol",
-    "roleHeading" : "Instance Method",
-    "symbolKind" : "method",
-    "title" : "send(email:)"
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "kind"
   },
   "primaryContentSections" : [
     {
@@ -104,7 +89,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "func"
+              "text" : "var"
             },
             {
               "kind" : "text",
@@ -112,15 +97,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "send"
-            },
-            {
-              "kind" : "text",
-              "text" : "("
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "email"
+              "text" : "kind"
             },
             {
               "kind" : "text",
@@ -134,69 +111,28 @@
             },
             {
               "kind" : "text",
-              "text" : ") -> "
+              "text" : "."
             },
             {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:7NIOCore15EventLoopFutureC",
-              "text" : "EventLoopFuture"
+              "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV",
+              "text" : "Attachment"
             },
             {
               "kind" : "text",
-              "text" : "<"
+              "text" : "."
             },
             {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum",
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:s4Voida",
-              "text" : "Void"
-            },
-            {
-              "kind" : "text",
-              "text" : ">"
+              "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV4KindO",
+              "text" : "Kind"
             }
           ]
         }
       ],
       "kind" : "declarations"
-    },
-    {
-      "kind" : "parameters",
-      "parameters" : [
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "The email to send.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "email"
-        }
-      ]
-    },
-    {
-      "content" : [
-        {
-          "anchor" : "return-value",
-          "level" : 2,
-          "text" : "Return Value",
-          "type" : "heading"
-        },
-        {
-          "inlineContent" : [
-            {
-              "text" : "A future that will complete with the result of sending the email.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        }
-      ],
-      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -210,7 +146,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/swiftsmtp\/mailer\/send(email:)-821mq"
+        "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.property"
       ],
       "traits" : [
         {
@@ -266,17 +202,17 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/email"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment": {
   "abstract" : [
     {
-      "text" : "A Mailer is responsible for opening server connections and dispatching emails.",
+      "text" : "Represents an email attachment.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -284,34 +220,73 @@
     },
     {
       "kind" : "identifier",
-      "text" : "Mailer"
+      "text" : "Attachment"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "Mailer"
+      "text" : "Attachment"
     }
   ],
   "role" : "symbol",
-  "title" : "Mailer",
+  "title" : "Email.Attachment",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/mailer"
+  "url" : "\/documentation\/swiftsmtp\/email\/attachment"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(email:)-821mq": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/Kind-swift.enum": {
   "abstract" : [
     {
-      "text" : "Schedules an email for delivery. Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.",
+      "text" : "Defines the attachment kind. Relates to how email clients show it.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "This controls the ",
+      "type" : "text"
+    },
+    {
+      "code" : "Content-Disposition",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " header of the attachment’s MIME-part.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "The content id be used for referencing the attachment in the email body.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Note that the content id must be unique. The recommended format is to use ",
+      "type" : "text"
+    },
+    {
+      "code" : "<some-generated-value>@domain.example.com",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
       "type" : "text"
     }
   ],
-  "deprecated" : true,
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "func"
+      "text" : "enum"
     },
     {
       "kind" : "text",
@@ -319,15 +294,41 @@
     },
     {
       "kind" : "identifier",
-      "text" : "send"
+      "text" : "Kind"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Kind"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Email.Attachment.Kind",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/kind-swift.property": {
+  "abstract" : [
+    {
+      "text" : "The kind of the attachment.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
     },
     {
       "kind" : "text",
-      "text" : "("
+      "text" : " "
     },
     {
-      "kind" : "externalParam",
-      "text" : "email"
+      "kind" : "identifier",
+      "text" : "kind"
     },
     {
       "kind" : "text",
@@ -340,33 +341,29 @@
     },
     {
       "kind" : "text",
-      "text" : ") -> "
+      "text" : "."
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:7NIOCore15EventLoopFutureC",
-      "text" : "EventLoopFuture"
+      "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV",
+      "text" : "Attachment"
     },
     {
       "kind" : "text",
-      "text" : "<"
+      "text" : "."
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s4Voida",
-      "text" : "Void"
-    },
-    {
-      "kind" : "text",
-      "text" : ">"
+      "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV4KindO",
+      "text" : "Kind"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(email:)-821mq",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/kind-swift.property",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "send(email:)",
+  "title" : "kind",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/mailer\/send(email:)-821mq"
+  "url" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.property"
 }
 }
 }
