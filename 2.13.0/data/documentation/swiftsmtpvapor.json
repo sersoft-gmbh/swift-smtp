@@ -1,0 +1,236 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "SwiftSMTPVapor",
+    "modules" : [
+      {
+        "name" : "SwiftSMTPVapor"
+      }
+    ],
+    "role" : "collection",
+    "roleHeading" : "Framework",
+    "symbolKind" : "module",
+    "title" : "SwiftSMTPVapor"
+  },
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "anchor" : "Structures",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer"
+      ],
+      "title" : "Structures"
+    },
+    {
+      "anchor" : "Enumerations",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration"
+      ],
+      "title" : "Enumerations"
+    },
+    {
+      "anchor" : "Extended-Modules",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Logging",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor"
+      ],
+      "title" : "Extended Modules"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtpvapor"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTPVapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Logging": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Logging",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "Logging",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/logging"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SMTPInitializer": {
+  "abstract" : [
+    {
+      "text" : "Initializes the SwiftSMTP configuration on the application on boot.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "You can add it to your application in ",
+      "type" : "text"
+    },
+    {
+      "code" : "configure",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " by using ",
+      "type" : "text"
+    },
+    {
+      "code" : "app.lifecycle.use(SMTPInitializer(...))",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SMTPInitializer"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SMTPInitializer"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "SMTPInitializer",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/smtpinitializer"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPEventLoopGroupSource": {
+  "abstract" : [
+    {
+      "text" : "Represents the source for the event loop group used by the Mailer.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPEventLoopGroupSource"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPEventLoopGroupSource"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "SwiftSMTPEventLoopGroupSource",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpeventloopgroupsource"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPMaxConnectionsConfiguration": {
+  "abstract" : [
+    {
+      "text" : "Represents the maximum connections configuration per Mailer.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPMaxConnectionsConfiguration"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPMaxConnectionsConfiguration"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "SwiftSMTPMaxConnectionsConfiguration",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpmaxconnectionsconfiguration"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "Vapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor"
+}
+}
+}
