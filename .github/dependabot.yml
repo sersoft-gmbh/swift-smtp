@@ -8,10 +8,6 @@ updates:
       interval: daily
       time: '07:00'
       timezone: Europe/Berlin
-    assignees:
-      - ffried
-    reviewers:
-      - ffried
 
   - package-ecosystem: swift
     directory: /
@@ -20,7 +16,3 @@ updates:
       interval: daily
       time: '07:00'
       timezone: Europe/Berlin
-    assignees:
-      - ffried
-    reviewers:
-      - ffried
