@@ -10,8 +10,7 @@
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/SetAlgebra-Implementations"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct"
       ]
     ]
   },
@@ -352,17 +351,6 @@
   "title" : "Configuration.FeatureFlags",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct"
-},
-"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/SetAlgebra-Implementations": {
-  "abstract" : [
-
-  ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/SetAlgebra-Implementations",
-  "kind" : "article",
-  "role" : "collectionGroup",
-  "title" : "SetAlgebra Implementations",
-  "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/setalgebra-implementations"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/init(arrayLiteral:)": {
   "abstract" : [

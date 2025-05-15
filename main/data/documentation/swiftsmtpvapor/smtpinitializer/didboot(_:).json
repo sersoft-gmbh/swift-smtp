@@ -3,8 +3,7 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
-        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer",
-        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer\/LifecycleHandler-Implementations"
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer"
       ]
     ]
   },
@@ -57,7 +56,7 @@
     ],
     "remoteSource" : {
       "fileName" : "LifecycleHandler.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/.build\/checkouts\/vapor\/Sources\/Vapor\/Utilities\/LifecycleHandler.swift#L60"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/.build\/checkouts\/vapor\/Sources\/Vapor\/Utilities\/LifecycleHandler.swift#L60"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Method",
@@ -216,17 +215,6 @@
   "title" : "SMTPInitializer",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtpvapor\/smtpinitializer"
-},
-"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SMTPInitializer/LifecycleHandler-Implementations": {
-  "abstract" : [
-
-  ],
-  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer\/LifecycleHandler-Implementations",
-  "kind" : "article",
-  "role" : "collectionGroup",
-  "title" : "LifecycleHandler Implementations",
-  "type" : "topic",
-  "url" : "\/documentation\/swiftsmtpvapor\/smtpinitializer\/lifecyclehandler-implementations"
 },
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SMTPInitializer/didBoot(_:)": {
   "abstract" : [

@@ -63,7 +63,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Configuration.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/Configuration.swift#L75"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Configuration.swift#L75"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Property",

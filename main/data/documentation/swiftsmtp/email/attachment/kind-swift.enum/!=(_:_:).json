@@ -11,8 +11,7 @@
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum\/Equatable-Implementations"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum"
       ]
     ]
   },
@@ -539,17 +538,6 @@
   "title" : "!=(_:_:)",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum\/!=(_:_:)"
-},
-"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment/Kind-swift.enum/Equatable-Implementations": {
-  "abstract" : [
-
-  ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment\/Kind-swift.enum\/Equatable-Implementations",
-  "kind" : "article",
-  "role" : "collectionGroup",
-  "title" : "Equatable Implementations",
-  "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/email\/attachment\/kind-swift.enum\/equatable-implementations"
 }
 }
 }

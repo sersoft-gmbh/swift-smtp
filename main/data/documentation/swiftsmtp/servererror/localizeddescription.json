@@ -9,8 +9,7 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/ServerError",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/ServerError\/Error-Implementations"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/ServerError"
       ]
     ]
   },
@@ -174,17 +173,6 @@
   "title" : "ServerError",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/servererror"
-},
-"doc://SwiftSMTP/documentation/SwiftSMTP/ServerError/Error-Implementations": {
-  "abstract" : [
-
-  ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/ServerError\/Error-Implementations",
-  "kind" : "article",
-  "role" : "collectionGroup",
-  "title" : "Error Implementations",
-  "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/servererror\/error-implementations"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/ServerError/localizedDescription": {
   "abstract" : [

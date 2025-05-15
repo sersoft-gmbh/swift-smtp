@@ -4,8 +4,7 @@
       [
         "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
         "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Logging",
-        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Logging\/Logger",
-        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Logging\/Logger\/SMTPLogger-Implementations"
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Logging\/Logger"
       ]
     ]
   },
@@ -62,7 +61,7 @@
     ],
     "remoteSource" : {
       "fileName" : "SwiftSMTP+Vapor.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L142"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L142"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Method",
@@ -210,17 +209,6 @@
   "title" : "Logger",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtpvapor\/logging\/logger"
-},
-"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Logging/Logger/SMTPLogger-Implementations": {
-  "abstract" : [
-
-  ],
-  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Logging\/Logger\/SMTPLogger-Implementations",
-  "kind" : "article",
-  "role" : "collectionGroup",
-  "title" : "SMTPLogger Implementations",
-  "type" : "topic",
-  "url" : "\/documentation\/swiftsmtpvapor\/logging\/logger\/smtplogger-implementations"
 },
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Logging/Logger/logSMTPMessage(_:)": {
   "abstract" : [

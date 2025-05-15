@@ -46,7 +46,7 @@
     ],
     "remoteSource" : {
       "fileName" : "SMTPErrors.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTP\/Models\/SMTPErrors.swift#L7"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/SMTPErrors.swift#L7"
     },
     "role" : "symbol",
     "roleHeading" : "Structure",

@@ -9,8 +9,7 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Equatable-Implementations"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email"
       ]
     ]
   },
@@ -429,17 +428,6 @@
   "title" : "!=(_:_:)",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/email\/!=(_:_:)"
-},
-"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Equatable-Implementations": {
-  "abstract" : [
-
-  ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Equatable-Implementations",
-  "kind" : "article",
-  "role" : "collectionGroup",
-  "title" : "Equatable Implementations",
-  "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/email\/equatable-implementations"
 }
 }
 }

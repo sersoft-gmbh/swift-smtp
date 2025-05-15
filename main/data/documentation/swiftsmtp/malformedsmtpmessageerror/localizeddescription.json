@@ -9,8 +9,7 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MalformedSMTPMessageError",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MalformedSMTPMessageError\/Error-Implementations"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MalformedSMTPMessageError"
       ]
     ]
   },
@@ -174,17 +173,6 @@
   "title" : "MalformedSMTPMessageError",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/malformedsmtpmessageerror"
-},
-"doc://SwiftSMTP/documentation/SwiftSMTP/MalformedSMTPMessageError/Error-Implementations": {
-  "abstract" : [
-
-  ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MalformedSMTPMessageError\/Error-Implementations",
-  "kind" : "article",
-  "role" : "collectionGroup",
-  "title" : "Error Implementations",
-  "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/malformedsmtpmessageerror\/error-implementations"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/MalformedSMTPMessageError/localizedDescription": {
   "abstract" : [

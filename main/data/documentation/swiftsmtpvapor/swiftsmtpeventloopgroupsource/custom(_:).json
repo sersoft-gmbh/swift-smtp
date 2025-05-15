@@ -54,7 +54,7 @@
     ],
     "remoteSource" : {
       "fileName" : "SwiftSMTP+Vapor.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L10"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L10"
     },
     "role" : "symbol",
     "roleHeading" : "Case",
