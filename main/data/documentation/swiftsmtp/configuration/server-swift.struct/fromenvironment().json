@@ -77,7 +77,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Configuration+Environment.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Configuration+Environment.swift#L42"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Configuration+Environment.swift#L44"
     },
     "role" : "symbol",
     "roleHeading" : "Type Method",
