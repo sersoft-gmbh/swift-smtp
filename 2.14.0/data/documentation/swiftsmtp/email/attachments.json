@@ -1,0 +1,305 @@
+{
+  "abstract" : [
+    {
+      "text" : "The attachments to attach to the email.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/attachments"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:9SwiftSMTP5EmailV11attachmentsSayAC10AttachmentVGvp",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "var"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "attachments"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:Sa",
+        "text" : "Array"
+      },
+      {
+        "kind" : "text",
+        "text" : "<"
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
+        "text" : "Email"
+      },
+      {
+        "kind" : "text",
+        "text" : "."
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV",
+        "text" : "Attachment"
+      },
+      {
+        "kind" : "text",
+        "text" : ">"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTP"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "Email.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/tags\/2.14.0\/Sources\/SwiftSMTP\/Models\/Email.swift#L33"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "attachments"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "var"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "attachments"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:Sa",
+              "text" : "Array"
+            },
+            {
+              "kind" : "text",
+              "text" : "<"
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
+              "text" : "Email"
+            },
+            {
+              "kind" : "text",
+              "text" : "."
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV",
+              "text" : "Attachment"
+            },
+            {
+              "kind" : "text",
+              "text" : ">"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtp\/email\/attachments"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTP/documentation/SwiftSMTP": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTP",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email": {
+  "abstract" : [
+    {
+      "text" : "Represents an email.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Email"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Email"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Email",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/email"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/Attachment": {
+  "abstract" : [
+    {
+      "text" : "Represents an email attachment.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Attachment"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Attachment",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Attachment"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Email.Attachment",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/email\/attachment"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email/attachments": {
+  "abstract" : [
+    {
+      "text" : "The attachments to attach to the email.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "attachments"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sa",
+      "text" : "Array"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
+      "text" : "Email"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV",
+      "text" : "Attachment"
+    },
+    {
+      "kind" : "text",
+      "text" : ">"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/attachments",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "attachments",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/email\/attachments"
+}
+}
+}

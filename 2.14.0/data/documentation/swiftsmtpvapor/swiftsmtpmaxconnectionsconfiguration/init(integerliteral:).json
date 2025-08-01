@@ -1,0 +1,214 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration\/init(integerLiteral:)"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:14SwiftSMTPVapor0A31SMTPMaxConnectionsConfigurationO14integerLiteralACSi_tcfc",
+    "fragments" : [
+      {
+        "kind" : "identifier",
+        "text" : "init"
+      },
+      {
+        "kind" : "text",
+        "text" : "("
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "integerLiteral"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:s18IntegerLiteralTypea",
+        "text" : "IntegerLiteralType"
+      },
+      {
+        "kind" : "text",
+        "text" : ")"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTPVapor"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "SwiftSMTP+Vapor.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/tags\/2.14.0\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L26"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Initializer",
+    "symbolKind" : "init",
+    "title" : "init(integerLiteral:)"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "init"
+            },
+            {
+              "kind" : "text",
+              "text" : "("
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "integerLiteral"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "value"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:s18IntegerLiteralTypea",
+              "text" : "IntegerLiteralType"
+            },
+            {
+              "kind" : "text",
+              "text" : ")"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtpvapor\/swiftsmtpmaxconnectionsconfiguration\/init(integerliteral:)"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTPVapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPMaxConnectionsConfiguration": {
+  "abstract" : [
+    {
+      "text" : "Represents the maximum connections configuration per Mailer.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPMaxConnectionsConfiguration"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPMaxConnectionsConfiguration"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "SwiftSMTPMaxConnectionsConfiguration",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpmaxconnectionsconfiguration"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPMaxConnectionsConfiguration/init(integerLiteral:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "integerLiteral"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s18IntegerLiteralTypea",
+      "text" : "IntegerLiteralType"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration\/init(integerLiteral:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(integerLiteral:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpmaxconnectionsconfiguration\/init(integerliteral:)"
+}
+}
+}

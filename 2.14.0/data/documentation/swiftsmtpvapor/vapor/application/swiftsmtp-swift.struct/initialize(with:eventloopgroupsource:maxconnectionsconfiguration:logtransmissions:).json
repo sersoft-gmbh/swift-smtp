@@ -1,0 +1,666 @@
+{
+  "abstract" : [
+    {
+      "text" : "Initializes the SwiftSMTP setup of the application with the given configuration.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/initialize(with:eventLoopGroupSource:maxConnectionsConfiguration:logTransmissions:)"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:5Vapor11ApplicationC14SwiftSMTPVaporE0C4SMTPV10initialize4with20eventLoopGroupSource27maxConnectionsConfiguration16logTransmissionsyAE0N0V_AD0c9SMTPEventijK0OAD0c7SMTPMaxmN0OSbtF",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "func"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "initialize"
+      },
+      {
+        "kind" : "text",
+        "text" : "("
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "with"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+        "text" : "Configuration"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "eventLoopGroupSource"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:14SwiftSMTPVapor0A24SMTPEventLoopGroupSourceO",
+        "text" : "SwiftSMTPEventLoopGroupSource"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "maxConnectionsConfiguration"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:14SwiftSMTPVapor0A31SMTPMaxConnectionsConfigurationO",
+        "text" : "SwiftSMTPMaxConnectionsConfiguration"
+      },
+      {
+        "kind" : "text",
+        "text" : ", "
+      },
+      {
+        "kind" : "externalParam",
+        "text" : "logTransmissions"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:Sb",
+        "text" : "Bool"
+      },
+      {
+        "kind" : "text",
+        "text" : ")"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTPVapor"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "SwiftSMTP+Vapor.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/tags\/2.14.0\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L197"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Instance Method",
+    "symbolKind" : "method",
+    "title" : "initialize(with:eventLoopGroupSource:maxConnectionsConfiguration:logTransmissions:)"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "func"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "initialize"
+            },
+            {
+              "kind" : "text",
+              "text" : "("
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "with"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "internalParam",
+              "text" : "configuration"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+              "text" : "Configuration"
+            },
+            {
+              "kind" : "text",
+              "text" : ", "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "eventLoopGroupSource"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:14SwiftSMTPVapor0A24SMTPEventLoopGroupSourceO",
+              "text" : "SwiftSMTPEventLoopGroupSource"
+            },
+            {
+              "kind" : "text",
+              "text" : " = .application, "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "maxConnectionsConfiguration"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:14SwiftSMTPVapor0A31SMTPMaxConnectionsConfigurationO",
+              "text" : "SwiftSMTPMaxConnectionsConfiguration"
+            },
+            {
+              "kind" : "text",
+              "text" : " = .useDefault, "
+            },
+            {
+              "kind" : "externalParam",
+              "text" : "logTransmissions"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:Sb",
+              "text" : "Bool"
+            },
+            {
+              "kind" : "text",
+              "text" : " = false)"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The configuration to use for the application’s mailers.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "configuration"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The source for the event loop group to use. Defaults to ",
+                  "type" : "text"
+                },
+                {
+                  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource\/application",
+                  "isActive" : true,
+                  "type" : "reference"
+                },
+                {
+                  "text" : ".",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "eventLoopGroupSource"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The maximum connections configuration per mailer. Defaults to ",
+                  "type" : "text"
+                },
+                {
+                  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration\/useDefault",
+                  "isActive" : true,
+                  "type" : "reference"
+                },
+                {
+                  "text" : ".",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "maxConnectionsConfiguration"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "Whether to log transmissions with a SwiftLogger. Defaults to ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "false",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "logTransmissions"
+        }
+      ]
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtpvapor\/vapor\/application\/swiftsmtp-swift.struct\/initialize(with:eventloopgroupsource:maxconnectionsconfiguration:logtransmissions:)"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTPVapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPEventLoopGroupSource": {
+  "abstract" : [
+    {
+      "text" : "Represents the source for the event loop group used by the Mailer.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPEventLoopGroupSource"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPEventLoopGroupSource"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "SwiftSMTPEventLoopGroupSource",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpeventloopgroupsource"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPEventLoopGroupSource/application": {
+  "abstract" : [
+    {
+      "text" : "Use the application’s ELG.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "application"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource\/application",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "SwiftSMTPEventLoopGroupSource.application",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpeventloopgroupsource\/application"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPMaxConnectionsConfiguration": {
+  "abstract" : [
+    {
+      "text" : "Represents the maximum connections configuration per Mailer.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPMaxConnectionsConfiguration"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPMaxConnectionsConfiguration"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "SwiftSMTPMaxConnectionsConfiguration",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpmaxconnectionsconfiguration"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPMaxConnectionsConfiguration/useDefault": {
+  "abstract" : [
+    {
+      "text" : "Uses the default specified by ",
+      "type" : "text"
+    },
+    {
+      "code" : "SwiftSMTP\/Mailer",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "useDefault"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration\/useDefault",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "SwiftSMTPMaxConnectionsConfiguration.useDefault",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpmaxconnectionsconfiguration\/usedefault"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "Vapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Application": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:5Vapor11ApplicationC",
+      "text" : "Application"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Application"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Application",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/application"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Application/SwiftSMTP-swift.struct": {
+  "abstract" : [
+    {
+      "text" : "Represents the application’s SwiftSMTP configuration.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTP"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTP"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Application.SwiftSMTP",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/application\/swiftsmtp-swift.struct"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Application/SwiftSMTP-swift.struct/initialize(with:eventLoopGroupSource:maxConnectionsConfiguration:logTransmissions:)": {
+  "abstract" : [
+    {
+      "text" : "Initializes the SwiftSMTP setup of the application with the given configuration.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "initialize"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "with"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "eventLoopGroupSource"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:14SwiftSMTPVapor0A24SMTPEventLoopGroupSourceO",
+      "text" : "SwiftSMTPEventLoopGroupSource"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "maxConnectionsConfiguration"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:14SwiftSMTPVapor0A31SMTPMaxConnectionsConfigurationO",
+      "text" : "SwiftSMTPMaxConnectionsConfiguration"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "logTransmissions"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct\/initialize(with:eventLoopGroupSource:maxConnectionsConfiguration:logTransmissions:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "initialize(with:eventLoopGroupSource:maxConnectionsConfiguration:logTransmissions:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/application\/swiftsmtp-swift.struct\/initialize(with:eventloopgroupsource:maxconnectionsconfiguration:logtransmissions:)"
+}
+}
+}

@@ -1,0 +1,601 @@
+{
+  "abstract" : [
+    {
+      "text" : "Creates a server from environment variables (or defaults).",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "The following environment variables are read:",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/fromEnvironment()"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "extendedModule" : "SwiftSMTP",
+    "externalID" : "s:9SwiftSMTP13ConfigurationV6ServerV15fromEnvironmentAEyFZ",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "static"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "keyword",
+        "text" : "func"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "fromEnvironment"
+      },
+      {
+        "kind" : "text",
+        "text" : "() -> "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+        "text" : "Configuration"
+      },
+      {
+        "kind" : "text",
+        "text" : "."
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV",
+        "text" : "Server"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTP"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "Configuration+Environment.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/tags\/2.14.0\/Sources\/SwiftSMTP\/Models\/Configuration+Environment.swift#L44"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Type Method",
+    "symbolKind" : "method",
+    "title" : "fromEnvironment()"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "static"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "func"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "fromEnvironment"
+            },
+            {
+              "kind" : "text",
+              "text" : "() -> "
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+              "text" : "Configuration"
+            },
+            {
+              "kind" : "text",
+              "text" : "."
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV",
+              "text" : "Server"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "items" : [
+            {
+              "content" : [
+                {
+                  "inlineContent" : [
+                    {
+                      "code" : "SMTP_HOST",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ": The hostname to use or ",
+                      "type" : "text"
+                    },
+                    {
+                      "code" : "127.0.0.1",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : " if none is set.",
+                      "type" : "text"
+                    }
+                  ],
+                  "type" : "paragraph"
+                }
+              ]
+            },
+            {
+              "content" : [
+                {
+                  "inlineContent" : [
+                    {
+                      "code" : "SMTP_PORT",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ": The port to use. The encryption’s default will be used if not set or not a valid integer.",
+                      "type" : "text"
+                    },
+                    {
+                      "text" : " ",
+                      "type" : "text"
+                    },
+                    {
+                      "text" : "The encryption will also be read from the environment. If none is set, the default defined in ",
+                      "type" : "text"
+                    },
+                    {
+                      "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/init(hostname:port:encryption:)",
+                      "isActive" : true,
+                      "type" : "reference"
+                    },
+                    {
+                      "text" : " will be used.",
+                      "type" : "text"
+                    }
+                  ],
+                  "type" : "paragraph"
+                }
+              ]
+            }
+          ],
+          "type" : "unorderedList"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "",
+                  "type" : "text"
+                },
+                {
+                  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/fromEnvironment()",
+                  "isActive" : true,
+                  "type" : "reference"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "See Also",
+          "style" : "note",
+          "type" : "aside"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "",
+                  "type" : "text"
+                },
+                {
+                  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/init(hostname:port:encryption:)",
+                  "isActive" : true,
+                  "type" : "reference"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "See Also",
+          "style" : "note",
+          "type" : "aside"
+        }
+      ],
+      "kind" : "content"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/fromenvironment()"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTP/documentation/SwiftSMTP": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTP",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration": {
+  "abstract" : [
+    {
+      "text" : "Represents a configuration for sending emails.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Configuration",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/Server-swift.struct": {
+  "abstract" : [
+    {
+      "text" : "Represents a server configuration.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Server"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Server"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Configuration.Server",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/Server-swift.struct/Encryption-swift.enum/fromEnvironment()": {
+  "abstract" : [
+    {
+      "text" : "Attempts to create an encryption from the environment variable ",
+      "type" : "text"
+    },
+    {
+      "code" : "SMTP_ENCRYPTION",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Possible values (case insensitive):",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fromEnvironment"
+    },
+    {
+      "kind" : "text",
+      "text" : "() -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV",
+      "text" : "Server"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV10EncryptionO",
+      "text" : "Encryption"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/fromEnvironment()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "fromEnvironment()",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/fromenvironment()"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/Server-swift.struct/fromEnvironment()": {
+  "abstract" : [
+    {
+      "text" : "Creates a server from environment variables (or defaults).",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "The following environment variables are read:",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fromEnvironment"
+    },
+    {
+      "kind" : "text",
+      "text" : "() -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV",
+      "text" : "Server"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/fromEnvironment()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "fromEnvironment()",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/fromenvironment()"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/Server-swift.struct/init(hostname:port:encryption:)": {
+  "abstract" : [
+    {
+      "text" : "Creates a new server configuration with the given parameters.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "hostname"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "port"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "encryption"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV",
+      "text" : "Server"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV10EncryptionO",
+      "text" : "Encryption"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/init(hostname:port:encryption:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(hostname:port:encryption:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/init(hostname:port:encryption:)"
+}
+}
+}
