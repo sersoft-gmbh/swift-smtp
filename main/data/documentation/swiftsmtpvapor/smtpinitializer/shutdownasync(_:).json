@@ -13,8 +13,7 @@
   },
   "kind" : "symbol",
   "metadata" : {
-    "extendedModule" : "Vapor",
-    "externalID" : "s:5Vapor16LifecycleHandlerPAAE13shutdownAsyncyyAA11ApplicationCYaF::SYNTHESIZED::s:14SwiftSMTPVapor15SMTPInitializerV",
+    "externalID" : "s:14SwiftSMTPVapor15SMTPInitializerV13shutdownAsyncyy5Vapor11ApplicationCYaF",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -48,15 +47,12 @@
     ],
     "modules" : [
       {
-        "name" : "SwiftSMTPVapor",
-        "relatedModules" : [
-          "Vapor"
-        ]
+        "name" : "SwiftSMTPVapor"
       }
     ],
     "remoteSource" : {
-      "fileName" : "LifecycleHandler.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/.build\/checkouts\/vapor\/Sources\/Vapor\/Utilities\/LifecycleHandler.swift#L71"
+      "fileName" : "SwiftSMTP+Vapor.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L123"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Method",
@@ -149,7 +145,18 @@
 "references": {
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
   "abstract" : [
-
+    {
+      "text" : "SwiftSMTPVapor builds on SwiftSMTP and adds some convenience for using it with Vapor. First, you need to configure SwiftSMTPVapor once at startup. This is usually done in ",
+      "type" : "text"
+    },
+    {
+      "code" : "configure(_:)",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ". There are multiple ways to configure SwiftSMTP here. The simplest is to use environment variables (see above for details on that):",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
   "kind" : "symbol",

@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "A Swift NIO based implementation for sending emails via SMTP servers.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -23,6 +29,441 @@
     "symbolKind" : "module",
     "title" : "SwiftSMTP"
   },
+  "primaryContentSections" : [
+    {
+      "content" : [
+        {
+          "anchor" : "Installation",
+          "level" : 2,
+          "text" : "Installation",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "To use SwiftSMTP, add the following package dependency:",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "code" : [
+            ".package(url: \"https:\/\/github.com\/sersoft-gmbh\/swift-smtp\", from: \"2.0.0\"),"
+          ],
+          "syntax" : "swift",
+          "type" : "codeListing"
+        },
+        {
+          "anchor" : "Usage",
+          "level" : 2,
+          "text" : "Usage",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "To send an email in SwiftSMTP, first create a ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : ". The configuration contains the server parameters (server address, port, credentials, …).",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "Next you can create a ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " with it. You’ll also need a SwiftNIO ",
+              "type" : "text"
+            },
+            {
+              "code" : "EventLoopGroup",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " (e.g. ",
+              "type" : "text"
+            },
+            {
+              "code" : "MultiThreadedEventLoopGroup",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : ").",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "You then create an ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " and simply call ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-3qwba",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " on your mailer with it. The returned ",
+              "type" : "text"
+            },
+            {
+              "code" : "EventLoopFuture",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " will return once the email was successfully sent, or will fail with the error returned from the SMTP server.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "anchor" : "Creating-a-Configuration",
+          "level" : 3,
+          "text" : "Creating a `Configuration`",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "There are multiple ways to create a configuration. The simplest is to use environment variables:",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "code" : [
+            "let configuration = Configuration.fromEnvironment()"
+          ],
+          "syntax" : "swift",
+          "type" : "codeListing"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The following environment variables are read (for more details please also check the header docs):",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "items" : [
+            {
+              "content" : [
+                {
+                  "inlineContent" : [
+                    {
+                      "code" : "SMTP_HOST",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ": The hostname \/ ip to use or ",
+                      "type" : "text"
+                    },
+                    {
+                      "code" : "127.0.0.1",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : " if none is set.",
+                      "type" : "text"
+                    }
+                  ],
+                  "type" : "paragraph"
+                }
+              ]
+            },
+            {
+              "content" : [
+                {
+                  "inlineContent" : [
+                    {
+                      "code" : "SMTP_PORT",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ": The port to use. The encryption’s default will be used if not set or not a valid integer.",
+                      "type" : "text"
+                    }
+                  ],
+                  "type" : "paragraph"
+                }
+              ]
+            },
+            {
+              "content" : [
+                {
+                  "inlineContent" : [
+                    {
+                      "code" : "SMTP_ENCRYPTION",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ": The encyrption to use.",
+                      "type" : "text"
+                    }
+                  ],
+                  "type" : "paragraph"
+                }
+              ]
+            },
+            {
+              "content" : [
+                {
+                  "inlineContent" : [
+                    {
+                      "code" : "SMTP_TIMEOUT",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ": The connection time out in seconds. If not set or not a valid 64-bit integer, a sensible default is used.",
+                      "type" : "text"
+                    }
+                  ],
+                  "type" : "paragraph"
+                }
+              ]
+            },
+            {
+              "content" : [
+                {
+                  "inlineContent" : [
+                    {
+                      "code" : "SMTP_USERNAME",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ": The username to use.",
+                      "type" : "text"
+                    }
+                  ],
+                  "type" : "paragraph"
+                }
+              ]
+            },
+            {
+              "content" : [
+                {
+                  "inlineContent" : [
+                    {
+                      "code" : "SMTP_PASSWORD",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ": The password to use.",
+                      "type" : "text"
+                    }
+                  ],
+                  "type" : "paragraph"
+                }
+              ]
+            },
+            {
+              "content" : [
+                {
+                  "inlineContent" : [
+                    {
+                      "code" : "SMTP_USE_ESMTP",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ": If set to ",
+                      "type" : "text"
+                    },
+                    {
+                      "code" : "1",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ", ESMTP will be used (e.g. send ",
+                      "type" : "text"
+                    },
+                    {
+                      "code" : "EHLO",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : " instead of just ",
+                      "type" : "text"
+                    },
+                    {
+                      "code" : "HELO",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : ").",
+                      "type" : "text"
+                    }
+                  ],
+                  "type" : "paragraph"
+                }
+              ]
+            }
+          ],
+          "type" : "unorderedList"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "You can also create a configuration partially from the environment. Each sub-object of ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " has it’s own ",
+              "type" : "text"
+            },
+            {
+              "code" : ".fromEnvironment()",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " method. Of course you can also create the configuration completely without any environment values.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "anchor" : "Creating-a-Mailer",
+          "level" : 3,
+          "text" : "Creating a `Mailer`",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "Once you have a ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : ", you can use it to create a ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " (together with an ",
+              "type" : "text"
+            },
+            {
+              "code" : "EventLoopGroup",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : "):",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "code" : [
+            "let configuration = Configuration.fromEnvironment() \/\/ or one you created manually",
+            "let elg = MultiThreadedEventLoopGroup(numberOfThreads: 2)",
+            "let mailer = Mailer(group: elg, configuration: configuration)"
+          ],
+          "syntax" : "swift",
+          "type" : "codeListing"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "You can then use ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-3qwba",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : " to send ",
+              "type" : "text"
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
+              "isActive" : true,
+              "type" : "reference"
+            },
+            {
+              "text" : "s:",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "code" : [
+            "let email: Email \/\/ created previously ",
+            "let future = mailer.send(email)"
+          ],
+          "syntax" : "swift",
+          "type" : "codeListing"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "SwiftSMTP also works with Swift concurrency:",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "code" : [
+            "let email: Email \/\/ created previously",
+            "try await mailer.send(email)"
+          ],
+          "syntax" : "swift",
+          "type" : "codeListing"
+        }
+      ],
+      "kind" : "content"
+    }
+  ],
   "schemaVersion" : {
     "major" : 0,
     "minor" : 3,
@@ -77,7 +518,10 @@
 "references": {
 "doc://SwiftSMTP/documentation/SwiftSMTP": {
   "abstract" : [
-
+    {
+      "text" : "A Swift NIO based implementation for sending emails via SMTP servers.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
   "kind" : "symbol",
@@ -187,6 +631,65 @@
   "title" : "Mailer",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/mailer"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(_:)-3qwba": {
+  "abstract" : [
+    {
+      "text" : "Schedules an email for delivery. Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "send"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
+      "text" : "Email"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7NIOCore15EventLoopFutureC",
+      "text" : "EventLoopFuture"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ">"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-3qwba",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "send(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/mailer\/send(_:)-3qwba"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/MalformedSMTPMessageError": {
   "abstract" : [

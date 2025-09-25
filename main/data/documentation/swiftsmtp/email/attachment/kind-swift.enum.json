@@ -190,7 +190,10 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP": {
   "abstract" : [
-
+    {
+      "text" : "A Swift NIO based implementation for sending emails via SMTP servers.",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
   "kind" : "symbol",

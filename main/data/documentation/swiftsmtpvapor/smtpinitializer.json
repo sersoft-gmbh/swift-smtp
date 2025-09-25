@@ -151,6 +151,7 @@
       "generated" : true,
       "identifiers" : [
         "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer\/shutdown(_:)",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer\/shutdownAsync(_:)",
         "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer\/willBoot(_:)"
       ],
       "title" : "Instance Methods"
@@ -185,7 +186,18 @@
 },
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
   "abstract" : [
-
+    {
+      "text" : "SwiftSMTPVapor builds on SwiftSMTP and adds some convenience for using it with Vapor. First, you need to configure SwiftSMTPVapor once at startup. This is usually done in ",
+      "type" : "text"
+    },
+    {
+      "code" : "configure(_:)",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ". There are multiple ways to configure SwiftSMTP here. The simplest is to use environment variables (see above for details on that):",
+      "type" : "text"
+    }
   ],
   "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
   "kind" : "symbol",
@@ -540,6 +552,48 @@
   "title" : "shutdown(_:)",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtpvapor\/smtpinitializer\/shutdown(_:)"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SMTPInitializer/shutdownAsync(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "shutdownAsync"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5Vapor11ApplicationC",
+      "text" : "Application"
+    },
+    {
+      "kind" : "text",
+      "text" : ") "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "async"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPInitializer\/shutdownAsync(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "shutdownAsync(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/smtpinitializer\/shutdownasync(_:)"
 },
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SMTPInitializer/willBoot(_:)": {
   "abstract" : [
