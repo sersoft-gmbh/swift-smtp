@@ -119,9 +119,15 @@ public struct SMTPInitializer: Sendable, LifecycleHandler {
         guard case .custom(_) = eventLoopGroupSource else { return }
         SharedMailerGroupShutdownHandler.shutdownSharedMailerGroup(of: application)
     }
+
+    public func shutdownAsync(_ application: Application) async {
+        guard case .custom(_) = eventLoopGroupSource else { return }
+        await SharedMailerGroupShutdownHandler.shutdownSharedMailerGroupAsync(of: application)
+    }
 }
 
 struct SharedMailerGroupShutdownHandler: Sendable, LifecycleHandler {
+    @available(*, noasync)
     static func shutdownSharedMailerGroup(of application: Application) {
         guard let sharedMailer = application.storage[Application.SwiftSMTP.SharedMailerKeys.Storage.self]
         else { return }
@@ -133,8 +139,23 @@ struct SharedMailerGroupShutdownHandler: Sendable, LifecycleHandler {
         }
     }
 
+    static func shutdownSharedMailerGroupAsync(of application: Application) async {
+        guard let sharedMailer = application.storage[Application.SwiftSMTP.SharedMailerKeys.Storage.self]
+        else { return }
+        do {
+            try await sharedMailer.group.shutdownGracefully()
+        } catch {
+            application.logger.error("[swift-smtp]: Failed to shutdown custom event loop group of shared mailer!")
+            application.logger.report(error: error)
+        }
+    }
+
     func shutdown(_ application: Application) {
         Self.shutdownSharedMailerGroup(of: application)
+    }
+
+    func shutdownAsync(_ application: Application) async {
+        await Self.shutdownSharedMailerGroupAsync(of: application)
     }
 }
 

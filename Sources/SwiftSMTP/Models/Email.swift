@@ -142,8 +142,8 @@ extension Email {
             }
         }
 
-        /// The content id of this attachment. Defined via ``kind-swift.property``.
-        /// - SeeAlso:``Kind-swift.enum``
+        /// The content id of this attachment. Defined via ``kind``.
+        /// - SeeAlso: ``Kind``
         @inlinable
         public var contentID: String? { kind.contentID }
 
