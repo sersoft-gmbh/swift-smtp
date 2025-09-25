@@ -1,4 +1,3 @@
-#if swift(>=6.0)
 import RegexBuilder
 import Testing
 import Foundation
@@ -221,4 +220,3 @@ struct SMTPRequestEncoderTests {
                 """)
     }
 }
-#endif

@@ -1,4 +1,3 @@
-#if swift(>=6.0)
 import Testing
 import Foundation
 import NIO
@@ -58,4 +57,3 @@ struct LogDuplexHandlerTests {
         ])
     }
 }
-#endif

@@ -1,12 +1,4 @@
-#if swift(>=6.0)
-import Foundation
-#else
-#if canImport(Darwin)
-public import Foundation
-#else
-@preconcurrency public import Foundation
-#endif
-#endif
+internal import struct Foundation.Date
 
 enum SMTPRequest: Sendable {
     case sayHello(serverName: String, useEHello: Bool)

@@ -98,9 +98,9 @@ extension Configuration.Server {
         /// - ``startTLS(_:)``: `587`
         public var defaultPort: Int {
             switch self {
-            case .plain: return 25
-            case .ssl: return 465
-            case .startTLS(_): return 587
+            case .plain: 25
+            case .ssl: 465
+            case .startTLS(_): 587
             }
         }
     }

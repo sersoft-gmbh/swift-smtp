@@ -45,10 +45,9 @@ struct SwiftSMTPVaporConfig: Sendable {
 
     @usableFromInline
     func createNewMailer(with application: Application) -> Mailer {
-        let eventLoopGroup: any EventLoopGroup
-        switch eventLoopGroupSource {
-        case .application: eventLoopGroup = application.eventLoopGroup
-        case .custom(let creator): eventLoopGroup = creator()
+        let eventLoopGroup = switch eventLoopGroupSource {
+        case .application: application.eventLoopGroup
+        case .custom(let creator): creator()
         }
         let logger = logTransmissions ? Logger(label: "de.sersoft.swift-smtp") : nil
         if case .custom(let maxConnections) = maxConnectionsConfig {
@@ -124,7 +123,8 @@ public struct SMTPInitializer: Sendable, LifecycleHandler {
 
 struct SharedMailerGroupShutdownHandler: Sendable, LifecycleHandler {
     static func shutdownSharedMailerGroup(of application: Application) {
-        guard let sharedMailer = application.storage[Application.SwiftSMTP.SharedMailerKeys.Storage.self] else { return }
+        guard let sharedMailer = application.storage[Application.SwiftSMTP.SharedMailerKeys.Storage.self]
+        else { return }
         do {
             try sharedMailer.group.syncShutdownGracefully()
         } catch {

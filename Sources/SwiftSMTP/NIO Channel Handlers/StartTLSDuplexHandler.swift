@@ -1,8 +1,4 @@
-#if swift(>=6.0)
 import NIO
-#else
-public import NIO
-#endif
 import NIOSSL
 
 final class StartTLSDuplexHandler: ChannelDuplexHandler, RemovableChannelHandler {

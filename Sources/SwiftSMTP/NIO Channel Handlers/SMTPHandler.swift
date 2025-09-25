@@ -1,10 +1,5 @@
-#if swift(>=6.0)
 import Foundation
 import NIO
-#else
-public import Foundation
-public import NIO
-#endif
 import NIOExtras
 import NIOSSL
 

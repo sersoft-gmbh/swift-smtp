@@ -9,9 +9,14 @@ import ucrt
 #else
 #error("Unsupported platform (getenv)! If you want to add support for this platform, please support a PR which adds the neccessary import for getenv for this platform!")
 #endif
+fileprivate import struct NIO.TimeAmount
 
 fileprivate func getEnvValue(forKey key: String) -> String? {
+#if compiler(>=6.2)
+    unsafe getenv(key).map { unsafe String(cString: $0) }
+#else
     getenv(key).map { String(cString: $0) }
+#endif
 }
 
 extension Configuration.Server.Encryption {
@@ -24,11 +29,11 @@ extension Configuration.Server.Encryption {
     /// If the environment variable is not set or is an unsupported value, `nil` is returned.
     public static func fromEnvironment() -> Configuration.Server.Encryption? {
         switch getEnvValue(forKey: "SMTP_ENCRYPTION")?.lowercased() {
-        case "plain": return .plain
-        case "ssl": return .ssl
-        case "starttls": return .startTLS(.ifAvailable)
-        case "starttls_always": return .startTLS(.always)
-        default: return nil
+        case "plain": .plain
+        case "ssl": .ssl
+        case "starttls": .startTLS(.ifAvailable)
+        case "starttls_always": .startTLS(.always)
+        default: nil
         }
     }
 }

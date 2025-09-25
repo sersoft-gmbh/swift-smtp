@@ -1,9 +1,5 @@
 fileprivate import Dispatch
-#if swift(>=6.0)
 import Foundation
-#else
-public import Foundation
-#endif
 public import NIO
 import NIOExtras
 import NIOSSL
@@ -31,7 +27,7 @@ fileprivate extension Configuration.Server {
 }
 
 /// A Mailer is responsible for opening server connections and dispatching emails.
-public final class Mailer: @unchecked Sendable {
+public final class Mailer: Sendable {
     private struct ScheduledEmail: Sendable, Hashable {
         private let uuid = UUID()
 
@@ -76,11 +72,9 @@ public final class Mailer: @unchecked Sendable {
         self.maxConnections = maxConnections
         self.transmissionLogger = transmissionLogger
 
-        var _bootstraps = Dictionary<ScheduledEmail, ClientBootstrap>()
-        if let maxConnections = maxConnections {
+        if let maxConnections {
             assert(maxConnections > 0)
             connectionsSemaphore = DispatchSemaphore(value: maxConnections)
-            _bootstraps.reserveCapacity(maxConnections)
         } else {
             connectionsSemaphore = nil
         }

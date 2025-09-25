@@ -1,15 +1,13 @@
-#if swift(>=6.0)
 import Foundation
 import Algorithms
 import NIO
-#else
-public import Foundation
-public import Algorithms
-public import NIO
-#endif
 
 extension Date {
     private static let smtpLocale = Locale(identifier: "en_US_POSIX")
+    @available(macOS, deprecated: 12)
+    @available(iOS, deprecated: 15)
+    @available(tvOS, deprecated: 15)
+    @available(watchOS, deprecated: 6)
     private static let smtpFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
@@ -21,9 +19,6 @@ extension Date {
 
     /* fileprivate but @testable*/
     var formattedForSMTP: String {
-#if swift(<6.0) && !canImport(Darwin)
-        return Self.smtpFormatter.string(from: self)
-#else
         if #available(macOS 12, iOS 15, tvOS 15, watchOS 6, *) {
             return formatted(VerbatimFormatStyle(
                 format: "\(weekday: .abbreviated), \(day: .twoDigits) \(standaloneMonth: .abbreviated) \(year: .padded(4)) \(hour: .twoDigits(clock: .twentyFourHour, hourCycle: .zeroBased)):\(minute: .twoDigits):\(second: .twoDigits) \(timeZone: .iso8601(.short))",
@@ -31,7 +26,6 @@ extension Date {
         } else {
             return Self.smtpFormatter.string(from: self)
         }
-#endif
     }
 }
 

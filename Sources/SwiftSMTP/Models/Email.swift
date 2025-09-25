@@ -1,8 +1,4 @@
-#if canImport(Darwin) || swift(>=6.0)
 public import struct Foundation.Data
-#else
-@preconcurrency public import Foundation
-#endif
 public import struct NIO.ByteBuffer
 
 /// Represents an email.

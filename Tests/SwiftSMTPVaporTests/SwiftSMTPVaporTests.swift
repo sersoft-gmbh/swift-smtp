@@ -1,8 +1,10 @@
-import XCTest
+import Testing
 @testable import SwiftSMTPVapor
 
-final class SwiftSMTPVaporTests: XCTestCase {
-    func testExample() {
+@Suite
+struct SwiftSMTPVaporTests {
+    @Test
+    func testNothing() {
         // TODO
     }
 }

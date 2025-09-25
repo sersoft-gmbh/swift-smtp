@@ -1,9 +1,11 @@
 /// Thrown when the message received from the server was not a well-formed SMTP message.
+@DebugDescription
 public struct MalformedSMTPMessageError: Error, CustomStringConvertible {
     public var description: String { "The message from the server was malformed!" }
 }
 
 /// Thrown when the server returns an error message.
+@DebugDescription
 public struct ServerError: Error, CustomStringConvertible {
     /// The message returned by the server.
     public let serverMessage: String
