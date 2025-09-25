@@ -87,7 +87,8 @@
       "identifiers" : [
         "doc:\/\/SwiftSMTPVapor\/s27ExpressibleByIntegerLiteralP",
         "doc:\/\/SwiftSMTPVapor\/s23ExpressibleByNilLiteralP",
-        "doc:\/\/SwiftSMTPVapor\/s8SendableP"
+        "doc:\/\/SwiftSMTPVapor\/s8SendableP",
+        "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP"
       ],
       "kind" : "relationships",
       "title" : "Conforms To",
@@ -332,6 +333,11 @@
   "title" : "SwiftSMTPMaxConnectionsConfiguration.useDefault",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpmaxconnectionsconfiguration\/usedefault"
+},
+"doc://SwiftSMTPVapor/s16SendableMetatypeP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP",
+  "title" : "Swift.SendableMetatype",
+  "type" : "unresolvable"
 },
 "doc://SwiftSMTPVapor/s23ExpressibleByNilLiteralP": {
   "identifier" : "doc:\/\/SwiftSMTPVapor\/s23ExpressibleByNilLiteralP",

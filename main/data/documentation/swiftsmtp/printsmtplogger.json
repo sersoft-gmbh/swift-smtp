@@ -54,7 +54,7 @@
     ],
     "remoteSource" : {
       "fileName" : "LogDuplexHandler.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/NIO%20Channel%20Handlers\/LogDuplexHandler.swift#L18"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/NIO%20Channel%20Handlers\/LogDuplexHandler.swift#L14"
     },
     "role" : "symbol",
     "roleHeading" : "Structure",
@@ -103,7 +103,8 @@
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/SMTPLogger",
         "doc:\/\/SwiftSMTP\/s15BitwiseCopyableP",
-        "doc:\/\/SwiftSMTP\/s8SendableP"
+        "doc:\/\/SwiftSMTP\/s8SendableP",
+        "doc:\/\/SwiftSMTP\/s16SendableMetatypeP"
       ],
       "kind" : "relationships",
       "title" : "Conforms To",
@@ -319,6 +320,11 @@
 "doc://SwiftSMTP/s15BitwiseCopyableP": {
   "identifier" : "doc:\/\/SwiftSMTP\/s15BitwiseCopyableP",
   "title" : "Swift.BitwiseCopyable",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTP/s16SendableMetatypeP": {
+  "identifier" : "doc:\/\/SwiftSMTP\/s16SendableMetatypeP",
+  "title" : "Swift.SendableMetatype",
   "type" : "unresolvable"
 },
 "doc://SwiftSMTP/s8SendableP": {

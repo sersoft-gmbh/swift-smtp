@@ -84,6 +84,7 @@
       "identifiers" : [
         "doc:\/\/SwiftSMTPVapor\/s8CopyableP",
         "doc:\/\/SwiftSMTPVapor\/s8SendableP",
+        "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP",
         "doc:\/\/SwiftSMTPVapor\/9SwiftSMTP10SMTPLoggerP"
       ],
       "kind" : "relationships",
@@ -192,6 +193,11 @@
   "title" : "SMTPLogger Implementations",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtpvapor\/logging\/logger\/smtplogger-implementations"
+},
+"doc://SwiftSMTPVapor/s16SendableMetatypeP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP",
+  "title" : "Swift.SendableMetatype",
+  "type" : "unresolvable"
 },
 "doc://SwiftSMTPVapor/s8CopyableP": {
   "identifier" : "doc:\/\/SwiftSMTPVapor\/s8CopyableP",

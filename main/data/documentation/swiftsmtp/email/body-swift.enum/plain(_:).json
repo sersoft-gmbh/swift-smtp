@@ -55,7 +55,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Email.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L104"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L100"
     },
     "role" : "symbol",
     "roleHeading" : "Case",

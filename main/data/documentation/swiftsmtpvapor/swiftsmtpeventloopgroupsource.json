@@ -85,7 +85,8 @@
   "relationshipsSections" : [
     {
       "identifiers" : [
-        "doc:\/\/SwiftSMTPVapor\/s8SendableP"
+        "doc:\/\/SwiftSMTPVapor\/s8SendableP",
+        "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP"
       ],
       "kind" : "relationships",
       "title" : "Conforms To",
@@ -316,6 +317,11 @@
   "title" : "SwiftSMTPEventLoopGroupSource.custom(_:)",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpeventloopgroupsource\/custom(_:)"
+},
+"doc://SwiftSMTPVapor/s16SendableMetatypeP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP",
+  "title" : "Swift.SendableMetatype",
+  "type" : "unresolvable"
 },
 "doc://SwiftSMTPVapor/s8SendableP": {
   "identifier" : "doc:\/\/SwiftSMTPVapor\/s8SendableP",

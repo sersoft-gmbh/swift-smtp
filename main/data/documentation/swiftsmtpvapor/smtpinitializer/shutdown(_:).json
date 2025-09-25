@@ -48,7 +48,7 @@
     ],
     "remoteSource" : {
       "fileName" : "SwiftSMTP+Vapor.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L119"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L118"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Method",

@@ -46,7 +46,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Mailer.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Mailer.swift#L34"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Mailer.swift#L30"
     },
     "role" : "symbol",
     "roleHeading" : "Class",
@@ -93,7 +93,8 @@
   "relationshipsSections" : [
     {
       "identifiers" : [
-        "doc:\/\/SwiftSMTP\/s8SendableP"
+        "doc:\/\/SwiftSMTP\/s8SendableP",
+        "doc:\/\/SwiftSMTP\/s16SendableMetatypeP"
       ],
       "kind" : "relationships",
       "title" : "Conforms To",
@@ -704,6 +705,11 @@
   "title" : "transmissionLogger",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/mailer\/transmissionlogger"
+},
+"doc://SwiftSMTP/s16SendableMetatypeP": {
+  "identifier" : "doc:\/\/SwiftSMTP\/s16SendableMetatypeP",
+  "title" : "Swift.SendableMetatype",
+  "type" : "unresolvable"
 },
 "doc://SwiftSMTP/s8SendableP": {
   "identifier" : "doc:\/\/SwiftSMTP\/s8SendableP",

@@ -46,7 +46,7 @@
     ],
     "remoteSource" : {
       "fileName" : "SMTPErrors.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/SMTPErrors.swift#L2"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/SMTPErrors.swift#L3"
     },
     "role" : "symbol",
     "roleHeading" : "Structure",
@@ -87,7 +87,8 @@
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/s23CustomStringConvertibleP",
         "doc:\/\/SwiftSMTP\/s5ErrorP",
-        "doc:\/\/SwiftSMTP\/s8SendableP"
+        "doc:\/\/SwiftSMTP\/s8SendableP",
+        "doc:\/\/SwiftSMTP\/s16SendableMetatypeP"
       ],
       "kind" : "relationships",
       "title" : "Conforms To",
@@ -223,6 +224,11 @@
   "title" : "description",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/malformedsmtpmessageerror\/description"
+},
+"doc://SwiftSMTP/s16SendableMetatypeP": {
+  "identifier" : "doc:\/\/SwiftSMTP\/s16SendableMetatypeP",
+  "title" : "Swift.SendableMetatype",
+  "type" : "unresolvable"
 },
 "doc://SwiftSMTP/s23CustomStringConvertibleP": {
   "identifier" : "doc:\/\/SwiftSMTP\/s23CustomStringConvertibleP",

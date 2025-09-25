@@ -46,7 +46,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Email.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L9"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L5"
     },
     "role" : "symbol",
     "roleHeading" : "Structure",
@@ -86,7 +86,8 @@
     {
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/SQ",
-        "doc:\/\/SwiftSMTP\/s8SendableP"
+        "doc:\/\/SwiftSMTP\/s8SendableP",
+        "doc:\/\/SwiftSMTP\/s16SendableMetatypeP"
       ],
       "kind" : "relationships",
       "title" : "Conforms To",
@@ -1001,6 +1002,11 @@
   "title" : "subject",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/email\/subject"
+},
+"doc://SwiftSMTP/s16SendableMetatypeP": {
+  "identifier" : "doc:\/\/SwiftSMTP\/s16SendableMetatypeP",
+  "title" : "Swift.SendableMetatype",
+  "type" : "unresolvable"
 },
 "doc://SwiftSMTP/s8SendableP": {
   "identifier" : "doc:\/\/SwiftSMTP\/s8SendableP",

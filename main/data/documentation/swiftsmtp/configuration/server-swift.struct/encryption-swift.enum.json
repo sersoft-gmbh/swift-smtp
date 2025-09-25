@@ -90,7 +90,8 @@
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/SQ",
         "doc:\/\/SwiftSMTP\/SH",
-        "doc:\/\/SwiftSMTP\/s8SendableP"
+        "doc:\/\/SwiftSMTP\/s8SendableP",
+        "doc:\/\/SwiftSMTP\/s16SendableMetatypeP"
       ],
       "kind" : "relationships",
       "title" : "Conforms To",
@@ -591,6 +592,11 @@
   "title" : "Configuration.Server.Encryption.startTLS(_:)",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/configuration\/server-swift.struct\/encryption-swift.enum\/starttls(_:)"
+},
+"doc://SwiftSMTP/s16SendableMetatypeP": {
+  "identifier" : "doc:\/\/SwiftSMTP\/s16SendableMetatypeP",
+  "title" : "Swift.SendableMetatype",
+  "type" : "unresolvable"
 },
 "doc://SwiftSMTP/s8SendableP": {
   "identifier" : "doc:\/\/SwiftSMTP\/s8SendableP",

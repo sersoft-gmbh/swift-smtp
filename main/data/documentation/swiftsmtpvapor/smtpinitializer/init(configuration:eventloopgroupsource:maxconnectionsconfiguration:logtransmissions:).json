@@ -105,7 +105,7 @@
     ],
     "remoteSource" : {
       "fileName" : "SwiftSMTP+Vapor.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L105"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L104"
     },
     "role" : "symbol",
     "roleHeading" : "Initializer",
