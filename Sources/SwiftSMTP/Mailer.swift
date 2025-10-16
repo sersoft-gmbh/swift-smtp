@@ -16,31 +16,18 @@ fileprivate extension Configuration.Server {
 
     func createEncryptionHandlers() throws -> EncryptionHandler? {
         switch encryption {
-        case .plain: return nil
-        case .ssl:
-            let sslHandler = try NIOSSLClientHandler(context: Self.sslContext, serverHostname: hostname)
-            return .atBeginning(sslHandler)
-        case .startTLS(let mode):
-            return .beforeSMTPHandler(StartTLSDuplexHandler(server: self, tlsMode: mode) { Self.sslContext })
+        case .plain: nil
+        case .ssl: .atBeginning(try NIOSSLClientHandler(context: Self.sslContext, serverHostname: hostname))
+        case .startTLS(let mode): .beforeSMTPHandler(StartTLSDuplexHandler(server: self, tlsMode: mode) { Self.sslContext })
         }
     }
 }
 
 /// A Mailer is responsible for opening server connections and dispatching emails.
 public final class Mailer: Sendable {
-    private struct ScheduledEmail: Sendable, Hashable {
-        private let uuid = UUID()
-
+    private struct ScheduledEmail: Sendable {
         let email: Email
         let promise: EventLoopPromise<Void>
-
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(uuid)
-        }
-
-        static func ==(lhs: Self, rhs: Self) -> Bool {
-            lhs.uuid == rhs.uuid
-        }
     }
 
     /// The event loop group this mailer uses.
