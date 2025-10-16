@@ -9,7 +9,15 @@
       "type" : "codeVoice"
     },
     {
-      "text" : ".",
+      "text" : " (or the file pointed to via ",
+      "type" : "text"
+    },
+    {
+      "code" : "SMPT_ENCRYPTION_FILE",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ").",
       "type" : "text"
     },
     {
@@ -99,7 +107,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Configuration+Environment.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Configuration+Environment.swift#L30"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Configuration+Environment.swift#L45"
     },
     "role" : "symbol",
     "roleHeading" : "Type Method",
@@ -551,7 +559,15 @@
       "type" : "codeVoice"
     },
     {
-      "text" : ".",
+      "text" : " (or the file pointed to via ",
+      "type" : "text"
+    },
+    {
+      "code" : "SMPT_ENCRYPTION_FILE",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ").",
       "type" : "text"
     },
     {

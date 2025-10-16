@@ -67,7 +67,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Configuration+Environment.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Configuration+Environment.swift#L117"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Configuration+Environment.swift#L155"
     },
     "role" : "symbol",
     "roleHeading" : "Type Method",
@@ -390,6 +390,23 @@
             }
           ],
           "type" : "unorderedList"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "All variables can also be specified via a file pointed to by using the variable above with the ",
+              "type" : "text"
+            },
+            {
+              "code" : "_FILE",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " suffix.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
         },
         {
           "content" : [

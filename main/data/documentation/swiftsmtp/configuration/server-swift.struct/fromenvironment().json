@@ -77,7 +77,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Configuration+Environment.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Configuration+Environment.swift#L49"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Configuration+Environment.swift#L69"
     },
     "role" : "symbol",
     "roleHeading" : "Type Method",
@@ -185,6 +185,22 @@
                     },
                     {
                       "text" : ": The port to use. The encryption’s default will be used if not set or not a valid integer.",
+                      "type" : "text"
+                    },
+                    {
+                      "text" : " ",
+                      "type" : "text"
+                    },
+                    {
+                      "text" : "Both variables can also be specified via a file pointed to by using the variable above with the ",
+                      "type" : "text"
+                    },
+                    {
+                      "code" : "_FILE",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : " suffix.",
                       "type" : "text"
                     },
                     {
@@ -373,7 +389,15 @@
       "type" : "codeVoice"
     },
     {
-      "text" : ".",
+      "text" : " (or the file pointed to via ",
+      "type" : "text"
+    },
+    {
+      "code" : "SMPT_ENCRYPTION_FILE",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ").",
       "type" : "text"
     },
     {

@@ -383,7 +383,15 @@
       "type" : "codeVoice"
     },
     {
-      "text" : ".",
+      "text" : " (or the file pointed to via ",
+      "type" : "text"
+    },
+    {
+      "code" : "SMPT_ENCRYPTION_FILE",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ").",
       "type" : "text"
     },
     {

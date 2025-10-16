@@ -81,7 +81,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Configuration+Environment.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Configuration+Environment.swift#L66"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Configuration+Environment.swift#L88"
     },
     "role" : "symbol",
     "roleHeading" : "Type Method",
@@ -201,6 +201,22 @@
                     },
                     {
                       "text" : " will be returned.",
+                      "type" : "text"
+                    },
+                    {
+                      "text" : " ",
+                      "type" : "text"
+                    },
+                    {
+                      "text" : "Both variables can also be specified via a file pointed to by using the variable above with the ",
+                      "type" : "text"
+                    },
+                    {
+                      "code" : "_FILE",
+                      "type" : "codeVoice"
+                    },
+                    {
+                      "text" : " suffix.",
                       "type" : "text"
                     }
                   ],
