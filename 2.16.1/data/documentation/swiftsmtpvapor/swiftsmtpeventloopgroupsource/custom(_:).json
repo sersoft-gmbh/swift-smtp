@@ -1,0 +1,226 @@
+{
+  "abstract" : [
+    {
+      "text" : "Provide a custom ELG per Mailer.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource\/custom(_:)"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:14SwiftSMTPVapor0A24SMTPEventLoopGroupSourceO6customyAC7NIOCore05EventdE0_pyYbccACmF",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "case"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "custom"
+      },
+      {
+        "kind" : "text",
+        "text" : "(() -> any "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:7NIOCore14EventLoopGroupP",
+        "text" : "EventLoopGroup"
+      },
+      {
+        "kind" : "text",
+        "text" : ")"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTPVapor"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "SwiftSMTP+Vapor.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/tags\/2.16.1\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L10"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Case",
+    "symbolKind" : "case",
+    "title" : "SwiftSMTPEventLoopGroupSource.custom(_:)"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "case"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "custom"
+            },
+            {
+              "kind" : "text",
+              "text" : "(() -> any "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:7NIOCore14EventLoopGroupP",
+              "text" : "EventLoopGroup"
+            },
+            {
+              "kind" : "text",
+              "text" : ")"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtpvapor\/swiftsmtpeventloopgroupsource\/custom(_:)"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
+  "abstract" : [
+    {
+      "text" : "SwiftSMTPVapor builds on SwiftSMTP and adds some convenience for using it with Vapor. First, you need to configure SwiftSMTPVapor once at startup. This is usually done in ",
+      "type" : "text"
+    },
+    {
+      "code" : "configure(_:)",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ". There are multiple ways to configure SwiftSMTP here. The simplest is to use environment variables (see above for details on that):",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTPVapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPEventLoopGroupSource": {
+  "abstract" : [
+    {
+      "text" : "Represents the source for the event loop group used by the Mailer.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPEventLoopGroupSource"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPEventLoopGroupSource"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "SwiftSMTPEventLoopGroupSource",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpeventloopgroupsource"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPEventLoopGroupSource/custom(_:)": {
+  "abstract" : [
+    {
+      "text" : "Provide a custom ELG per Mailer.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "custom"
+    },
+    {
+      "kind" : "text",
+      "text" : "(() -> any "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7NIOCore14EventLoopGroupP",
+      "text" : "EventLoopGroup"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPEventLoopGroupSource\/custom(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "SwiftSMTPEventLoopGroupSource.custom(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpeventloopgroupsource\/custom(_:)"
+}
+}
+}

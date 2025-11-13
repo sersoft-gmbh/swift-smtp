@@ -1,0 +1,302 @@
+{
+  "abstract" : [
+    {
+      "text" : "Returns the SwiftSMTP configuration for this request’s application.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Request"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Request\/swiftSMTP"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "extendedModule" : "Vapor",
+    "externalID" : "s:5Vapor7RequestC14SwiftSMTPVaporE9swiftSMTPAA11ApplicationCADE0cF0Vvp",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "var"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "swiftSMTP"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5Vapor11ApplicationC",
+        "text" : "Application"
+      },
+      {
+        "kind" : "text",
+        "text" : "."
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:5Vapor11ApplicationC14SwiftSMTPVaporE0C4SMTPV",
+        "text" : "SwiftSMTP"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTPVapor",
+        "relatedModules" : [
+          "Vapor"
+        ]
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "SwiftSMTP+Vapor.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/tags\/2.16.1\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L245"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "swiftSMTP"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "var"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "swiftSMTP"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5Vapor11ApplicationC",
+              "text" : "Application"
+            },
+            {
+              "kind" : "text",
+              "text" : "."
+            },
+            {
+              "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:5Vapor11ApplicationC14SwiftSMTPVaporE0C4SMTPV",
+              "text" : "SwiftSMTP"
+            },
+            {
+              "kind" : "text",
+              "text" : " { "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "get"
+            },
+            {
+              "kind" : "text",
+              "text" : " }"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtpvapor\/vapor\/request\/swiftsmtp"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
+  "abstract" : [
+    {
+      "text" : "SwiftSMTPVapor builds on SwiftSMTP and adds some convenience for using it with Vapor. First, you need to configure SwiftSMTPVapor once at startup. This is usually done in ",
+      "type" : "text"
+    },
+    {
+      "code" : "configure(_:)",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ". There are multiple ways to configure SwiftSMTP here. The simplest is to use environment variables (see above for details on that):",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTPVapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "Vapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Application/SwiftSMTP-swift.struct": {
+  "abstract" : [
+    {
+      "text" : "Represents the application’s SwiftSMTP configuration.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTP"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTP"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Application.SwiftSMTP",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/application\/swiftsmtp-swift.struct"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Request": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "extension"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "preciseIdentifier" : "s:5Vapor7RequestC",
+      "text" : "Request"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Request",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Request"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Request",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/request"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor/Request/swiftSMTP": {
+  "abstract" : [
+    {
+      "text" : "Returns the SwiftSMTP configuration for this request’s application.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "swiftSMTP"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5Vapor11ApplicationC",
+      "text" : "Application"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:5Vapor11ApplicationC14SwiftSMTPVaporE0C4SMTPV",
+      "text" : "SwiftSMTP"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Request\/swiftSMTP",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "swiftSMTP",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/vapor\/request\/swiftsmtp"
+}
+}
+}

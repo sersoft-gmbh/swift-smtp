@@ -1,0 +1,203 @@
+{
+  "abstract" : [
+    {
+      "text" : "Uses the default specified by ",
+      "type" : "text"
+    },
+    {
+      "code" : "SwiftSMTP\/Mailer",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration\/useDefault"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:14SwiftSMTPVapor0A31SMTPMaxConnectionsConfigurationO10useDefaultyA2CmF",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "case"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "useDefault"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTPVapor"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "SwiftSMTP+Vapor.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/tags\/2.16.1\/Sources\/SwiftSMTPVapor\/SwiftSMTP+Vapor.swift#L22"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Case",
+    "symbolKind" : "case",
+    "title" : "SwiftSMTPMaxConnectionsConfiguration.useDefault"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "case"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "useDefault"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtpvapor\/swiftsmtpmaxconnectionsconfiguration\/usedefault"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
+  "abstract" : [
+    {
+      "text" : "SwiftSMTPVapor builds on SwiftSMTP and adds some convenience for using it with Vapor. First, you need to configure SwiftSMTPVapor once at startup. This is usually done in ",
+      "type" : "text"
+    },
+    {
+      "code" : "configure(_:)",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ". There are multiple ways to configure SwiftSMTP here. The simplest is to use environment variables (see above for details on that):",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTPVapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPMaxConnectionsConfiguration": {
+  "abstract" : [
+    {
+      "text" : "Represents the maximum connections configuration per Mailer.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPMaxConnectionsConfiguration"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SwiftSMTPMaxConnectionsConfiguration"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "SwiftSMTPMaxConnectionsConfiguration",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpmaxconnectionsconfiguration"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPMaxConnectionsConfiguration/useDefault": {
+  "abstract" : [
+    {
+      "text" : "Uses the default specified by ",
+      "type" : "text"
+    },
+    {
+      "code" : "SwiftSMTP\/Mailer",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ".",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "useDefault"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SwiftSMTPMaxConnectionsConfiguration\/useDefault",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "SwiftSMTPMaxConnectionsConfiguration.useDefault",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/swiftsmtpmaxconnectionsconfiguration\/usedefault"
+}
+}
+}
