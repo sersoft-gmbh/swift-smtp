@@ -47,10 +47,17 @@ final class SMTPHandler: ChannelInboundHandler {
     func channelRead(context: ChannelHandlerContext, data: NIOAny) {
         guard unwrapInboundIn(data).verify(failing: allDonePromise) else { return }
 
+#if compiler(>=6.3)
+        @inline(always)
+        func send(command: SMTPRequest) {
+            context.writeAndFlush(wrapOutboundOut(command)).cascadeFailure(to: allDonePromise)
+        }
+#else
         @inline(__always)
         func send(command: SMTPRequest) {
             context.writeAndFlush(wrapOutboundOut(command)).cascadeFailure(to: allDonePromise)
         }
+#endif
 
         func nextState(for iterator: inout IndexingIterator<Array<Email.Contact>>) -> State {
             if let next = iterator.next() {
