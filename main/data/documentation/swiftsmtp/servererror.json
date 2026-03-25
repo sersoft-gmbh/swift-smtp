@@ -197,7 +197,10 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/ServerError/description": {
   "abstract" : [
-
+    {
+      "text" : "A textual representation of this instance.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

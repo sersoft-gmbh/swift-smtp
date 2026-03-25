@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "Called whenever an SMTP message should be logged.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -127,6 +133,33 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The message to log as an @autoclosure.",
+                  "type" : "text"
+                },
+                {
+                  "text" : " ",
+                  "type" : "text"
+                },
+                {
+                  "text" : "If the logger does not log the message, the closure should not be executed for performance reasons.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "message"
+        }
+      ]
     }
   ],
   "schemaVersion" : {
@@ -209,7 +242,10 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/PrintSMTPLogger/logSMTPMessage(_:)": {
   "abstract" : [
-
+    {
+      "text" : "Called whenever an SMTP message should be logged.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

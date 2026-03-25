@@ -74,12 +74,7 @@
       }
     ],
     "platforms" : [
-      {
-        "beta" : false,
-        "deprecated" : true,
-        "renamed" : "send(_:)",
-        "unavailable" : false
-      }
+
     ],
     "remoteSource" : {
       "fileName" : "Mailer.swift",

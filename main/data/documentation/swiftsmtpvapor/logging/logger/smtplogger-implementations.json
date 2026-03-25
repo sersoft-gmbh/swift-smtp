@@ -122,7 +122,10 @@
 },
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Logging/Logger/logSMTPMessage(_:)": {
   "abstract" : [
-
+    {
+      "text" : "Called whenever an SMTP message should be logged.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

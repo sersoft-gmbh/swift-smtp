@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "Creates a new option set from the given raw value.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -135,6 +141,138 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "kind" : "parameters",
+      "parameters" : [
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The raw value of the option set to create. Each bit",
+                  "type" : "text"
+                },
+                {
+                  "text" : " ",
+                  "type" : "text"
+                },
+                {
+                  "text" : "of ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "rawValue",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " potentially represents an element of the option set,",
+                  "type" : "text"
+                },
+                {
+                  "text" : " ",
+                  "type" : "text"
+                },
+                {
+                  "text" : "though raw values may include bits that are not defined as distinct",
+                  "type" : "text"
+                },
+                {
+                  "text" : " ",
+                  "type" : "text"
+                },
+                {
+                  "text" : "values of the ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "OptionSet",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : " type.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "rawValue"
+        }
+      ]
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "This initializer always succeeds, even if the value passed as ",
+              "type" : "text"
+            },
+            {
+              "code" : "rawValue",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "exceeds the static properties declared as part of the option set. This",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "example creates an instance of ",
+              "type" : "text"
+            },
+            {
+              "code" : "ShippingOptions",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " with a raw value beyond",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "the highest element, with a bit mask that effectively contains all the",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "declared static members.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "code" : [
+            "let extraOptions = ShippingOptions(rawValue: 255)",
+            "print(extraOptions.isStrictSuperset(of: .all))",
+            "\/\/ Prints \"true\""
+          ],
+          "syntax" : null,
+          "type" : "codeListing"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -243,7 +381,18 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/RawValue-swift.typealias": {
   "abstract" : [
-
+    {
+      "text" : "The raw type that can be used to represent all values of the conforming",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "type.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
@@ -274,7 +423,10 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/init(rawValue:)": {
   "abstract" : [
-
+    {
+      "text" : "Creates a new option set from the given raw value.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

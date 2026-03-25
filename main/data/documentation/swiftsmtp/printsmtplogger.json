@@ -242,7 +242,10 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/PrintSMTPLogger/logSMTPMessage(_:)": {
   "abstract" : [
-
+    {
+      "text" : "Called whenever an SMTP message should be logged.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

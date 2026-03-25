@@ -83,6 +83,7 @@
     {
       "identifiers" : [
         "doc:\/\/SwiftSMTPVapor\/s8CopyableP",
+        "doc:\/\/SwiftSMTPVapor\/s9EscapableP",
         "doc:\/\/SwiftSMTPVapor\/s8SendableP",
         "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP",
         "doc:\/\/SwiftSMTPVapor\/9SwiftSMTP10SMTPLoggerP"
@@ -218,6 +219,11 @@
 "doc://SwiftSMTPVapor/s8SendableP": {
   "identifier" : "doc:\/\/SwiftSMTPVapor\/s8SendableP",
   "title" : "Swift.Sendable",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/s9EscapableP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s9EscapableP",
+  "title" : "Swift.Escapable",
   "type" : "unresolvable"
 }
 }

@@ -1,4 +1,18 @@
 {
+  "abstract" : [
+    {
+      "text" : "The raw type that can be used to represent all values of the conforming",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "type.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -85,6 +99,54 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "Every distinct value of the conforming type has a corresponding unique",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "value of the ",
+              "type" : "text"
+            },
+            {
+              "code" : "RawValue",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " type, but there may be values of the ",
+              "type" : "text"
+            },
+            {
+              "code" : "RawValue",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "type that don’t have a corresponding value of the conforming type.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -193,7 +255,18 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/RawValue-swift.typealias": {
   "abstract" : [
-
+    {
+      "text" : "The raw type that can be used to represent all values of the conforming",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "type.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

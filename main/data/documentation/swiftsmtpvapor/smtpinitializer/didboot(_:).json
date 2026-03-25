@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "Called when the application has booted up",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -229,7 +235,10 @@
 },
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SMTPInitializer/didBoot(_:)": {
   "abstract" : [
-
+    {
+      "text" : "Called when the application has booted up",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

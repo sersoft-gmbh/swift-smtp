@@ -48,7 +48,8 @@
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/formIntersection(_:)",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/formSymmetricDifference(_:)",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/formUnion(_:)",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/insert(_:)",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/insert(_:)-3luxe",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/insert(_:)-zv88",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/intersection(_:)",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/remove(_:)",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/symmetricDifference(_:)",
@@ -527,7 +528,135 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/init()"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/insert(_:)": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/insert(_:)-3luxe": {
+  "abstract" : [
+
+  ],
+  "conformance" : {
+    "availabilityPrefix" : [
+      {
+        "text" : "Available when",
+        "type" : "text"
+      }
+    ],
+    "conformancePrefix" : [
+      {
+        "text" : "Conforms when",
+        "type" : "text"
+      }
+    ],
+    "constraints" : [
+      {
+        "code" : "Self",
+        "type" : "codeVoice"
+      },
+      {
+        "text" : " is ",
+        "type" : "text"
+      },
+      {
+        "code" : "Self.Element",
+        "type" : "codeVoice"
+      },
+      {
+        "text" : " and ",
+        "type" : "text"
+      },
+      {
+        "code" : "RawValue",
+        "type" : "codeVoice"
+      },
+      {
+        "text" : " conforms to ",
+        "type" : "text"
+      },
+      {
+        "code" : "FixedWidthInteger",
+        "type" : "codeVoice"
+      },
+      {
+        "text" : ".",
+        "type" : "text"
+      }
+    ]
+  },
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "insert"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "Self"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s10SetAlgebraP7ElementQa",
+      "text" : "Element"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> (inserted"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ", memberAfterInsert"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "text" : "Self"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s10SetAlgebraP7ElementQa",
+      "text" : "Element"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/insert(_:)-3luxe",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "insert(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/insert(_:)-3luxe"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/insert(_:)-zv88": {
   "abstract" : [
     {
       "text" : "Adds the given element to the option set if it is not already a member.",
@@ -635,12 +764,12 @@
       "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/insert(_:)",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/FeatureFlags-swift.struct\/insert(_:)-zv88",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "insert(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/insert(_:)"
+  "url" : "\/documentation\/swiftsmtp\/configuration\/featureflags-swift.struct\/insert(_:)-zv88"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Configuration/FeatureFlags-swift.struct/intersection(_:)": {
   "abstract" : [

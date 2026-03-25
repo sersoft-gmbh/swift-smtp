@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "A textual representation of this instance.",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -99,6 +105,133 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "Calling this property directly is discouraged. Instead, convert an",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "instance of any type to a string by using the ",
+              "type" : "text"
+            },
+            {
+              "code" : "String(describing:)",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "initializer. This initializer works with any type, and uses the custom",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "code" : "description",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " property for types that conform to",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "code" : "CustomStringConvertible",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : ":",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "code" : [
+            "struct Point: CustomStringConvertible {",
+            "    let x: Int, y: Int",
+            "",
+            "    var description: String {",
+            "        return \"(\\(x), \\(y))\"",
+            "    }",
+            "}",
+            "",
+            "let p = Point(x: 21, y: 30)",
+            "let s = String(describing: p)",
+            "print(s)",
+            "\/\/ Prints \"(21, 30)\""
+          ],
+          "syntax" : null,
+          "type" : "codeListing"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The conversion of ",
+              "type" : "text"
+            },
+            {
+              "code" : "p",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " to a string in the assignment to ",
+              "type" : "text"
+            },
+            {
+              "code" : "s",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " uses the",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "code" : "Point",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " type’s ",
+              "type" : "text"
+            },
+            {
+              "code" : "description",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " property.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -173,7 +306,10 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/MalformedSMTPMessageError/description": {
   "abstract" : [
-
+    {
+      "text" : "A textual representation of this instance.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

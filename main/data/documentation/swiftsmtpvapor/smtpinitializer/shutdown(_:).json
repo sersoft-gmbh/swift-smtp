@@ -1,4 +1,10 @@
 {
+  "abstract" : [
+    {
+      "text" : "Called when the application is about to shutdown",
+      "type" : "text"
+    }
+  ],
   "hierarchy" : {
     "paths" : [
       [
@@ -217,7 +223,10 @@
 },
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SMTPInitializer/shutdown(_:)": {
   "abstract" : [
-
+    {
+      "text" : "Called when the application is about to shutdown",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {

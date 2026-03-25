@@ -86,7 +86,15 @@
             },
             {
               "kind" : "text",
-              "text" : "(() -> any "
+              "text" : "("
+            },
+            {
+              "kind" : "attribute",
+              "text" : "@Sendable"
+            },
+            {
+              "kind" : "text",
+              "text" : " () -> any "
             },
             {
               "kind" : "typeIdentifier",

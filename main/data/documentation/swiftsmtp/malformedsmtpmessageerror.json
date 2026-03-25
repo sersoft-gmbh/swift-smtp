@@ -196,7 +196,10 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/MalformedSMTPMessageError/description": {
   "abstract" : [
-
+    {
+      "text" : "A textual representation of this instance.",
+      "type" : "text"
+    }
   ],
   "fragments" : [
     {
