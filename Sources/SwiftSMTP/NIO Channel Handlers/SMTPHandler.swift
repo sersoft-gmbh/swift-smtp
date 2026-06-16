@@ -16,7 +16,7 @@ fileprivate extension SMTPResponse {
 
 final class SMTPHandler: ChannelInboundHandler {
     typealias InboundIn = SMTPResponse
-    typealias OutboundIn = Email
+    typealias OutboundIn = SendJob
     typealias OutboundOut = SMTPRequest
 
     private enum State: Sendable {
@@ -27,20 +27,20 @@ final class SMTPHandler: ChannelInboundHandler {
         case usernameSent(Configuration.Credentials)
         case passwordSent
         case mailFromSent
-        case recipientSent(IndexingIterator<Array<Email.Contact>>)
+        case recipientSent(IndexingIterator<Array<String>>)
         case dataCommandSent
         case mailDataSent
         case quitSent
     }
 
     private let configuration: Configuration
-    private let email: Email
+    private let sendJob: SendJob
     private let allDonePromise: EventLoopPromise<Void>
     private var state = State.idle(didSend: false)
 
-    init(configuration: Configuration, email: Email, allDonePromise: EventLoopPromise<Void>) {
+    init(configuration: Configuration, sendJob: SendJob, allDonePromise: EventLoopPromise<Void>) {
         self.configuration = configuration
-        self.email = email
+        self.sendJob = sendJob
         self.allDonePromise = allDonePromise
     }
 
@@ -59,9 +59,9 @@ final class SMTPHandler: ChannelInboundHandler {
         }
 #endif
 
-        func nextState(for iterator: inout IndexingIterator<Array<Email.Contact>>) -> State {
+        func nextState(for iterator: inout IndexingIterator<Array<String>>) -> State {
             if let next = iterator.next() {
-                send(command: .recipient(next.emailAddress))
+                send(command: .recipient(next))
                 return .recipientSent(iterator)
             } else {
                 send(command: .data)
@@ -77,7 +77,7 @@ final class SMTPHandler: ChannelInboundHandler {
                 send(command: .beginAuthentication)
                 return .authBegan(creds)
             } else {
-                send(command: .mailFrom(email.sender.emailAddress))
+                send(command: .mailFrom(sendJob.sender))
                 return .mailFromSent
             }
         }
@@ -100,15 +100,20 @@ final class SMTPHandler: ChannelInboundHandler {
             send(command: .authPassword(credentials.password))
             state = .passwordSent
         case .passwordSent:
-            send(command: .mailFrom(email.sender.emailAddress))
+            send(command: .mailFrom(sendJob.sender))
             state = .mailFromSent
         case .mailFromSent:
-            var iterator = email.allRecipients.makeIterator()
+            var iterator = sendJob.recipients.makeIterator()
             state = nextState(for: &iterator)
         case .recipientSent(var iterator):
             state = nextState(for: &iterator)
         case .dataCommandSent:
-            send(command: .transferData(date: Date(), email: email))
+            switch sendJob.payload {
+            case .email(let email):
+                send(command: .transferData(date: Date(), email: email))
+            case .rawData(let messageData):
+                send(command: .transferRawData(messageData))
+            }
             state = .mailDataSent
         case .mailDataSent:
             send(command: .quit)

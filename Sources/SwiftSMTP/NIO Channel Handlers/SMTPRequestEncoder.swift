@@ -65,6 +65,34 @@ struct SMTPRequestEncoder: MessageToByteEncoder {
         return Data(text.utf8).base64EncodedString(options: base64EncodingOptions)
     }
 
+    private func endsWithCRLF(_ data: Data) -> Bool {
+        data.last == 0x0A && data.dropLast().last == 0x0D
+    }
+
+    /// Writes `data` to `out`, doubling any `.` byte that appears at the start of a line.
+    /// Per RFC 5321 §4.5.2 — the receiving server strips the leading dot to recover the original payload.
+    /// "Start of line" means the byte at offset 0 of the payload, or any byte immediately following a CRLF.
+    /// A `.` following a bare CR or bare LF is left untouched: SMTP lines are CRLF-delimited, so a receiver
+    /// frames such a dot mid-line and does not un-stuff it. Doubling it there would corrupt the payload.
+    private func writeDotStuffed(_ data: Data, to out: inout ByteBuffer) {
+        // Write contiguous runs in bulk, only breaking to insert an extra dot at a line-leading `.`.
+        // Payloads with no leading dots (the common case) are written in a single `writeBytes`.
+        var atStartOfLine = true
+        var previousByte: UInt8 = 0
+        var segmentStart = data.startIndex
+        for index in data.indices {
+            let byte = data[index]
+            if atStartOfLine && byte == 0x2E /* . */ {
+                out.writeBytes(data[segmentStart...index]) // flush the run up to and including the dot
+                out.writeInteger(UInt8(0x2E))               // then the extra stuffing dot, giving `..`
+                segmentStart = data.index(after: index)
+            }
+            atStartOfLine = byte == 0x0A && previousByte == 0x0D
+            previousByte = byte
+        }
+        out.writeBytes(data[segmentStart...])
+    }
+
     func encode(data: OutboundIn, out: inout ByteBuffer) throws {
         func writeLine(_ line: String, lineEndings: Int = 1) {
             out.writeString(line + String(repeating: "\r\n", count: lineEndings))
@@ -167,6 +195,12 @@ struct SMTPRequestEncoder: MessageToByteEncoder {
             }
 
             out.writeString("\r\n.") // second \r\n is added at the very end of the function
+        case .transferRawData(let messageData):
+            writeDotStuffed(messageData, to: &out)
+            if !endsWithCRLF(messageData) {
+                out.writeString("\r\n")
+            }
+            out.writeString(".") // final \r\n is added at the very end of the function
         case .quit:
             out.writeString("QUIT")
         }
