@@ -26,8 +26,7 @@ struct EmailValidationTests {
                                               message: ByteBuffer()))
     ])
     func emptyRecipients(email: AnyEmail) async throws {
-        let error = #expect(throws: EmailValidationError.self) { try email.validate() }
-        #expect(error == .missingRecipients)
+        #expect(throws: EmailValidationError.missingRecipients) { try email.validate() }
     }
 
     @Test(arguments: [
@@ -47,7 +46,6 @@ struct EmailValidationTests {
                                               message: ByteBuffer())), "test\r\ninvalid@example.com"),
     ])
     func invalidAddress(email: AnyEmail, expectedAddress: String) async throws {
-        let error = #expect(throws: EmailValidationError.self) { try email.validate() }
-        #expect(error == .invalidEmailAddress(expectedAddress))
+        #expect(throws: EmailValidationError.invalidEmailAddress(expectedAddress)) { try email.validate() }
     }
 }
