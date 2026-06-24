@@ -1,7 +1,93 @@
 public import struct Foundation.Data
+public import struct Foundation.Date
 public import struct NIO.ByteBuffer
 
-/// Represents an email.
+internal enum AnyEmail: Sendable {
+    case regular(Email)
+    case precomposed(PrecomposedEmail)
+
+    var senderAddress: String {
+        switch self {
+        case .regular(let email): email.sender.emailAddress
+        case .precomposed(let email): email.senderAddress
+        }
+    }
+
+    var recipientAddresses: Array<String> {
+        switch self {
+        case .regular(let email): email.allRecipients.map(\.emailAddress)
+        case .precomposed(let email): email.recipientAddresses
+        }
+    }
+
+    var messagePayload: MessagePayload {
+        switch self {
+        case .regular(let email): .newlyComposed(email, date: Date())
+        case .precomposed(let email):.precomposed(email.message)
+        }
+    }
+
+    func validate() throws {
+        switch self {
+        case .regular(let email): try email.validate()
+        case .precomposed(let email): try email.validate()
+        }
+    }
+}
+
+/// Represents an email whose message is pre-composed (e.g. a pre-built RFC 2822 payload).
+/// Use this type when the canonical RFC 2822 bytes for the message already exist, e.g. when the same bytes
+/// must be delivered to SMTP `DATA` and stored verbatim via IMAP `APPEND`, when the message has been DKIM-signed and
+/// must not be re-serialised, or when forwarding a message retrieved from another mail store.
+///
+/// The SMTP envelope addresses (`senderAddress` / `recipientAddresses`) are independent of the RFC 2822 `From:` / `To:` / `Cc:` headers.
+/// Pass the actual SMTP envelope here — typically including any BCC recipients that do not appear in the message headers.
+///
+/// - SeeAlso: ``Email``
+public struct PrecomposedEmail: Sendable, Equatable {
+    /// The email address of the sender of the email.
+    public var senderAddress: String
+    /// The email addresses of the recipients of the email.
+    public var recipientAddresses: Array<String>
+
+    /// The pre-composed message payload.
+    ///
+    /// The encoder applies dot-stuffing per RFC 5321 §4.5.2 and adds a trailing `<CRLF>` to the payload before the
+    /// `<CRLF>.<CRLF>` terminator if the payload does not already end with one.
+    /// Bare LFs in the payload pass through unchanged — strict servers may reject such payloads.
+    ///
+    /// No maximum message size is enforced. Developers are responsible for keeping the message within reasonable sizes.
+    public var message: ByteBuffer
+
+    /// Create a new pre-composed email.
+    /// - Parameters:
+    ///   - senderAddress: The email address of the sender of the email.
+    ///   - recipientAddresses: The email addresses of the recipients of the email.
+    ///   - message: The pre-composed message payload.
+    public init(senderAddress: String, recipientAddresses: Array<String>, message: ByteBuffer) {
+        self.senderAddress = senderAddress
+        self.recipientAddresses = recipientAddresses
+        self.message = message
+    }
+
+    /// Create a new pre-composed email.
+    /// - Parameters:
+    ///   - senderAddress: The email address of the sender of the email.
+    ///   - recipientAddresses: The email addresses of the recipients of the email.
+    ///   - messageData: The pre-composed message payload as `Data`. Will be converted to a `ByteBuffer`.
+    ///
+    /// - Note: The `messageData` parameter will be converted to `ByteBuffer`. For improved performance, consider using `ByteBuffer` from the start.
+    @inlinable
+    public init(senderAddress: String, recipientAddresses: Array<String>, messageData: Data) {
+        self.init(senderAddress: senderAddress,
+                  recipientAddresses: recipientAddresses,
+                  message: ByteBuffer(bytes: messageData))
+    }
+}
+
+/// Represents an email whose message will be MIME-encoded when sent to the server.
+/// Use this type, when a new message should be composed, w/o any existing SMTP payload.
+/// - SeeAlso: ``PrecomposedEmail``
 public struct Email: Sendable, Equatable {
     /// The sender of the email.
     public var sender: Contact
@@ -9,12 +95,7 @@ public struct Email: Sendable, Equatable {
     public var replyTo: Contact?
 
     /// The recipients of the email.
-    /// - Precondition: Must not be empty.
-    public var recipients: Array<Contact> {
-        didSet {
-            assert(!recipients.isEmpty, "Recipients must not be empty!")
-        }
-    }
+    public var recipients: Array<Contact>
     /// The (carbon-)copy recipients of the email.
     public var cc: Array<Contact>
     /// The blind (carbon-)copy recipients of the email.
@@ -35,7 +116,7 @@ public struct Email: Sendable, Equatable {
     /// - Parameters:
     ///   - sender: The sender of the email.
     ///   - replyTo: The optional reply-to address. Defaults to nil.
-    ///   - recipients: The list of recipients of the email. Must not be empty!
+    ///   - recipients: The list of recipients of the email.
     ///   - cc: The list of (carbon-)copy recipients. Defaults to an empty array.
     ///   - bcc: The list of blind (carbon-)copy recipients. Defaults to an empty array.
     ///   - subject: The subject of the email.
@@ -49,7 +130,6 @@ public struct Email: Sendable, Equatable {
                 subject: String,
                 body: Body,
                 attachments: Array<Attachment> = []) {
-        assert(!recipients.isEmpty, "Recipients must not be empty!")
         self.sender = sender
         self.replyTo = replyTo
         self.recipients = recipients
@@ -133,7 +213,7 @@ extension Email {
         /// The content type of the attachment.
         public var contentType: String
         /// The data of the attachment.
-        public var data: Data
+        public var data: Data // TODO: Use ByteBuffer
 
         internal var isInline: Bool {
             switch kind {

@@ -1,4 +1,4 @@
-import Foundation
+fileprivate import class Foundation.ProcessInfo
 fileprivate import struct NIO.TimeAmount
 
 // ProcessInfo.processInfo.environment copies all environment variables each time it is called (at least in swift-foundation)
@@ -15,9 +15,9 @@ fileprivate struct EnvironmentVariables: Sendable {
             do {
                 return try String(contentsOfFile: filePath, encoding: .utf8)
             } catch {
-    #if DEBUG
+#if DEBUG
                 print("[SWIFT SMTP]: Could not read file at \(filePath) (via environment variable '\(key)_FILE'): \(error)")
-    #endif
+#endif
             }
         }
         return vars[key]

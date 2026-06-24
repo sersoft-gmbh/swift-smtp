@@ -16,7 +16,7 @@ fileprivate extension SMTPResponse {
 
 final class SMTPHandler: ChannelInboundHandler {
     typealias InboundIn = SMTPResponse
-    typealias OutboundIn = SendJob
+    typealias OutboundIn = AnyEmail
     typealias OutboundOut = SMTPRequest
 
     private enum State: Sendable {
@@ -34,13 +34,13 @@ final class SMTPHandler: ChannelInboundHandler {
     }
 
     private let configuration: Configuration
-    private let sendJob: SendJob
+    private let email: AnyEmail
     private let allDonePromise: EventLoopPromise<Void>
     private var state = State.idle(didSend: false)
 
-    init(configuration: Configuration, sendJob: SendJob, allDonePromise: EventLoopPromise<Void>) {
+    init(configuration: Configuration, email: AnyEmail, allDonePromise: EventLoopPromise<Void>) {
         self.configuration = configuration
-        self.sendJob = sendJob
+        self.email = email
         self.allDonePromise = allDonePromise
     }
 
@@ -77,7 +77,7 @@ final class SMTPHandler: ChannelInboundHandler {
                 send(command: .beginAuthentication)
                 return .authBegan(creds)
             } else {
-                send(command: .mailFrom(sendJob.sender))
+                send(command: .mailFrom(email.senderAddress))
                 return .mailFromSent
             }
         }
@@ -100,20 +100,15 @@ final class SMTPHandler: ChannelInboundHandler {
             send(command: .authPassword(credentials.password))
             state = .passwordSent
         case .passwordSent:
-            send(command: .mailFrom(sendJob.sender))
+            send(command: .mailFrom(email.senderAddress))
             state = .mailFromSent
         case .mailFromSent:
-            var iterator = sendJob.recipients.makeIterator()
+            var iterator = email.recipientAddresses.makeIterator()
             state = nextState(for: &iterator)
         case .recipientSent(var iterator):
             state = nextState(for: &iterator)
         case .dataCommandSent:
-            switch sendJob.payload {
-            case .email(let email):
-                send(command: .transferData(date: Date(), email: email))
-            case .rawData(let messageData):
-                send(command: .transferRawData(messageData))
-            }
+            send(command: .transferPayload(email.messagePayload))
             state = .mailDataSent
         case .mailDataSent:
             send(command: .quit)
