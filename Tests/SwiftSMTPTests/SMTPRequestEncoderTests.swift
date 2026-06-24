@@ -8,12 +8,12 @@ import NIO
 struct SMTPRequestEncoderTests {
     private func encodeRequest(_ request: SMTPRequest,
                                base64EncodeAllMessages: Bool,
-                               base64EncodingOptions: Data.Base64EncodingOptions) throws -> String {
+                               base64EncodingOptions: Data.Base64EncodingOptions) throws -> String? {
         let encoder = SMTPRequestEncoder(base64EncodeAllMessages: base64EncodeAllMessages,
                                          base64EncodingOptions: base64EncodingOptions)
         var byteBuffer = ByteBufferAllocator().buffer(capacity: 1024)
         try encoder.encode(data: request, out: &byteBuffer)
-        return byteBuffer.readString(length: byteBuffer.readableBytes) ?? ""
+        return byteBuffer.readString(length: byteBuffer.readableBytes)
     }
 
     @Test(arguments: [true, false], [Data.Base64EncodingOptions.lineLength64Characters, .lineLength76Characters])
@@ -103,11 +103,11 @@ struct SMTPRequestEncoderTests {
         let subject = "Test Message"
         let plainTextBody = "The contents of this email\nare very simple and just for testing..."
         let date = Date(timeIntervalSince1970: 1744193604) // 2025-04-09T10:13:24Z
-        let encoded = try encodeRequest(.transferData(date: date,
-                                                      email: .init(sender: sender,
-                                                                   recipients: [receiver],
-                                                                   subject: subject,
-                                                                   body: .plain(plainTextBody))),
+        let encoded = try encodeRequest(.transferPayload(.newlyComposed(.init(sender: sender,
+                                                                              recipients: [receiver],
+                                                                              subject: subject,
+                                                                              body: .plain(plainTextBody)),
+                                                                        date: date)),
                                         base64EncodeAllMessages: false,
                                         base64EncodingOptions: [])
         #expect(encoded == """
@@ -144,11 +144,11 @@ struct SMTPRequestEncoderTests {
             </html>
             """
         let date = Date(timeIntervalSince1970: 1744193604) // 2025-04-09T10:13:24Z
-        let encoded = try encodeRequest(.transferData(date: date,
-                                                      email: .init(sender: sender,
-                                                                   recipients: [receiver],
-                                                                   subject: subject,
-                                                                   body: .html(htmlBody))),
+        let encoded = try encodeRequest(.transferPayload(.newlyComposed(.init(sender: sender,
+                                                                              recipients: [receiver],
+                                                                              subject: subject,
+                                                                              body: .html(htmlBody)),
+                                                                        date: date)),
                                         base64EncodeAllMessages: false,
                                         base64EncodingOptions: [])
         #expect(encoded == """
@@ -186,13 +186,14 @@ struct SMTPRequestEncoderTests {
             </html>
             """
         let date = Date(timeIntervalSince1970: 1744193604) // 2025-04-09T10:13:24Z
-        let encoded = try encodeRequest(.transferData(date: date,
-                                                      email: .init(sender: sender,
-                                                                   recipients: [receiver],
-                                                                   subject: subject,
-                                                                   body: .universal(plain: plainTextBody, html: htmlBody))),
-                                        base64EncodeAllMessages: false,
-                                        base64EncodingOptions: [])
+        let encoded = try #require(try encodeRequest(.transferPayload(.newlyComposed(.init(sender: sender,
+                                                                                           recipients: [receiver],
+                                                                                           subject: subject,
+                                                                                           body: .universal(plain: plainTextBody,
+                                                                                                            html: htmlBody)),
+                                                                                     date: date)),
+                                                     base64EncodeAllMessages: false,
+                                                     base64EncodingOptions: []))
         let regex = Regex {
             """
             From: "\(sender.name ?? "")" <\(sender.emailAddress)>\r\n\
@@ -218,5 +219,51 @@ struct SMTPRequestEncoderTests {
                 --\(boundary)--\r\n\
                 \r\n.\r\n
                 """)
+    }
+
+    @Test(arguments: [
+        (".start\r\n", "..start\r\n.\r\n"),
+        ("\r\nfoo\r\n.test\r\n", "\r\nfoo\r\n..test\r\n.\r\n"),
+        (".one\r\n.two\r\n.three\r\n", "..one\r\n..two\r\n..three\r\n.\r\n"),
+        ("a.b.c\r\nx.y.z\r\n", "a.b.c\r\nx.y.z\r\n.\r\n"),
+        ("body without terminator", "body without terminator\r\n.\r\n"),
+        ("body with terminator\r\n", "body with terminator\r\n.\r\n"),
+        // Caller may have crafted exact bytes (DKIM, IMAP APPEND parity) — encoder must not canonicalise.
+        ("line1\nline2\n", "line1\nline2\n\r\n.\r\n"),
+        // A '.' is only at "start of line" after a CRLF. Following a bare LF it is mid-line as far as a
+        // CRLF-framing receiver is concerned, so doubling it would corrupt the payload (the receiver would
+        // not un-stuff it). Stuffing only the true CRLF-led dot is what keeps DKIM-signed bodies intact.
+        ("foo\n.bar\r\n", "foo\n.bar\r\n.\r\n"),
+        // Contrast with the bare-LF case: a dot that does follow a CRLF must still be stuffed.
+        ("foo\n\r\n.bar\r\n", "foo\n\r\n..bar\r\n.\r\n"),
+        // Empty data -> just the dot terminator on its own line; servers are expected to reject but the encoder should not crash.
+        ("", "\r\n.\r\n"),
+        // Realistic shape: headers + blank line + body + trailing CRLF. Should pass through bit-identical
+        // (no header/body separator munging, no body line rewriting).
+        (
+            """
+            From: sender@example.com\r\n\
+            To: receiver@example.com\r\n\
+            Subject: Hello\r\n\
+            \r\n\
+            Body line 1\r\n\
+            Body line 2\r\n
+            """,
+            """
+            From: sender@example.com\r\n\
+            To: receiver@example.com\r\n\
+            Subject: Hello\r\n\
+            \r\n\
+            Body line 1\r\n\
+            Body line 2\r\n.\r\n
+            """
+        )
+    ])
+    func precomposedEncoding(payload: String, expectedOutput: String) async throws {
+        let encoder = SMTPRequestEncoder(base64EncodeAllMessages: false, base64EncodingOptions: [])
+        var byteBuffer = ByteBufferAllocator().buffer(capacity: 1024)
+        try encoder.encode(data: .transferPayload(.precomposed(ByteBuffer(string: payload))), out: &byteBuffer)
+        let encoded = byteBuffer.readString(length: byteBuffer.readableBytes)
+        #expect(encoded == expectedOutput)
     }
 }
