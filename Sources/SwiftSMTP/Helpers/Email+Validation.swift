@@ -18,6 +18,7 @@ private func validateEmailAddress(_ address: String) throws {
 }
 
 extension PrecomposedEmail {
+    @usableFromInline
     func validate() throws {
         guard !recipientAddresses.isEmpty else { throw EmailValidationError.missingRecipients }
         try validateEmailAddress(senderAddress)
@@ -28,6 +29,7 @@ extension PrecomposedEmail {
 }
 
 extension Email {
+    @usableFromInline
     func validate() throws {
         try validateEmailAddress(sender.emailAddress)
         var hasSeenAddress = false

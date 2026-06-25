@@ -2,7 +2,8 @@ public import struct Foundation.Data
 public import struct Foundation.Date
 public import struct NIO.ByteBuffer
 
-internal enum AnyEmail: Sendable {
+@usableFromInline
+internal enum AnyEmail: Sendable, Equatable {
     case regular(Email)
     case precomposed(PrecomposedEmail)
 
@@ -27,6 +28,7 @@ internal enum AnyEmail: Sendable {
         }
     }
 
+    @inlinable
     func validate() throws {
         switch self {
         case .regular(let email): try email.validate()
