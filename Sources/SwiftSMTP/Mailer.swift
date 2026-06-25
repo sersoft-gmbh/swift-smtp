@@ -142,7 +142,8 @@ public final class Mailer: Sendable {
         }
     }
 
-    private func _sendFuture(for email: AnyEmail) -> EventLoopFuture<Void> {
+    @usableFromInline
+    func _sendFuture(for email: AnyEmail) -> EventLoopFuture<Void> {
         let promise = group.next().makePromise(of: Void.self)
         pushSend(ScheduledSend(email: email, promise: promise))
         scheduleMailDelivery()
@@ -154,6 +155,7 @@ public final class Mailer: Sendable {
     /// - Parameter email: The email to send.
     /// - Returns: A future that will complete with the result of sending the email.
     /// - SeeAlso: ``send(_:)-(PrecomposedEmail)->_``
+    @inlinable
     public func send(_ email: Email) -> EventLoopFuture<Void> {
         _sendFuture(for: .regular(email))
     }
@@ -169,6 +171,7 @@ public final class Mailer: Sendable {
     /// - Parameter email: The pre-composed email to send.
     /// - Returns: A future that will complete with the result of sending the message.
     /// - SeeAlso: ``send(_:)-(Email)->_``
+    @inlinable
     public func send(_ email: PrecomposedEmail) -> EventLoopFuture<Void> {
         _sendFuture(for: .precomposed(email))
     }
@@ -194,8 +197,9 @@ extension Mailer {
     @available(*, deprecated, renamed: "send(_:)")
     public func send(email: Email) async throws { try await send(email) }
 
-    // leftover from when `send(_ email: Email)` was @inlinable
-    @usableFromInline
+    // Left here since it was @usableFromInline before, thus ABI relevant.
+    // TODO: Remove in the next major version.
+    @inlinable
     @available(*, deprecated)
     func _sendFuture(for email: Email) -> EventLoopFuture<Void> {
         _sendFuture(for: .regular(email))
