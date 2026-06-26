@@ -46,7 +46,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Mailer.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Mailer.swift#L35"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Mailer.swift#L27"
     },
     "role" : "symbol",
     "roleHeading" : "Class",
@@ -135,8 +135,8 @@
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-3qwba",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-4jqid",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:from:to:)-5rc6i",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:from:to:)-7il3a",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-7adzk",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-qh28",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(email:)-821mq",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(email:)-8v7m5"
       ],
@@ -423,7 +423,15 @@
 "doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(_:)-3qwba": {
   "abstract" : [
     {
-      "text" : "Schedules an email for delivery. Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.",
+      "text" : "Schedules an email for delivery.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.",
       "type" : "text"
     }
   ],
@@ -532,10 +540,10 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/mailer\/send(_:)-4jqid"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(_:from:to:)-5rc6i": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(_:)-7adzk": {
   "abstract" : [
     {
-      "text" : "Schedules a pre-built RFC 2822 message payload for delivery, using the given SMTP envelope.",
+      "text" : "Schedules a pre-composed email for delivery.",
       "type" : "text"
     }
   ],
@@ -558,55 +566,12 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:20FoundationEssentials4DataV",
-      "text" : "Data"
+      "preciseIdentifier" : "s:9SwiftSMTP16PrecomposedEmailV",
+      "text" : "PrecomposedEmail"
     },
     {
       "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "from"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "to"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sa",
-      "text" : "Array"
-    },
-    {
-      "kind" : "text",
-      "text" : "<"
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ">) -> "
+      "text" : ") -> "
     },
     {
       "kind" : "typeIdentifier",
@@ -627,17 +592,17 @@
       "text" : ">"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:from:to:)-5rc6i",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-7adzk",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "send(_:from:to:)",
+  "title" : "send(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/mailer\/send(_:from:to:)-5rc6i"
+  "url" : "\/documentation\/swiftsmtp\/mailer\/send(_:)-7adzk"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(_:from:to:)-7il3a": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(_:)-qh28": {
   "abstract" : [
     {
-      "text" : "Schedules a pre-built RFC 2822 message payload for delivery, using the given SMTP envelope.",
+      "text" : "Schedules a pre-composed email for delivery.",
       "type" : "text"
     }
   ],
@@ -660,55 +625,12 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:20FoundationEssentials4DataV",
-      "text" : "Data"
+      "preciseIdentifier" : "s:9SwiftSMTP16PrecomposedEmailV",
+      "text" : "PrecomposedEmail"
     },
     {
       "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "from"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
-      "kind" : "externalParam",
-      "text" : "to"
-    },
-    {
-      "kind" : "text",
-      "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Sa",
-      "text" : "Array"
-    },
-    {
-      "kind" : "text",
-      "text" : "<"
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:SS",
-      "text" : "String"
-    },
-    {
-      "kind" : "text",
-      "text" : ">) "
+      "text" : ") "
     },
     {
       "kind" : "keyword",
@@ -723,12 +645,12 @@
       "text" : "throws"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:from:to:)-7il3a",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-qh28",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "send(_:from:to:)",
+  "title" : "send(_:)",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/mailer\/send(_:from:to:)-7il3a"
+  "url" : "\/documentation\/swiftsmtp\/mailer\/send(_:)-qh28"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(email:)-821mq": {
   "abstract" : [

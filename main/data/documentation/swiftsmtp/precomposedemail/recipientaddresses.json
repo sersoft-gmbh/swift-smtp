@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Retrieve the localized description for this error.",
+      "text" : "The email addresses of the recipients of the email.",
       "type" : "text"
     }
   ],
@@ -9,18 +9,17 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError\/localizedDescription"
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/recipientAddresses"
   },
   "kind" : "symbol",
   "metadata" : {
-    "extendedModule" : "Swift",
-    "externalID" : "s:s5ErrorP10FoundationE20localizedDescriptionSSvp::SYNTHESIZED::s:9SwiftSMTP22MissingRecipientsErrorV",
+    "externalID" : "s:9SwiftSMTP16PrecomposedEmailV18recipientAddressesSaySSGvp",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -32,7 +31,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "localizedDescription"
+        "text" : "recipientAddresses"
       },
       {
         "kind" : "text",
@@ -40,22 +39,36 @@
       },
       {
         "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:Sa",
+        "text" : "Array"
+      },
+      {
+        "kind" : "text",
+        "text" : "<"
+      },
+      {
+        "kind" : "typeIdentifier",
         "preciseIdentifier" : "s:SS",
         "text" : "String"
+      },
+      {
+        "kind" : "text",
+        "text" : ">"
       }
     ],
     "modules" : [
       {
-        "name" : "SwiftSMTP",
-        "relatedModules" : [
-          "Swift"
-        ]
+        "name" : "SwiftSMTP"
       }
     ],
+    "remoteSource" : {
+      "fileName" : "Email.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L53"
+    },
     "role" : "symbol",
     "roleHeading" : "Instance Property",
     "symbolKind" : "property",
-    "title" : "localizedDescription"
+    "title" : "recipientAddresses"
   },
   "primaryContentSections" : [
     {
@@ -78,11 +91,20 @@
             },
             {
               "kind" : "identifier",
-              "text" : "localizedDescription"
+              "text" : "recipientAddresses"
             },
             {
               "kind" : "text",
               "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:Sa",
+              "text" : "Array"
+            },
+            {
+              "kind" : "text",
+              "text" : "<"
             },
             {
               "kind" : "typeIdentifier",
@@ -91,15 +113,7 @@
             },
             {
               "kind" : "text",
-              "text" : " { "
-            },
-            {
-              "kind" : "keyword",
-              "text" : "get"
-            },
-            {
-              "kind" : "text",
-              "text" : " }"
+              "text" : ">"
             }
           ]
         }
@@ -118,7 +132,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/swiftsmtp\/missingrecipientserror\/localizeddescription"
+        "\/documentation\/swiftsmtp\/precomposedemail\/recipientaddresses"
       ],
       "traits" : [
         {
@@ -143,10 +157,50 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/MissingRecipientsError": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail": {
   "abstract" : [
     {
-      "text" : "Thrown when a message is scheduled for sending without any recipients.",
+      "text" : "Represents an email whose message is pre-composed (e.g. a pre-built RFC 2822 payload).",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type when the canonical RFC 2822 bytes for the message already exist, e.g. when the same bytes",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must be delivered to SMTP ",
+      "type" : "text"
+    },
+    {
+      "code" : "DATA",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " and stored verbatim via IMAP ",
+      "type" : "text"
+    },
+    {
+      "code" : "APPEND",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ", when the message has been DKIM-signed and",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must not be re-serialised, or when forwarding a message retrieved from another mail store.",
       "type" : "text"
     }
   ],
@@ -161,26 +215,26 @@
     },
     {
       "kind" : "identifier",
-      "text" : "MissingRecipientsError"
+      "text" : "PrecomposedEmail"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "MissingRecipientsError"
+      "text" : "PrecomposedEmail"
     }
   ],
   "role" : "symbol",
-  "title" : "MissingRecipientsError",
+  "title" : "PrecomposedEmail",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/missingrecipientserror"
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/MissingRecipientsError/localizedDescription": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail/recipientAddresses": {
   "abstract" : [
     {
-      "text" : "Retrieve the localized description for this error.",
+      "text" : "The email addresses of the recipients of the email.",
       "type" : "text"
     }
   ],
@@ -195,7 +249,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "localizedDescription"
+      "text" : "recipientAddresses"
     },
     {
       "kind" : "text",
@@ -203,16 +257,29 @@
     },
     {
       "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sa",
+      "text" : "Array"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:SS",
       "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ">"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError\/localizedDescription",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/recipientAddresses",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "localizedDescription",
+  "title" : "recipientAddresses",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/missingrecipientserror\/localizeddescription"
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail\/recipientaddresses"
 }
 }
 }

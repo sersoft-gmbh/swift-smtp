@@ -1,7 +1,15 @@
 {
   "abstract" : [
     {
-      "text" : "Schedules an email for delivery. Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.",
+      "text" : "Schedules an email for delivery.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.",
       "type" : "text"
     }
   ],
@@ -72,7 +80,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Mailer.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Mailer.swift#L161"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Mailer.swift#L159"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Method",
@@ -193,6 +201,38 @@
         }
       ],
       "kind" : "content"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "",
+                  "type" : "text"
+                },
+                {
+                  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-7adzk",
+                  "isActive" : true,
+                  "type" : "reference"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "See Also",
+          "style" : "note",
+          "type" : "aside"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "schemaVersion" : {
@@ -234,7 +274,15 @@
 "doc://SwiftSMTP/documentation/SwiftSMTP/Email": {
   "abstract" : [
     {
-      "text" : "Represents an email.",
+      "text" : "Represents an email whose message will be MIME-encoded when sent to the server.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type, when a new message should be composed, w\/o any existing SMTP payload.",
       "type" : "text"
     }
   ],
@@ -302,7 +350,15 @@
 "doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(_:)-3qwba": {
   "abstract" : [
     {
-      "text" : "Schedules an email for delivery. Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.",
+      "text" : "Schedules an email for delivery.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.",
       "type" : "text"
     }
   ],
@@ -357,6 +413,65 @@
   "title" : "send(_:)",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/mailer\/send(_:)-3qwba"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(_:)-7adzk": {
+  "abstract" : [
+    {
+      "text" : "Schedules a pre-composed email for delivery.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "send"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP16PrecomposedEmailV",
+      "text" : "PrecomposedEmail"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7NIOCore15EventLoopFutureC",
+      "text" : "EventLoopFuture"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ">"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-7adzk",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "send(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/mailer\/send(_:)-7adzk"
 }
 }
 }

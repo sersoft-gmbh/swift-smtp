@@ -9,18 +9,18 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError\/localizedDescription"
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError\/localizedDescription"
   },
   "kind" : "symbol",
   "metadata" : {
     "extendedModule" : "Swift",
-    "externalID" : "s:s5ErrorP10FoundationE20localizedDescriptionSSvp::SYNTHESIZED::s:9SwiftSMTP27InvalidEnvelopeAddressErrorV",
+    "externalID" : "s:s5ErrorP10FoundationE20localizedDescriptionSSvp::SYNTHESIZED::s:9SwiftSMTP20EmailValidationErrorO",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -118,7 +118,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/swiftsmtp\/invalidenvelopeaddresserror\/localizeddescription"
+        "\/documentation\/swiftsmtp\/emailvalidationerror\/localizeddescription"
       ],
       "traits" : [
         {
@@ -143,49 +143,17 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/InvalidEnvelopeAddressError": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/EmailValidationError": {
   "abstract" : [
     {
-      "text" : "Thrown when an envelope address (used for ",
-      "type" : "text"
-    },
-    {
-      "code" : "MAIL FROM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " \/ ",
-      "type" : "text"
-    },
-    {
-      "code" : "RCPT TO",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ") contains a carriage return or line",
-      "type" : "text"
-    },
-    {
-      "text" : " ",
-      "type" : "text"
-    },
-    {
-      "text" : "feed. Such characters would allow additional SMTP commands to be injected into the session, so they are",
-      "type" : "text"
-    },
-    {
-      "text" : " ",
-      "type" : "text"
-    },
-    {
-      "text" : "rejected before any connection is opened.",
+      "text" : "Thrown when an email fails validation.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "struct"
+      "text" : "enum"
     },
     {
       "kind" : "text",
@@ -193,23 +161,23 @@
     },
     {
       "kind" : "identifier",
-      "text" : "InvalidEnvelopeAddressError"
+      "text" : "EmailValidationError"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "InvalidEnvelopeAddressError"
+      "text" : "EmailValidationError"
     }
   ],
   "role" : "symbol",
-  "title" : "InvalidEnvelopeAddressError",
+  "title" : "EmailValidationError",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/invalidenvelopeaddresserror"
+  "url" : "\/documentation\/swiftsmtp\/emailvalidationerror"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/InvalidEnvelopeAddressError/localizedDescription": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/EmailValidationError/localizedDescription": {
   "abstract" : [
     {
       "text" : "Retrieve the localized description for this error.",
@@ -239,12 +207,12 @@
       "text" : "String"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError\/localizedDescription",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError\/localizedDescription",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "localizedDescription",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/invalidenvelopeaddresserror\/localizeddescription"
+  "url" : "\/documentation\/swiftsmtp\/emailvalidationerror\/localizeddescription"
 }
 }
 }

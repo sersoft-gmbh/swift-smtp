@@ -1,7 +1,15 @@
 {
   "abstract" : [
     {
-      "text" : "Represents an email.",
+      "text" : "Represents an email whose message will be MIME-encoded when sent to the server.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type, when a new message should be composed, w\/o any existing SMTP payload.",
       "type" : "text"
     }
   ],
@@ -46,7 +54,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Email.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L5"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L93"
     },
     "role" : "symbol",
     "roleHeading" : "Structure",
@@ -80,6 +88,38 @@
         }
       ],
       "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "overview",
+          "level" : 2,
+          "text" : "Overview",
+          "type" : "heading"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "",
+                  "type" : "text"
+                },
+                {
+                  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail",
+                  "isActive" : true,
+                  "type" : "reference"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "See Also",
+          "style" : "note",
+          "type" : "aside"
+        }
+      ],
+      "kind" : "content"
     }
   ],
   "relationshipsSections" : [
@@ -188,7 +228,15 @@
 "doc://SwiftSMTP/documentation/SwiftSMTP/Email": {
   "abstract" : [
     {
-      "text" : "Represents an email.",
+      "text" : "Represents an email whose message will be MIME-encoded when sent to the server.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type, when a new message should be composed, w\/o any existing SMTP payload.",
       "type" : "text"
     }
   ],
@@ -1005,6 +1053,80 @@
   "title" : "subject",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/email\/subject"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail": {
+  "abstract" : [
+    {
+      "text" : "Represents an email whose message is pre-composed (e.g. a pre-built RFC 2822 payload).",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type when the canonical RFC 2822 bytes for the message already exist, e.g. when the same bytes",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must be delivered to SMTP ",
+      "type" : "text"
+    },
+    {
+      "code" : "DATA",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " and stored verbatim via IMAP ",
+      "type" : "text"
+    },
+    {
+      "code" : "APPEND",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ", when the message has been DKIM-signed and",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must not be re-serialised, or when forwarding a message retrieved from another mail store.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "PrecomposedEmail"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "PrecomposedEmail"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "PrecomposedEmail",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail"
 },
 "doc://SwiftSMTP/s16SendableMetatypeP": {
   "identifier" : "doc:\/\/SwiftSMTP\/s16SendableMetatypeP",

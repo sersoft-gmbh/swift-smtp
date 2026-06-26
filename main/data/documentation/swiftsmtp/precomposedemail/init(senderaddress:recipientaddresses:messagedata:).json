@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "Schedules a pre-built RFC 2822 message payload for delivery, using the given SMTP envelope.",
+      "text" : "Create a new pre-composed email.",
       "type" : "text"
     }
   ],
@@ -9,46 +9,29 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:from:to:)-7il3a"
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/init(senderAddress:recipientAddresses:messageData:)"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:9SwiftSMTP6MailerC4send_4from2toy20FoundationEssentials4DataV_SSSaySSGtYaKF",
+    "externalID" : "s:9SwiftSMTP16PrecomposedEmailV13senderAddress18recipientAddresses11messageDataACSS_SaySSG20FoundationEssentials0J0Vtcfc",
     "fragments" : [
       {
-        "kind" : "keyword",
-        "text" : "func"
-      },
-      {
-        "kind" : "text",
-        "text" : " "
-      },
-      {
         "kind" : "identifier",
-        "text" : "send"
+        "text" : "init"
       },
       {
         "kind" : "text",
         "text" : "("
       },
       {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:20FoundationEssentials4DataV",
-        "text" : "Data"
-      },
-      {
-        "kind" : "text",
-        "text" : ", "
-      },
-      {
         "kind" : "externalParam",
-        "text" : "from"
+        "text" : "senderAddress"
       },
       {
         "kind" : "text",
@@ -65,7 +48,7 @@
       },
       {
         "kind" : "externalParam",
-        "text" : "to"
+        "text" : "recipientAddresses"
       },
       {
         "kind" : "text",
@@ -87,19 +70,24 @@
       },
       {
         "kind" : "text",
-        "text" : ">) "
+        "text" : ">, "
       },
       {
-        "kind" : "keyword",
-        "text" : "async"
+        "kind" : "externalParam",
+        "text" : "messageData"
       },
       {
         "kind" : "text",
-        "text" : " "
+        "text" : ": "
       },
       {
-        "kind" : "keyword",
-        "text" : "throws"
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:20FoundationEssentials4DataV",
+        "text" : "Data"
+      },
+      {
+        "kind" : "text",
+        "text" : ")"
       }
     ],
     "modules" : [
@@ -108,13 +96,13 @@
       }
     ],
     "remoteSource" : {
-      "fileName" : "Mailer.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Mailer.swift#L212"
+      "fileName" : "Email.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L83"
     },
     "role" : "symbol",
-    "roleHeading" : "Instance Method",
-    "symbolKind" : "method",
-    "title" : "send(_:from:to:)"
+    "roleHeading" : "Initializer",
+    "symbolKind" : "init",
+    "title" : "init(senderAddress:recipientAddresses:messageData:)"
   },
   "primaryContentSections" : [
     {
@@ -129,15 +117,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "func"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "identifier",
-              "text" : "send"
+              "text" : "init"
             },
             {
               "kind" : "text",
@@ -145,32 +125,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "_"
-            },
-            {
-              "kind" : "text",
-              "text" : " "
-            },
-            {
-              "kind" : "internalParam",
-              "text" : "messageData"
-            },
-            {
-              "kind" : "text",
-              "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:20FoundationEssentials4DataV",
-              "text" : "Data"
-            },
-            {
-              "kind" : "text",
-              "text" : ", "
-            },
-            {
-              "kind" : "externalParam",
-              "text" : "from"
+              "text" : "senderAddress"
             },
             {
               "kind" : "text",
@@ -187,7 +142,7 @@
             },
             {
               "kind" : "externalParam",
-              "text" : "to"
+              "text" : "recipientAddresses"
             },
             {
               "kind" : "text",
@@ -209,19 +164,24 @@
             },
             {
               "kind" : "text",
-              "text" : ">) "
+              "text" : ">, "
             },
             {
-              "kind" : "keyword",
-              "text" : "async"
+              "kind" : "externalParam",
+              "text" : "messageData"
             },
             {
               "kind" : "text",
-              "text" : " "
+              "text" : ": "
             },
             {
-              "kind" : "keyword",
-              "text" : "throws"
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:20FoundationEssentials4DataV",
+              "text" : "Data"
+            },
+            {
+              "kind" : "text",
+              "text" : ")"
             }
           ]
         }
@@ -236,7 +196,51 @@
             {
               "inlineContent" : [
                 {
-                  "text" : "The full RFC 2822 message bytes (headers, blank line, body).",
+                  "text" : "The email address of the sender of the email.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "senderAddress"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The email addresses of the recipients of the email.",
+                  "type" : "text"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "recipientAddresses"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "The pre-composed message payload as ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "Data",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ". Will be converted to a ",
+                  "type" : "text"
+                },
+                {
+                  "code" : "ByteBuffer",
+                  "type" : "codeVoice"
+                },
+                {
+                  "text" : ".",
                   "type" : "text"
                 }
               ],
@@ -244,50 +248,6 @@
             }
           ],
           "name" : "messageData"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "The envelope sender (used for ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "MAIL FROM",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : "). Must not contain CR or LF.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "from"
-        },
-        {
-          "content" : [
-            {
-              "inlineContent" : [
-                {
-                  "text" : "The envelope recipients (used for ",
-                  "type" : "text"
-                },
-                {
-                  "code" : "RCPT TO",
-                  "type" : "codeVoice"
-                },
-                {
-                  "text" : "). Must be non-empty and must not contain CR or LF.",
-                  "type" : "text"
-                }
-              ],
-              "type" : "paragraph"
-            }
-          ],
-          "name" : "to"
         }
       ]
     },
@@ -300,59 +260,42 @@
           "type" : "heading"
         },
         {
-          "inlineContent" : [
-            {
-              "text" : "See ",
-              "type" : "text"
-            },
-            {
-              "code" : "send(_:from:to:)-9z6kg",
-              "type" : "codeVoice"
-            },
-            {
-              "text" : " for the design rationale and contract; this is the async-throwing variant.",
-              "type" : "text"
-            }
-          ],
-          "type" : "paragraph"
-        },
-        {
           "content" : [
             {
               "inlineContent" : [
                 {
-                  "text" : "",
+                  "text" : "The ",
                   "type" : "text"
                 },
                 {
-                  "code" : "MissingRecipientsError",
+                  "code" : "messageData",
                   "type" : "codeVoice"
                 },
                 {
-                  "text" : " if ",
+                  "text" : " parameter will be converted to ",
                   "type" : "text"
                 },
                 {
-                  "code" : "to",
+                  "code" : "ByteBuffer",
                   "type" : "codeVoice"
                 },
                 {
-                  "text" : " is empty, ",
+                  "text" : ". For improved performance, consider using ",
                   "type" : "text"
                 },
                 {
-                  "code" : "InvalidEnvelopeAddressError",
+                  "code" : "ByteBuffer",
                   "type" : "codeVoice"
                 },
                 {
-                  "text" : " if any envelope address contains CR or LF; otherwise any error that occurs during sending.",
+                  "text" : " from the start.",
                   "type" : "text"
                 }
               ],
               "type" : "paragraph"
             }
           ],
-          "name" : "Throws",
+          "name" : "Note",
           "style" : "note",
           "type" : "aside"
         }
@@ -371,7 +314,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/swiftsmtp\/mailer\/send(_:from:to:)-7il3a"
+        "\/documentation\/swiftsmtp\/precomposedemail\/init(senderaddress:recipientaddresses:messagedata:)"
       ],
       "traits" : [
         {
@@ -396,17 +339,57 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail": {
   "abstract" : [
     {
-      "text" : "A Mailer is responsible for opening server connections and dispatching emails.",
+      "text" : "Represents an email whose message is pre-composed (e.g. a pre-built RFC 2822 payload).",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type when the canonical RFC 2822 bytes for the message already exist, e.g. when the same bytes",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must be delivered to SMTP ",
+      "type" : "text"
+    },
+    {
+      "code" : "DATA",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " and stored verbatim via IMAP ",
+      "type" : "text"
+    },
+    {
+      "code" : "APPEND",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ", when the message has been DKIM-signed and",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must not be re-serialised, or when forwarding a message retrieved from another mail store.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -414,58 +397,41 @@
     },
     {
       "kind" : "identifier",
-      "text" : "Mailer"
+      "text" : "PrecomposedEmail"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "Mailer"
+      "text" : "PrecomposedEmail"
     }
   ],
   "role" : "symbol",
-  "title" : "Mailer",
+  "title" : "PrecomposedEmail",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/mailer"
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(_:from:to:)-7il3a": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail/init(senderAddress:recipientAddresses:messageData:)": {
   "abstract" : [
     {
-      "text" : "Schedules a pre-built RFC 2822 message payload for delivery, using the given SMTP envelope.",
+      "text" : "Create a new pre-composed email.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
       "kind" : "identifier",
-      "text" : "send"
+      "text" : "init"
     },
     {
       "kind" : "text",
       "text" : "("
     },
     {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:20FoundationEssentials4DataV",
-      "text" : "Data"
-    },
-    {
-      "kind" : "text",
-      "text" : ", "
-    },
-    {
       "kind" : "externalParam",
-      "text" : "from"
+      "text" : "senderAddress"
     },
     {
       "kind" : "text",
@@ -482,7 +448,7 @@
     },
     {
       "kind" : "externalParam",
-      "text" : "to"
+      "text" : "recipientAddresses"
     },
     {
       "kind" : "text",
@@ -504,27 +470,32 @@
     },
     {
       "kind" : "text",
-      "text" : ">) "
+      "text" : ">, "
     },
     {
-      "kind" : "keyword",
-      "text" : "async"
+      "kind" : "externalParam",
+      "text" : "messageData"
     },
     {
       "kind" : "text",
-      "text" : " "
+      "text" : ": "
     },
     {
-      "kind" : "keyword",
-      "text" : "throws"
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:20FoundationEssentials4DataV",
+      "text" : "Data"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:from:to:)-7il3a",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/init(senderAddress:recipientAddresses:messageData:)",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "send(_:from:to:)",
+  "title" : "init(senderAddress:recipientAddresses:messageData:)",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/mailer\/send(_:from:to:)-7il3a"
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail\/init(senderaddress:recipientaddresses:messagedata:)"
 }
 }
 }

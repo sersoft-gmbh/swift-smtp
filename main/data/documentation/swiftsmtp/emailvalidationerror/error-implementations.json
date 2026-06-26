@@ -3,13 +3,13 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError\/Error-Implementations"
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError\/Error-Implementations"
   },
   "kind" : "article",
   "metadata" : {
@@ -35,7 +35,7 @@
       "anchor" : "Instance-Properties",
       "generated" : true,
       "identifiers" : [
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError\/localizedDescription"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError\/localizedDescription"
       ],
       "title" : "Instance Properties"
     }
@@ -43,7 +43,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/swiftsmtp\/missingrecipientserror\/error-implementations"
+        "\/documentation\/swiftsmtp\/emailvalidationerror\/error-implementations"
       ],
       "traits" : [
         {
@@ -68,17 +68,17 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/MissingRecipientsError": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/EmailValidationError": {
   "abstract" : [
     {
-      "text" : "Thrown when a message is scheduled for sending without any recipients.",
+      "text" : "Thrown when an email fails validation.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "struct"
+      "text" : "enum"
     },
     {
       "kind" : "text",
@@ -86,23 +86,23 @@
     },
     {
       "kind" : "identifier",
-      "text" : "MissingRecipientsError"
+      "text" : "EmailValidationError"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "MissingRecipientsError"
+      "text" : "EmailValidationError"
     }
   ],
   "role" : "symbol",
-  "title" : "MissingRecipientsError",
+  "title" : "EmailValidationError",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/missingrecipientserror"
+  "url" : "\/documentation\/swiftsmtp\/emailvalidationerror"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/MissingRecipientsError/localizedDescription": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/EmailValidationError/localizedDescription": {
   "abstract" : [
     {
       "text" : "Retrieve the localized description for this error.",
@@ -132,12 +132,12 @@
       "text" : "String"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError\/localizedDescription",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError\/localizedDescription",
   "kind" : "symbol",
   "role" : "symbol",
   "title" : "localizedDescription",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/missingrecipientserror\/localizeddescription"
+  "url" : "\/documentation\/swiftsmtp\/emailvalidationerror\/localizeddescription"
 }
 }
 }

@@ -126,9 +126,8 @@
               "type" : "text"
             },
             {
-              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-3qwba",
-              "isActive" : true,
-              "type" : "reference"
+              "code" : "Mailer\/send(_:)->_",
+              "type" : "codeVoice"
             },
             {
               "text" : " on your mailer with it. The returned ",
@@ -415,9 +414,8 @@
               "type" : "text"
             },
             {
-              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-3qwba",
-              "isActive" : true,
-              "type" : "reference"
+              "code" : "Mailer\/send(_:)->_",
+              "type" : "codeVoice"
             },
             {
               "text" : " to send ",
@@ -495,13 +493,20 @@
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MalformedSMTPMessageError",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrintSMTPLogger",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/ServerError"
       ],
       "title" : "Structures"
+    },
+    {
+      "anchor" : "Enumerations",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError"
+      ],
+      "title" : "Enumerations"
     }
   ],
   "variants" : [
@@ -569,7 +574,15 @@
 "doc://SwiftSMTP/documentation/SwiftSMTP/Email": {
   "abstract" : [
     {
-      "text" : "Represents an email.",
+      "text" : "Represents an email whose message will be MIME-encoded when sent to the server.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type, when a new message should be composed, w\/o any existing SMTP payload.",
       "type" : "text"
     }
   ],
@@ -600,49 +613,17 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/email"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/InvalidEnvelopeAddressError": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/EmailValidationError": {
   "abstract" : [
     {
-      "text" : "Thrown when an envelope address (used for ",
-      "type" : "text"
-    },
-    {
-      "code" : "MAIL FROM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " \/ ",
-      "type" : "text"
-    },
-    {
-      "code" : "RCPT TO",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ") contains a carriage return or line",
-      "type" : "text"
-    },
-    {
-      "text" : " ",
-      "type" : "text"
-    },
-    {
-      "text" : "feed. Such characters would allow additional SMTP commands to be injected into the session, so they are",
-      "type" : "text"
-    },
-    {
-      "text" : " ",
-      "type" : "text"
-    },
-    {
-      "text" : "rejected before any connection is opened.",
+      "text" : "Thrown when an email fails validation.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "struct"
+      "text" : "enum"
     },
     {
       "kind" : "text",
@@ -650,21 +631,21 @@
     },
     {
       "kind" : "identifier",
-      "text" : "InvalidEnvelopeAddressError"
+      "text" : "EmailValidationError"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "InvalidEnvelopeAddressError"
+      "text" : "EmailValidationError"
     }
   ],
   "role" : "symbol",
-  "title" : "InvalidEnvelopeAddressError",
+  "title" : "EmailValidationError",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/invalidenvelopeaddresserror"
+  "url" : "\/documentation\/swiftsmtp\/emailvalidationerror"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Mailer": {
   "abstract" : [
@@ -700,65 +681,6 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/mailer"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/send(_:)-3qwba": {
-  "abstract" : [
-    {
-      "text" : "Schedules an email for delivery. Returns a future that will succeed once the email is sent, or fail with any error that occurrs during sending.",
-      "type" : "text"
-    }
-  ],
-  "fragments" : [
-    {
-      "kind" : "keyword",
-      "text" : "func"
-    },
-    {
-      "kind" : "text",
-      "text" : " "
-    },
-    {
-      "kind" : "identifier",
-      "text" : "send"
-    },
-    {
-      "kind" : "text",
-      "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
-      "text" : "Email"
-    },
-    {
-      "kind" : "text",
-      "text" : ") -> "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:7NIOCore15EventLoopFutureC",
-      "text" : "EventLoopFuture"
-    },
-    {
-      "kind" : "text",
-      "text" : "<"
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:s4Voida",
-      "text" : "Void"
-    },
-    {
-      "kind" : "text",
-      "text" : ">"
-    }
-  ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/send(_:)-3qwba",
-  "kind" : "symbol",
-  "role" : "symbol",
-  "title" : "send(_:)",
-  "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/mailer\/send(_:)-3qwba"
-},
 "doc://SwiftSMTP/documentation/SwiftSMTP/MalformedSMTPMessageError": {
   "abstract" : [
     {
@@ -793,10 +715,50 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/malformedsmtpmessageerror"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/MissingRecipientsError": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail": {
   "abstract" : [
     {
-      "text" : "Thrown when a message is scheduled for sending without any recipients.",
+      "text" : "Represents an email whose message is pre-composed (e.g. a pre-built RFC 2822 payload).",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type when the canonical RFC 2822 bytes for the message already exist, e.g. when the same bytes",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must be delivered to SMTP ",
+      "type" : "text"
+    },
+    {
+      "code" : "DATA",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " and stored verbatim via IMAP ",
+      "type" : "text"
+    },
+    {
+      "code" : "APPEND",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ", when the message has been DKIM-signed and",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must not be re-serialised, or when forwarding a message retrieved from another mail store.",
       "type" : "text"
     }
   ],
@@ -811,21 +773,21 @@
     },
     {
       "kind" : "identifier",
-      "text" : "MissingRecipientsError"
+      "text" : "PrecomposedEmail"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "MissingRecipientsError"
+      "text" : "PrecomposedEmail"
     }
   ],
   "role" : "symbol",
-  "title" : "MissingRecipientsError",
+  "title" : "PrecomposedEmail",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/missingrecipientserror"
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/PrintSMTPLogger": {
   "abstract" : [

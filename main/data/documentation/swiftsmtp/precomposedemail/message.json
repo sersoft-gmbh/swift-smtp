@@ -1,0 +1,303 @@
+{
+  "abstract" : [
+    {
+      "text" : "The pre-composed message payload.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/message"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:9SwiftSMTP16PrecomposedEmailV7message7NIOCore10ByteBufferVvp",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "var"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "message"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:7NIOCore10ByteBufferV",
+        "text" : "ByteBuffer"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTP"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "Email.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L62"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "message"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "var"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "message"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:7NIOCore10ByteBufferV",
+              "text" : "ByteBuffer"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "discussion",
+          "level" : 2,
+          "text" : "Discussion",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The encoder applies dot-stuffing per RFC 5321 §4.5.2 and adds a trailing ",
+              "type" : "text"
+            },
+            {
+              "code" : "<CRLF>",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " to the payload before the",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "code" : "<CRLF>.<CRLF>",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " terminator if the payload does not already end with one.",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "Bare LFs in the payload pass through unchanged — strict servers may reject such payloads.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "No maximum message size is enforced. Developers are responsible for keeping the message within reasonable sizes.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        }
+      ],
+      "kind" : "content"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtp\/precomposedemail\/message"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTP/documentation/SwiftSMTP": {
+  "abstract" : [
+    {
+      "text" : "A Swift NIO based implementation for sending emails via SMTP servers.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTP",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail": {
+  "abstract" : [
+    {
+      "text" : "Represents an email whose message is pre-composed (e.g. a pre-built RFC 2822 payload).",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type when the canonical RFC 2822 bytes for the message already exist, e.g. when the same bytes",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must be delivered to SMTP ",
+      "type" : "text"
+    },
+    {
+      "code" : "DATA",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " and stored verbatim via IMAP ",
+      "type" : "text"
+    },
+    {
+      "code" : "APPEND",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ", when the message has been DKIM-signed and",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must not be re-serialised, or when forwarding a message retrieved from another mail store.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "PrecomposedEmail"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "PrecomposedEmail"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "PrecomposedEmail",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail/message": {
+  "abstract" : [
+    {
+      "text" : "The pre-composed message payload.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "message"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7NIOCore10ByteBufferV",
+      "text" : "ByteBuffer"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/message",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "message",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail\/message"
+}
+}
+}

@@ -80,7 +80,7 @@
     ],
     "remoteSource" : {
       "fileName" : "Email.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L104"
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L186"
     },
     "role" : "symbol",
     "roleHeading" : "Case",
@@ -193,7 +193,15 @@
 "doc://SwiftSMTP/documentation/SwiftSMTP/Email": {
   "abstract" : [
     {
-      "text" : "Represents an email.",
+      "text" : "Represents an email whose message will be MIME-encoded when sent to the server.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type, when a new message should be composed, w\/o any existing SMTP payload.",
       "type" : "text"
     }
   ],

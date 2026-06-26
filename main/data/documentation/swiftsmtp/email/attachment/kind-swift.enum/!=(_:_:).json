@@ -338,7 +338,15 @@
 "doc://SwiftSMTP/documentation/SwiftSMTP/Email": {
   "abstract" : [
     {
-      "text" : "Represents an email.",
+      "text" : "Represents an email whose message will be MIME-encoded when sent to the server.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type, when a new message should be composed, w\/o any existing SMTP payload.",
       "type" : "text"
     }
   ],

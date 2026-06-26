@@ -1,7 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "The offending address.",
+      "text" : "The email address of the sender of the email.",
       "type" : "text"
     }
   ],
@@ -9,21 +9,21 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError\/address"
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/senderAddress"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:9SwiftSMTP27InvalidEnvelopeAddressErrorV7addressSSvp",
+    "externalID" : "s:9SwiftSMTP16PrecomposedEmailV13senderAddressSSvp",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "let"
+        "text" : "var"
       },
       {
         "kind" : "text",
@@ -31,7 +31,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "address"
+        "text" : "senderAddress"
       },
       {
         "kind" : "text",
@@ -49,13 +49,13 @@
       }
     ],
     "remoteSource" : {
-      "fileName" : "SMTPErrors.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/SMTPErrors.swift#L29"
+      "fileName" : "Email.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/Email.swift#L51"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Property",
     "symbolKind" : "property",
-    "title" : "address"
+    "title" : "senderAddress"
   },
   "primaryContentSections" : [
     {
@@ -70,7 +70,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "let"
+              "text" : "var"
             },
             {
               "kind" : "text",
@@ -78,7 +78,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "address"
+              "text" : "senderAddress"
             },
             {
               "kind" : "text",
@@ -106,7 +106,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/swiftsmtp\/invalidenvelopeaddresserror\/address"
+        "\/documentation\/swiftsmtp\/precomposedemail\/senderaddress"
       ],
       "traits" : [
         {
@@ -131,26 +131,10 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/InvalidEnvelopeAddressError": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail": {
   "abstract" : [
     {
-      "text" : "Thrown when an envelope address (used for ",
-      "type" : "text"
-    },
-    {
-      "code" : "MAIL FROM",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " \/ ",
-      "type" : "text"
-    },
-    {
-      "code" : "RCPT TO",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ") contains a carriage return or line",
+      "text" : "Represents an email whose message is pre-composed (e.g. a pre-built RFC 2822 payload).",
       "type" : "text"
     },
     {
@@ -158,7 +142,7 @@
       "type" : "text"
     },
     {
-      "text" : "feed. Such characters would allow additional SMTP commands to be injected into the session, so they are",
+      "text" : "Use this type when the canonical RFC 2822 bytes for the message already exist, e.g. when the same bytes",
       "type" : "text"
     },
     {
@@ -166,7 +150,31 @@
       "type" : "text"
     },
     {
-      "text" : "rejected before any connection is opened.",
+      "text" : "must be delivered to SMTP ",
+      "type" : "text"
+    },
+    {
+      "code" : "DATA",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " and stored verbatim via IMAP ",
+      "type" : "text"
+    },
+    {
+      "code" : "APPEND",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ", when the message has been DKIM-signed and",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must not be re-serialised, or when forwarding a message retrieved from another mail store.",
       "type" : "text"
     }
   ],
@@ -181,33 +189,33 @@
     },
     {
       "kind" : "identifier",
-      "text" : "InvalidEnvelopeAddressError"
+      "text" : "PrecomposedEmail"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "InvalidEnvelopeAddressError"
+      "text" : "PrecomposedEmail"
     }
   ],
   "role" : "symbol",
-  "title" : "InvalidEnvelopeAddressError",
+  "title" : "PrecomposedEmail",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/invalidenvelopeaddresserror"
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/InvalidEnvelopeAddressError/address": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail/senderAddress": {
   "abstract" : [
     {
-      "text" : "The offending address.",
+      "text" : "The email address of the sender of the email.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "let"
+      "text" : "var"
     },
     {
       "kind" : "text",
@@ -215,7 +223,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "address"
+      "text" : "senderAddress"
     },
     {
       "kind" : "text",
@@ -227,12 +235,12 @@
       "text" : "String"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError\/address",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/senderAddress",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "address",
+  "title" : "senderAddress",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/invalidenvelopeaddresserror\/address"
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail\/senderaddress"
 }
 }
 }
