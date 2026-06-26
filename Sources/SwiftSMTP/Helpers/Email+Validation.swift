@@ -4,7 +4,7 @@ private func validateEmailAddress(_ address: String) throws {
     let matches: Bool
     // Regex taken from https://emailregex.com
     if #available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *) {
-        // TODO: Make static once the minimum platformds allow it.
+        // TODO: Make static once the minimum platforms allow it. Might need concurrency hacks, though.
         let emailRegex = /[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,64}/
         matches = try emailRegex.wholeMatch(in: address) != nil
     } else {
