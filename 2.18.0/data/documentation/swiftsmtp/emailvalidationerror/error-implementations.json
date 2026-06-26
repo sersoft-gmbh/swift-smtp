@@ -1,0 +1,143 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError\/Error-Implementations"
+  },
+  "kind" : "article",
+  "metadata" : {
+    "modules" : [
+      {
+        "name" : "SwiftSMTP"
+      }
+    ],
+    "role" : "collectionGroup",
+    "roleHeading" : "API Collection",
+    "title" : "Error Implementations"
+  },
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "anchor" : "Instance-Properties",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError\/localizedDescription"
+      ],
+      "title" : "Instance Properties"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtp\/emailvalidationerror\/error-implementations"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTP/documentation/SwiftSMTP": {
+  "abstract" : [
+    {
+      "text" : "A Swift NIO based implementation for sending emails via SMTP servers.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTP",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/EmailValidationError": {
+  "abstract" : [
+    {
+      "text" : "Thrown when an email fails validation.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "EmailValidationError"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "EmailValidationError"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "EmailValidationError",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/emailvalidationerror"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/EmailValidationError/localizedDescription": {
+  "abstract" : [
+    {
+      "text" : "Retrieve the localized description for this error.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "localizedDescription"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError\/localizedDescription",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "localizedDescription",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/emailvalidationerror\/localizeddescription"
+}
+}
+}

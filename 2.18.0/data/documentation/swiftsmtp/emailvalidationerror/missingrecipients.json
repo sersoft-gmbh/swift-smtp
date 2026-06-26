@@ -1,0 +1,170 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError\/missingRecipients"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:9SwiftSMTP20EmailValidationErrorO17missingRecipientsyA2CmF",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "case"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "missingRecipients"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTP"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "Errors.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/tags\/2.18.0\/Sources\/SwiftSMTP\/Models\/Errors.swift#L18"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Case",
+    "symbolKind" : "case",
+    "title" : "EmailValidationError.missingRecipients"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "case"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "missingRecipients"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtp\/emailvalidationerror\/missingrecipients"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTP/documentation/SwiftSMTP": {
+  "abstract" : [
+    {
+      "text" : "A Swift NIO based implementation for sending emails via SMTP servers.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTP",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/EmailValidationError": {
+  "abstract" : [
+    {
+      "text" : "Thrown when an email fails validation.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "EmailValidationError"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "EmailValidationError"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "EmailValidationError",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/emailvalidationerror"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/EmailValidationError/missingRecipients": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "missingRecipients"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/EmailValidationError\/missingRecipients",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "EmailValidationError.missingRecipients",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/emailvalidationerror\/missingrecipients"
+}
+}
+}

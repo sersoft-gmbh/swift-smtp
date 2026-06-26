@@ -1,0 +1,726 @@
+{
+  "abstract" : [
+    {
+      "text" : "Represents an email whose message is pre-composed (e.g. a pre-built RFC 2822 payload).",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type when the canonical RFC 2822 bytes for the message already exist, e.g. when the same bytes",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must be delivered to SMTP ",
+      "type" : "text"
+    },
+    {
+      "code" : "DATA",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " and stored verbatim via IMAP ",
+      "type" : "text"
+    },
+    {
+      "code" : "APPEND",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ", when the message has been DKIM-signed and",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must not be re-serialised, or when forwarding a message retrieved from another mail store.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:9SwiftSMTP16PrecomposedEmailV",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "struct"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "PrecomposedEmail"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTP"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "PrecomposedEmail"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "Email.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/tags\/2.18.0\/Sources\/SwiftSMTP\/Models\/Email.swift#L49"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Structure",
+    "symbolKind" : "struct",
+    "title" : "PrecomposedEmail"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "struct"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "PrecomposedEmail"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    },
+    {
+      "content" : [
+        {
+          "anchor" : "overview",
+          "level" : 2,
+          "text" : "Overview",
+          "type" : "heading"
+        },
+        {
+          "inlineContent" : [
+            {
+              "text" : "The SMTP envelope addresses (",
+              "type" : "text"
+            },
+            {
+              "code" : "senderAddress",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " \/ ",
+              "type" : "text"
+            },
+            {
+              "code" : "recipientAddresses",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : ") are independent of the RFC 2822 ",
+              "type" : "text"
+            },
+            {
+              "code" : "From:",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " \/ ",
+              "type" : "text"
+            },
+            {
+              "code" : "To:",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " \/ ",
+              "type" : "text"
+            },
+            {
+              "code" : "Cc:",
+              "type" : "codeVoice"
+            },
+            {
+              "text" : " headers.",
+              "type" : "text"
+            },
+            {
+              "text" : " ",
+              "type" : "text"
+            },
+            {
+              "text" : "Pass the actual SMTP envelope here — typically including any BCC recipients that do not appear in the message headers.",
+              "type" : "text"
+            }
+          ],
+          "type" : "paragraph"
+        },
+        {
+          "content" : [
+            {
+              "inlineContent" : [
+                {
+                  "text" : "",
+                  "type" : "text"
+                },
+                {
+                  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
+                  "isActive" : true,
+                  "type" : "reference"
+                }
+              ],
+              "type" : "paragraph"
+            }
+          ],
+          "name" : "See Also",
+          "style" : "note",
+          "type" : "aside"
+        }
+      ],
+      "kind" : "content"
+    }
+  ],
+  "relationshipsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/SwiftSMTP\/SQ",
+        "doc:\/\/SwiftSMTP\/s8SendableP",
+        "doc:\/\/SwiftSMTP\/s16SendableMetatypeP"
+      ],
+      "kind" : "relationships",
+      "title" : "Conforms To",
+      "type" : "conformsTo"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "anchor" : "Initializers",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/init(senderAddress:recipientAddresses:message:)",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/init(senderAddress:recipientAddresses:messageData:)"
+      ],
+      "title" : "Initializers"
+    },
+    {
+      "anchor" : "Instance-Properties",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/message",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/recipientAddresses",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/senderAddress"
+      ],
+      "title" : "Instance Properties"
+    },
+    {
+      "anchor" : "Default-Implementations",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/Equatable-Implementations"
+      ],
+      "title" : "Default Implementations"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtp\/precomposedemail"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTP/SQ": {
+  "identifier" : "doc:\/\/SwiftSMTP\/SQ",
+  "title" : "Swift.Equatable",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP": {
+  "abstract" : [
+    {
+      "text" : "A Swift NIO based implementation for sending emails via SMTP servers.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTP",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/Email": {
+  "abstract" : [
+    {
+      "text" : "Represents an email whose message will be MIME-encoded when sent to the server.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type, when a new message should be composed, w\/o any existing SMTP payload.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Email"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Email"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Email",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/email"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail": {
+  "abstract" : [
+    {
+      "text" : "Represents an email whose message is pre-composed (e.g. a pre-built RFC 2822 payload).",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "Use this type when the canonical RFC 2822 bytes for the message already exist, e.g. when the same bytes",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must be delivered to SMTP ",
+      "type" : "text"
+    },
+    {
+      "code" : "DATA",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " and stored verbatim via IMAP ",
+      "type" : "text"
+    },
+    {
+      "code" : "APPEND",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ", when the message has been DKIM-signed and",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "must not be re-serialised, or when forwarding a message retrieved from another mail store.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "PrecomposedEmail"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "PrecomposedEmail"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "PrecomposedEmail",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail/Equatable-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/Equatable-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "Equatable Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail\/equatable-implementations"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail/init(senderAddress:recipientAddresses:message:)": {
+  "abstract" : [
+    {
+      "text" : "Create a new pre-composed email.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "senderAddress"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "recipientAddresses"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sa",
+      "text" : "Array"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ">, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "message"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7NIOCore10ByteBufferV",
+      "text" : "ByteBuffer"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/init(senderAddress:recipientAddresses:message:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(senderAddress:recipientAddresses:message:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail\/init(senderaddress:recipientaddresses:message:)"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail/init(senderAddress:recipientAddresses:messageData:)": {
+  "abstract" : [
+    {
+      "text" : "Create a new pre-composed email.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "senderAddress"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "recipientAddresses"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sa",
+      "text" : "Array"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ">, "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "messageData"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:20FoundationEssentials4DataV",
+      "text" : "Data"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/init(senderAddress:recipientAddresses:messageData:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(senderAddress:recipientAddresses:messageData:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail\/init(senderaddress:recipientaddresses:messagedata:)"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail/message": {
+  "abstract" : [
+    {
+      "text" : "The pre-composed message payload.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "message"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7NIOCore10ByteBufferV",
+      "text" : "ByteBuffer"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/message",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "message",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail\/message"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail/recipientAddresses": {
+  "abstract" : [
+    {
+      "text" : "The email addresses of the recipients of the email.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "recipientAddresses"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sa",
+      "text" : "Array"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ">"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/recipientAddresses",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "recipientAddresses",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail\/recipientaddresses"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/PrecomposedEmail/senderAddress": {
+  "abstract" : [
+    {
+      "text" : "The email address of the sender of the email.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "senderAddress"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrecomposedEmail\/senderAddress",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "senderAddress",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/precomposedemail\/senderaddress"
+},
+"doc://SwiftSMTP/s16SendableMetatypeP": {
+  "identifier" : "doc:\/\/SwiftSMTP\/s16SendableMetatypeP",
+  "title" : "Swift.SendableMetatype",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTP/s8SendableP": {
+  "identifier" : "doc:\/\/SwiftSMTP\/s8SendableP",
+  "title" : "Swift.Sendable",
+  "type" : "unresolvable"
+}
+}
+}
