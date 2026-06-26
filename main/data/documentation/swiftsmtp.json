@@ -495,7 +495,9 @@
       "identifiers" : [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MalformedSMTPMessageError",
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/PrintSMTPLogger",
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/ServerError"
       ],
@@ -597,6 +599,72 @@
   "title" : "Email",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/email"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/InvalidEnvelopeAddressError": {
+  "abstract" : [
+    {
+      "text" : "Thrown when an envelope address (used for ",
+      "type" : "text"
+    },
+    {
+      "code" : "MAIL FROM",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " \/ ",
+      "type" : "text"
+    },
+    {
+      "code" : "RCPT TO",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ") contains a carriage return or line",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "feed. Such characters would allow additional SMTP commands to be injected into the session, so they are",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "rejected before any connection is opened.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "InvalidEnvelopeAddressError"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "InvalidEnvelopeAddressError"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "InvalidEnvelopeAddressError",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/invalidenvelopeaddresserror"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/Mailer": {
   "abstract" : [
@@ -724,6 +792,40 @@
   "title" : "MalformedSMTPMessageError",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp\/malformedsmtpmessageerror"
+},
+"doc://SwiftSMTP/documentation/SwiftSMTP/MissingRecipientsError": {
+  "abstract" : [
+    {
+      "text" : "Thrown when a message is scheduled for sending without any recipients.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "MissingRecipientsError"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "MissingRecipientsError"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "MissingRecipientsError",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtp\/missingrecipientserror"
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/PrintSMTPLogger": {
   "abstract" : [

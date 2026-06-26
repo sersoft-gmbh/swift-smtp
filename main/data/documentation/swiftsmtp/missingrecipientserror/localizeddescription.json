@@ -1,15 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "The maximum number of connections this mailer should open. ",
-      "type" : "text"
-    },
-    {
-      "code" : "nil",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " if no limit is set.",
+      "text" : "Retrieve the localized description for this error.",
       "type" : "text"
     }
   ],
@@ -17,21 +9,22 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/maxConnections"
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError\/localizedDescription"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:9SwiftSMTP6MailerC14maxConnectionsSiSgvp",
+    "extendedModule" : "Swift",
+    "externalID" : "s:s5ErrorP10FoundationE20localizedDescriptionSSvp::SYNTHESIZED::s:9SwiftSMTP22MissingRecipientsErrorV",
     "fragments" : [
       {
         "kind" : "keyword",
-        "text" : "let"
+        "text" : "var"
       },
       {
         "kind" : "text",
@@ -39,7 +32,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "maxConnections"
+        "text" : "localizedDescription"
       },
       {
         "kind" : "text",
@@ -47,27 +40,22 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Si",
-        "text" : "Int"
-      },
-      {
-        "kind" : "text",
-        "text" : "?"
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       }
     ],
     "modules" : [
       {
-        "name" : "SwiftSMTP"
+        "name" : "SwiftSMTP",
+        "relatedModules" : [
+          "Swift"
+        ]
       }
     ],
-    "remoteSource" : {
-      "fileName" : "Mailer.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Mailer.swift#L46"
-    },
     "role" : "symbol",
     "roleHeading" : "Instance Property",
     "symbolKind" : "property",
-    "title" : "maxConnections"
+    "title" : "localizedDescription"
   },
   "primaryContentSections" : [
     {
@@ -82,7 +70,7 @@
           "tokens" : [
             {
               "kind" : "keyword",
-              "text" : "let"
+              "text" : "var"
             },
             {
               "kind" : "text",
@@ -90,7 +78,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "maxConnections"
+              "text" : "localizedDescription"
             },
             {
               "kind" : "text",
@@ -98,12 +86,20 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Si",
-              "text" : "Int"
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
             },
             {
               "kind" : "text",
-              "text" : "?"
+              "text" : " { "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "get"
+            },
+            {
+              "kind" : "text",
+              "text" : " }"
             }
           ]
         }
@@ -122,7 +118,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/swiftsmtp\/mailer\/maxconnections"
+        "\/documentation\/swiftsmtp\/missingrecipientserror\/localizeddescription"
       ],
       "traits" : [
         {
@@ -147,17 +143,17 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/MissingRecipientsError": {
   "abstract" : [
     {
-      "text" : "A Mailer is responsible for opening server connections and dispatching emails.",
+      "text" : "Thrown when a message is scheduled for sending without any recipients.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -165,41 +161,33 @@
     },
     {
       "kind" : "identifier",
-      "text" : "Mailer"
+      "text" : "MissingRecipientsError"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "Mailer"
+      "text" : "MissingRecipientsError"
     }
   ],
   "role" : "symbol",
-  "title" : "Mailer",
+  "title" : "MissingRecipientsError",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/mailer"
+  "url" : "\/documentation\/swiftsmtp\/missingrecipientserror"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/maxConnections": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/MissingRecipientsError/localizedDescription": {
   "abstract" : [
     {
-      "text" : "The maximum number of connections this mailer should open. ",
-      "type" : "text"
-    },
-    {
-      "code" : "nil",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " if no limit is set.",
+      "text" : "Retrieve the localized description for this error.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "let"
+      "text" : "var"
     },
     {
       "kind" : "text",
@@ -207,7 +195,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "maxConnections"
+      "text" : "localizedDescription"
     },
     {
       "kind" : "text",
@@ -215,20 +203,16 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/maxConnections",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/MissingRecipientsError\/localizedDescription",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "maxConnections",
+  "title" : "localizedDescription",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/mailer\/maxconnections"
+  "url" : "\/documentation\/swiftsmtp\/missingrecipientserror\/localizeddescription"
 }
 }
 }

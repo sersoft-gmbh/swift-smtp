@@ -1,15 +1,7 @@
 {
   "abstract" : [
     {
-      "text" : "The maximum number of connections this mailer should open. ",
-      "type" : "text"
-    },
-    {
-      "code" : "nil",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " if no limit is set.",
+      "text" : "The offending address.",
       "type" : "text"
     }
   ],
@@ -17,17 +9,17 @@
     "paths" : [
       [
         "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP",
-        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer"
+        "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError"
       ]
     ]
   },
   "identifier" : {
     "interfaceLanguage" : "swift",
-    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/maxConnections"
+    "url" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError\/address"
   },
   "kind" : "symbol",
   "metadata" : {
-    "externalID" : "s:9SwiftSMTP6MailerC14maxConnectionsSiSgvp",
+    "externalID" : "s:9SwiftSMTP27InvalidEnvelopeAddressErrorV7addressSSvp",
     "fragments" : [
       {
         "kind" : "keyword",
@@ -39,7 +31,7 @@
       },
       {
         "kind" : "identifier",
-        "text" : "maxConnections"
+        "text" : "address"
       },
       {
         "kind" : "text",
@@ -47,12 +39,8 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:Si",
-        "text" : "Int"
-      },
-      {
-        "kind" : "text",
-        "text" : "?"
+        "preciseIdentifier" : "s:SS",
+        "text" : "String"
       }
     ],
     "modules" : [
@@ -61,13 +49,13 @@
       }
     ],
     "remoteSource" : {
-      "fileName" : "Mailer.swift",
-      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Mailer.swift#L46"
+      "fileName" : "SMTPErrors.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/heads\/main\/Sources\/SwiftSMTP\/Models\/SMTPErrors.swift#L29"
     },
     "role" : "symbol",
     "roleHeading" : "Instance Property",
     "symbolKind" : "property",
-    "title" : "maxConnections"
+    "title" : "address"
   },
   "primaryContentSections" : [
     {
@@ -90,7 +78,7 @@
             },
             {
               "kind" : "identifier",
-              "text" : "maxConnections"
+              "text" : "address"
             },
             {
               "kind" : "text",
@@ -98,12 +86,8 @@
             },
             {
               "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:Si",
-              "text" : "Int"
-            },
-            {
-              "kind" : "text",
-              "text" : "?"
+              "preciseIdentifier" : "s:SS",
+              "text" : "String"
             }
           ]
         }
@@ -122,7 +106,7 @@
   "variants" : [
     {
       "paths" : [
-        "\/documentation\/swiftsmtp\/mailer\/maxconnections"
+        "\/documentation\/swiftsmtp\/invalidenvelopeaddresserror\/address"
       ],
       "traits" : [
         {
@@ -147,17 +131,49 @@
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtp"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/InvalidEnvelopeAddressError": {
   "abstract" : [
     {
-      "text" : "A Mailer is responsible for opening server connections and dispatching emails.",
+      "text" : "Thrown when an envelope address (used for ",
+      "type" : "text"
+    },
+    {
+      "code" : "MAIL FROM",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " \/ ",
+      "type" : "text"
+    },
+    {
+      "code" : "RCPT TO",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ") contains a carriage return or line",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "feed. Such characters would allow additional SMTP commands to be injected into the session, so they are",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "rejected before any connection is opened.",
       "type" : "text"
     }
   ],
   "fragments" : [
     {
       "kind" : "keyword",
-      "text" : "class"
+      "text" : "struct"
     },
     {
       "kind" : "text",
@@ -165,34 +181,26 @@
     },
     {
       "kind" : "identifier",
-      "text" : "Mailer"
+      "text" : "InvalidEnvelopeAddressError"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError",
   "kind" : "symbol",
   "navigatorTitle" : [
     {
       "kind" : "identifier",
-      "text" : "Mailer"
+      "text" : "InvalidEnvelopeAddressError"
     }
   ],
   "role" : "symbol",
-  "title" : "Mailer",
+  "title" : "InvalidEnvelopeAddressError",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/mailer"
+  "url" : "\/documentation\/swiftsmtp\/invalidenvelopeaddresserror"
 },
-"doc://SwiftSMTP/documentation/SwiftSMTP/Mailer/maxConnections": {
+"doc://SwiftSMTP/documentation/SwiftSMTP/InvalidEnvelopeAddressError/address": {
   "abstract" : [
     {
-      "text" : "The maximum number of connections this mailer should open. ",
-      "type" : "text"
-    },
-    {
-      "code" : "nil",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : " if no limit is set.",
+      "text" : "The offending address.",
       "type" : "text"
     }
   ],
@@ -207,7 +215,7 @@
     },
     {
       "kind" : "identifier",
-      "text" : "maxConnections"
+      "text" : "address"
     },
     {
       "kind" : "text",
@@ -215,20 +223,16 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:Si",
-      "text" : "Int"
-    },
-    {
-      "kind" : "text",
-      "text" : "?"
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
     }
   ],
-  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Mailer\/maxConnections",
+  "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/InvalidEnvelopeAddressError\/address",
   "kind" : "symbol",
   "role" : "symbol",
-  "title" : "maxConnections",
+  "title" : "address",
   "type" : "topic",
-  "url" : "\/documentation\/swiftsmtp\/mailer\/maxconnections"
+  "url" : "\/documentation\/swiftsmtp\/invalidenvelopeaddresserror\/address"
 }
 }
 }
