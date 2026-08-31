@@ -235,10 +235,25 @@ fileprivate extension Email.Body {
             writer.writeBody(base64EncodedIfNeeded(html))
         }
 
+
+
         switch self {
         case .plain(let plain): writePlain(plain, to: &writer)
         case .html(let html): writeHTML(html, to: &writer)
         case .universal(let plain, let html):
+#if swift(<6.1)
+            func addAlternativePart<T: MIMEWriter & ~Copyable & NonEscapable>(_ addPart: ((inout T) -> ()) -> ()) {
+                addPart {
+                    writePlain(plain, to: &$0)
+                    $0.endLine()
+                }
+                addPart {
+                    writeHTML(html, to: &$0)
+                    $0.endLine()
+                }
+            }
+            writer.withMultipartWriter(of: "alternative", do: addAlternativePart)
+#else
             writer.withMultipartWriter(of: "alternative") { addPart in
                 addPart {
                     writePlain(plain, to: &$0)
@@ -249,6 +264,7 @@ fileprivate extension Email.Body {
                     $0.endLine()
                 }
             }
+#endif
         }
     }
 }
@@ -281,6 +297,34 @@ extension Email {
                 let splitIndex = attachments.stablePartition(by: \.isInline)
                 return (inline: attachments[splitIndex...], regular: attachments[..<splitIndex])
             }()
+
+#if compiler(<6.1)
+            func addRelatedPart<T: MIMEWriter & ~Copyable & NonEscapable>(_ addPart: ((inout T) -> ()) -> ()) {
+                addPart {
+                    body.mimeEncode(into: &$0,
+                                    base64EncodeAllMessages: base64EncodeAllMessages,
+                                    base64EncodingOptions: base64EncodingOptions)
+                }
+                for attachment in inlineAttachments {
+                    addPart {
+                        attachment.mimeEncode(into: &$0, base64EncodingOptions: base64EncodingOptions)
+                    }
+                }
+            }
+
+            func addMixedPart<T: MIMEWriter & ~Copyable & NonEscapable>(_ addPart: ((inout T) -> ()) -> ()) {
+                addPart {
+                    $0.withMultipartWriterIfNeeded(!inlineAttachments.isEmpty, of: "related", do: addRelatedPart)
+                }
+                for attachment in regularAttachments {
+                    addPart {
+                        attachment.mimeEncode(into: &$0, base64EncodingOptions: base64EncodingOptions)
+                    }
+                }
+            }
+
+            mimeWriter.withMultipartWriterIfNeeded(!regularAttachments.isEmpty, of: "mixed", do: addMixedPart)
+#else
             mimeWriter.withMultipartWriterIfNeeded(!regularAttachments.isEmpty, of: "mixed") { addPart in
                 addPart {
                     $0.withMultipartWriterIfNeeded(!inlineAttachments.isEmpty, of: "related") { addPart in
@@ -302,6 +346,7 @@ extension Email {
                     }
                 }
             }
+#endif
         }
     }
 
