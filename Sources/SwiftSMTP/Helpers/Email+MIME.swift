@@ -5,31 +5,8 @@ import struct NIO.ByteBuffer
 fileprivate import Algorithms
 
 #if compiler(>=6.3)
-protocol _MutableRef<Value>: ~Copyable, ~Escapable {
-    associatedtype Value: ~Copyable
-
-#if compiler(>=6.4)
-    var value: Value { borrow mutate }
-#else
-    var value: Value { get set }
-#endif
-}
-#else
-protocol _MutableRef<Value>: ~Copyable {
-    associatedtype Value: ~Copyable
-
-    var value: Value { get set }
-}
-#endif
-
-#if compiler(>=6.4)
-@available(anyAppleOS 27, *)
-extension MutableRef: _MutableRef where Value: ~Copyable {}
-#endif
-
-#if compiler(>=6.3)
 @safe
-private struct LegacyMutableRef<Value: ~Copyable>: ~Copyable, ~Escapable, _MutableRef {
+private struct LegacyMutableRef<Value: ~Copyable>: ~Copyable, ~Escapable {
     private let _ptr: UnsafeMutablePointer<Value>
 
 #if compiler(>=6.4)
@@ -55,7 +32,7 @@ private struct LegacyMutableRef<Value: ~Copyable>: ~Copyable, ~Escapable, _Mutab
 }
 #elseif compiler(>=6.2)
 @safe
-private struct LegacyMutableRef<Value: ~Copyable>: ~Copyable, _MutableRef {
+private struct LegacyMutableRef<Value: ~Copyable>: ~Copyable {
     private let _ptr: UnsafeMutablePointer<Value>
 
     var value: Value {
@@ -70,7 +47,7 @@ private struct LegacyMutableRef<Value: ~Copyable>: ~Copyable, _MutableRef {
     }
 }
 #else
-private struct LegacyMutableRef<Value: ~Copyable>: ~Copyable, _MutableRef {
+private struct LegacyMutableRef<Value: ~Copyable>: ~Copyable {
     private let _ptr: UnsafeMutablePointer<Value>
 
     var value: Value {
@@ -244,14 +221,14 @@ fileprivate extension Email.Body {
             return Data(text.utf8).base64EncodedString(options: base64EncodingOptions)
         }
 
-        func writePlain(_ plain: String, to writer: inout some MIMEWriter & ~Copyable & ~Escapable) {
+        func writePlain(_ plain: String, to writer: inout some MIMEWriter & ~Copyable & NonEscapable) {
             writer.writeContentTypeHeader(#"text/plain; charset="UTF-8""#)
             writer.writeContentTransferEncodingBase64HeaderIfNeeded(base64EncodeAllMessages)
             writer.endLine()
             writer.writeBody(base64EncodedIfNeeded(plain))
         }
 
-        func writeHTML(_ html: String, to writer: inout some MIMEWriter & ~Copyable & ~Escapable) {
+        func writeHTML(_ html: String, to writer: inout some MIMEWriter & ~Copyable & NonEscapable) {
             writer.writeContentTypeHeader(#"text/html; charset="UTF-8""#)
             writer.writeContentTransferEncodingBase64HeaderIfNeeded(base64EncodeAllMessages)
             writer.endLine()
