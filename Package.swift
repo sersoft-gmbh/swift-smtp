@@ -11,7 +11,11 @@ let swiftSettings: Array<SwiftSetting> = [
     .enableUpcomingFeature("ExistentialAny"),
     .enableUpcomingFeature("InternalImportsByDefault"),
     .enableUpcomingFeature("MemberImportVisibility"),
+    .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
     .enableUpcomingFeature("ImmutableWeakCaptures"),
+    .enableUpcomingFeature("InferIsolatedConformances"),
+    .enableExperimentalFeature("Lifetimes"),
+    .enableExperimentalFeature("LifetimeDependence"),
 ]
 
 let package = Package(

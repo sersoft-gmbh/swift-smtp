@@ -4,111 +4,225 @@ import struct Foundation.Date
 import struct NIO.ByteBuffer
 fileprivate import Algorithms
 
-#if compiler(<6.4)
-#if compiler(>=6.2)
-@safe
-private struct MutableRef<T: ~Copyable>: ~Copyable {
-    private var _ptr: UnsafeMutablePointer<T>
+#if compiler(>=6.3)
+protocol _MutableRef<Value>: ~Copyable, ~Escapable {
+    associatedtype Value: ~Copyable
 
-    var value: T {
+#if compiler(>=6.4)
+    var value: Value { borrow mutate }
+#else
+    var value: Value { get set }
+#endif
+}
+#else
+protocol _MutableRef<Value>: ~Copyable {
+    associatedtype Value: ~Copyable
+
+    var value: Value { get set }
+}
+#endif
+
+#if compiler(>=6.4)
+@available(anyAppleOS 27, *)
+extension MutableRef: _MutableRef where Value: ~Copyable {}
+#endif
+
+#if compiler(>=6.3)
+@safe
+private struct LegacyMutableRef<Value: ~Copyable>: ~Copyable, ~Escapable, _MutableRef {
+    private let _ptr: UnsafeMutablePointer<Value>
+
+#if compiler(>=6.4)
+    var value: Value {
+        @_unsafeSelfDependentResult
+        borrow { unsafe _ptr.pointee }
+        @_unsafeSelfDependentResult
+        mutate { unsafe &_ptr.pointee }
+    }
+#else
+    var value: Value {
         _read { yield unsafe _ptr.pointee }
-        nonmutating _modify { yield unsafe &_ptr.pointee }
+        _modify { yield unsafe &_ptr.pointee }
+    }
+#endif
+
+    @_lifetime(&target)
+    init(_ target: inout Value) {
+        // This prevents stack protections to be triggered.
+        // Uses `Builtin.unprotectedAddressOf` internally, which is what MutableRef uses in Swift 6.4 as well.
+        unsafe _ptr = _withUnprotectedUnsafeMutablePointer(to: &target) { unsafe $0 }
+    }
+}
+#elseif compiler(>=6.2)
+@safe
+private struct LegacyMutableRef<Value: ~Copyable>: ~Copyable, _MutableRef {
+    private let _ptr: UnsafeMutablePointer<Value>
+
+    var value: Value {
+        _read { yield unsafe _ptr.pointee }
+        _modify { yield unsafe &_ptr.pointee }
     }
 
-    init(_ target: inout T) {
+    init(_ target: inout Value) {
         // This prevents stack protections to be triggered.
         // Uses `Builtin.unprotectedAddressOf` internally, which is what MutableRef uses in Swift 6.4 as well.
         unsafe _ptr = _withUnprotectedUnsafeMutablePointer(to: &target) { unsafe $0 }
     }
 }
 #else
-private struct MutableRef<T: ~Copyable>: ~Copyable {
-    private var _ptr: UnsafeMutablePointer<T>
+private struct LegacyMutableRef<Value: ~Copyable>: ~Copyable, _MutableRef {
+    private let _ptr: UnsafeMutablePointer<Value>
 
-    var value: T {
+    var value: Value {
         _read { yield _ptr.pointee }
-        nonmutating _modify { yield &_ptr.pointee }
+        _modify { yield &_ptr.pointee }
     }
 
-    init(_ target: inout T) {
+    init(_ target: inout Value) {
         // This prevents stack protections to be triggered.
         // Uses `Builtin.unprotectedAddressOf` internally, which is what MutableRef uses in Swift 6.4 as well.
         _ptr = _withUnprotectedUnsafeMutablePointer(to: &target) { $0 }
     }
 }
 #endif
+extension LegacyMutableRef: @unchecked Sendable where Value: Sendable & ~Copyable {}
 
-extension MutableRef: @unchecked Sendable where T: Sendable {}
+#if compiler(>=6.3)
+fileprivate protocol MIMEWriter: Sendable, ~Copyable, ~Escapable {
+#if compiler(>=6.4)
+    var byteBuffer: ByteBuffer { borrow mutate }
+#else
+    var byteBuffer: ByteBuffer { get set }
+#endif
+}
+#else
+fileprivate protocol MIMEWriter: Sendable, ~Copyable {
+    var byteBuffer: ByteBuffer { get set }
+}
 #endif
 
-// TODO: ~Escapable
-private struct MIMEWriter: ~Copyable, Sendable {
-    private let byteBuffer: MutableRef<ByteBuffer>
+#if compiler(>=6.4)
+@available(anyAppleOS 27, *)
+fileprivate struct ModernMIMEWriter: MIMEWriter, ~Copyable, ~Escapable {
+    private var byteBufferRef: MutableRef<ByteBuffer>
+
+    fileprivate var byteBuffer: ByteBuffer {
+        borrow { byteBufferRef.value }
+        mutate { &byteBufferRef.value }
+    }
+
+
+    @_lifetime(&byteBuffer)
+    init(byteBuffer: inout ByteBuffer) {
+        self.byteBufferRef = MutableRef(&byteBuffer)
+    }
+}
+#endif
+
+#if compiler(>=6.3)
+fileprivate struct LegacyMIMEWriter: MIMEWriter, ~Copyable, ~Escapable {
+    private var byteBufferRef: LegacyMutableRef<ByteBuffer>
+
+#if compiler(>=6.4)
+    fileprivate var byteBuffer: ByteBuffer {
+        borrow { byteBufferRef.value }
+        mutate { &byteBufferRef.value }
+    }
+#else
+    fileprivate var byteBuffer: ByteBuffer {
+        _read { yield byteBufferRef.value }
+        _modify { yield &byteBufferRef.value }
+    }
+#endif
+
+    @_lifetime(&byteBuffer)
+    init(byteBuffer: inout ByteBuffer) {
+        self.byteBufferRef = LegacyMutableRef(&byteBuffer)
+    }
+}
+#else
+fileprivate struct LegacyMIMEWriter: MIMEWriter, ~Copyable {
+    private var byteBufferRef: LegacyMutableRef<ByteBuffer>
+
+    fileprivate var byteBuffer: ByteBuffer {
+        _read { yield byteBufferRef.value }
+        _modify { yield &byteBufferRef.value }
+    }
 
     init(byteBuffer: inout ByteBuffer) {
-        self.byteBuffer = MutableRef(&byteBuffer)
+        self.byteBufferRef = LegacyMutableRef(&byteBuffer)
     }
+}
+#endif
 
-    private func writeBytesLine(_ bytes: some Sequence<UInt8>) {
-        byteBuffer.value.writeBytes(bytes)
+#if swift(>=6.3)
+fileprivate typealias NonEscapable = ~Escapable
+#else
+fileprivate typealias NonEscpabable = Any
+#endif
+
+fileprivate extension MIMEWriter where Self: ~Copyable, Self: NonEscapable {
+    private mutating func writeBytesLine(_ bytes: some Sequence<UInt8>) {
+        byteBuffer.writeBytes(bytes)
         endLine()
     }
 
-    private func writeLine(_ line: String) {
-        byteBuffer.value.writeString(line)
+    private mutating func writeLine(_ line: String) {
+        byteBuffer.writeString(line)
         endLine()
     }
 
-    func endLine() {
-        byteBuffer.value.writeBytes(.crlf)
+    mutating func endLine() {
+        byteBuffer.writeBytes(.crlf)
     }
 
-    func writeHeader(name: String, value: String) {
+    mutating func writeHeader(name: String, value: String) {
         writeLine("\(name): \(value)")
     }
 
-    func writeContentTypeHeader(_ contentType: String) {
+    mutating func writeContentTypeHeader(_ contentType: String) {
         writeHeader(name: "Content-Type", value: contentType)
     }
 
-    func writeContentTransferEncodingHeader(_ contentTransferEncoding: String) {
+    mutating func writeContentTransferEncodingHeader(_ contentTransferEncoding: String) {
         writeHeader(name: "Content-Transfer-Encoding", value: contentTransferEncoding)
     }
 
-    func writeContentTransferEncodingBase64HeaderIfNeeded(_ isBase64: Bool) {
+    mutating func writeContentTransferEncodingBase64HeaderIfNeeded(_ isBase64: Bool) {
         guard isBase64 else { return }
         writeContentTransferEncodingHeader("base64")
     }
 
-    func writeBody(_ body: String) {
+    mutating func writeBody(_ body: String) {
         writeLine(body)
     }
 
-    func writeBody(_ body: some Sequence<UInt8>) {
+    mutating func writeBody(_ body: some Sequence<UInt8>) {
         writeBytesLine(body)
     }
 
-    func withMultipartWriter(of subtype: String, do work: (((borrowing MIMEWriter) -> ()) -> ()) -> ()) {
+    mutating func withMultipartWriter(of subtype: String, do work: (((inout Self) -> ()) -> ()) -> ()) {
         let boundary = UUID().uuidString.filter(\.isHexDigit)
         writeContentTypeHeader("multipart/\(subtype); boundary=\(boundary)")
         endLine()
         work {
             writeLine("--\(boundary)")
-            $0(self)
+            $0(&self)
         }
         writeLine("--\(boundary)--")
     }
 
-    func withMultipartWriterIfNeeded(_ needed: Bool,
-                                     of subtype: @autoclosure () -> String,
-                                     do work: (((borrowing MIMEWriter) -> ()) -> ()) -> ()) {
-        guard needed else { return work({ $0(self) }) }
+    mutating func withMultipartWriterIfNeeded(_ needed: Bool,
+                                              of subtype: @autoclosure () -> String,
+                                              do work: (((inout Self) -> ()) -> ()) -> ()) {
+        guard needed else { return work({ $0(&self) }) }
         withMultipartWriter(of: subtype(), do: work)
     }
 }
 
 fileprivate extension Email.Attachment {
-    func mimeEncode(into writer: borrowing MIMEWriter, base64EncodingOptions: Data.Base64EncodingOptions) {
+    func mimeEncode(into writer: inout some MIMEWriter & ~Copyable & NonEscapable,
+                    base64EncodingOptions: Data.Base64EncodingOptions) {
         writer.writeContentTypeHeader(contentType)
         writer.writeContentTransferEncodingHeader("base64")
         // TODO: filename*
@@ -122,7 +236,7 @@ fileprivate extension Email.Attachment {
 }
 
 fileprivate extension Email.Body {
-    func mimeEncode(into writer: borrowing MIMEWriter,
+    func mimeEncode(into writer: inout some MIMEWriter & ~Copyable & NonEscapable,
                     base64EncodeAllMessages: Bool,
                     base64EncodingOptions: Data.Base64EncodingOptions) {
         func base64EncodedIfNeeded(_ text: String) -> String {
@@ -130,14 +244,14 @@ fileprivate extension Email.Body {
             return Data(text.utf8).base64EncodedString(options: base64EncodingOptions)
         }
 
-        func writePlain(_ plain: String, to writer: borrowing MIMEWriter) {
+        func writePlain(_ plain: String, to writer: inout some MIMEWriter & ~Copyable & ~Escapable) {
             writer.writeContentTypeHeader(#"text/plain; charset="UTF-8""#)
             writer.writeContentTransferEncodingBase64HeaderIfNeeded(base64EncodeAllMessages)
             writer.endLine()
             writer.writeBody(base64EncodedIfNeeded(plain))
         }
 
-        func writeHTML(_ html: String, to writer: borrowing MIMEWriter) {
+        func writeHTML(_ html: String, to writer: inout some MIMEWriter & ~Copyable & ~Escapable) {
             writer.writeContentTypeHeader(#"text/html; charset="UTF-8""#)
             writer.writeContentTransferEncodingBase64HeaderIfNeeded(base64EncodeAllMessages)
             writer.endLine()
@@ -145,16 +259,16 @@ fileprivate extension Email.Body {
         }
 
         switch self {
-        case .plain(let plain): writePlain(plain, to: writer)
-        case .html(let html): writeHTML(html, to: writer)
+        case .plain(let plain): writePlain(plain, to: &writer)
+        case .html(let html): writeHTML(html, to: &writer)
         case .universal(let plain, let html):
             writer.withMultipartWriter(of: "alternative") { addPart in
                 addPart {
-                    writePlain(plain, to: $0)
+                    writePlain(plain, to: &$0)
                     $0.endLine()
                 }
                 addPart {
-                    writeHTML(html, to: $0)
+                    writeHTML(html, to: &$0)
                     $0.endLine()
                 }
             }
@@ -163,11 +277,10 @@ fileprivate extension Email.Body {
 }
 
 extension Email {
-    func mimeEncode(into byteBuffer: inout ByteBuffer,
-                    date: Date,
-                    base64EncodeAllMessages: Bool,
-                    base64EncodingOptions: Data.Base64EncodingOptions) {
-        let mimeWriter = MIMEWriter(byteBuffer: &byteBuffer)
+    private func _mimeEncode(into mimeWriter: inout some MIMEWriter & ~Copyable & NonEscapable,
+                             date: Date,
+                             base64EncodeAllMessages: Bool,
+                             base64EncodingOptions: Data.Base64EncodingOptions) {
         mimeWriter.writeHeader(name: "From", value: sender.asMIME)
         mimeWriter.writeHeader(name: "To", value: recipients.lazy.map(\.asMIME).joined(separator: ", "))
         if let replyTo {
@@ -182,7 +295,7 @@ extension Email {
         mimeWriter.writeHeader(name: "MIME-Version", value: "1.0")
 
         if attachments.isEmpty {
-            body.mimeEncode(into: mimeWriter,
+            body.mimeEncode(into: &mimeWriter,
                             base64EncodeAllMessages: base64EncodeAllMessages,
                             base64EncodingOptions: base64EncodingOptions)
         } else {
@@ -195,23 +308,50 @@ extension Email {
                 addPart {
                     $0.withMultipartWriterIfNeeded(!inlineAttachments.isEmpty, of: "related") { addPart in
                         addPart {
-                            body.mimeEncode(into: $0,
+                            body.mimeEncode(into: &$0,
                                             base64EncodeAllMessages: base64EncodeAllMessages,
                                             base64EncodingOptions: base64EncodingOptions)
                         }
                         for attachment in inlineAttachments {
                             addPart {
-                                attachment.mimeEncode(into: $0, base64EncodingOptions: base64EncodingOptions)
+                                attachment.mimeEncode(into: &$0, base64EncodingOptions: base64EncodingOptions)
                             }
                         }
                     }
                 }
                 for attachment in regularAttachments {
                     addPart {
-                        attachment.mimeEncode(into: $0, base64EncodingOptions: base64EncodingOptions)
+                        attachment.mimeEncode(into: &$0, base64EncodingOptions: base64EncodingOptions)
                     }
                 }
             }
         }
+    }
+
+    func mimeEncode(into byteBuffer: inout ByteBuffer,
+                    date: Date,
+                    base64EncodeAllMessages: Bool,
+                    base64EncodingOptions: Data.Base64EncodingOptions) {
+#if compiler(<6.4)
+        var mimeWriter = LegacyMIMEWriter(byteBuffer: &byteBuffer)
+        _mimeEncode(into: &mimeWriter,
+                    date: date,
+                    base64EncodeAllMessages: base64EncodeAllMessages,
+                    base64EncodingOptions: base64EncodingOptions)
+#else
+        if #available(anyAppleOS 27, *) {
+            var mimeWriter = ModernMIMEWriter(byteBuffer: &byteBuffer)
+            _mimeEncode(into: &mimeWriter,
+                        date: date,
+                        base64EncodeAllMessages: base64EncodeAllMessages,
+                        base64EncodingOptions: base64EncodingOptions)
+        } else {
+            var mimeWriter = LegacyMIMEWriter(byteBuffer: &byteBuffer)
+            _mimeEncode(into: &mimeWriter,
+                        date: date,
+                        base64EncodeAllMessages: base64EncodeAllMessages,
+                        base64EncodingOptions: base64EncodingOptions)
+        }
+#endif
     }
 }
