@@ -135,7 +135,7 @@ fileprivate struct LegacyMIMEWriter: MIMEWriter, ~Copyable {
 #if swift(>=6.3)
 fileprivate typealias NonEscapable = ~Escapable
 #else
-fileprivate typealias NonEscpabable = Any
+fileprivate typealias NonEscapable = Any
 #endif
 
 fileprivate extension MIMEWriter where Self: ~Copyable, Self: NonEscapable {
