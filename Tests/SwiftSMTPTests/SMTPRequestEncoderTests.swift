@@ -201,13 +201,14 @@ struct SMTPRequestEncoderTests {
             Date: \(date.formattedForSMTP)\r\n\
             Message-ID: <\(date.timeIntervalSince1970)@\(senderServerName)>\r\n\
             Subject: \(subject)\r\n\
-            MIME-Version: 1.0\r\n
+            MIME-Version: 1.0\r\n\
+            Content-Type: multipart/alternative; boundary=
             """
-            #/Content-Type: multipart/alternative; boundary=([A-Za-z0-9]{32})\r\n/#
-            "\r\n"
+            /([A-Za-z0-9]{32})/
+            "\r\n\r\n"
         }
         let match = try #require(try regex.prefixMatch(in: encoded))
-        let boundary = String(match.output.1)
+        let boundary = match.output.1
 
         #expect(encoded[match.range.upperBound...] == """
                 --\(boundary)\r\n\
