@@ -12,7 +12,7 @@ permissions:
 jobs:
   variables:
     outputs:
-      max-supported-swift-version: "6.3"
+      max-supported-swift-version: "6.4"
       xcode-scheme: swift-smtp-Package
       xcode-platform-version: latest
       fail-if-codecov-fails: "true"
