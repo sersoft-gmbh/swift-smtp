@@ -140,6 +140,7 @@
               "text" : ": "
             },
             {
+              "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration",
               "kind" : "typeIdentifier",
               "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
               "text" : "Configuration"
@@ -345,6 +346,40 @@
   "title" : "SwiftSMTPVapor",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration": {
+  "abstract" : [
+    {
+      "text" : "Represents a configuration for sending emails.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Configuration",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration"
 },
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SMTPInitializer": {
   "abstract" : [

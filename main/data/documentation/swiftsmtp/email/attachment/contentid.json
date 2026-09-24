@@ -415,24 +415,6 @@
     },
     {
       "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
-      "text" : "Email"
-    },
-    {
-      "kind" : "text",
-      "text" : "."
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV",
-      "text" : "Attachment"
-    },
-    {
-      "kind" : "text",
-      "text" : "."
-    },
-    {
-      "kind" : "typeIdentifier",
       "preciseIdentifier" : "s:9SwiftSMTP5EmailV10AttachmentV4KindO",
       "text" : "Kind"
     }

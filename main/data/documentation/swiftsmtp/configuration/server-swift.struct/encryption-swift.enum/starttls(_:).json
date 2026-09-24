@@ -58,33 +58,6 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
-        "text" : "Configuration"
-      },
-      {
-        "kind" : "text",
-        "text" : "."
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV",
-        "text" : "Server"
-      },
-      {
-        "kind" : "text",
-        "text" : "."
-      },
-      {
-        "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV10EncryptionO",
-        "text" : "Encryption"
-      },
-      {
-        "kind" : "text",
-        "text" : "."
-      },
-      {
-        "kind" : "typeIdentifier",
         "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV10EncryptionO12StartTLSModeO",
         "text" : "StartTLSMode"
       },
@@ -133,36 +106,6 @@
             {
               "kind" : "text",
               "text" : "("
-            },
-            {
-              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
-              "text" : "Configuration"
-            },
-            {
-              "kind" : "text",
-              "text" : "."
-            },
-            {
-              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV",
-              "text" : "Server"
-            },
-            {
-              "kind" : "text",
-              "text" : "."
-            },
-            {
-              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV10EncryptionO",
-              "text" : "Encryption"
-            },
-            {
-              "kind" : "text",
-              "text" : "."
             },
             {
               "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/StartTLSMode",
@@ -392,33 +335,6 @@
     {
       "kind" : "text",
       "text" : "("
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
-      "text" : "Configuration"
-    },
-    {
-      "kind" : "text",
-      "text" : "."
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV",
-      "text" : "Server"
-    },
-    {
-      "kind" : "text",
-      "text" : "."
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV6ServerV10EncryptionO",
-      "text" : "Encryption"
-    },
-    {
-      "kind" : "text",
-      "text" : "."
     },
     {
       "kind" : "typeIdentifier",

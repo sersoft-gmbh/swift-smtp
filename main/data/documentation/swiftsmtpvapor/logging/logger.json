@@ -82,11 +82,11 @@
   "relationshipsSections" : [
     {
       "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPLogger",
         "doc:\/\/SwiftSMTPVapor\/s8CopyableP",
         "doc:\/\/SwiftSMTPVapor\/s9EscapableP",
         "doc:\/\/SwiftSMTPVapor\/s8SendableP",
-        "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP",
-        "doc:\/\/SwiftSMTPVapor\/9SwiftSMTP10SMTPLoggerP"
+        "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP"
       ],
       "kind" : "relationships",
       "title" : "Conforms To",
@@ -125,11 +125,6 @@
   ]
 , 
 "references": {
-"doc://SwiftSMTPVapor/9SwiftSMTP10SMTPLoggerP": {
-  "identifier" : "doc:\/\/SwiftSMTPVapor\/9SwiftSMTP10SMTPLoggerP",
-  "title" : "SwiftSMTP.SMTPLogger",
-  "type" : "unresolvable"
-},
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
   "abstract" : [
     {
@@ -205,6 +200,40 @@
   "title" : "SMTPLogger Implementations",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtpvapor\/logging\/logger\/smtplogger-implementations"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SMTPLogger": {
+  "abstract" : [
+    {
+      "text" : "Describes a logger that logs SMTP messages.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "protocol"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "SMTPLogger"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/SMTPLogger",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "SMTPLogger"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "SMTPLogger",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/smtplogger"
 },
 "doc://SwiftSMTPVapor/s16SendableMetatypeP": {
   "identifier" : "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP",

@@ -244,10 +244,7 @@
 },
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPMaxConnectionsConfiguration/init(integerLiteral:)": {
   "abstract" : [
-    {
-      "text" : "Creates an instance initialized to the specified integer value.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {
@@ -285,18 +282,7 @@
 },
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/SwiftSMTPMaxConnectionsConfiguration/init(nilLiteral:)": {
   "abstract" : [
-    {
-      "text" : "Creates an instance initialized with ",
-      "type" : "text"
-    },
-    {
-      "code" : "nil",
-      "type" : "codeVoice"
-    },
-    {
-      "text" : ".",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {

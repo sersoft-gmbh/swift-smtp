@@ -87,6 +87,7 @@
               "text" : ": "
             },
             {
+              "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Mailer",
               "kind" : "typeIdentifier",
               "preciseIdentifier" : "s:9SwiftSMTP6MailerC",
               "text" : "Mailer"
@@ -152,6 +153,40 @@
   "title" : "SwiftSMTPVapor",
   "type" : "topic",
   "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Mailer": {
+  "abstract" : [
+    {
+      "text" : "A Mailer is responsible for opening server connections and dispatching emails.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Mailer"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Mailer",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Mailer"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Mailer",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/mailer"
 },
 "doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Vapor": {
   "abstract" : [

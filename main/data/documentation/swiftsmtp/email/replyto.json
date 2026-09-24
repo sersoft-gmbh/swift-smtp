@@ -39,15 +39,6 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
-        "text" : "Email"
-      },
-      {
-        "kind" : "text",
-        "text" : "."
-      },
-      {
-        "kind" : "typeIdentifier",
         "preciseIdentifier" : "s:9SwiftSMTP5EmailV7ContactV",
         "text" : "Contact"
       },
@@ -96,16 +87,6 @@
             {
               "kind" : "text",
               "text" : ": "
-            },
-            {
-              "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email",
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
-              "text" : "Email"
-            },
-            {
-              "kind" : "text",
-              "text" : "."
             },
             {
               "identifier" : "doc:\/\/SwiftSMTP\/documentation\/SwiftSMTP\/Email\/Contact",
@@ -258,15 +239,6 @@
     {
       "kind" : "text",
       "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:9SwiftSMTP5EmailV",
-      "text" : "Email"
-    },
-    {
-      "kind" : "text",
-      "text" : "."
     },
     {
       "kind" : "typeIdentifier",

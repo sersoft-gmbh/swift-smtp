@@ -205,10 +205,7 @@
 },
 "doc://SwiftSMTP/documentation/SwiftSMTP/EmailValidationError/description": {
   "abstract" : [
-    {
-      "text" : "A textual representation of this instance.",
-      "type" : "text"
-    }
+
   ],
   "fragments" : [
     {

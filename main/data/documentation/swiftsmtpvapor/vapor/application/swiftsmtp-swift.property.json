@@ -41,15 +41,6 @@
       },
       {
         "kind" : "typeIdentifier",
-        "preciseIdentifier" : "s:5Vapor11ApplicationC",
-        "text" : "Application"
-      },
-      {
-        "kind" : "text",
-        "text" : "."
-      },
-      {
-        "kind" : "typeIdentifier",
         "preciseIdentifier" : "s:5Vapor11ApplicationC14SwiftSMTPVaporE0C4SMTPV",
         "text" : "SwiftSMTP"
       }
@@ -97,15 +88,6 @@
             {
               "kind" : "text",
               "text" : ": "
-            },
-            {
-              "kind" : "typeIdentifier",
-              "preciseIdentifier" : "s:5Vapor11ApplicationC",
-              "text" : "Application"
-            },
-            {
-              "kind" : "text",
-              "text" : "."
             },
             {
               "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Vapor\/Application\/SwiftSMTP-swift.struct",
@@ -275,15 +257,6 @@
     {
       "kind" : "text",
       "text" : ": "
-    },
-    {
-      "kind" : "typeIdentifier",
-      "preciseIdentifier" : "s:5Vapor11ApplicationC",
-      "text" : "Application"
-    },
-    {
-      "kind" : "text",
-      "text" : "."
     },
     {
       "kind" : "typeIdentifier",
