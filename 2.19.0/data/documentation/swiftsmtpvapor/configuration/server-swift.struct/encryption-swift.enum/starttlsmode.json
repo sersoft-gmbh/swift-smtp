@@ -1,0 +1,405 @@
+{
+  "abstract" : [
+    {
+      "text" : "Represents a StartTLS mode.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct\/Encryption-swift.enum"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/StartTLSMode"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "extendedModule" : "SwiftSMTP",
+    "externalID" : "s:9SwiftSMTP13ConfigurationV6ServerV10EncryptionO12StartTLSModeO",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "enum"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "StartTLSMode"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTPVapor",
+        "relatedModules" : [
+          "SwiftSMTP"
+        ]
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "StartTLSMode"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "Configuration.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/tags\/2.19.0\/Sources\/SwiftSMTP\/Models\/Configuration.swift#L111"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Enumeration",
+    "symbolKind" : "enum",
+    "title" : "Configuration.Server.Encryption.StartTLSMode"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "enum"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "StartTLSMode"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "relationshipsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/SQ",
+        "doc:\/\/SwiftSMTPVapor\/SH",
+        "doc:\/\/SwiftSMTPVapor\/s8SendableP",
+        "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP"
+      ],
+      "kind" : "relationships",
+      "title" : "Conforms To",
+      "type" : "conformsTo"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "anchor" : "Enumeration-Cases",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/StartTLSMode\/always",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/StartTLSMode\/ifAvailable"
+      ],
+      "title" : "Enumeration Cases"
+    },
+    {
+      "anchor" : "Default-Implementations",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/StartTLSMode\/Equatable-Implementations"
+      ],
+      "title" : "Default Implementations"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtpvapor\/configuration\/server-swift.struct\/encryption-swift.enum\/starttlsmode"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTPVapor/SH": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/SH",
+  "title" : "Swift.Hashable",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/SQ": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/SQ",
+  "title" : "Swift.Equatable",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
+  "abstract" : [
+    {
+      "text" : "SwiftSMTPVapor builds on SwiftSMTP and adds some convenience for using it with Vapor. First, you need to configure SwiftSMTPVapor once at startup. This is usually done in ",
+      "type" : "text"
+    },
+    {
+      "code" : "configure(_:)",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ". There are multiple ways to configure SwiftSMTP here. The simplest is to use environment variables (see above for details on that):",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTPVapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration": {
+  "abstract" : [
+    {
+      "text" : "Represents a configuration for sending emails.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Configuration",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/Server-swift.struct": {
+  "abstract" : [
+    {
+      "text" : "Represents a server configuration.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Server"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Server"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Configuration.Server",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/server-swift.struct"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/Server-swift.struct/Encryption-swift.enum": {
+  "abstract" : [
+    {
+      "text" : "Represents an encryption setting.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Encryption"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct\/Encryption-swift.enum",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Encryption"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Configuration.Server.Encryption",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/server-swift.struct\/encryption-swift.enum"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/Server-swift.struct/Encryption-swift.enum/StartTLSMode": {
+  "abstract" : [
+    {
+      "text" : "Represents a StartTLS mode.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "enum"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "StartTLSMode"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/StartTLSMode",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "StartTLSMode"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Configuration.Server.Encryption.StartTLSMode",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/server-swift.struct\/encryption-swift.enum\/starttlsmode"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/Server-swift.struct/Encryption-swift.enum/StartTLSMode/Equatable-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/StartTLSMode\/Equatable-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "Equatable Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/server-swift.struct\/encryption-swift.enum\/starttlsmode\/equatable-implementations"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/Server-swift.struct/Encryption-swift.enum/StartTLSMode/always": {
+  "abstract" : [
+    {
+      "text" : "After sending the StartTLS command, a TLS encryption ",
+      "type" : "text"
+    },
+    {
+      "inlineContent" : [
+        {
+          "text" : "has to",
+          "type" : "text"
+        }
+      ],
+      "type" : "emphasis"
+    },
+    {
+      "text" : " be opened. The connection will fail if the server does not support it.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "always"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/StartTLSMode\/always",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "Configuration.Server.Encryption.StartTLSMode.always",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/server-swift.struct\/encryption-swift.enum\/starttlsmode\/always"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/Server-swift.struct/Encryption-swift.enum/StartTLSMode/ifAvailable": {
+  "abstract" : [
+    {
+      "text" : "The connection will continue without encryption after the StartTLS command if the server does not support encryption.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "case"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "ifAvailable"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/Server-swift.struct\/Encryption-swift.enum\/StartTLSMode\/ifAvailable",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "Configuration.Server.Encryption.StartTLSMode.ifAvailable",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/server-swift.struct\/encryption-swift.enum\/starttlsmode\/ifavailable"
+},
+"doc://SwiftSMTPVapor/s16SendableMetatypeP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP",
+  "title" : "Swift.SendableMetatype",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/s8SendableP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s8SendableP",
+  "title" : "Swift.Sendable",
+  "type" : "unresolvable"
+}
+}
+}

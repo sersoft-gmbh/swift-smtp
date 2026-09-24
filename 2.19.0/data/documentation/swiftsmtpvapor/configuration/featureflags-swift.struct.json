@@ -1,0 +1,807 @@
+{
+  "abstract" : [
+    {
+      "text" : "Represents feature flags of the server.",
+      "type" : "text"
+    }
+  ],
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "extendedModule" : "SwiftSMTP",
+    "externalID" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "struct"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "FeatureFlags"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "SwiftSMTPVapor",
+        "relatedModules" : [
+          "SwiftSMTP"
+        ]
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "FeatureFlags"
+      }
+    ],
+    "remoteSource" : {
+      "fileName" : "Configuration.swift",
+      "url" : "https:\/\/github.com\/sersoft-gmbh\/swift-smtp\/blob\/refs\/tags\/2.19.0\/Sources\/SwiftSMTP\/Models\/Configuration.swift#L72"
+    },
+    "role" : "symbol",
+    "roleHeading" : "Structure",
+    "symbolKind" : "struct",
+    "title" : "Configuration.FeatureFlags"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "Linux"
+          ],
+          "tokens" : [
+            {
+              "kind" : "attribute",
+              "text" : "@frozen"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "struct"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "FeatureFlags"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "relationshipsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/s15BitwiseCopyableP",
+        "doc:\/\/SwiftSMTPVapor\/SQ",
+        "doc:\/\/SwiftSMTPVapor\/s25ExpressibleByArrayLiteralP",
+        "doc:\/\/SwiftSMTPVapor\/SH",
+        "doc:\/\/SwiftSMTPVapor\/s9OptionSetP",
+        "doc:\/\/SwiftSMTPVapor\/SY",
+        "doc:\/\/SwiftSMTPVapor\/s8SendableP",
+        "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP",
+        "doc:\/\/SwiftSMTPVapor\/s10SetAlgebraP"
+      ],
+      "kind" : "relationships",
+      "title" : "Conforms To",
+      "type" : "conformsTo"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "anchor" : "Initializers",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/init(rawValue:)"
+      ],
+      "title" : "Initializers"
+    },
+    {
+      "anchor" : "Instance-Properties",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/rawValue-swift.property"
+      ],
+      "title" : "Instance Properties"
+    },
+    {
+      "anchor" : "Type-Aliases",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/RawValue-swift.typealias"
+      ],
+      "title" : "Type Aliases"
+    },
+    {
+      "anchor" : "Type-Properties",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/base64EncodeAllMessages",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/maximumBase64LineLength64",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/maximumBase64LineLength76",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/useESMTP"
+      ],
+      "title" : "Type Properties"
+    },
+    {
+      "anchor" : "Type-Methods",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/fromEnvironment()"
+      ],
+      "title" : "Type Methods"
+    },
+    {
+      "anchor" : "Default-Implementations",
+      "generated" : true,
+      "identifiers" : [
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/Equatable-Implementations",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/OptionSet-Implementations",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/RawRepresentable-Implementations",
+        "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/SetAlgebra-Implementations"
+      ],
+      "title" : "Default Implementations"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://SwiftSMTPVapor/SH": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/SH",
+  "title" : "Swift.Hashable",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/SQ": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/SQ",
+  "title" : "Swift.Equatable",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/SY": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/SY",
+  "title" : "Swift.RawRepresentable",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor": {
+  "abstract" : [
+    {
+      "text" : "SwiftSMTPVapor builds on SwiftSMTP and adds some convenience for using it with Vapor. First, you need to configure SwiftSMTPVapor once at startup. This is usually done in ",
+      "type" : "text"
+    },
+    {
+      "code" : "configure(_:)",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ". There are multiple ways to configure SwiftSMTP here. The simplest is to use environment variables (see above for details on that):",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor",
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "SwiftSMTPVapor",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration": {
+  "abstract" : [
+    {
+      "text" : "Represents a configuration for sending emails.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "Configuration"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Configuration",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct": {
+  "abstract" : [
+    {
+      "text" : "Represents feature flags of the server.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "struct"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "FeatureFlags"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "FeatureFlags"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Configuration.FeatureFlags",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/Equatable-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/Equatable-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "Equatable Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/equatable-implementations"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/OptionSet-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/OptionSet-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "OptionSet Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/optionset-implementations"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/RawRepresentable-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/RawRepresentable-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "RawRepresentable Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/rawrepresentable-implementations"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/RawValue-swift.typealias": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "typealias"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "RawValue"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/RawValue-swift.typealias",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "RawValue"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "Configuration.FeatureFlags.RawValue",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/rawvalue-swift.typealias"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/SetAlgebra-Implementations": {
+  "abstract" : [
+
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/SetAlgebra-Implementations",
+  "kind" : "article",
+  "role" : "collectionGroup",
+  "title" : "SetAlgebra Implementations",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/setalgebra-implementations"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/base64EncodeAllMessages": {
+  "abstract" : [
+    {
+      "text" : "Whether all messages sent to the server should be using base64 (transfer) encoding. Use further options to customize the line length.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "base64EncodeAllMessages"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV",
+      "text" : "FeatureFlags"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/base64EncodeAllMessages",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "base64EncodeAllMessages",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/base64encodeallmessages"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/fromEnvironment()": {
+  "abstract" : [
+    {
+      "text" : "Creates the feature flags from environment variables.",
+      "type" : "text"
+    },
+    {
+      "text" : " ",
+      "type" : "text"
+    },
+    {
+      "text" : "The following environment variables are used to set the corresponding feature flags (env var = 1 will set the flag):",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fromEnvironment"
+    },
+    {
+      "kind" : "text",
+      "text" : "() -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV",
+      "text" : "FeatureFlags"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/fromEnvironment()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "fromEnvironment()",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/fromenvironment()"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/init(rawValue:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "rawValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV",
+      "text" : "FeatureFlags"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV8RawValuea",
+      "text" : "RawValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/init(rawValue:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(rawValue:)",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/init(rawvalue:)"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/maximumBase64LineLength64": {
+  "abstract" : [
+    {
+      "text" : "Whether the base64 line length should be limited to 64 characters.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "maximumBase64LineLength64"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV",
+      "text" : "FeatureFlags"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/maximumBase64LineLength64",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "maximumBase64LineLength64",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/maximumbase64linelength64"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/maximumBase64LineLength76": {
+  "abstract" : [
+    {
+      "text" : "Whether the base64 line length should be limited to 76 characters.",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "maximumBase64LineLength76"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV",
+      "text" : "FeatureFlags"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/maximumBase64LineLength76",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "maximumBase64LineLength76",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/maximumbase64linelength76"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/rawValue-swift.property": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "rawValue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV",
+      "text" : "FeatureFlags"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV8RawValuea",
+      "text" : "RawValue"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/rawValue-swift.property",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "rawValue",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/rawvalue-swift.property"
+},
+"doc://SwiftSMTPVapor/documentation/SwiftSMTPVapor/Configuration/FeatureFlags-swift.struct/useESMTP": {
+  "abstract" : [
+    {
+      "text" : "Whether ESMTP should be used (e.g. send ",
+      "type" : "text"
+    },
+    {
+      "code" : "EHLO",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : " instead of ",
+      "type" : "text"
+    },
+    {
+      "code" : "HELO",
+      "type" : "codeVoice"
+    },
+    {
+      "text" : ").",
+      "type" : "text"
+    }
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "useESMTP"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV",
+      "text" : "Configuration"
+    },
+    {
+      "kind" : "text",
+      "text" : "."
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9SwiftSMTP13ConfigurationV12FeatureFlagsV",
+      "text" : "FeatureFlags"
+    }
+  ],
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/documentation\/SwiftSMTPVapor\/Configuration\/FeatureFlags-swift.struct\/useESMTP",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "useESMTP",
+  "type" : "topic",
+  "url" : "\/documentation\/swiftsmtpvapor\/configuration\/featureflags-swift.struct\/useesmtp"
+},
+"doc://SwiftSMTPVapor/s10SetAlgebraP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s10SetAlgebraP",
+  "title" : "Swift.SetAlgebra",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/s15BitwiseCopyableP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s15BitwiseCopyableP",
+  "title" : "Swift.BitwiseCopyable",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/s16SendableMetatypeP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s16SendableMetatypeP",
+  "title" : "Swift.SendableMetatype",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/s25ExpressibleByArrayLiteralP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s25ExpressibleByArrayLiteralP",
+  "title" : "Swift.ExpressibleByArrayLiteral",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/s8SendableP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s8SendableP",
+  "title" : "Swift.Sendable",
+  "type" : "unresolvable"
+},
+"doc://SwiftSMTPVapor/s9OptionSetP": {
+  "identifier" : "doc:\/\/SwiftSMTPVapor\/s9OptionSetP",
+  "title" : "Swift.OptionSet",
+  "type" : "unresolvable"
+}
+}
+}
